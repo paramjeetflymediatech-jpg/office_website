@@ -14,7 +14,7 @@ dotenv.config();
 async function setup() {
   const dbName = process.env.DB_NAME || 'flymedia_db';
   const dbUser = process.env.DB_USER || 'root';
-  const dbPassword = process.env.DB_PASSWORD || 'Root@123';
+  const dbPassword = process.env.DB_PASSWORD || 'root';
   const dbHost = process.env.DB_HOST || 'localhost';
 
   console.log(`Connecting to MySQL at ${dbHost}...`);
