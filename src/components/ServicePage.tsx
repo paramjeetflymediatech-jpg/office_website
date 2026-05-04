@@ -15,7 +15,13 @@ interface ServicePageProps {
 
 export default function ServicePage({ title, h1, paragraphs, mainContent, images, folderName }: ServicePageProps) {
   // Convert remote image URLs to local paths based on the folder name
-  const localImages = images.map((_, index) => `/scrap/Archive/${folderName}/assets/images/image_${index}.png`);
+  // Handle both provided names and the default image_N.png pattern
+  const localImages = images.map((img, index) => {
+    if (img && img.trim() !== "") {
+      return `/scrap/Archive/${folderName}/assets/images/${img}`;
+    }
+    return `/scrap/Archive/${folderName}/assets/images/image_${index}.png`;
+  });
 
   return (
     <main className="min-h-screen bg-white font-sans">
@@ -100,9 +106,9 @@ export default function ServicePage({ title, h1, paragraphs, mainContent, images
                 </div>
 
                 <div className="bg-black text-white p-8 rounded-sm shadow-2xl relative overflow-hidden">
-                   <div className="absolute top-0 right-0 p-4 opacity-10">
-                      <Image src="/logo.png" alt="Flymedia" width={100} height={40} className="grayscale invert" />
-                   </div>
+                    <div className="absolute top-0 right-0 p-4 opacity-10">
+                       <Image src="/logo.png" alt="Flymedia" width={100} height={40} className="grayscale invert" style={{ height: 'auto' }} />
+                    </div>
                    <h3 className="text-xl font-bold mb-4 uppercase tracking-tighter text-[#ff9900]">Why Choose Flymedia?</h3>
                    <ul className="space-y-4 text-sm text-gray-300 font-medium">
                       <li className="flex gap-3">

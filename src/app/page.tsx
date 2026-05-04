@@ -1,3 +1,6 @@
+"use client";
+
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
@@ -6,8 +9,25 @@ import SEOMonitor from "@/components/SEOMonitor";
 import ClientsSlider from "@/components/ClientsSlider";
 import IndustriesSection from "@/components/IndustriesSection";
 import FAQSection from "@/components/FAQSection";
+import ServicesGrid from "@/components/ServicesGrid";
+
+const SLIDING_TEXTS = ["Generate More Leads", "Generate More Revenue"];
 
 export default function Home() {
+  const [textIndex, setTextIndex] = useState(0);
+  const [fade, setFade] = useState(true);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setFade(false);
+      setTimeout(() => {
+        setTextIndex((prev) => (prev + 1) % SLIDING_TEXTS.length);
+        setFade(true);
+      }, 500);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <main className="min-h-screen bg-[#f1f1f1] font-sans overflow-hidden">
       {/* Hero Section */}
@@ -30,10 +50,10 @@ export default function Home() {
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 items-center relative z-10 w-full gap-12 lg:gap-0">
           {/* Left Content */}
           <div className="space-y-6 text-center lg:text-left flex flex-col items-center lg:items-start order-2 lg:order-1">
-            <h2 className="text-[#ff9900] text-2xl sm:text-3xl md:text-5xl font-serif italic leading-tight">
-              Generate More Leads
+            <h2 className={`text-[#ff9900] text-2xl sm:text-3xl md:text-5xl font-serif italic leading-tight transition-opacity duration-500 ${fade ? "opacity-100" : "opacity-0"}`}>
+              {SLIDING_TEXTS[textIndex]}
             </h2>
-            <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-4xl font-serif font-black text-black leading-[1.1] max-w-xl">
+            <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-5xl font-serif font-black text-black leading-[1.1] max-w-xl">
               With Your Trusted Partner For Result-Oriented Digital Marketing Solutions
             </h1>
             <p className="text-gray-700 text-base sm:text-lg md:text-xl font-medium max-w-lg leading-relaxed pt-2">
@@ -58,7 +78,7 @@ export default function Home() {
 
           {/* Right Image */}
           <div className="relative h-[300px] sm:h-[450px] lg:h-[800px] flex items-center justify-center order-1 lg:order-2 w-full">
-            <div className="relative w-full h-full lg:transform lg:translate-x-10 lg:translate-y-10 lg:scale-110">
+            <div className="relative w-full h-full lg:transform lg:translate-x-10 lg:translate-y-10 lg:scale-125">
               <Image
                 src="/butrterfly.png"
                 alt="Monarch Butterfly"
@@ -73,8 +93,7 @@ export default function Home() {
       </section>
 
       {/* Video Reel Section - Contained */}
-      <section className="bg-white relative overflow-hidden mt-10 lg:mt-0">
-        {/* <div className="max-w-7xl mx-auto "> */}
+      <section className="bg-white relative overflow-hidden mt-10 lg:mt-0 max-w-7xl mx-auto">
         <video
           src="/scrap/Archive/flymediatech.com_home/assets/videos/video_0.mp4"
           autoPlay
@@ -84,12 +103,13 @@ export default function Home() {
           className="object-cover transition-transform duration-700 group-hover:scale-105"
         />
         <div className="absolute inset-0 bg-black/5 group-hover:bg-black/0 transition-colors"></div>
-        {/* </div> */}
       </section>
 
+      <ServicesGrid />
 
       <ClientsSlider />
 
+            <ReviewsSection />
 
 
       {/* SEO Services Section */}
@@ -131,8 +151,9 @@ export default function Home() {
 
       <IndustriesSection />
 
-      <ReviewsSection />
+
       <FAQSection />
+
       {/* Floating Call Button */}
       <div className="fixed bottom-10 right-10 z-50">
         <Link href="tel:+919888484310" className="w-16 h-16 bg-[#ffcc33] rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform animate-bounce">
@@ -142,7 +163,7 @@ export default function Home() {
         </Link>
       </div>
 
-      {/* WhatsApp Button (using your existing component logic) */}
+      {/* WhatsApp Button */}
       <div className="fixed bottom-10 left-10 z-50 hidden lg:block">
         <Link
           href="https://api.whatsapp.com/send?phone=919888484310&text=Hi Anuj"

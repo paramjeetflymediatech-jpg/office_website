@@ -1,44 +1,44 @@
 export const NAV_LINKS = [
   { name: "About Us", href: "/about-us" },
   { name: "How We Work", href: "/how-we-work" },
-  { name: "Services", href: "/services", hasDropdown: true },
-  { name: "Packages", href: "/packages", hasDropdown: true },
-  { name: "What We Do", href: "/what-we-do", hasDropdown: true },
-  { name: "Portfolio", href: "/portfolio", active: true },
+  { name: "Services", href: "/#", hasDropdown: true },
+  { name: "Packages", href: "/#", hasDropdown: true },
+  { name: "What We Do", href: "/#", hasDropdown: true },
+  { name: "Portfolio", href: "/portfolio" },
   { name: "Blog", href: "/blog" },
   { name: "Contact Us", href: "/contact-us" },
 ];
 
 export const SOCIAL_LINKS = [
-  { 
-    name: "Facebook", 
-    href: "https://www.facebook.com/flymediatech", 
-    color: "#1877F2",
-    d: "M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" 
+  {
+    name: "Facebook",
+    href: "https://www.facebook.com/flymediatech",
+    color: "#ffffff",
+    d: "M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3l-.5 3H13v6.8c4.56-.93 8-4.96 8-9.8z"
   },
-  { 
-    name: "Twitter", 
-    href: "https://twitter.com/flymediatech1", 
-    color: "#1DA1F2",
-    d: "M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.84 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" 
+  {
+    name: "Twitter",
+    href: "https://twitter.com/flymediatech1",
+    color: "#ffffff",
+    d: "M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
   },
-  { 
-    name: "Linkedin", 
-    href: "https://www.linkedin.com/company/fly-media-technology/", 
-    color: "#0A66C2",
-    d: "M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z" 
+  {
+    name: "Linkedin",
+    href: "https://www.linkedin.com/company/fly-media-technology/",
+    color: "#ffffff",
+    d: "M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"
   },
-  { 
-    name: "Instagram", 
-    href: "https://www.instagram.com/flymedia_technology/", 
-    color: "#E4405F",
-    d: "M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.012 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126s1.337 1.079 2.126 1.384c.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.012 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384s1.079-1.337 1.384-2.126c.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126s-1.337-1.079-2.126-1.384c-.765-.296-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.645-1.44-1.44 0-.794.645-1.439 1.44-1.439.794-.001 1.44.645 1.44 1.439z" 
+  {
+    name: "Instagram",
+    href: "https://www.instagram.com/flymedia_technology/",
+    color: "#ffffff",
+    d: "M12 2c2.717 0 3.056.01 4.122.058 1.066.048 1.79.218 2.427.465a4.902 4.902 0 0 1 1.772 1.153 4.902 4.902 0 0 1 1.153 1.772c.247.637.417 1.361.465 2.427.048 1.066.058 1.405.058 4.122s-.01 3.056-.058 4.122c-.048 1.066-.218 1.79-.465 2.427a4.902 4.902 0 0 1-1.153 1.772 4.902 4.902 0 0 1-1.772 1.153c-.637.247-1.361.417-2.427.465-1.066.048-1.405.058-4.122.058s-3.056-.01-4.122-.058c-1.066-.048-1.79-.218-2.427-.465a4.902 4.902 0 0 1-1.772-1.153 4.902 4.902 0 0 1-1.153-1.772c-.247-.637-.417-1.361-.465-2.427C2.01 15.056 2 14.717 2 12s.01-3.056.058-4.122c.048-1.066.218-1.79.465-2.427a4.902 4.902 0 0 1 1.153-1.772A4.902 4.902 0 0 1 5.448 2.523c.637-.247 1.361-.417 2.427-.465C8.944 2.01 9.283 2 12 2zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm6.5-.25a1.25 1.25 0 1 0-2.5 0 1.25 1.25 0 0 0 2.5 0zM12 9a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"
   },
-  { 
-    name: "Youtube", 
-    href: "https://www.youtube.com/channel/UC6f844f5WjMZWHB6256z57A", 
-    color: "#FF0000",
-    d: "M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z" 
+  {
+    name: "Youtube",
+    href: "https://www.youtube.com/channel/UC6f844f5WjMZWHB6256z57A",
+    color: "#ffffff",
+    d: "M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.42a2.78 2.78 0 0 0-1.94 2C1 8.14 1 12 1 12s0 3.86.46 5.58a2.78 2.78 0 0 0 1.94 2c1.72.42 8.6.42 8.6.42s6.88 0 8.6-.42a2.78 2.78 0 0 0 1.94-2C23 15.86 23 12 23 12s0-3.86-.46-5.58zM9.75 15.02V8.98L15.25 12l-5.5 3.02z"
   },
 ];
 
@@ -68,6 +68,68 @@ export const OUR_SERVICES = [
   { name: "IT Company In Ludhiana", href: "/it-company-in-ludhiana" },
 ];
 
+export const MEGA_MENU_DATA = {
+  "Services": {
+    sidebar: {
+      title: "Digital Marketing",
+      description: "Explore and Excel in the digital marketing world with our comprehensive, data-driven and result-oriented digital marketing services. Whether it is SEO, Website Designing, Graphic Designing, Content Writing, Payment Gateway Integration or Social Media Marketing, we have got all your needs covered.",
+      image: "/dropdown-icons/butterfly.webp"
+    },
+    links: [
+      { name: "Web Designing", href: "/our-services/web-designing", icon: "/dropdown-icons/web-design-devep.webp" },
+      { name: "Digital Marketing", href: "/digital-marketing", icon: "/dropdown-icons/digital-consultancy-icon.webp" },
+      { name: "Mobile Apps", href: "/mobile-apps-development", icon: "/dropdown-icons/mobile-marketing-1.webp" },
+      { name: "SEO – Marketing Services", href: "/our-services/seo-marketing-services", icon: "/dropdown-icons/SEO.webp" },
+      { name: "Web Based Softwares", href: "/our-services/web-based-softwares", icon: "/dropdown-icons/r06.webp" },
+      { name: "Payment Gateway Integration", href: "/our-services/payment-gateway-integration", icon: "/dropdown-icons/paymen.webp" },
+      { name: "Website Development", href: "/our-services/web-development", icon: "/dropdown-icons/web-develop-1.webp" },
+      { name: "Google Adwords (PPC)", href: "/pay-per-click-ppc", icon: "/dropdown-icons/google.png" },
+      { name: "Product Photography in Ludhiana", href: "/product-photography-in-ludhiana", icon: "/dropdown-icons/camera_gimbals-1.webp" },
+      { name: "IT Company", href: "/it-company-in-ludhiana", icon: "/dropdown-icons/it.webp" },
+      { name: "Content Writing", href: "/content-writing", icon: "/dropdown-icons/contentr.webp" },
+      { name: "Full-Stack Development", href: "/full-stack-development-in-india", icon: "/dropdown-icons/r11-1.webp" },
+      { name: "Laravel Website Development", href: "/laravel-website-development-in-india", icon: "/dropdown-icons/r09.webp" }
+    ]
+  },
+  "Packages": {
+    sidebar: {
+      title: "Packages",
+      description: "Our extensive range of services covers multiple aspects of digital marketing and caters to your distinct requirements. Thus, we offer multiple packages such as Web Design, Logo Design, PPC management, SEO package and more. These can be tailored as per your unique requirements.",
+      image: "/dropdown-icons/ROCKET-FLY.webp"
+    },
+    links: [
+      { name: "Logo Design", href: "/logo-design-packages-india", icon: "/dropdown-icons/logo-design.webp" },
+      { name: "SEO Packages", href: "/seo-packages-india", icon: "/dropdown-icons/SEO.webp" },
+      { name: "Digital Marketing", href: "/digital-marketing-packages-india", icon: "/dropdown-icons/digital-consultancy-icon.webp" },
+      { name: "Web Design", href: "/website-designing-packages-india", icon: "/dropdown-icons/web-design-devep.webp" },
+      { name: "PPC Management", href: "/google-ads-ppc-packages-india", icon: "/dropdown-icons/Pay-per-click111.webp" },
+      { name: "Ecommerce Website Development", href: "/ecommerce-website-development-packages-india", icon: "/dropdown-icons/ecommerce.webp" },
+      { name: "Social Media Branding", href: "/social-media-branding-packages-india", icon: "/dropdown-icons/social-media-icon.webp" }
+    ]
+  },
+  "What We Do": {
+    sidebar: {
+      title: "Digital Marketing",
+      description: "Make your business reach new heights of digital success through our comprehensive range of digital marketing solutions. From Social Media Marketing, SEO, and Content Writing to Website Design, Graphic design and a lot more, we cover all your digital marketing needs.",
+      image: "/dropdown-icons/butterfly.webp"
+    },
+    links: [
+      { name: "Rehab Centre", href: "/digital-marketing-de-addiction-rehab-center", icon: "/dropdown-icons/r01.webp" },
+      { name: "Gastric Bypass Surgery", href: "/gastric-bypass-surgery-digital-marketing", icon: "/dropdown-icons/r02.webp" },
+      { name: "Instagram Marketing", href: "/instagram-marketing", icon: "/dropdown-icons/social-media-icon.webp" },
+      { name: "Plastic Surgery", href: "/plastic-surgery-digital-marketing", icon: "/dropdown-icons/r03.webp" },
+      { name: "IVF Clinic & Hospitals", href: "/ivf-clinic-digital-marketing-india", icon: "/dropdown-icons/r04.webp" },
+      { name: "CMS For Website", href: "/cms-for-website", icon: "/dropdown-icons/r05.webp" },
+      { name: "Cosmetic Surgery", href: "/cosmetic-surgery-digital-marketing", icon: "/dropdown-icons/r07.webp" },
+      { name: "Hair Transplant Clinics", href: "/hair-transplant-clinic-digital-marketing", icon: "/dropdown-icons/r08.webp" },
+      { name: "NABH Consultants", href: "/nabh-consultants", icon: "/dropdown-icons/r10.webp" },
+      { name: "Orthopedic Hospital", href: "/orthopedic-hospital-digital-marketing", icon: "/dropdown-icons/r11-1.webp" },
+      { name: "Facelift Surgeons", href: "/facelift-surgeons-digital-marketing", icon: "/dropdown-icons/r02.webp" },
+      { name: "ENT Hospital", href: "/ent-hospital-digital-marketing", icon: "/dropdown-icons/r01.webp" }
+    ]
+  }
+};
+
 export const CMS_PLATFORMS = ['WP', 'PHP', 'MG', 'DR', 'JO', 'SH'];
 
 export const PAYMENT_GATEWAYS = ['AMEX', 'MAESTRO', 'MASTER', 'VISA', 'DIRECT', 'PAYPAL'];
@@ -93,7 +155,8 @@ export const LOCATIONS = [
   }
 ];
 export const HEADER_LOCATIONS = [
-  {
+
+   {
     name: "Canada",
     href: "/canada",
     subLocations: [
@@ -102,6 +165,7 @@ export const HEADER_LOCATIONS = [
   },
   {
     name: "Australia",
-    href: "/australia",
-  }
+    href: "/australia/about-us",
+  },
+ 
 ];
