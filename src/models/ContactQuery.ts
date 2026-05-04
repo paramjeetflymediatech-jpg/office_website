@@ -2,12 +2,12 @@ import { DataTypes, Model } from 'sequelize';
 import sequelize from '../lib/db';
 
 class ContactQuery extends Model {
-  public id!: number;
-  public name!: string;
-  public email!: string;
-  public phone!: string | null;
-  public message!: string;
-  public status!: string;
+  declare id: number;
+  declare name: string;
+  declare email: string;
+  declare phone: string | null;
+  declare message: string;
+  declare status: string;
 }
 
 ContactQuery.init(

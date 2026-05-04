@@ -2,25 +2,25 @@ import { DataTypes, Model } from 'sequelize';
 import sequelize from '../lib/db';
 
 class SEOConfig extends Model {
-  public id!: number;
-  public businessName!: string | null;
-  public businessDescription!: string | null;
-  public logoUrl!: string | null;
-  public phone!: string | null;
-  public email!: string | null;
-  public streetAddress!: string | null;
-  public city!: string | null;
-  public state!: string | null;
-  public postalCode!: string | null;
-  public countryCode!: string | null;
-  public latitude!: string | null;
-  public longitude!: string | null;
-  public socialLinks!: string | null; // JSON string of social URLs
-  public googleAnalyticsId!: string | null;
-  public googleTagManagerId!: string | null;
-  public globalSchema!: string | null; // Custom fallback JSON
-  public headerScripts!: string | null;
-  public footerScripts!: string | null;
+  declare id: number;
+  declare businessName: string | null;
+  declare businessDescription: string | null;
+  declare logoUrl: string | null;
+  declare phone: string | null;
+  declare email: string | null;
+  declare streetAddress: string | null;
+  declare city: string | null;
+  declare state: string | null;
+  declare postalCode: string | null;
+  declare countryCode: string | null;
+  declare latitude: string | null;
+  declare longitude: string | null;
+  declare socialLinks: string | null;
+  declare googleAnalyticsId: string | null;
+  declare googleTagManagerId: string | null;
+  declare globalSchema: string | null;
+  declare headerScripts: string | null;
+  declare footerScripts: string | null;
 }
 
 SEOConfig.init(

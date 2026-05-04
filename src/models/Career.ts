@@ -2,11 +2,11 @@ import { DataTypes, Model } from 'sequelize';
 import sequelize from '../lib/db';
 
 class Career extends Model {
-  public id!: number;
-  public title!: string;
-  public description!: string;
-  public requirements!: string;
-  public status!: string;
+  declare id: number;
+  declare title: string;
+  declare description: string;
+  declare requirements: string;
+  declare status: string;
 }
 
 Career.init(

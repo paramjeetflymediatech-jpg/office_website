@@ -2,10 +2,10 @@ import { DataTypes, Model } from 'sequelize';
 import sequelize from '../lib/db';
 
 class Portfolio extends Model {
-  public id!: number;
-  public title!: string;
-  public imageUrl!: string;
-  public category!: string | null;
+  declare id: number;
+  declare title: string;
+  declare imageUrl: string;
+  declare category: string | null;
 }
 
 Portfolio.init(

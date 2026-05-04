@@ -2,10 +2,10 @@ import { DataTypes, Model } from 'sequelize';
 import sequelize from '../lib/db';
 
 class FAQ extends Model {
-  public id!: number;
-  public question!: string;
-  public answer!: string;
-  public order!: number;
+  declare id: number;
+  declare question: string;
+  declare answer: string;
+  declare order: number;
 }
 
 FAQ.init(

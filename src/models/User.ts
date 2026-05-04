@@ -2,9 +2,9 @@ import { DataTypes, Model } from 'sequelize';
 import sequelize from '../lib/db';
 
 class User extends Model {
-  public id!: number;
-  public username!: string;
-  public password!: string; // Hashed
+  declare id: number;
+  declare username: string;
+  declare password: string;
 }
 
 User.init(

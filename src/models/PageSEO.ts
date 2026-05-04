@@ -2,14 +2,14 @@ import { Model, DataTypes } from 'sequelize';
 import sequelize from '@/lib/db';
 
 class PageSEO extends Model {
-  public id!: number;
-  public pageUrl!: string; // e.g., '/', '/about', '/services/web-design'
-  public title!: string;
-  public description!: string | null;
-  public keywords!: string | null;
-  public customSchema!: string | null;
-  public readonly createdAt!: Date;
-  public readonly updatedAt!: Date;
+  declare id: number;
+  declare pageUrl: string;
+  declare title: string;
+  declare description: string | null;
+  declare keywords: string | null;
+  declare customSchema: string | null;
+  declare readonly createdAt: Date;
+  declare readonly updatedAt: Date;
 }
 
 PageSEO.init(
