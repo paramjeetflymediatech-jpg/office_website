@@ -28,7 +28,7 @@ export default function Footer() {
     <footer className="relative bg-black pt-16 pb-4 text-white overflow-hidden font-sans">
       {/* Star Background Effect */}
       <div className="absolute inset-0 z-0 opacity-40 pointer-events-none">
-        <div className="absolute inset-0 bg-[url('/g-stars.png')] bg-cover"></div>
+        <div className="absolute inset-0  bg-cover"></div>
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

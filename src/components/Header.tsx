@@ -25,7 +25,7 @@ export default function Header() {
       {/* Top Bar with Location Dropdown */}
       <div className="relative w-full bg-black py-2 text-white flex justify-center items-center gap-1 group/loc cursor-pointer z-[60]">
          <div className="flex items-center gap-1">
-            <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest">Location</span>
+            <span className="text-[10px] sm:text-xs font-medium tracking-wide">Location</span>
             <ChevronDown size={14} className="text-[#ff9900]" />
          </div>
 
@@ -35,7 +35,7 @@ export default function Header() {
               <div key={loc.name} className="relative group/sub">
                  <Link 
                    href={loc.href}
-                   className="flex items-center justify-between px-6 py-3 text-sm font-bold uppercase tracking-tight hover:bg-[#ff9900] hover:text-white transition-colors"
+                   className="flex items-center justify-between px-6 py-3 text-sm font-medium tracking-normal hover:bg-[#ff9900] hover:text-white transition-colors"
                  >
                    {loc.name}
                    {loc.subLocations && <ChevronRight size={14} />}
@@ -48,7 +48,7 @@ export default function Header() {
                         <Link 
                           key={sub.name}
                           href={sub.href}
-                          className="block px-6 py-3 text-sm font-bold uppercase tracking-tight hover:bg-[#ff9900] hover:text-white transition-colors"
+                          className="block px-6 py-3 text-sm font-medium tracking-normal hover:bg-[#ff9900] hover:text-white transition-colors"
                         >
                           {sub.name}
                         </Link>
@@ -82,7 +82,7 @@ export default function Header() {
               <div key={link.name} className="relative group">
                 <Link
                   href={link.href}
-                  className={`flex items-center gap-1 text-[13px] font-bold tracking-tight transition-colors hover:text-[#ff9900] ${
+                  className={`flex items-center gap-1 text-[13px] font-semibold tracking-normal transition-colors hover:text-[#ff9900] ${
                     link.active ? "text-[#ff9900]" : "text-gray-800"
                   }`}
                 >
@@ -101,7 +101,7 @@ export default function Header() {
           <div className="hidden lg:flex items-center">
             <Link 
               href="tel:+919888484310" 
-              className="rounded-full bg-black px-10 py-3.5 text-sm font-black text-white uppercase tracking-tighter transition-all hover:bg-[#ff9900] active:scale-95 shadow-lg"
+              className="rounded-full bg-black px-10 py-3.5 text-sm font-bold text-white tracking-normal transition-all hover:bg-[#ff9900] active:scale-95 shadow-lg"
             >
               Call Now
             </Link>
@@ -121,13 +121,13 @@ export default function Header() {
       <div className={`fixed inset-0 bg-white z-[40] transition-transform duration-500 lg:hidden ${isMobileMenuOpen ? "translate-x-0" : "translate-x-full"}`}>
         <div className="flex flex-col h-full pt-28 px-6 pb-10 overflow-y-auto">
           {/* Mobile Nav Links */}
-          <nav className="flex flex-col space-y-6">
+          <nav className="flex flex-col font-normal space-y-4">
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className={`text-2xl font-black uppercase tracking-tighter ${
+                className={`text-md font-normal tracking-tight ${
                   link.active ? "text-[#ff9900]" : "text-black"
                 }`}
               >
@@ -137,15 +137,15 @@ export default function Header() {
           </nav>
 
           {/* Mobile Locations */}
-          <div className="mt-12 pt-8 border-t border-gray-100">
-            <span className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-6 block">Our Locations</span>
+          {/* <div className="mt-12 pt-8 border-t border-gray-100">
+            <span className="text-xs font-semibold tracking-wide text-gray-400 mb-6 block">Our Locations</span>
             <div className="space-y-4">
                {HEADER_LOCATIONS.map((loc) => (
                  <div key={loc.name} className="space-y-3">
                     <Link 
                       href={loc.href}
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className="text-lg font-bold text-black hover:text-[#ff9900] flex items-center justify-between"
+                      className="text-lg font-medium text-black hover:text-[#ff9900] flex items-center justify-between"
                     >
                       {loc.name}
                       <ChevronRight size={18} className="text-[#ff9900]" />
@@ -167,13 +167,13 @@ export default function Header() {
                  </div>
                ))}
             </div>
-          </div>
+          </div> */}
 
           {/* Mobile Call CTA */}
           <div className="mt-auto pt-10">
             <Link 
               href="tel:+919888484310"
-              className="flex items-center justify-center gap-3 w-full bg-[#ff9900] py-5 rounded-xl text-white font-black uppercase tracking-widest shadow-xl"
+              className="flex items-center justify-center gap-3 w-full bg-[#ff9900] py-5 rounded-xl text-white font-medium tracking-normal shadow-xl"
             >
               <Phone size={20} fill="white" />
               Call Now

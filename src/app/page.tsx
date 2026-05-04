@@ -1,6 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
+import ReviewsSection from "@/components/ReviewsSection";
+import SEOMonitor from "@/components/SEOMonitor";
+import ClientsSlider from "@/components/ClientsSlider";
+import IndustriesSection from "@/components/IndustriesSection";
+import FAQSection from "@/components/FAQSection";
 
 export default function Home() {
   return (
@@ -16,6 +21,7 @@ export default function Home() {
               alt="Background Pattern"
               fill
               className="object-cover object-left"
+              sizes="100vw"
               priority
             />
           </div>
@@ -67,70 +73,66 @@ export default function Home() {
       </section>
 
       {/* Video Reel Section - Contained */}
-      <section className="bg-white py-12 lg:py-20 relative overflow-hidden">
+      <section className="bg-white relative overflow-hidden mt-10 lg:mt-0">
+        {/* <div className="max-w-7xl mx-auto "> */}
+        <video
+          src="/scrap/Archive/flymediatech.com_home/assets/videos/video_0.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="object-cover transition-transform duration-700 group-hover:scale-105"
+        />
+        <div className="absolute inset-0 bg-black/5 group-hover:bg-black/0 transition-colors"></div>
+        {/* </div> */}
+      </section>
+
+
+      <ClientsSlider />
+
+
+
+      {/* SEO Services Section */}
+      <section className="bg-[#fdf0e1] py-20 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="relative aspect-video w-full group rounded-sm overflow-hidden shadow-lg border border-gray-100">
-            <video
-              src="/scrap/Archive/flymediatech.com_home/assets/videos/video_0.mp4"
-              autoPlay
-              muted
-              loop
-              playsInline
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-black/5 group-hover:bg-black/0 transition-colors"></div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-12 lg:gap-20">
+            {/* Left: Monitor Display */}
+            <div className="relative order-1 lg:order-1">
+              <SEOMonitor />
+            </div>
+
+            {/* Right: Content */}
+            <div className="space-y-8 order-2 lg:order-2 text-center lg:text-left">
+              <h2 className="text-4xl md:text-5xl lg:text-5xl font-serif font-black leading-[1.1] text-black">
+                <span className="text-[#ff9900]">Increased Reach</span><br />
+                On Your Website<br />
+                With Our Reliable<br />
+                SEO Services
+              </h2>
+              <p className="text-gray-800 text-lg md:text-xl font-medium leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                With an aim to help your business break through barriers and achieve excellence in digital marketing, the best website designing company in India empowers your business to communicate efficiently to the world and surpass the limits of your imagination by fueling your growth engine and elevating your power.
+              </p>
+              <div className="pt-4 flex justify-center lg:justify-start">
+                <Link
+                  href="/contact-us"
+                  className="bg-[#ff9900] text-white font-bold px-10 py-4 rounded-full flex items-center gap-3 text-lg shadow-xl shadow-[#ff9900]/20 hover:bg-black transition-all hover:scale-105"
+                >
+                  Contact Us
+                  <div className="flex gap-0.5">
+                    <ChevronRight className="w-5 h-5" />
+                    <ChevronRight className="w-5 h-5 -ml-3" />
+                  </div>
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Ready to Grow CTA Section */}
-      <section className="relative min-h-[400px] lg:min-h-[500px] bg-[#06122d] flex items-center justify-center overflow-hidden py-16 lg:py-24">
-        {/* Starry Background */}
-        <div className="absolute inset-0 z-0 opacity-40">
-           <Image src="/g-stars.png" alt="Stars" fill className="object-cover" />
-        </div>
+      <IndustriesSection />
 
-        {/* Mountain/Hill Silhouettes (Subtle) */}
-        <div className="absolute bottom-0 w-full h-1/2 bg-gradient-to-t from-[#0a1931] to-transparent opacity-50 z-0"></div>
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full text-center">
-           {/* Center Logo Circle */}
-           <div className="relative inline-block mb-8 lg:mb-12">
-              {/* Spinning/Glowing Orange Ring */}
-              <div className="absolute inset-0 -m-6 lg:-m-8 border-[8px] lg:border-[12px] border-[#ff9900] border-t-transparent border-b-transparent rounded-full animate-[spin_10s_linear_infinite] opacity-80"></div>
-              <div className="absolute inset-0 -m-6 lg:-m-8 border-[8px] lg:border-[12px] border-[#ff9900] border-l-transparent border-r-transparent rounded-full animate-[spin_15s_linear_infinite_reverse] opacity-40"></div>
-              
-              <div className="relative w-32 h-32 md:w-48 md:h-48 lg:w-64 lg:h-64 bg-transparent flex items-center justify-center p-4">
-                 <Image 
-                   src="/logo.png" 
-                   alt="Flymedia Logo" 
-                   width={200} 
-                   height={80} 
-                   className="object-contain brightness-0 invert" 
-                 />
-              </div>
-           </div>
-
-           {/* Big Bold Text */}
-           <h2 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black text-white uppercase tracking-tighter leading-tight lg:leading-none mb-4">
-              Ready to reach <br />
-              <span className="text-white">new heights</span>
-           </h2>
-
-           {/* 3D Question Mark (Floating on the right) */}
-           <div className="absolute right-0 top-1/2 -translate-y-1/2 hidden xl:block animate-bounce duration-[3000ms]">
-              <div className="relative w-48 h-48 lg:w-64 lg:h-64 opacity-90 drop-shadow-[0_20px_50px_rgba(255,255,255,0.1)]">
-                 <Image 
-                   src="/pink_3d_question_mark_1777717577013.png" 
-                   alt="Question Mark" 
-                   fill 
-                   className="object-contain"
-                 />
-              </div>
-           </div>
-        </div>
-      </section>
-
+      <ReviewsSection />
+      <FAQSection />
       {/* Floating Call Button */}
       <div className="fixed bottom-10 right-10 z-50">
         <Link href="tel:+919888484310" className="w-16 h-16 bg-[#ffcc33] rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform animate-bounce">
@@ -148,7 +150,7 @@ export default function Home() {
           className="flex items-center gap-3 rounded-full bg-[#2db742] px-6 py-3 text-white shadow-2xl hover:scale-105 transition-transform"
         >
           <div className="h-10 w-10 relative">
-            <Image src="/dropdown-icons/whatsapp_logo.svg" alt="WhatsApp" fill />
+            <Image src="/dropdown-icons/whatsapp_logo.svg" alt="WhatsApp" fill sizes="40px" />
           </div>
           <div className="flex flex-col text-left leading-none">
             <span className="text-[10px] text-[#d5f0d9] font-medium">Anuj Gupta | Online</span>
