@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import DynamicSEO, { FooterScripts } from "@/components/DynamicSEO";
+import ClientLayout from "@/components/ClientLayout";
+import ClientSEO from "@/components/ClientSEO";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,10 +15,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "Fly Media Technology | Best Digital Marketing Company",
-  description: "Flymedia Technology is the best digital marketing company in Ludhiana, Punjab, India.",
-};
+// Metadata is now handled dynamically via DynamicSEO component
 
 export default function RootLayout({
   children,
@@ -31,9 +29,10 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col">
-        <Header />
-        <main className="flex-grow">{children}</main>
-        <Footer />
+        <DynamicSEO />
+        <ClientSEO />
+        <ClientLayout>{children}</ClientLayout>
+        <FooterScripts />
       </body>
     </html>
   );

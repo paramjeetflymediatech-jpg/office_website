@@ -6,14 +6,20 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "db:init": "ts-node scripts/init-db.ts"
   },
   "dependencies": {
+    "dotenv": "^17.4.2",
     "framer-motion": "^12.38.0",
+    "jose": "^6.2.3",
     "lucide-react": "^1.14.0",
+    "mysql2": "^3.22.3",
     "next": "16.2.4",
     "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react-dom": "19.2.4",
+    "sequelize": "^6.37.8",
+    "ts-node": "^10.9.2"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
@@ -22,6 +28,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.4",
+    "sequelize-cli": "^6.6.5",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
