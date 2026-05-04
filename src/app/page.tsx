@@ -31,7 +31,7 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-[#f1f1f1] font-sans overflow-hidden">
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center pt-24 lg:pt-0 px-4 sm:px-6 lg:px-24 overflow-hidden">
+      <section className="relative min-h-[90vh] flex  items-center pt-24 lg:pt-0 px-4 sm:px-6 lg:px-24 overflow-hidden">
         {/* Decorative Background Patterns */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           {/* Authentic Grayscale Butterfly Pattern */}
@@ -47,10 +47,10 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 items-center relative z-10 w-full gap-12 lg:gap-0">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 bg-img['/image.png'] lg:grid-cols-2 md:grid-cols-2 items-center relative z-10 w-full gap-12 lg:gap-0">
           {/* Left Content */}
-          <div className="space-y-6 text-center lg:text-left flex flex-col items-center lg:items-start order-2 lg:order-1">
-            <h2 className={`text-[#ff9900] text-2xl sm:text-3xl md:text-5xl font-serif italic leading-tight transition-opacity duration-500 ${fade ? "opacity-100" : "opacity-0"}`}>
+          <div className="space-y-4 text-center lg:text-left flex flex-col items-center lg:items-start order-2 md:order-1">
+            <h2 className={`text-[#ff9900] text-2xl sm:text-3xl md:text-4xl font-serif italic leading-tight transition-opacity duration-500 ${fade ? "opacity-100" : "opacity-0"}`}>
               {SLIDING_TEXTS[textIndex]}
             </h2>
             <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-5xl font-serif font-black text-black leading-[1.1] max-w-xl">
@@ -109,7 +109,7 @@ export default function Home() {
 
       <ClientsSlider />
 
-            <ReviewsSection />
+      <ReviewsSection />
 
 
       {/* SEO Services Section */}

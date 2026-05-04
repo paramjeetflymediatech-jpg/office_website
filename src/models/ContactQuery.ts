@@ -6,6 +6,7 @@ class ContactQuery extends Model {
   declare name: string;
   declare email: string;
   declare phone: string | null;
+  declare subject: string | null;
   declare message: string;
   declare status: string;
 }
@@ -26,6 +27,10 @@ ContactQuery.init(
       allowNull: false,
     },
     phone: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    subject: {
       type: DataTypes.STRING,
       allowNull: true,
     },

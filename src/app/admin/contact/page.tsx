@@ -48,6 +48,7 @@ export default function ContactAdminPage() {
               <tr className="bg-gray-50 border-b border-gray-100">
                 <th className="px-6 py-4 text-xs font-bold text-gray-400 uppercase tracking-wider">Date</th>
                 <th className="px-6 py-4 text-xs font-bold text-gray-400 uppercase tracking-wider">Contact</th>
+                <th className="px-6 py-4 text-xs font-bold text-gray-400 uppercase tracking-wider">Subject</th>
                 <th className="px-6 py-4 text-xs font-bold text-gray-400 uppercase tracking-wider">Message Snippet</th>
                 <th className="px-6 py-4 text-xs font-bold text-gray-400 uppercase tracking-wider">Status</th>
                 <th className="px-6 py-4 text-xs font-bold text-gray-400 uppercase tracking-wider text-right">Actions</th>
@@ -62,6 +63,9 @@ export default function ContactAdminPage() {
                   <td className="px-6 py-4">
                     <div className="text-sm font-bold text-gray-900">{query.name}</div>
                     <div className="text-xs text-gray-500">{query.email}</div>
+                  </td>
+                  <td className="px-6 py-4 text-sm text-gray-600">
+                    {query.subject || 'N/A'}
                   </td>
                   <td className="px-6 py-4 text-sm text-gray-600 max-w-xs truncate">
                     {query.message}
@@ -110,6 +114,7 @@ export default function ContactAdminPage() {
                 <div>
                   <div className="font-bold text-gray-900">{query.name}</div>
                   <div className="text-xs text-gray-500">{query.email}</div>
+                  <div className="text-xs font-bold text-[#ff9900] mt-1">{query.subject}</div>
                   <div className="text-[10px] text-gray-400 mt-1">
                     {new Date(query.createdAt).toLocaleString()}
                   </div>
@@ -186,6 +191,11 @@ export default function ContactAdminPage() {
                   <label className="text-xs font-bold text-gray-400 uppercase">Phone</label>
                   <div className="text-gray-700">{selectedQuery.phone || 'N/A'}</div>
                 </div>
+              </div>
+
+              <div>
+                <label className="text-xs font-bold text-gray-400 uppercase">Subject</label>
+                <div className="text-lg font-bold text-[#ff9900]">{selectedQuery.subject || 'N/A'}</div>
               </div>
 
               <div>

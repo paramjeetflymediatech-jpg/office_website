@@ -11,7 +11,20 @@ export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
   const [isMobileLocOpen, setIsMobileLocOpen] = useState(false);
+  const [activeMenu, setActiveMenu] = useState<string | null>(null);
+  const [isClickTriggered, setIsClickTriggered] = useState(false);
   const pathname = usePathname();
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (!(e.target as HTMLElement).closest('.nav-item-container')) {
+        setActiveMenu(null);
+        setIsClickTriggered(false);
+      }
+    };
+    window.addEventListener("mousedown", handleClickOutside);
+    return () => window.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   // Close mobile menu when resizing to desktop
   useEffect(() => {
@@ -101,41 +114,74 @@ export default function Header() {
             {NAV_LINKS.map((link) => {
               const isActive = pathname === link.href;
               const hasMegaMenu = link.name === "Services" || link.name === "Packages" || link.name === "What We Do";
+              const shouldUseClick = link.name === "Services" || link.name === "Packages" || link.name === "What We Do";
               const megaMenuData = hasMegaMenu ? MEGA_MENU_DATA[link.name as keyof typeof MEGA_MENU_DATA] : null;
 
               return (
-                <div key={link.name} className="group h-full flex items-center">
-                  <Link
-                    href={link.href}
-                    className={`flex items-center gap-1 text-[13px] font-normal tracking-tight transition-all duration-300 relative py-4 ${isActive ? "text-[#ff9900]" : "text-black hover:text-[#ff9900]"
+                <div 
+                  key={link.name} 
+                  className={`nav-item-container h-full flex items-center relative ${!shouldUseClick ? 'group' : ''}`}
+                >
+                  {shouldUseClick ? (
+                    <button
+                      onClick={() => {
+                        const newState = activeMenu === link.name ? null : link.name;
+                        setActiveMenu(newState);
+                        setIsClickTriggered(true);
+                      }}
+                      className={`flex items-center gap-1 text-[13px] font-normal tracking-tight transition-all duration-300 relative py-4 ${
+                        (isActive || activeMenu === link.name) ? "text-[#ff9900]" : "text-black hover:text-[#ff9900]"
                       }`}
-                  >
-                    {link.name}
-                    {link.hasDropdown && <ChevronDown size={14} className="group-hover:rotate-180 transition-transform" />}
-
-                    {/* Hover Underline */}
-                    <span className={`absolute bottom-3 left-0 h-0.5 bg-[#ff9900] transition-all duration-300 ${isActive ? "w-full" : "w-0 group-hover:w-full"}`} />
-                  </Link>
+                    >
+                      {link.name}
+                      {link.hasDropdown && (
+                        <ChevronDown 
+                          size={14} 
+                          className={`transition-transform duration-300 ${activeMenu === link.name ? "rotate-180" : ""}`} 
+                        />
+                      )}
+                      <span className={`absolute bottom-3 left-0 h-0.5 bg-[#ff9900] transition-all duration-300 ${
+                        (isActive || activeMenu === link.name) ? "w-full" : "w-0"
+                      }`} />
+                    </button>
+                  ) : (
+                    <Link
+                      href={link.href}
+                      className={`flex items-center gap-1 text-[13px] font-normal tracking-tight transition-all duration-300 relative py-4 ${
+                        isActive ? "text-[#ff9900]" : "text-black hover:text-[#ff9900]"
+                      }`}
+                    >
+                      {link.name}
+                      {link.hasDropdown && <ChevronDown size={14} className="group-hover:rotate-180 transition-transform" />}
+                      <span className={`absolute bottom-3 left-0 h-0.5 bg-[#ff9900] transition-all duration-300 ${
+                        isActive ? "w-full" : "w-0 group-hover:w-full"
+                      }`} />
+                    </Link>
+                  )}
 
                   {/* Mega Menu Dropdown */}
                   {hasMegaMenu && megaMenuData && (
-                    <div className="fixed top-[110px] left-0 w-full bg-[#000000] text-white shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 origin-top z-[100] py-0">
+                    <div 
+                      className={`fixed top-[110px] left-0 w-full bg-[#000000] text-white shadow-2xl transition-all duration-300 origin-top z-[100] py-0 ${
+                        shouldUseClick 
+                          ? (activeMenu === link.name ? "opacity-100 visible translate-y-0" : "opacity-0 invisible -translate-y-2 pointer-events-none")
+                          : "opacity-0 invisible group-hover:opacity-100 group-hover:visible"
+                      }`}
+                    >
                       <div className="max-w-7xl mx-auto flex h-full min-h-[450px]">
                         {/* Left Sidebar Content */}
-                        <div className="w-[30%] p-10 bg-[#ff9900]/10 border-r border-white/5 flex flex-col justify-between relative overflow-hidden">
+                        <div className="w-[30%] py-5 pr-8 bg-[#ff9900]/10 border-r border-white/5 flex flex-col justify-between relative overflow-hidden">
                           <div className="relative z-10">
-                            <div className="bg-[#ff9900] p-6 rounded-xl mb-6 shadow-xl">
+                            <div className="bg-[#723700] p-6 rounded-xl mb-6 shadow-xl">
                               <p className="text-sm font-medium leading-relaxed text-white">
                                 {megaMenuData.sidebar.description}
                               </p>
                             </div>
-                            <h3 className="text-3xl font-black text-white italic tracking-tighter mb-4">
-                              {megaMenuData.sidebar.title}
-                            </h3>
+
                           </div>
 
                           {/* Rocket/Butterfly Image */}
-                          <div className="relative h-64 w-full mt-auto">
+                          <div className="absolute top-40 right-[-100px] bottom-0  h-50 inset-0 z-10">
                             <Image
                               src={megaMenuData.sidebar.image}
                               alt="Decorative"
@@ -147,11 +193,15 @@ export default function Header() {
                         </div>
 
                         {/* Right Links Grid */}
-                        <div className="w-[70%] p-12 grid grid-cols-3 gap-x-8 gap-y-6 bg-black content-start">
+                        <div className="w-[70%] p-1 grid grid-cols-3   bg-black content-start">
                           {megaMenuData.links.map((sublink: any) => (
                             <Link
                               key={sublink.name}
                               href={sublink.href}
+                              onClick={() => {
+                                setActiveMenu(null);
+                                setIsClickTriggered(false);
+                              }}
                               className="group/subitem flex items-center gap-4 hover:bg-white/5 p-3 rounded-lg transition-all duration-300"
                             >
                               <div className="relative h-10 w-10 flex-shrink-0 group-hover/subitem:scale-110 transition-transform">

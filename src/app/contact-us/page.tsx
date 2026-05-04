@@ -1,10 +1,10 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { MapPin, Phone, Mail, Clock, Send, ChevronRight } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Send, ChevronRight, Loader2 } from "lucide-react";
 
 const OFFICES = [
   {
@@ -34,6 +34,55 @@ const OFFICES = [
 ];
 
 export default function ContactUs() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    subject: "Web Design",
+    message: ""
+  });
+  const [status, setStatus] = useState<{
+    type: "idle" | "loading" | "success" | "error";
+    message: string;
+  }>({ type: "idle", message: "" });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus({ type: "loading", message: "Sending your message..." });
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setStatus({ type: "success", message: data.message });
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          subject: "Web Design",
+          message: ""
+        });
+      } else {
+        setStatus({ type: "error", message: data.error || "Failed to send message." });
+      }
+    } catch (error) {
+      setStatus({ type: "error", message: "An unexpected error occurred." });
+    }
+  };
+
   return (
     <main className="min-h-screen bg-white">
       {/* Hero Section */}
@@ -128,12 +177,16 @@ export default function ContactUs() {
               viewport={{ once: true }}
               className="bg-gray-50 p-8 sm:p-12 rounded-[2rem] shadow-2xl shadow-gray-200/50"
             >
-              <form className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label className="text-sm font-black tracking-widest text-gray-400 ml-1">Your Name</label>
                     <input
                       type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
                       placeholder="Enter your name"
                       className="w-full px-6 py-4 bg-white border border-gray-100 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#ff9900] transition-all font-semibold text-black"
                     />
@@ -142,6 +195,10 @@ export default function ContactUs() {
                     <label className="text-sm font-black tracking-widest text-gray-400 ml-1">Email Address</label>
                     <input
                       type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
                       placeholder="Enter your email"
                       className="w-full px-6 py-4 bg-white border border-gray-100 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#ff9900] transition-all font-semibold text-black"
                     />
@@ -153,13 +210,21 @@ export default function ContactUs() {
                     <label className="text-sm font-black tracking-widest text-gray-400 ml-1">Phone Number</label>
                     <input
                       type="tel"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
                       placeholder="Enter phone number"
                       className="w-full px-6 py-4 bg-white border border-gray-100 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#ff9900] transition-all font-semibold text-black"
                     />
                   </div>
                   <div className="space-y-2">
                     <label className="text-sm font-black  tracking-widest text-gray-400 ml-1">Subject</label>
-                    <select className="w-full px-6 py-4 bg-white border border-gray-100 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#ff9900] transition-all font-semibold text-black appearance-none">
+                    <select 
+                      name="subject"
+                      value={formData.subject}
+                      onChange={handleChange}
+                      className="w-full px-6 py-4 bg-white border border-gray-100 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#ff9900] transition-all font-semibold text-black appearance-none"
+                    >
                       <option>Web Design</option>
                       <option>Digital Marketing</option>
                       <option>SEO Services</option>
@@ -172,13 +237,37 @@ export default function ContactUs() {
                   <label className="text-sm font-black  tracking-widest text-gray-400 ml-1">Message</label>
                   <textarea
                     rows={5}
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
                     placeholder="Tell us about your project..."
                     className="w-full px-6 py-4 bg-white border border-gray-100 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#ff9900] transition-all font-semibold text-black resize-none"
                   ></textarea>
                 </div>
 
-                <button className="w-full bg-[#ff9900] text-black font-black py-5 rounded-xl tracking-widest hover:bg-black hover:text-white transition-all duration-300 shadow-xl shadow-[#ff9900]/20 flex items-center justify-center gap-3">
-                  Send Message <Send size={20} />
+                {status.message && (
+                  <div className={`p-4 rounded-xl text-sm font-bold ${
+                    status.type === 'success' ? 'bg-green-100 text-green-700' : 
+                    status.type === 'error' ? 'bg-red-100 text-red-700' : 'bg-blue-100 text-blue-700'
+                  }`}>
+                    {status.message}
+                  </div>
+                )}
+
+                <button 
+                  disabled={status.type === 'loading'}
+                  className="w-full bg-[#ff9900] text-black font-black py-5 rounded-xl tracking-widest hover:bg-black hover:text-white transition-all duration-300 shadow-xl shadow-[#ff9900]/20 flex items-center justify-center gap-3 disabled:opacity-50"
+                >
+                  {status.type === 'loading' ? (
+                    <>
+                      Sending... <Loader2 className="w-5 h-5 animate-spin" />
+                    </>
+                  ) : (
+                    <>
+                      Send Message <Send size={20} />
+                    </>
+                  )}
                 </button>
               </form>
             </motion.div>
