@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import ReviewsSection from "@/components/ReviewsSection";
 import SEOMonitor from "@/components/SEOMonitor";
 import ClientsSlider from "@/components/ClientsSlider";
@@ -16,6 +17,33 @@ const SLIDING_TEXTS = ["Generate More Leads", "Generate More Revenue"];
 export default function Home() {
   const [textIndex, setTextIndex] = useState(0);
   const [fade, setFade] = useState(true);
+
+  // Mouse Tilt Logic
+  const x = useMotionValue(0);
+  const y = useMotionValue(0); 
+
+  const mouseXSpring = useSpring(x);
+  const mouseYSpring = useSpring(y);
+
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["15deg", "-15deg"]);
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-15deg", "15deg"]);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+    const xPct = mouseX / width - 0.5;
+    const yPct = mouseY / height - 0.5;
+    x.set(xPct);
+    y.set(yPct);
+  };
+
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -31,7 +59,7 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-[#f1f1f1] font-sans overflow-hidden">
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex  items-center pt-24 lg:pt-0 px-4 sm:px-6 lg:px-24 overflow-hidden">
+      <section className="relative min-h-[80vh] flex  items-center pt-24 lg:pt-0 px-4 sm:px-6 lg:px-24 overflow-hidden">
         {/* Decorative Background Patterns */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           {/* Authentic Grayscale Butterfly Pattern */}
@@ -49,14 +77,14 @@ export default function Home() {
 
         <div className="max-w-7xl mx-auto grid grid-cols-1 bg-img['/image.png'] lg:grid-cols-2 md:grid-cols-2 items-center relative z-10 w-full gap-12 lg:gap-0">
           {/* Left Content */}
-          <div className="space-y-4 text-center lg:text-left flex flex-col items-center lg:items-start order-2 md:order-1">
+          <div className=" text-center lg:text-left flex flex-col items-center lg:items-start order-2 md:order-1">
             <h2 className={`text-[#ff9900] text-2xl sm:text-3xl md:text-4xl font-serif italic leading-tight transition-opacity duration-500 ${fade ? "opacity-100" : "opacity-0"}`}>
               {SLIDING_TEXTS[textIndex]}
             </h2>
-            <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-5xl font-serif font-black text-black leading-[1.1] max-w-xl">
+            <h1 className="text-[42px] font-serif font-black text-black leading-[56px] max-w-xl">
               With Your Trusted Partner For Result-Oriented Digital Marketing Solutions
             </h1>
-            <p className="text-gray-700 text-base sm:text-lg md:text-xl font-medium max-w-lg leading-relaxed pt-2">
+            <p className="text-gray-700 font-medium max-w-lg leading-relaxed pt-2 text-[16px]">
               Make your business reach new heights of digital success through our comprehensive range of digital marketing solutions. From Social Media Marketing, SEO, and Content Writing to Website Design, Graphic design and a lot more, we cover all your digital marketing needs. Contact Us Today!
             </p>
 
@@ -77,8 +105,19 @@ export default function Home() {
           </div>
 
           {/* Right Image */}
-          <div className="relative h-[300px] sm:h-[450px] lg:h-[800px] flex items-center justify-center order-1 lg:order-2 w-full">
-            <div className="relative w-full h-full lg:transform lg:translate-x-10 lg:translate-y-10 lg:scale-125">
+          <div 
+            className="relative h-[300px] sm:h-[450px] lg:h-[473px] flex items-center justify-center order-1 lg:order-2 w-full [perspective:1000px]"
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+          >
+            <motion.div 
+              style={{
+                rotateX,
+                rotateY,
+                transformStyle: "preserve-3d",
+              }}
+              className="relative w-full h-full lg:transform lg:translate-x-10  lg:scale-125"
+            >
               <Image
                 src="/butrterfly.png"
                 alt="Monarch Butterfly"
@@ -87,7 +126,7 @@ export default function Home() {
                 className="object-contain"
                 priority
               />
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>

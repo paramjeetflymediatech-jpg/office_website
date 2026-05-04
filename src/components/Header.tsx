@@ -93,7 +93,7 @@ export default function Header() {
         </div>
       </div>
 
-      <header className="w-full bg-[#f1f1f1] py-3 lg:py-4 border-b border-gray-200/50 shadow-sm relative">
+      <header className="w-full bg-[#f1f1f1] py-3 lg:py-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center z-50">
@@ -170,7 +170,7 @@ export default function Header() {
                     >
                       <div className="max-w-7xl mx-auto flex h-full min-h-[450px]">
                         {/* Left Sidebar Content */}
-                        <div className="w-[30%] py-5 pr-8 bg-[#ff9900]/10 border-r border-white/5 flex flex-col justify-between relative overflow-hidden">
+                        <div className="w-[30%] py-5 pr-8  border-r border-white/5 flex flex-col justify-between relative overflow-hidden">
                           <div className="relative z-10">
                             <div className="bg-[#723700] p-6 rounded-xl mb-6 shadow-xl">
                               <p className="text-sm font-medium leading-relaxed text-white">
