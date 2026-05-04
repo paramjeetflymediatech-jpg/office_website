@@ -10,7 +10,11 @@ export default function ITCompany() {
       "Whether it is search engine optimization, social media marketing, or custom web development, our team corroborates to make your name visible each time the user is active on search engines.",
     ],
     mainContent: "Best IT Company in Ludhiana\n\nWhat we are expert at?...",
-    images: new Array(40).fill(""),
+    images: [
+      "it.png", "web-develop-1.png", "digital-consultancy-icon.png", "SEO.png", 
+      "Pay-per-click111.png", "mobile-marketing-1.png", "logo-design.png", 
+      "ecommerce.png", "contentr.png", "r06.png", "r11-1.png", "r09.png"
+    ],
     folderName: "flymediatech.com__it-company-in-ludhiana"
   };
 
