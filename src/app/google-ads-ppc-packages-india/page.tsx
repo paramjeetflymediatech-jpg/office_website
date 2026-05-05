@@ -1,16 +1,28 @@
 import ServicePage from "@/components/ServicePage";
+import PPCPricingTable from "@/components/PPCPricingTable";
 
-export default function PPCPackages() {
+export default function PPCManagementPackages() {
+  const data = {
+    title: "Google Ads PPC Packages India | Flymedia Technology",
+    h1: ["PPC Management"],
+    paragraphs: [
+      "Maximize your ROI with our expert Pay-Per-Click management services. We create targeted, high-performing Google Ads campaigns designed to drive immediate traffic and conversions.",
+    ],
+    images: [],
+    folderName: "flymediatech.com__google-ads-ppc-packages-india"
+  };
+
   return (
-    <ServicePage
-      title="Google Ads PPC Packages India"
-      h1={["PPC Management", "Packages"]}
-      paragraphs={[
-        "Our Google Ads PPC packages are designed to provide maximum return on investment for your advertising spend. We offer expert management of search, display, and video campaigns in India.",
-        "From keyword selection and ad copy creation to landing page optimization and conversion tracking, we handle every detail to ensure your paid campaigns drive high-quality leads."
-      ]}
-      folderName="flymediatech.com_home"
-      images={["Pay-per-click111.png"]}
-    />
+    <ServicePage {...data} bgClass="bg-[#F1F1F1]">
+      <div className="pt-12 pb-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h1 className="text-4xl md:text-5xl font-serif font-bold text-black mb-6">
+          PPC Management
+        </h1>
+        <div className="h-1.5 w-24 bg-[#ff9900] rounded-full mx-auto"></div>
+      </div>
+      <div className="pb-24">
+        <PPCPricingTable />
+      </div>
+    </ServicePage>
   );
 }

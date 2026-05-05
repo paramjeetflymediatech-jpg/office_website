@@ -1,16 +1,20 @@
 import ServicePage from "@/components/ServicePage";
+import SocialBrandingPricing from "@/components/SocialBrandingPricing";
 
-export default function SocialMediaPackages() {
+export default function SocialBrandingPackages() {
+  const data = {
+    title: "Social Media Branding Packages India | Flymedia Technology",
+    h1: ["Social Media Branding - Amplify Your Online Presence"],
+    paragraphs: [
+      "Amplify your brand's voice across all major social networks with our comprehensive branding packages. We help you create a consistent and professional image that resonates with your audience.",
+    ],
+    images: [],
+    folderName: "flymediatech.com__social-media-branding-packages-india"
+  };
+
   return (
-    <ServicePage
-      title="Social Media Branding Packages India"
-      h1={["Social Media", "Packages"]}
-      paragraphs={[
-        "Enhance your online presence with our specialized social media branding packages. We help you create a consistent and compelling brand voice across all major social platforms.",
-        "From professional profile design and regular content posting to audience engagement and performance analytics, our packages are tailored to build brand loyalty and drive conversions."
-      ]}
-      folderName="flymediatech.com_home"
-      images={["social-media-icon.png"]}
-    />
+    <ServicePage {...data}>
+      <SocialBrandingPricing />
+    </ServicePage>
   );
 }

@@ -99,7 +99,7 @@ export default function ReviewsSection() {
           viewport={{ once: true }}
           className="text-center mb-16 sm:mb-20"
         >
-          <h2 className="text-4xl sm:text-5xl md:text-7xl font-serif font-black text-black mb-4">
+          <h2 className="text-4xl sm:text-5xl md:text-7xl font-serif font-semibold text-black mb-4">
             Clients Reviews
           </h2>
           <div className="w-24 h-1 bg-[#ff9900] mx-auto rounded-full"></div>

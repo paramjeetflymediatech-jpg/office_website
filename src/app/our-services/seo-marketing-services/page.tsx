@@ -1,18 +1,20 @@
 import ServicePage from "@/components/ServicePage";
+import SEOSection from "@/components/SEOSection";
 
 export default function SEOMarketing() {
   const data = {
     title: "Best SEO Marketing Company in Ludhiana, Punjab, India",
-    h1: ["The Best SEO Marketing Services in Ludhiana Since 2011"],
+    h1: ["SEO Marketing Services - Driving Revenue Through Discovery"],
     paragraphs: [
-      "Maximum organic traffic is what makes you rank higher. Our team of SEO corroborates to make your name visible each time the user is active on search engines. We use proven, white-hat SEO techniques to improve your search visibility and drive qualified leads.",
-      "Since 2011, Flymedia Technology has helped hundreds of businesses dominate search results. We provide comprehensive SEO audits, keyword research, on-page optimization, and high-quality link building services.",
-      "Our SEO strategies are data-driven and focused on long-term growth. We keep up with the latest search engine algorithm updates to ensure your website maintains its competitive edge.",
+      "Flymedia Technology offers the best SEO services in India, Australia, and all across the sphere. Being the leading SEO service provider, online visibility has increased along with ROI.",
     ],
-    mainContent: "The Best SEO Marketing Services in Ludhiana Since 2011\n\nOur SEO process includes...",
-    images: new Array(40).fill(""),
+    images: [],
     folderName: "flymediatech.com__our-services_seo-marketing-services"
   };
 
-  return <ServicePage {...data} />;
+  return (
+    <ServicePage {...data}>
+      <SEOSection />
+    </ServicePage>
+  );
 }

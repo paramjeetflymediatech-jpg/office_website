@@ -11,6 +11,7 @@ import ClientsSlider from "@/components/ClientsSlider";
 import IndustriesSection from "@/components/IndustriesSection";
 import FAQSection from "@/components/FAQSection";
 import ServicesGrid from "@/components/ServicesGrid";
+import TypewriterText from "@/components/TypewriterText";
 
 const SLIDING_TEXTS = ["Generate More Leads", "Generate More Revenue"];
 
@@ -70,7 +71,6 @@ export default function Home() {
               fill
               className="object-cover object-left"
               sizes="100vw"
-              priority
             />
           </div>
         </div>
@@ -78,10 +78,10 @@ export default function Home() {
         <div className="max-w-7xl mx-auto grid grid-cols-1 bg-img['/image.png'] lg:grid-cols-2 md:grid-cols-2 items-center relative z-10 w-full gap-12 lg:gap-0">
           {/* Left Content */}
           <div className=" text-center lg:text-left flex flex-col items-center lg:items-start order-2 md:order-1">
-            <h2 className={`text-[#ff9900] text-2xl sm:text-3xl md:text-4xl font-serif italic leading-tight transition-opacity duration-500 ${fade ? "opacity-100" : "opacity-0"}`}>
-              {SLIDING_TEXTS[textIndex]}
+            <h2 className="text-[#ff9900] text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-serif font-bold leading-tight flex justify-center lg:justify-start min-h-[1.2em]">
+              <TypewriterText key={textIndex} text={SLIDING_TEXTS[textIndex]} speed={70} />
             </h2>
-            <h1 className="text-[42px] font-serif font-black text-black leading-[56px] max-w-xl">
+            <h1 className="text-[28px] sm:text-[34px] md:text-[42px] lg:text-[50px] font-serif font-black text-black leading-[1.2] max-w-3xl mt-2">
               With Your Trusted Partner For Result-Oriented Digital Marketing Solutions
             </h1>
             <p className="text-gray-700 font-medium max-w-lg leading-relaxed pt-2 text-[16px]">
@@ -162,11 +162,13 @@ export default function Home() {
 
             {/* Right: Content */}
             <div className="space-y-8 order-2 lg:order-2 text-center lg:text-left">
-              <h2 className="text-4xl md:text-5xl lg:text-5xl font-serif font-black leading-[1.1] text-black">
-                <span className="text-[#ff9900]">Increased Reach</span><br />
-                On Your Website<br />
-                With Our Reliable<br />
-                SEO Services
+              <h2 className="text-4xl md:text-5xl lg:text-5xl font-serif font-bold leading-[1.1] text-black flex flex-col items-center lg:items-start">
+                <span className="text-[#ff9900]">
+                  <TypewriterText text="Increased Reach" speed={80} />
+                </span>
+                <span>On Your Website</span>
+                <span>With Our Reliable</span>
+                <span>SEO Services</span>
               </h2>
               <p className="text-gray-800 text-lg md:text-xl font-medium leading-relaxed max-w-2xl mx-auto lg:mx-0">
                 With an aim to help your business break through barriers and achieve excellence in digital marketing, the best website designing company in India empowers your business to communicate efficiently to the world and surpass the limits of your imagination by fueling your growth engine and elevating your power.

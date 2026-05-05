@@ -38,10 +38,10 @@ export default function ClientsSlider() {
   }, []);
 
   return (
-    <section className="bg-white py-16 overflow-hidden">
+    <section className="bg-[#f1f1f1] py-16 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
         <div className="text-center">
-          <h2 className="text-3xl md:text-5xl font-serif font-black text-black">
+          <h2 className="text-3xl md:text-5xl font-serif font-semibold text-black">
             Our Clients
           </h2>
         </div>
@@ -75,7 +75,7 @@ export default function ClientsSlider() {
         {CLIENTS.map((img, index) => (
           <div
             key={index}
-            className="border-b border-r border-gray-100 h-40 flex items-center justify-center p-8 hover:bg-gray-50 transition-colors group"
+            className="border-b border-r border-gray-200 h-40 flex items-center justify-center p-8  transition-colors group"
           >
             <div className="relative w-full h-full">
               <Image
