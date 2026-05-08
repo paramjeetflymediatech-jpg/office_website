@@ -1,25 +1,17 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { UserCog, Users, Laptop, SearchCode, Network, Link as LinkIcon, UserSearch, ArrowRight } from "lucide-react";
-import TypewriterText from "@/components/TypewriterText";
 
 export default function SEOSection() {
   return (
-    <div className="space-y-24 lg:space-y-32">
+    <div className="">
       {/* Section 1: Driving Revenue Through Discovery */}
-      <section className="overflow-hidden ">
-        <div className="max-w-7xl w-full bg-[#f1f1f1] ">
-          <div className="flex flex-col lg:flex-row items-center gap-12 ">
+      <section className="overflow-hidden py-24 bg-[#EFEFEF]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             {/* Left Side: Image */}
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="w-full lg:w-1/2 relative flex justify-center"
-            >
+            <div className="lg:col-span-5 relative flex justify-center">
               <div className="relative z-10 w-full max-w-[500px]">
                 <Image 
                   src="/images/seo-right-image.png" 
@@ -30,20 +22,14 @@ export default function SEOSection() {
                   priority
                 />
               </div>
-            </motion.div>
+            </div>
 
             {/* Right Side: Content */}
-            <motion.div 
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="w-full lg:w-1/2 space-y-6"
-            >
+            <div className="lg:col-span-7 space-y-6">
               <div className="space-y-3">
                  <h2 className="text-[36px] sm:text-[42px] md:text-[50px] font-serif font-bold text-black leading-tight flex flex-col">
-                   <TypewriterText text="Driving Revenue" speed={50} />
-                   <TypewriterText text="Through Discovery" speed={60} />
+                   <span>Driving Revenue</span>
+                   <span>Through Discovery</span>
                  </h2>
                  <div className="h-1.5 w-20 bg-[#ff9900] rounded-full mt-4"></div>
               </div>
@@ -64,13 +50,13 @@ export default function SEOSection() {
                   </p>
                 </div>
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Section 2: How to Choose Right SEO Services */}
-      <section className="py-24 bg-gray-50 overflow-hidden">
+      <section className="py-10 bg-[#EFEFEF] overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 space-y-4">
             <h2 className="text-4xl md:text-5xl font-serif font-bold text-black">How To Choose Right SEO Services?</h2>
@@ -98,12 +84,8 @@ export default function SEOSection() {
                 icon: <Laptop className="w-8 h-8 text-[#ff9900]" />
               }
             ].map((card, idx) => (
-              <motion.div
+              <div
                 key={idx}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
-                viewport={{ once: true }}
                 className="bg-white p-8 rounded-sm shadow-xl hover:shadow-2xl transition-all border-b-4 border-transparent hover:border-[#ff9900] group"
               >
                 <div className="mb-6 p-4 bg-gray-50 inline-block rounded-full group-hover:scale-110 transition-transform">
@@ -111,7 +93,7 @@ export default function SEOSection() {
                 </div>
                 <h3 className="text-xl font-bold mb-4 tracking-tighter text-black uppercase">{card.title}</h3>
                 <p className="text-gray-600 leading-relaxed text-sm">{card.desc}</p>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -121,13 +103,7 @@ export default function SEOSection() {
       <section className="py-24 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="flex flex-col lg:flex-row items-center gap-16 mb-16">
-            <motion.div 
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="w-full lg:w-3/5 space-y-8"
-            >
+            <div className="w-full lg:w-3/5 space-y-8">
               <div className="space-y-4">
                 <h2 className="text-3xl md:text-5xl font-serif font-bold  leading-tight">
                   Why Are Our SEO Services Tactics Unbeatable From Others?
@@ -137,15 +113,9 @@ export default function SEOSection() {
               <p className=" text-lg leading-relaxed">
                 Efficacy and affordability with SEO services do not come on their own. For the desired and improved results, it is important to have a reliable solution and it needs to work with the changes happening in the search algorithm. For a layman, it is important to understand how it works but when you work with SEO professionals everything is set on the right track.
               </p>
-            </motion.div>
+            </div>
 
-            <motion.div 
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="w-full lg:w-2/5 flex justify-center"
-            >
+            <div className="w-full lg:w-2/5 flex justify-center">
               <div className="relative group">
                 <div className="absolute -inset-4 bg-[#ff9900]/20 rounded-full blur-3xl group-hover:bg-[#ff9900]/30 transition-all"></div>
                 <Image 
@@ -156,7 +126,7 @@ export default function SEOSection() {
                   className="relative z-10 w-full h-auto drop-shadow-[0_0_50px_rgba(255,153,0,0.3)]"
                 />
               </div>
-            </motion.div>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -182,12 +152,8 @@ export default function SEOSection() {
                 desc: "Expert presence is going to prove beneficial in different ways. They will analyze each part of the website so that your business has a boost in traffic. The experts will find which keywords need to be used and how the ranking will increase. The team is going to find which strategy is likely to make you shine in this competitive world. Let us be your helping hand." 
               }
             ].map((item, idx) => (
-              <motion.div 
+              <div 
                 key={idx} 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
-                viewport={{ once: true }}
                 className="space-y-4 p-8 bg-white/5 rounded-sm border border-white/10 hover:bg-white/10 hover:border-[#ff9900]/50 transition-all group"
               >
                 <div className="group-hover:scale-110 transition-transform">
@@ -195,7 +161,7 @@ export default function SEOSection() {
                 </div>
                 <h4 className="text-xl font-bold uppercase tracking-tighter text-[#ff9900]">{item.title}</h4>
                 <p className="text-sm  leading-relaxed font-medium">{item.desc}</p>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>

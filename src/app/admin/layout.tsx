@@ -11,7 +11,8 @@ import {
   Settings,
   Globe,
   Menu,
-  X
+  X,
+  BookOpen
 } from 'lucide-react';
 
 export default function AdminLayout({
@@ -73,6 +74,7 @@ export default function AdminLayout({
             Management
           </div>
           <NavLink href="/admin/seo" icon={<Globe size={20} />} label="SEO Data" active={pathname === '/admin/seo'} onClick={() => setIsMobileMenuOpen(false)} />
+          <NavLink href="/admin/blog" icon={<BookOpen size={20} />} label="Blogs" active={pathname.startsWith('/admin/blog')} onClick={() => setIsMobileMenuOpen(false)} />
           <NavLink href="/admin/contact" icon={<Mail size={20} />} label="Contact Queries" active={pathname === '/admin/contact'} onClick={() => setIsMobileMenuOpen(false)} />
           <NavLink href="/admin/portfolio" icon={<ImageIcon size={20} />} label="Portfolio" active={pathname === '/admin/portfolio'} onClick={() => setIsMobileMenuOpen(false)} />
           <NavLink href="/admin/career" icon={<Briefcase size={20} />} label="Career" active={pathname === '/admin/career'} onClick={() => setIsMobileMenuOpen(false)} />

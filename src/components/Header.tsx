@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { ChevronDown, ChevronRight, Menu, X, Phone } from "lucide-react";
+import { IoMdArrowDropdown } from "react-icons/io";
 import { NAV_LINKS, HEADER_LOCATIONS, MEGA_MENU_DATA } from "@/constants";
 
 export default function Header() {
@@ -57,7 +58,7 @@ export default function Header() {
           }}
         >
           <span className="text-[10px] sm:text-xs font-medium tracking-wide">Location</span>
-          <ChevronDown size={14} className="text-[#ff9900]" />
+          <IoMdArrowDropdown size={18} className="text-white" />
         </div>
 
         {/* Dropdown Menu (Desktop Hover) */}
@@ -70,7 +71,7 @@ export default function Header() {
                   className="flex items-center justify-between px-6 py-3.5 text-sm font-normal tracking-normal hover:bg-[#ff9900] hover:text-white transition-colors border-b border-gray-50 last:border-b-0"
                 >
                   {loc.name}
-                  {loc.subLocations && <ChevronRight size={14} />}
+                  {loc.subLocations && <IoMdArrowDropdown size={14} />}
                 </Link>
 
                 {/* Submenu */}
@@ -114,58 +115,50 @@ export default function Header() {
             {NAV_LINKS.map((link) => {
               const isActive = pathname === link.href;
               const hasMegaMenu = link.name === "Services" || link.name === "Packages" || link.name === "What We Do";
-              const shouldUseClick = link.name === "Services" || link.name === "Packages" || link.name === "What We Do";
               const megaMenuData = hasMegaMenu ? MEGA_MENU_DATA[link.name as keyof typeof MEGA_MENU_DATA] : null;
 
               return (
                 <div 
                   key={link.name} 
-                  className={`nav-item-container h-full flex items-center relative ${!shouldUseClick ? 'group' : ''}`}
+                  className="nav-item-container h-full flex items-center relative"
+                  onMouseEnter={() => {
+                    if (!isClickTriggered) setActiveMenu(link.name);
+                  }}
+                  onMouseLeave={() => {
+                    setActiveMenu(null);
+                    setIsClickTriggered(false);
+                  }}
                 >
-                  {shouldUseClick ? (
-                    <button
-                      onClick={() => {
-                        const newState = activeMenu === link.name ? null : link.name;
-                        setActiveMenu(newState);
-                        setIsClickTriggered(true);
-                      }}
-                      className={`flex items-center gap-1 text-[13px] font-normal tracking-tight transition-all duration-300 relative py-4 ${
-                        (isActive || activeMenu === link.name) ? "text-[#ff9900]" : "text-black hover:text-[#ff9900]"
-                      }`}
-                    >
-                      {link.name}
-                      {link.hasDropdown && (
-                        <ChevronDown 
-                          size={14} 
-                          className={`transition-transform duration-300 ${activeMenu === link.name ? "rotate-180" : ""}`} 
-                        />
-                      )}
-                      <span className={`absolute bottom-3 left-0 h-0.5 bg-[#ff9900] transition-all duration-300 ${
-                        (isActive || activeMenu === link.name) ? "w-full" : "w-0"
-                      }`} />
-                    </button>
-                  ) : (
-                    <Link
-                      href={link.href}
-                      className={`flex items-center gap-1 text-[13px] font-normal tracking-tight transition-all duration-300 relative py-4 ${
-                        isActive ? "text-[#ff9900]" : "text-black hover:text-[#ff9900]"
-                      }`}
-                    >
-                      {link.name}
-                      {link.hasDropdown && <ChevronDown size={14} className="group-hover:rotate-180 transition-transform" />}
-                      <span className={`absolute bottom-3 left-0 h-0.5 bg-[#ff9900] transition-all duration-300 ${
-                        isActive ? "w-full" : "w-0 group-hover:w-full"
-                      }`} />
-                    </Link>
-                  )}
+                  <Link
+                    href={link.href}
+                    onClick={(e) => {
+                      if (link.href === "/#") e.preventDefault();
+                      setActiveMenu(null);
+                      setIsClickTriggered(true);
+                    }}
+                    className={`flex items-center gap-1 text-[13px] font-normal tracking-tight transition-all duration-300 relative py-4 ${
+                      (isActive || activeMenu === link.name) ? "text-[#ff9900]" : "text-black hover:text-[#ff9900]"
+                    }`}
+                  >
+                    {link.name}
+                    {link.hasDropdown && (
+                      <IoMdArrowDropdown 
+                        size={18} 
+                        className={`transition-transform duration-300 ${activeMenu === link.name ? "rotate-180" : ""}`} 
+                      />
+                    )}
+                    <span className={`absolute bottom-3 left-0 h-0.5 bg-[#ff9900] transition-all duration-300 ${
+                      (isActive || activeMenu === link.name) ? "w-full" : "w-0"
+                    }`} />
+                  </Link>
 
                   {/* Mega Menu Dropdown */}
                   {hasMegaMenu && megaMenuData && (
                     <div 
                       className={`fixed top-[110px] left-0 w-full bg-[#000000] text-white shadow-2xl transition-all duration-300 origin-top z-[100] py-0 ${
-                        shouldUseClick 
-                          ? (activeMenu === link.name ? "opacity-100 visible translate-y-0" : "opacity-0 invisible -translate-y-2 pointer-events-none")
-                          : "opacity-0 invisible group-hover:opacity-100 group-hover:visible"
+                        activeMenu === link.name 
+                          ? "opacity-100 visible translate-y-0 pointer-events-auto" 
+                          : "opacity-0 invisible -translate-y-2 pointer-events-none"
                       }`}
                     >
                       <div className="max-w-7xl mx-auto flex h-full min-h-[450px]">
@@ -200,7 +193,7 @@ export default function Header() {
                               href={sublink.href}
                               onClick={() => {
                                 setActiveMenu(null);
-                                setIsClickTriggered(false);
+                                setIsClickTriggered(true);
                               }}
                               className="group/subitem flex items-center gap-4 hover:bg-white/5 p-3 rounded-lg transition-all duration-300"
                             >

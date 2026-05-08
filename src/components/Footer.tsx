@@ -150,8 +150,7 @@ export default function Footer() {
           <div className="lg:col-span-4 space-y-8">
             <div>
               <h4 className="text-lg font-bold mb-6 flex items-center gap-2 uppercase tracking-wide">
-                <span>CMS Platforms We</span>
-                <span className="text-[#ff9900]">Deal</span>
+                <span>CMS Platforms We Deal</span>
               </h4>
               <div className="relative h-8 w-full cursor-pointer">
                 <Image

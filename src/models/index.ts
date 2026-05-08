@@ -6,6 +6,8 @@ import Portfolio from './Portfolio';
 import Career from './Career';
 import User from './User';
 import PageSEO from './PageSEO';
+import Blog from './Blog';
+import Application from './Application';
 
 const initModels = async () => {
   try {
@@ -30,5 +32,7 @@ export {
   Career,
   User,
   PageSEO,
+  Blog,
+  Application,
   initModels
 };
