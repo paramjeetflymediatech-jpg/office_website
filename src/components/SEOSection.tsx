@@ -7,7 +7,7 @@ export default function SEOSection() {
   return (
     <div className="">
       {/* Section 1: Driving Revenue Through Discovery */}
-      <section className="overflow-hidden py-24 bg-[#EFEFEF]">
+      <section className="overflow-hidden py-12 bg-[#EFEFEF]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             {/* Left Side: Image */}
@@ -18,7 +18,7 @@ export default function SEOSection() {
                   alt="Driving Revenue Through Discovery" 
                   width={500} 
                   height={454} 
-                  className="w-full h-auto drop-shadow-2xl transition-transform duration-500 hover:scale-105"
+                  className="w-full h-auto "
                   priority
                 />
               </div>
@@ -31,7 +31,6 @@ export default function SEOSection() {
                    <span>Driving Revenue</span>
                    <span>Through Discovery</span>
                  </h2>
-                 <div className="h-1.5 w-20 bg-[#ff9900] rounded-full mt-4"></div>
               </div>
 
               <div className="space-y-6">
@@ -60,7 +59,6 @@ export default function SEOSection() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 space-y-4">
             <h2 className="text-4xl md:text-5xl font-serif font-bold text-black">How To Choose Right SEO Services?</h2>
-            <div className="h-1.5 w-20 bg-[#ff9900] mx-auto rounded-full"></div>
             <p className="max-w-2xl mx-auto text-gray-600 font-medium pt-4">
               With the help of SEO Marketing Services, you can get your SEO optimized website as well. But, before you do this there are some points you should know.
             </p>
@@ -86,7 +84,7 @@ export default function SEOSection() {
             ].map((card, idx) => (
               <div
                 key={idx}
-                className="bg-white p-8 rounded-sm shadow-xl hover:shadow-2xl transition-all border-b-4 border-transparent hover:border-[#ff9900] group"
+                className="bg-white p-8 rounded-sm shadow-xl hover:shadow-2xl transition-all border-b-4 border-transparent group"
               >
                 <div className="mb-6 p-4 bg-gray-50 inline-block rounded-full group-hover:scale-110 transition-transform">
                   {card.icon}
@@ -100,7 +98,7 @@ export default function SEOSection() {
       </section>
 
       {/* Section 3: Why Our SEO Tactics Are Unbeatable */}
-      <section className="py-24 relative overflow-hidden">
+      <section className="py-24 relative overflow-hidden bg-[#EFEFEF]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="flex flex-col lg:flex-row items-center gap-16 mb-16">
             <div className="w-full lg:w-3/5 space-y-8">
@@ -108,7 +106,6 @@ export default function SEOSection() {
                 <h2 className="text-3xl md:text-5xl font-serif font-bold  leading-tight">
                   Why Are Our SEO Services Tactics Unbeatable From Others?
                 </h2>
-                <div className="h-1.5 w-24 bg-[#ff9900] rounded-full"></div>
               </div>
               <p className=" text-lg leading-relaxed">
                 Efficacy and affordability with SEO services do not come on their own. For the desired and improved results, it is important to have a reliable solution and it needs to work with the changes happening in the search algorithm. For a layman, it is important to understand how it works but when you work with SEO professionals everything is set on the right track.
@@ -117,7 +114,7 @@ export default function SEOSection() {
 
             <div className="w-full lg:w-2/5 flex justify-center">
               <div className="relative group">
-                <div className="absolute -inset-4 bg-[#ff9900]/20 rounded-full blur-3xl group-hover:bg-[#ff9900]/30 transition-all"></div>
+                <div className="absolute -inset-4  rounded-full blur-3xl  transition-all"></div>
                 <Image 
                   src="/images/bestr-it.png" 
                   alt="SEO Excellence" 
@@ -154,7 +151,7 @@ export default function SEOSection() {
             ].map((item, idx) => (
               <div 
                 key={idx} 
-                className="space-y-4 p-8 bg-white/5 rounded-sm border border-white/10 hover:bg-white/10 hover:border-[#ff9900]/50 transition-all group"
+                className="space-y-4 p-8 bg-white/5 rounded-sm border border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.1)] hover:bg-white/10 hover:border-[#ff9900]/50 transition-all group"
               >
                 <div className="group-hover:scale-110 transition-transform">
                   {item.icon}

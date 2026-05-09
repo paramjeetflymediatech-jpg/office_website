@@ -96,7 +96,7 @@ export default function CMSForWebsite() {
                 </h2>
                 <div className="text-lg text-gray-600 leading-relaxed font-medium">
                   <p>
-                    An ideal content management system always provides the platform to skimpily manage &amp; present the content and generate a good website.
+                    An ideal content management system always provides the platform to skimpily manage present the content and generate a good website.
                   </p>
                 </div>
               </div>
@@ -147,7 +147,7 @@ export default function CMSForWebsite() {
             {/* Extensions Block */}
             <div className="space-y-6 bg-white p-10 rounded-3xl shadow-sm border border-gray-100 h-full">
               <h2 className="text-2xl md:text-3xl font-serif font-semibold text-black leading-tight">
-                Extensions &amp; Addons
+                Extensions Addons
               </h2>
               <div className="text-lg text-gray-600 leading-relaxed font-medium">
                 <p>

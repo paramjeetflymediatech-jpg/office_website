@@ -2,15 +2,10 @@
 
 import React from "react";
 import Image from "next/image";
-import Link from "next/link";
-import { ChevronRight, Share2, TrendingUp, Users, Target, MessageSquare, Award } from "lucide-react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { ChevronRight, Users, Target, TrendingUp, MessageSquare } from "lucide-react";
+import SocialMediaPricingTable from "@/components/SocialMediaPricingTable";
 
 export default function SocialMediaOptimization() {
-  const { scrollYProgress } = useScroll();
-  const rocketY = useTransform(scrollYProgress, [0, 0.5], [0, -100]);
-  const rocketX = useTransform(scrollYProgress, [0, 0.5], [0, 50]);
-
   return (
     <div className="min-h-screen bg-[#fcfcfc] font-sans selection:bg-[#ff9900]/30">
       {/* Hero Section */}
@@ -18,30 +13,25 @@ export default function SocialMediaOptimization() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             
-            {/* Left: Rocket Image with Parallax */}
-            <motion.div 
-              style={{ y: rocketY, x: rocketX }}
-              className="relative aspect-square flex items-center justify-center order-2 lg:order-1"
-            >
-              <div className="absolute inset-0 bg-[#ff9900]/10 rounded-full blur-[120px] animate-pulse" />
+            {/* Left: Rocket Image */}
+            <div className="relative aspect-square flex items-center justify-center order-2 lg:order-1">
+              <div className="absolute inset-0 rounded-full blur-[120px] animate-pulse" />
               <Image 
                 src="/social-media-optimization/rocket.png" 
                 alt="Best SMO Company" 
-                width={800} 
-                height={800} 
-                className="relative z-10 w-full h-auto drop-shadow-[0_50px_100px_rgba(0,0,0,0.15)]"
+                width={500} 
+                height={500} 
+                className="relative z-10 drop-shadow-[0_50px_100px_rgba(0,0,0,0.15)]"
                 priority
               />
-            </motion.div>
+            </div>
 
             {/* Right: Content */}
             <div className="space-y-8 order-1 lg:order-2">
               <div className="space-y-4">
-                <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif font-black text-black leading-[1.1] tracking-tight">
-                  Best SMO & <br />
-                  <span className="text-[#ff9900] italic">Digital Marketing</span> Company
+                <h1 className="text-4xl md:text-6xl lg:text-5xl font-serif font-black text-black leading-[1.1] tracking-tight">
+                  Best SMO & Digital Marketing Company
                 </h1>
-                <div className="w-24 h-2 bg-[#ff9900] rounded-full" />
               </div>
               
               <div className="space-y-6 text-gray-600">
@@ -93,6 +83,8 @@ export default function SocialMediaOptimization() {
           </div>
         </div>
       </section>
+
+      <SocialMediaPricingTable />
     </div>
   );
 }

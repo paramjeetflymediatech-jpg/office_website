@@ -20,7 +20,6 @@ export default function EcommercePackages() {
         <h1 className="text-4xl md:text-5xl font-serif font-bold text-black mb-6">
           Ecommerce Website Development
         </h1>
-        <div className="h-1.5 w-24 bg-[#ff9900] rounded-full mx-auto"></div>
       </div>
       <EcommercePackagesSection />
       <EcommercePricingTable />

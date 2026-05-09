@@ -21,7 +21,7 @@ export default function Home() {
 
   // Mouse Tilt Logic
   const x = useMotionValue(0);
-  const y = useMotionValue(0); 
+  const y = useMotionValue(0);
 
   const mouseXSpring = useSpring(x);
   const mouseYSpring = useSpring(y);
@@ -105,12 +105,12 @@ export default function Home() {
           </div>
 
           {/* Right Image */}
-          <div 
+          <div
             className="relative h-[300px] sm:h-[450px] lg:h-[473px] flex items-center justify-center order-1 lg:order-2 w-full [perspective:1000px]"
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
           >
-            <motion.div 
+            <motion.div
               style={{
                 rotateX,
                 rotateY,

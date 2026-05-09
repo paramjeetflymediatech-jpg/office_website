@@ -154,9 +154,9 @@ export const LOCATIONS = [
     bgColor: "#cceef6"
   }
 ];
+// Top bar locations shown on the HOME page (/)
 export const HEADER_LOCATIONS = [
-
-   {
+  {
     name: "Canada",
     href: "/canada",
     subLocations: [
@@ -167,5 +167,19 @@ export const HEADER_LOCATIONS = [
     name: "Australia",
     href: "/australia/about-us",
   },
- 
+];
+
+// Top bar locations shown on AUSTRALIA pages (/australia/*)
+export const AUSTRALIA_HEADER_LOCATIONS = [
+  {
+    name: "Canada",
+    href: "/canada",
+    subLocations: [
+      { name: "Edmonton", href: "/canada/edmonton" }
+    ]
+  },
+  {
+    name: "India",
+    href: "/",
+  },
 ];

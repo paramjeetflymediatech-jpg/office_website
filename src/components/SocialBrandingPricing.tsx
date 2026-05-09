@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 export default function SocialBrandingPricing() {
   const plans = ["Social Lite", "Facebook Kit", "Social Elite", "Social MegaPack"];
-  
+
   const features = [
     { name: "Facebook Cover", values: [true, true, true, true] },
     { name: "Facebook Welcome Landing Page", values: [false, true, false, true] },
@@ -23,7 +23,7 @@ export default function SocialBrandingPricing() {
   return (
     <div className="py-24 overflow-x-auto text-white">
       <div className="max-w-7xl mx-auto px-4">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -48,7 +48,7 @@ export default function SocialBrandingPricing() {
             </thead>
             <tbody>
               {features.map((feature, idx) => (
-                <motion.tr 
+                <motion.tr
                   key={idx}
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -60,10 +60,10 @@ export default function SocialBrandingPricing() {
                   {feature.values.map((v, vIdx) => (
                     <td key={vIdx} className="p-6 text-center border-r border-white/10 last:border-r-0">
                       <div className="flex justify-center">
-                        <Image 
-                          src={v ? "/images/clickIcon.png" : "/images/crossIcon.png"} 
-                          alt={v ? "Included" : "Not Included"} 
-                          width={24} 
+                        <Image
+                          src={v ? "/images/clickIcon.png" : "/images/crossIcon.png"}
+                          alt={v ? "Included" : "Not Included"}
+                          width={24}
                           height={24}
                           className="transition-transform group-hover:scale-110 drop-shadow-[0_0_8px_rgba(255,255,255,0.3)] w-auto h-auto"
                         />
@@ -76,8 +76,8 @@ export default function SocialBrandingPricing() {
                 <td className="p-8 text-2xl font-serif border-r border-white/10 text-[#ff9900]">Cost Per Month</td>
                 {plans.map((_, idx) => (
                   <td key={idx} className="p-8 text-center border-r border-white/10 last:border-r-0">
-                    <a 
-                      href="/contact-us" 
+                    <a
+                      href="/contact-us"
                       className="inline-block bg-[#ff9900] text-black px-4 py-2 rounded-sm font-black tracking-tighter hover:bg-white transition-all shadow-[0_10px_30px_rgba(255,153,0,0.3)] active:scale-95"
                     >
                       Contact Us

@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { Code, Smartphone, Laptop, UserCheck } from "lucide-react";
 import TypewriterText from "@/components/TypewriterText";
 
@@ -12,14 +11,8 @@ export default function MobileAppsSection() {
       <section className="overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
-            {/* Left Side: Mobile App Image */}
-            <motion.div 
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="w-full lg:w-1/2 relative flex justify-center"
-            >
+            {/* Left Side: Mobile App Image (Static container) */}
+            <div className="w-full lg:w-1/2 relative flex justify-center">
               <div className="relative z-10 w-full max-w-[550px]">
                 <Image 
                   src="/images/mobi.png" 
@@ -30,21 +23,15 @@ export default function MobileAppsSection() {
                   priority
                 />
               </div>
-            </motion.div>
+            </div>
 
-            {/* Right Side: Content */}
-            <motion.div 
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="w-full lg:w-1/2 space-y-6"
-            >
+            {/* Right Side: Content (Static container) */}
+            <div className="w-full lg:w-1/2 space-y-6">
               <div className="space-y-3">
                  <h2 className="text-[36px] sm:text-[42px] md:text-[50px] font-serif font-bold text-black leading-tight flex flex-col">
                    <TypewriterText text="Mobile App Designing" speed={50} />
                  </h2>
-                 <div className="h-1.5 w-20 bg-[#ff9900] rounded-full mt-4"></div>
+                 {/* <div className="h-1.5 w-20 bg-[#ff9900] rounded-full mt-4"></div> */}
               </div>
 
               <div className="space-y-4">
@@ -60,7 +47,7 @@ export default function MobileAppsSection() {
                   </p>
                 </div>
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
@@ -69,14 +56,8 @@ export default function MobileAppsSection() {
       <section className="overflow-hidden bg-gray-50/50 py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row-reverse items-center gap-12 lg:gap-16">
-            {/* Right Side: SEO/Platform Image */}
-            <motion.div 
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="w-full lg:w-1/2 relative flex justify-center"
-            >
+            {/* Right Side: SEO/Platform Image (Static container) */}
+            <div className="w-full lg:w-1/2 relative flex justify-center">
               <div className="relative z-10 w-full max-w-[500px]">
                 <Image 
                   src="/images/seo01.png" 
@@ -86,21 +67,15 @@ export default function MobileAppsSection() {
                   className="w-full h-auto drop-shadow-2xl transition-transform duration-500 hover:scale-105"
                 />
               </div>
-            </motion.div>
+            </div>
 
-            {/* Left Side: Content */}
-            <motion.div 
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="w-full lg:w-1/2 space-y-6"
-            >
+            {/* Left Side: Content (Static container) */}
+            <div className="w-full lg:w-1/2 space-y-6">
               <div className="space-y-3">
                  <h2 className="text-[36px] sm:text-[42px] md:text-[50px] font-serif font-bold text-black leading-tight flex flex-col">
                    <TypewriterText text="All Platforms" speed={70} />
                  </h2>
-                 <div className="h-1.5 w-20 bg-[#ff9900] rounded-full mt-4"></div>
+                 {/* <div className="h-1.5 w-20 bg-[#ff9900] rounded-full mt-4"></div> */}
               </div>
 
               <div className="space-y-4 text-base md:text-[16px] text-gray-700 leading-relaxed font-medium">
@@ -115,17 +90,13 @@ export default function MobileAppsSection() {
                 </p>
               </div>
 
-              <motion.div 
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="pt-4"
-              >
-                <button className="bg-black text-white px-10 py-5 font-black uppercase tracking-tighter rounded-sm hover:bg-[#ff9900] hover:text-black transition-all shadow-2xl flex items-center gap-3 group">
+              <div className="pt-4">
+                <button className="bg-black text-white px-10 py-5 font-black uppercase tracking-tighter rounded-sm hover:bg-[#ff9900] hover:text-black transition-all shadow-2xl flex items-center gap-3 group active:scale-95 duration-200">
                   Build Your App
                   <span className="group-hover:translate-x-1 transition-transform">→</span>
                 </button>
-              </motion.div>
-            </motion.div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -133,16 +104,10 @@ export default function MobileAppsSection() {
       {/* Section 3: We Are Flexible */}
       <section className="py-24 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center mb-20"
-          >
+          <div className="text-center mb-20">
             <h2 className="text-4xl md:text-5xl font-serif font-bold text-black mb-4">We Are Flexible</h2>
             <div className="h-1.5 w-20 bg-[#ff9900] mx-auto rounded-full"></div>
-          </motion.div>
+          </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
@@ -167,12 +132,8 @@ export default function MobileAppsSection() {
                 icon: <UserCheck className="w-8 h-8 text-[#ff9900]" />
               }
             ].map((feature, idx) => (
-              <motion.div
+              <div
                 key={idx}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
-                viewport={{ once: true }}
                 className="group p-8 bg-gray-50 rounded-sm border-b-4 border-transparent hover:border-[#ff9900] hover:bg-white hover:shadow-2xl transition-all duration-300 flex flex-col items-center text-center space-y-4"
               >
                 <div className="p-4 bg-white rounded-full shadow-sm group-hover:scale-110 transition-transform">
@@ -182,7 +143,7 @@ export default function MobileAppsSection() {
                 <p className="text-gray-600 text-sm leading-relaxed">
                   {feature.description}
                 </p>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>

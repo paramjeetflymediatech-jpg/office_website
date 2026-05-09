@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
 
 export default function EcommercePostPricingSection() {
   return (
@@ -9,13 +8,7 @@ export default function EcommercePostPricingSection() {
       {/* Section 3: Setting up the product to sell */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
         <div className="flex flex-col lg:flex-row items-center gap-16">
-          <motion.div 
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="w-full lg:w-1/2 space-y-8"
-          >
+          <div className="w-full lg:w-1/2 space-y-8">
             <div className="space-y-4">
               <h2 className="text-4xl md:text-5xl font-serif font-bold text-black leading-tight">
                 Setting up the product to sell:
@@ -34,26 +27,20 @@ export default function EcommercePostPricingSection() {
                 All of this work is not temporary; it is permanent so that you don't get left behind in the race. Continuous market analysis and product optimization are the keys to sustained e-commerce success.
               </p>
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div 
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="w-full lg:w-1/2 flex justify-center"
-          >
-            <div className="relative group">
-              <div className="absolute -inset-4 bg-[#ff9900]/10 rounded-full blur-3xl group-hover:bg-[#ff9900]/20 transition-all"></div>
+          <div className="w-full lg:w-1/2 flex justify-center">
+            <div className="relative">
+              <div className="absolute -inset-4 bg-[#ff9900]/10 rounded-full blur-3xl"></div>
               <Image 
                 src="/images/nnew013.png" 
                 alt="Setting up the product to sell" 
                 width={800} 
                 height={800} 
-                className="relative z-10 w-full h-auto drop-shadow-2xl transition-transform duration-500 hover:-translate-y-2"
+                className="relative z-10 w-full h-auto drop-shadow-2xl"
               />
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -61,13 +48,7 @@ export default function EcommercePostPricingSection() {
       <section className="py-24 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row-reverse items-center gap-16">
-            <motion.div 
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="w-full lg:w-1/2 space-y-8"
-            >
+            <div className="w-full lg:w-1/2 space-y-8">
               <div className="space-y-4">
                 <h2 className="text-4xl md:text-5xl font-serif font-bold text-black leading-tight">
                   How to build website content
@@ -86,26 +67,20 @@ export default function EcommercePostPricingSection() {
                   After all these steps you can take your business online, but remember one thing: quality of the product and service is very important. All the best.
                 </p>
               </div>
-            </motion.div>
+            </div>
 
-            <motion.div 
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="w-full lg:w-1/2 flex justify-center"
-            >
-              <div className="relative group">
-                <div className="absolute -inset-4 bg-[#ff9900]/10 rounded-full blur-3xl group-hover:bg-[#ff9900]/20 transition-all"></div>
+            <div className="w-full lg:w-1/2 flex justify-center">
+              <div className="relative">
+                <div className="absolute -inset-4 bg-[#ff9900]/10 rounded-full blur-3xl"></div>
                 <Image 
                   src="/images/buying01.png" 
                   alt="How to build website content" 
                   width={1000} 
                   height={600} 
-                  className="relative z-10 w-full h-auto drop-shadow-2xl transition-transform duration-500 hover:rotate-2 hover:scale-105"
+                  className="relative z-10 w-full h-auto drop-shadow-2xl"
                 />
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>

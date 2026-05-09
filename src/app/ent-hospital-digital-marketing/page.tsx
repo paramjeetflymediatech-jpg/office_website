@@ -110,7 +110,7 @@ export default function ENTHospitalDigitalMarketing() {
                   />
                 </div>
                 <h3 className="text-xl font-bold text-black">
-                  On-page &amp; off-page SEO
+                  On-page  off-page SEO
                 </h3>
               </div>
 

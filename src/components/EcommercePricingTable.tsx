@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
 
 export default function EcommercePricingTable() {
   const plans = ["Budget", "Starter", "Advanced", "Pro"];
@@ -46,13 +45,7 @@ export default function EcommercePricingTable() {
   return (
     <div className="overflow-x-auto font-sans">
       <div className="max-w-[1400px] mx-auto px-4">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="min-w-[1000px] border border-gray-300 rounded-lg overflow-hidden shadow-2xl"
-        >
+        <div className="min-w-[1000px] border border-gray-300 rounded-lg overflow-hidden shadow-2xl">
           <table className="w-full text-left border-collapse">
             <thead>
               <tr className="bg-white border-b border-gray-300">
@@ -111,7 +104,7 @@ export default function EcommercePricingTable() {
                     <div className="flex justify-center">
                       <a 
                         href="/contact-us" 
-                        className="inline-block bg-[#ff9900] text-white px-8 py-3 rounded-full font-bold uppercase tracking-wide hover:bg-black transition-all transform hover:scale-105 shadow-lg text-sm"
+                        className="inline-block bg-[#ff9900] text-white px-8 py-3 rounded-full font-bold uppercase tracking-wide hover:bg-black transition-colors shadow-lg text-sm"
                       >
                         Contact Us
                       </a>
@@ -121,7 +114,7 @@ export default function EcommercePricingTable() {
               </tr>
             </tbody>
           </table>
-        </motion.div>
+        </div>
         <p className="text-center text-sm text-gray-500 mt-8 italic">* Followers cannot be guaranteed without any paid activity.</p>
       </div>
     </div>
