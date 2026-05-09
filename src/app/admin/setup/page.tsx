@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { initModels } from '@/models';
+import { triggerSync } from './actions';
 
 export default function SetupPage() {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
@@ -10,8 +10,6 @@ export default function SetupPage() {
   const handleSetup = async () => {
     setStatus('loading');
     try {
-      // Since initModels is a server-side thing usually, we should call a server action
-      // But for simplicity in this demo/setup, I'll just create a server action for it
       const result = await triggerSync();
       if (result.success) {
         setStatus('success');
@@ -30,9 +28,9 @@ export default function SetupPage() {
     <div className="max-w-md mx-auto mt-20 p-8 bg-white rounded-2xl border border-gray-100 shadow-xl text-center">
       <h1 className="text-2xl font-bold text-gray-900 mb-4">Database Setup</h1>
       <p className="text-gray-500 mb-8">This will create the necessary tables in your MySQL database using Sequelize.</p>
-      
+
       {status === 'idle' && (
-        <button 
+        <button
           onClick={handleSetup}
           className="w-full bg-[#ff9900] text-white font-bold py-3 rounded-lg hover:bg-black transition-all"
         >
@@ -69,7 +67,7 @@ export default function SetupPage() {
             </svg>
           </div>
           <p className="text-red-600 font-bold">{message}</p>
-          <button 
+          <button
             onClick={() => setStatus('idle')}
             className="w-full bg-gray-100 text-gray-700 font-bold py-3 rounded-lg hover:bg-gray-200 transition-all"
           >
@@ -79,17 +77,4 @@ export default function SetupPage() {
       )}
     </div>
   );
-}
-
-// Separate server action in the same file for convenience in this specific setup case
-// In a real app, this should be in an actions file
-async function triggerSync() {
-  'use server';
-  try {
-    const { initModels } = await import('@/models');
-    await initModels();
-    return { success: true };
-  } catch (e: any) {
-    return { success: false, error: e.message };
-  }
 }

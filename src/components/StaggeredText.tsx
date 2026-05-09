@@ -26,16 +26,16 @@ export default function StaggeredText({ text, className }: StaggeredTextProps) {
       opacity: 1,
       y: 0,
       transition: {
-        type: "spring",
-        damping: 20, // More stable
-        stiffness: 300, // Snappier
+        type: "spring" as const,
+        damping: 20,
+        stiffness: 300,
       },
     },
     hidden: {
       opacity: 0,
-      y: 10, // Less movement
+      y: 10,
       transition: {
-        type: "spring",
+        type: "spring" as const,
         damping: 20,
         stiffness: 300,
       },
