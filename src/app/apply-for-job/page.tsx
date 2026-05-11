@@ -156,17 +156,15 @@ export default function ApplyForJobPage() {
   }
 
   return (
-    <main className="min-h-screen bg-[#F3F4F6] py-20 px-4">
+    <main className="min-h-screen bg-[#F3F4F6] py-10 px-4">
       {/* Premium Headline Section */}
-      <section className="max-w-4xl mx-auto pt-10 pb-6 border-b border-gray-200/60 mb-10 text-center">
-        <span className="text-[#ff9900] font-bold text-xs uppercase tracking-widest bg-orange-50 px-3.5 py-1.5 rounded-full border border-orange-100 inline-block mb-3">Careers</span>
+      <section className="max-w-7xl mx-auto pt-10 pb-6 border-b border-gray-200/60 mb-10 text-center">
         <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 tracking-tight">
           Apply For Job
         </h1>
         <p className="text-gray-500 max-w-lg mx-auto text-base sm:text-lg leading-relaxed">
           Submit your details and upload your resume to embark on a professional journey with Flymedia Technology.
         </p>
-        <div className="w-16 h-1 bg-[#ff9900] mx-auto mt-6"></div>
       </section>
 
       <div className="max-w-3xl mx-auto">

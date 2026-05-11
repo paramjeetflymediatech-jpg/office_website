@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronRight, Phone, Mail, MapPin, CheckCircle2, Star, Clock, Award } from "lucide-react";
+import SEOMonitor from "@/components/SEOMonitor";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 
 const PortfolioSlider = () => {
@@ -156,7 +157,7 @@ export default function WebDesigningPage() {
                
                {/* Box 1: Website Designing */}
                <div className="group flex flex-col items-center text-center p-10 bg-[#EFEFEF] rounded-[32px] border border-gray-50 shadow-[0_20px_50px_rgba(0,0,0,0.03)] hover:shadow-[0_30px_70px_rgba(0,0,0,0.08)] transition-all duration-500 hover:-translate-y-2">
-                  <div className="w-20 h-20 rounded-full bg-black flex items-center justify-center mb-8 group-hover:bg-[#ff9900] transition-colors duration-500 shadow-xl shadow-black/10 group-hover:shadow-[#ff9900]/20">
+                  <div className="w-20 h-20 rounded-full bg-[#FA7E09] flex items-center justify-center mb-8  shadow-black/10">
                      <svg xmlns="http://www.w3.org/2000/svg" className="w-10 h-10 fill-white" viewBox="0 0 512 512">
                         <path d="m416.34375 111.632812-24.34375-24.34375-24.34375 24.34375-11.3125-11.3125 35.65625-35.65625 35.65625 35.65625zm0 0"></path>
                         <path d="m384 79.976562h16v88h-16zm0 0"></path>
@@ -164,7 +165,7 @@ export default function WebDesigningPage() {
                         <path d="m480 119.976562c0-48.601562-39.398438-88-88-88s-88 39.398438-88 88c0 48.601563 39.398438 88 88 88 48.578125-.058593 87.941406-39.421874 88-88zm-160 0c0-39.765624 32.234375-72 72-72s72 32.234376 72 72c0 39.761719-32.234375 72-72 72-39.746094-.046874-71.957031-32.253906-72-72zm0 0"></path>
                      </svg>
                   </div>
-                  <h3 className="text-xl font-serif font-black text-black mb-4 group-hover:text-[#ff9900] transition-colors">Website Designing</h3>
+                  <h3 className="text-xl font-serif font-black text-black mb-4">Website Designing</h3>
                   <p className="text-sm text-gray-500 leading-relaxed font-medium">
                     We have worked on 4200+ projects ranging from websites for high profile businesses and telecoms to small business websites for start ups also.
                   </p>
@@ -172,7 +173,7 @@ export default function WebDesigningPage() {
 
                {/* Box 2: Award Winning */}
                <div className="group flex flex-col items-center text-center p-10 bg-[#EFEFEF] rounded-[32px] border border-gray-50 shadow-[0_20px_50px_rgba(0,0,0,0.03)] hover:shadow-[0_30px_70px_rgba(0,0,0,0.08)] transition-all duration-500 hover:-translate-y-2">
-                  <div className="w-20 h-20 rounded-full bg-black flex items-center justify-center mb-8 group-hover:bg-[#ff9900] transition-colors duration-500 shadow-xl shadow-black/10 group-hover:shadow-[#ff9900]/20">
+                  <div className="w-20 h-20 rounded-full bg-[#FA7E09] flex items-center justify-center mb-8  shadow-black/10">
                      <svg xmlns="http://www.w3.org/2000/svg" className="w-10 h-10 fill-white" viewBox="0 0 512 512">
                         <path d="m416.34375 111.632812-24.34375-24.34375-24.34375 24.34375-11.3125-11.3125 35.65625-35.65625 35.65625 35.65625zm0 0"></path>
                         <path d="m384 79.976562h16v88h-16zm0 0"></path>
@@ -180,7 +181,7 @@ export default function WebDesigningPage() {
                         <path d="m480 119.976562c0-48.601562-39.398438-88-88-88s-88 39.398438-88 88c0 48.601563 39.398438 88 88 88 48.578125-.058593 87.941406-39.421874 88-88zm-160 0c0-39.765624 32.234375-72 72-72s72 32.234376 72 72c0 39.761719-32.234375 72-72 72-39.746094-.046874-71.957031-32.253906-72-72zm0 0"></path>
                      </svg>
                   </div>
-                  <h3 className="text-xl font-serif font-black text-black mb-4 group-hover:text-[#ff9900] transition-colors">Award Winning</h3>
+                  <h3 className="text-xl font-serif font-black text-black mb-4  transition-colors">Award Winning</h3>
                   <p className="text-sm text-gray-500 leading-relaxed font-medium">
                     Our designs always leave an WOW imprint on our clients mind and soul and thus we used to be maintain prestige in this industry.
                   </p>
@@ -188,7 +189,7 @@ export default function WebDesigningPage() {
 
                {/* Box 3: Services */}
                <div className="group flex flex-col items-center text-center p-10 bg-[#EFEFEF] rounded-[32px] border border-gray-50 shadow-[0_20px_50px_rgba(0,0,0,0.03)] hover:shadow-[0_30px_70px_rgba(0,0,0,0.08)] transition-all duration-500 hover:-translate-y-2">
-                  <div className="w-20 h-20 rounded-full bg-black flex items-center justify-center mb-8 group-hover:bg-[#ff9900] transition-colors duration-500 shadow-xl shadow-black/10 group-hover:shadow-[#ff9900]/20">
+                  <div className="w-20 h-20 rounded-full bg-[#FA7E09] flex items-center justify-center mb-8  shadow-black/10">
                      <svg xmlns="http://www.w3.org/2000/svg" id="Layer_3" className="w-10 h-10 fill-white" viewBox="0 0 64 64" data-name="Layer 3">
                         <path d="m62 4h-60a1 1 0 0 0 -1 1v54a1 1 0 0 0 1 1h60a1 1 0 0 0 1-1v-54a1 1 0 0 0 -1-1zm-1 2v10h-58v-10zm-58 14v-2h8v2zm10-2h8v2h-8zm10 0h8v2h-8zm10 0h8a2 2 0 0 1 -2 2h-6zm-30 40v-36h36a4 4 0 0 0 4-4h18v40z"></path>
                         <path d="m8 14a3 3 0 1 0 -3-3 3 3 0 0 0 3 3zm0-4a1 1 0 1 1 -1 1 1 1 0 0 1 1-1z"></path>
@@ -211,7 +212,7 @@ export default function WebDesigningPage() {
                         <path d="m49 50h2v2h-2z"></path>
                      </svg>
                   </div>
-                  <h3 className="text-xl font-serif font-black text-black mb-4 group-hover:text-[#ff9900] transition-colors">Services</h3>
+                  <h3 className="text-xl font-serif font-black text-black mb-4  transition-colors">Services</h3>
                   <p className="text-sm text-gray-500 leading-relaxed font-medium">
                     We have firm grip over the technology to work on both Websites and Mobile Apps. Our creative base in designing flows through all technologies in both.
                   </p>
@@ -254,39 +255,21 @@ export default function WebDesigningPage() {
                   </div>
                </div>
 
-               {/* Laptop Mockup - High Fidelity Positioning */}
+               {/* Monitor Display */}
                <div className="relative">
-                  <div className="relative z-20">
-                     <Image 
-                        src="/web-designing/desktop.png" 
-                        alt="Desktop Mockup" 
-                        width={1200} 
-                        height={960} 
-                        className="w-full h-auto drop-shadow-[0_35px_60px_rgba(0,0,0,0.15)]" 
-                        priority
-                     />
-                  </div>
-                  
-                  {/* Screen Content - Adjusted for exact fit in desktop.png */}
-                  <div className="absolute top-[6.3%] left-[12.1%] w-[75.8%] h-[60.6%] z-10 overflow-hidden bg-black rounded-sm shadow-inner">
-                     <PortfolioSlider />
-                  </div>
-
-                  {/* Aesthetic Background Elements */}
-                  <div className="absolute -top-20 -right-20 w-64 h-64 bg-[#ff9900]/5 rounded-full blur-[100px] -z-10 animate-pulse" />
-                  <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-black/5 rounded-full blur-[100px] -z-10" />
+                  <SEOMonitor />
                </div>
             </div>
 
             {/* Service Cards Grid (Fourth Section) */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                {services.map((s, i) => (
-                 <div key={i} className="flex flex-col items-center text-center gap-8 p-12 rounded-[40px] bg-white border border-gray-100 hover:border-[#ff9900]/30 shadow-[0_20px_50px_rgba(0,0,0,0.02)] hover:shadow-[0_40px_80px_rgba(0,0,0,0.08)] transition-all duration-700 group">
-                    <div className="w-24 h-24 rounded-3xl bg-gray-50 flex items-center justify-center shrink-0 group-hover:bg-[#ff9900] transition-all duration-500 transform group-hover:rotate-12 shadow-inner">
-                       <Image src={s.icon} alt={s.title} width={60} height={60} className="object-contain group-hover:invert transition-all duration-500" />
+                 <div key={i} className="flex flex-col items-center text-center gap-8 p-12 rounded-[40px] bg-white shadow-[0_20px_50px_rgba(0,0,0,0.02)]">
+                    <div className="w-24 h-24 flex items-center justify-center shrink-0">
+                       <Image src={s.icon} alt={s.title} width={80} height={80} className="object-contain" />
                     </div>
                     <div className="space-y-4">
-                       <h4 className="font-serif font-black text-2xl text-black group-hover:text-[#ff9900] transition-colors">{s.title}</h4>
+                       <h4 className="font-serif font-black text-2xl text-black">{s.title}</h4>
                        <p className="text-gray-500 leading-relaxed font-medium text-sm md:text-base">{s.desc}</p>
                     </div>
                  </div>
@@ -388,7 +371,7 @@ export default function WebDesigningPage() {
             </div>
 
             {/* Final Overview & Recommendation Section (Seventh Section) */}
-            <div className="space-y-12 max-w-5xl mx-auto py-12">
+            <div className="space-y-12 max-w-7xl mx-auto py-12">
                <div className="prose prose-lg text-gray-600 max-w-none space-y-6">
                   <p className="leading-relaxed font-medium">
                     No doubt responsive web designing is the future of internet. The aim of responsive web designing services is to provide an advanced website be it for a healthcare, financial service, industry or a selling site.
@@ -410,42 +393,37 @@ export default function WebDesigningPage() {
                   </div>
                </div>
             </div>
-            {/* FAQ Section - High Fidelity "Same to Same" Design */}
-            <div className="max-w-4xl mx-auto space-y-16 py-24">
-               <div className="text-center space-y-4">
-                  <h2 className="text-3xl md:text-5xl font-serif font-black text-black">Frequently Asked Questions (FAQs)</h2>
-                  <div className="w-20 h-1 bg-[#ff9900] mx-auto rounded-full" />
-               </div>
-               
-               <div className="space-y-6">
-                  {faqs.map((faq, i) => (
-                    <details key={i} className="group bg-white border border-gray-100 rounded-[32px] overflow-hidden transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.05)] open:shadow-[0_30px_60px_rgba(0,0,0,0.08)] open:border-[#ff9900]/20">
-                        <summary className="flex items-center justify-between p-8 md:p-10 cursor-pointer list-none select-none">
-                           <span className="font-serif font-black text-lg md:text-xl text-black group-hover:text-[#ff9900] group-open:text-[#ff9900] transition-colors pr-8">
-                              {faq.q}
-                           </span>
-                           <div className="shrink-0 w-12 h-12 rounded-2xl bg-gray-50 flex items-center justify-center group-open:bg-[#ff9900] transition-all duration-500">
-                              <svg 
-                                className="w-4 h-4 transition-transform duration-500 group-open:rotate-[-90deg] text-gray-400 group-open:text-black" 
-                                viewBox="0 0 192 512" 
-                                fill="currentColor"
-                              >
-                                <path d="M0 384.662V127.338c0-17.818 21.543-26.741 34.142-14.142l128.662 128.662c7.81 7.81 7.81 20.474 0 28.284L34.142 398.804C21.543 411.404 0 402.48 0 384.662z" />
-                              </svg>
-                           </div>
-                        </summary>
-                        <div className="px-8 md:px-10 pb-10">
-                           <div className="pt-6 border-t border-gray-50 text-gray-500 leading-relaxed font-medium text-base md:text-lg">
-                              {faq.a}
-                           </div>
-                        </div>
-                    </details>
-                  ))}
-            </div>
+             {/* FAQ Section - High Fidelity "Same to Same" Design */}
+             <div className="max-w-7xl mx-auto space-y-12">
+                <div className="text-center">
+                   <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-black text-black tracking-tight">Frequently Asked Questions (FAQs)</h2>
+                </div>
+                
+                <div className="space-y-4">
+                   {faqs.map((faq, i) => (
+                     <details key={i} className="group bg-[#EFEFEF] rounded-2xl border-b-2 border-[#ff9900] overflow-hidden transition-all duration-300 shadow-sm">
+                         <summary className="flex items-center justify-between p-6 cursor-pointer list-none select-none hover:bg-gray-200/40 transition-colors">
+                            <span className="font-sans font-bold text-sm sm:text-base md:text-lg text-gray-900 pr-8">
+                               {faq.q}
+                            </span>
+                            <div className="shrink-0 w-8 h-8 flex items-center justify-center transition-transform duration-300 group-open:rotate-90">
+                               <svg className="w-3 h-3 text-[#ff9900] fill-current" viewBox="0 0 192 512">
+                                  <path d="M0 384.662V127.338c0-17.818 21.543-26.741 34.142-14.142l128.662 128.662c7.81 7.81 7.81 20.474 0 28.284L34.142 398.804C21.543 411.404 0 402.48 0 384.662z" />
+                               </svg>
+                            </div>
+                         </summary>
+                         <div className="px-6 pb-6">
+                            <div className="pt-4 border-t border-gray-200/80 text-gray-600 font-medium text-xs sm:text-sm md:text-base leading-relaxed">
+                               {faq.a}
+                            </div>
+                         </div>
+                     </details>
+                   ))}
+                </div>
+             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
     </div>
   );
 }
