@@ -23,6 +23,7 @@ export async function getPortfolioItems() {
 export async function uploadPortfolio(formData: FormData) {
   const title = formData.get('title') as string;
   const category = formData.get('category') as string;
+  const location = formData.get('location') as string || 'australia';
   const files = formData.getAll('images') as File[];
 
   try {
@@ -61,7 +62,8 @@ export async function uploadPortfolio(formData: FormData) {
       const item = await Portfolio.create({
         title: title || file.name,
         category: categoryName,
-        imageUrl: dbImageUrl
+        imageUrl: dbImageUrl,
+        location: location.toLowerCase()
       });
       console.log(`[Portfolio] Created database record: ${item.id}`);
       results.push(item.toJSON());
@@ -108,7 +110,7 @@ export async function deletePortfolioItem(id: number) {
   }
 }
 
-export async function updatePortfolioItem(id: number, data: { title: string, category: string }) {
+export async function updatePortfolioItem(id: number, data: { title: string, category: string, location?: string }) {
   try {
     console.log(`[Portfolio] Updating item: ${id}`, data);
     const item = await Portfolio.findByPk(id);

@@ -23,7 +23,9 @@ export default function PortfolioPage() {
     async function load() {
       const data = await getPortfolioItems();
       
-      const normalizedData = data.map((item: any) => ({
+      const nonAustraliaData = data.filter((item: any) => (item.location || 'australia').toLowerCase() !== 'australia');
+
+      const normalizedData = nonAustraliaData.map((item: any) => ({
         ...item,
         category: (item.category || 'General').toLowerCase() === 'general' ? 'General' : item.category
       }));

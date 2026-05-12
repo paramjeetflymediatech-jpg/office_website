@@ -6,6 +6,7 @@ class Portfolio extends Model {
   declare title: string;
   declare imageUrl: string;
   declare category: string | null;
+  declare location: string | null;
 }
 
 Portfolio.init(
@@ -26,6 +27,11 @@ Portfolio.init(
     category: {
       type: DataTypes.STRING,
       allowNull: true,
+    },
+    location: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      defaultValue: 'australia',
     },
   },
   {

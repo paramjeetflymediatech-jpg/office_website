@@ -1,8 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { getPortfolioItems } from "@/app/actions/portfolio";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   ArrowRight,
   Rocket,
@@ -21,15 +23,90 @@ import {
   Share2,
   FileText,
   UserCheck,
-  Briefcase
+  Briefcase,
+  X
 } from "lucide-react";
 
 export default function AustraliaAboutUs() {
-  const [activeTab, setActiveTab] = useState("E-Commerce");
+  const [activeTab, setActiveTab] = useState("Car Detailing");
+  const [portfolioItems, setPortfolioItems] = useState<any[]>([]);
+  const [portfolioTabs, setPortfolioTabs] = useState<string[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
-  const portfolioTabs = [
-    "Restaurent", "Technology", "Car Rental", "Car Detailing", "Real Estate", "Finance", "Industries", "E-Commerce"
-  ];
+  useEffect(() => {
+    async function load() {
+      try {
+        const dbData = await getPortfolioItems();
+        
+        // Filter DB items for Australia About Us
+        const targetedDbItems = dbData
+          .filter((item: any) => (item.location || "").toLowerCase() === "australia-about")
+          .map((item: any) => ({
+            id: item.id,
+            title: item.title,
+            imageUrl: item.imageUrl,
+            category: item.category || "General",
+          }));
+
+        let finalItems = targetedDbItems;
+
+        // If DB has no items uploaded for Australia, use the beautiful default fallback images
+        if (finalItems.length === 0) {
+          finalItems = [
+            { id: "au-1", title: "Meat Mechanics", imageUrl: "https://flymediatech.com/australia/wp-content/uploads/2024/05/meat-mechanics.png", category: "Restaurent" },
+            { id: "au-2", title: "Lakeview Dental", imageUrl: "https://flymediatech.com/australia/wp-content/uploads/2024/05/lakeview.png", category: "Technology" },
+            { id: "au-3", title: "Grand Indian Cuisine", imageUrl: "https://flymediatech.com/australia/wp-content/uploads/2024/05/grand-indian-cuisine.png", category: "Restaurent" },
+            { id: "au-4", title: "Grand Bukhara", imageUrl: "https://flymediatech.com/australia/wp-content/uploads/2024/05/grand-bukhara.png", category: "Restaurent" },
+            { id: "au-5", title: "Cholas Restaurant", imageUrl: "https://flymediatech.com/australia/wp-content/uploads/2024/05/cholas-2.png", category: "Restaurent" },
+            { id: "au-6", title: "Binge Café", imageUrl: "https://flymediatech.com/australia/wp-content/uploads/2024/05/binge.png", category: "Restaurent" },
+            { id: "au-7", title: "Asees Indian Restaurant", imageUrl: "https://flymediatech.com/australia/wp-content/uploads/2024/05/asees-1.png", category: "Restaurent" },
+            { id: "au-8", title: "TGP Portal", imageUrl: "https://flymediatech.com/australia/wp-content/uploads/2024/05/TGP-1.png", category: "Car Rental" },
+            { id: "au-9", title: "Sylvania Retailers", imageUrl: "https://flymediatech.com/australia/wp-content/uploads/2024/05/sylvania-1.png", category: "Real Estate" },
+            { id: "au-10", title: "Pizza Shed", imageUrl: "https://flymediatech.com/australia/wp-content/uploads/2024/05/pizza-shed-2.png", category: "Restaurent" },
+            { id: "au-11", title: "NTH Consulting", imageUrl: "https://flymediatech.com/australia/wp-content/uploads/2024/05/nth-1.png", category: "Car Detailing" },
+            { id: "au-12", title: "Yes Nurse", imageUrl: "https://flymediatech.com/australia/wp-content/uploads/2024/05/yes-nurse.png", category: "Technology" },
+            { id: "au-13", title: "Singh Finance", imageUrl: "https://flymediatech.com/australia/wp-content/uploads/2024/05/singh-finance.png", category: "Finance" },
+            { id: "au-14", title: "NES Electrical", imageUrl: "https://flymediatech.com/australia/wp-content/uploads/2024/05/NES-electrical.png", category: "Industries" },
+            { id: "au-15", title: "Mom & Dad Healthcare", imageUrl: "https://flymediatech.com/australia/wp-content/uploads/2024/05/mom-and-dad.png", category: "E-Commerce" },
+            { id: "au-16", title: "MIG Enterprises", imageUrl: "https://flymediatech.com/australia/wp-content/uploads/2024/05/MIG-enterprises.png", category: "Industries" },
+            { id: "au-17", title: "AB Logistics", imageUrl: "https://flymediatech.com/australia/wp-content/uploads/2024/05/AB-1.png", category: "E-Commerce" },
+          ];
+        }
+
+        setPortfolioItems(finalItems);
+
+        // Dynamically compute unique categories from database/fallback list
+        const uniqueCategories = Array.from(new Set(finalItems.map((item: any) => item.category)))
+          .filter(Boolean)
+          .sort((a: any, b: any) => a.localeCompare(b));
+
+        if (uniqueCategories.length > 0) {
+          setPortfolioTabs(uniqueCategories);
+          setActiveTab(uniqueCategories[0]);
+        }
+      } catch (err) {
+        console.error("Error loading portfolio items:", err);
+      } finally {
+        setLoading(false);
+      }
+    }
+    load();
+  }, []);
+
+  // Filter current activeTab items (normalize match casing e.g. Restaurant vs Restaurent)
+  const filteredCurrentItems = portfolioItems.filter((item) => {
+    const itemCat = item.category.toLowerCase();
+    const tabCat = activeTab.toLowerCase();
+    
+    // Support spelling variation: Restaurent / Restaurant
+    if (tabCat === "restaurent" || tabCat === "restaurant") {
+      return itemCat === "restaurent" || itemCat === "restaurant";
+    }
+    return itemCat === tabCat;
+  });
+
+
 
   const services = [
     {
@@ -150,8 +227,6 @@ export default function AustraliaAboutUs() {
         </div>
       </section>
 
-   
-
       {/* Video Reel Section - Contained */}
       <section className="bg-white relative overflow-hidden mt-10 lg:mt-0 max-w-7xl mx-auto group">
         <video
@@ -184,13 +259,13 @@ export default function AustraliaAboutUs() {
           </div>
 
           <div className="relative">
-            <div className="absolute inset-0  -z-10" />
-            <div className="relative p-4  overflow-hidden aspect-square ">
+            <div className="absolute inset-0 -z-10" />
+            <div className="relative p-4 overflow-hidden aspect-square ">
               <Image
                 src="https://flymediatech.com/australia/wp-content/uploads/2024/03/Anujgupta.png"
                 alt="Dr. Anuj Gupta"
                 fill
-                className="object-cover   duration-700"
+                className="object-cover duration-700"
                 unoptimized
               />
             </div>
@@ -198,13 +273,12 @@ export default function AustraliaAboutUs() {
         </div>
       </section>
 
-
       {/* 3. Global Leadership section (Mr. Bala) */}
       <section className="py-24">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className="relative order-2 lg:order-1">
-            <div className="absolute bg-[#ff9900]  -z-10" />
-            <div className="relative bg-white p-4  overflow-hidden aspect-square">
+            <div className="absolute bg-[#ff9900] -z-10" />
+            <div className="relative bg-white p-4 overflow-hidden aspect-square">
               <Image
                 src="https://flymediatech.com/australia/wp-content/uploads/2024/07/BALAYA.jpg"
                 alt="Mr. Bala"
@@ -283,7 +357,7 @@ export default function AustraliaAboutUs() {
         </div>
       </section>
 
- {/* 7. 24/7 Availability Section (Video Background) */}
+      {/* 7. 24/7 Availability Section (Video Background) */}
       <section className="relative h-[400px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <video
@@ -310,13 +384,11 @@ export default function AustraliaAboutUs() {
               href="/contact-us"
               className="relative inline-flex items-center justify-center bg-[#ff9900] text-black font-bold px-12 py-5 rounded-full overflow-hidden shadow-2xl group transition-all duration-300 hover:bg-white active:scale-95"
             >
-              {/* Slide-out Initial Content */}
               <span className="flex items-center gap-2 transition-all duration-300 group-hover:translate-x-12 group-hover:opacity-0">
                 Contact Us
                 <ChevronsRight size={20} />
               </span>
 
-              {/* Slide-in Hover Content (Go) */}
               <span className="absolute inset-0 flex items-center justify-center gap-2 translate-x-[-100%] opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100 text-black">
                 Go <ChevronsRight size={20} />
               </span>
@@ -325,7 +397,6 @@ export default function AustraliaAboutUs() {
         </div>
       </section>
 
-      
       {/* 4.5 Why Choose Fly Media Technology Section */}
       <section className="py-24 px-4 overflow-hidden bg-white">
         <div className="max-w-7xl mx-auto">
@@ -370,54 +441,184 @@ export default function AustraliaAboutUs() {
           </div>
         </div>
       </section>
+      {/* 5. Same-To-Same Elementor / ElementsKit Simple Tab Portfolio Section */}
+      <section className="py-24 px-4 overflow-hidden bg-[#FA7E09] elementor-element elementor-element-cf08276 e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-parent e-lazyloaded" data-id="cf08276" data-element_type="container">
+        {/* ElementsKit Custom Style Block */}
+        <style dangerouslySetInnerHTML={{ __html: `
+          .elementkit-tab-nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            gap: 0.5rem;
+            margin-bottom: 3.5rem;
+          }
+          .elementkit-nav-item {
+            margin-bottom: 0.25rem;
+          }
+          .elementkit-nav-link {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #ffffff;
+            background-color: #000000;
+            border-radius: 4px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            text-transform: capitalize;
+            text-decoration: none;
+          }
+          .elementkit-nav-link:hover {
+            background-color: #ff9900;
+            color: #000000;
+          }
+          .elementkit-nav-link.active-tab {
+            background-color: #ff9900;
+            color: #000000;
+            box-shadow: 0 10px 15px -3px rgba(255, 153, 0, 0.2), 0 4px 6px -2px rgba(255, 153, 0, 0.1);
+          }
+          .elementor-heading-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: #000000;
+            margin-bottom: 2rem;
+          }
+          /* Premium Webpage Auto-Scroll Hover Effect */
+          .scroll-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+            transition: object-position 5s ease-in-out;
+          }
+          .scroll-container:hover .scroll-img {
+            object-position: bottom;
+          }
+        `}} />
 
-      {/* 5. Portfolio Section (New as requested) */}
-      <section className="py-24 px-4 overflow-hidden">
-        <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-5xl font-bold text-black mb-12">
-            Portfolio
-          </h2>
+        <div className="max-w-7xl mx-auto text-center e-con-inner bg-white rounded-[2.5rem] p-8 sm:p-12 md:p-16 shadow-2xl">
+          <div className="elementor-element elementor-element-5090cac e-con-full e-flex wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-child" data-id="5090cac" data-element_type="container">
+            
+            {/* Elementor Heading Widget */}
+            <div className="elementor-element elementor-element-21f4937 elementor-widget elementor-widget-heading" data-id="21f4937" data-element_type="widget" data-widget_type="heading.default">
+              <div className="elementor-widget-container">
+                <h1 className="elementor-heading-title elementor-size-default">Portfolio</h1>
+              </div>
+            </div>
 
-          {/* Tab Navigation */}
-          <div className="flex flex-wrap justify-center gap-2 mb-16 overflow-x-auto pb-4">
-            {portfolioTabs.map((tab) => (
-              <button
-                key={tab}
-                onClick={() => setActiveTab(tab)}
-                className={`px-8 py-3 rounded-full font-bold text-sm transition-all whitespace-nowrap ${activeTab === tab
-                    ? "bg-[#ff9900] text-black shadow-lg shadow-[#ff9900]/20"
-                    : "bg-white text-gray-500 hover:text-black"
-                  }`}
-              >
-                {tab}
-              </button>
-            ))}
-          </div>
+            {/* ElementsKit Simple Tab Widget */}
+            <div className="elementor-element elementor-element-686ee43 elementor-widget elementor-widget-elementskit-simple-tab" data-id="686ee43" data-element_type="widget" data-widget_type="elementskit-simple-tab.default">
+              <div className="elementor-widget-container">
+                <div className="ekit-wid-con">
+                  <div className="elementkit-tab-wraper elementskit-fitcontent-tab">
+                    
+                    {/* ElementsKit Simple Tab Navigation List */}
+                    <ul className="nav nav-tabs elementkit-tab-nav">
+                      {portfolioTabs.map((tab, idx) => (
+                        <li key={tab} className={`elementkit-nav-item elementor-repeater-item-${idx}`}>
+                          <a
+                            onClick={() => setActiveTab(tab)}
+                            className={`elementkit-nav-link left-pos ${
+                              activeTab === tab ? "active-tab" : ""
+                            }`}
+                          >
+                            <span className="elementskit-tab-title"> {tab}</span>
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
 
-          {/* Tab Content */}
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {[...Array(8)].map((_, i) => (
-              <div
-                key={i}
-                className="aspect-square bg-white rounded-[2rem] border border-gray-100 shadow-sm overflow-hidden group relative"
-              >
-                <div className="absolute inset-0 bg-[#ff9900]/10 group-hover:bg-[#ff9900]/20 transition-colors" />
-                <div className="absolute inset-0 flex items-center justify-center p-8">
-                  <div className="text-gray-300 group-hover:text-[#ff9900] transition-colors">
-                    <Briefcase size={64} strokeWidth={1} />
+                    {/* ElementsKit Tab Panes Content Container */}
+                    {loading ? (
+                      <div className="flex items-center justify-center py-20">
+                        <div className="w-12 h-12 border-4 border-[#ff9900]/20 border-t-[#ff9900] rounded-full animate-spin" />
+                      </div>
+                    ) : filteredCurrentItems.length > 0 ? (
+                      <div className="tab-content elementkit-tab-content">
+                        <div className="tab-pane elementkit-tab-pane active show" role="tabpanel">
+                          <div className="animated fadeIn grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8">
+                            {filteredCurrentItems.map((item) => (
+                              <div
+                                key={item.id}
+                                onClick={() => setSelectedImage(item.imageUrl)}
+                                className="scroll-container group relative aspect-[3/4] bg-white overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 border border-gray-100 cursor-pointer"
+                              >
+                                {/* Image Frame with Auto-Scrolling on Hover */}
+                                <div className="relative w-full h-full overflow-hidden bg-[#FBFBFB]">
+                                  <Image
+                                    src={item.imageUrl}
+                                    alt={item.title}
+                                    fill
+                                    className="scroll-img"
+                                    sizes="(max-width: 768px) 100vw, 33vw"
+                                    unoptimized
+                                  />
+                                </div>
+                                
+                                {/* Hover Glass Overlay Gradient */}
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 pointer-events-none" />
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="text-center py-16 bg-white rounded-[2rem] border border-dashed border-gray-100">
+                        <Search size={32} className="mx-auto text-gray-300 mb-3" />
+                        <h4 className="text-gray-900 font-bold text-lg">No Projects Found</h4>
+                        <p className="text-gray-400 text-sm">We are currently updating our portfolio for {activeTab}. Check back soon!</p>
+                      </div>
+                    )}
+
                   </div>
                 </div>
-                <div className="absolute bottom-6 left-6 right-6 translate-y-12 group-hover:translate-y-0 transition-transform duration-500">
-                  <p className="text-black font-bold text-sm bg-white/90 backdrop-blur-sm py-2 rounded-full shadow-lg">
-                    {activeTab} Project {i + 1}
-                  </p>
-                </div>
               </div>
-            ))}
+            </div>
+
           </div>
         </div>
       </section>
-      
+
+      {/* Lightbox Slideshow Modal */}
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[300] bg-black/95 backdrop-blur-xl flex items-center justify-center p-4 sm:p-10"
+            onClick={() => setSelectedImage(null)}
+          >
+            <motion.button
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              className="absolute top-6 right-6 text-white/60 hover:text-white bg-white/15 p-3 rounded-full hover:bg-white/20 transition-all shadow-md"
+            >
+              <X size={24} />
+            </motion.button>
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95 }}
+              className="relative w-full h-full flex items-center justify-center pointer-events-none"
+            >
+              <div className="relative w-full max-w-5xl h-full max-h-[85vh] pointer-events-auto">
+                <Image
+                  src={selectedImage}
+                  alt="Enlarged Portfolio View"
+                  fill
+                  className="object-contain"
+                  priority
+                  unoptimized
+                />
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </main>
   );
 }

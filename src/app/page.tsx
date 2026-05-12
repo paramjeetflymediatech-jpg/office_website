@@ -155,6 +155,7 @@ export default function Home() {
       <section className="bg-[#fdf0e1] py-20 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-12 lg:gap-20">
+            
             {/* Left: Monitor Display */}
             <div className="relative order-1 lg:order-1">
               <SEOMonitor />

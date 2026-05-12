@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { getPortfolioItems, uploadPortfolio, deletePortfolioItem, deleteAllPortfolioItems, updatePortfolioItem } from '@/app/actions/portfolio';
-import { Upload, Trash2, X, Plus, Image as ImageIcon, Maximize2, ChevronLeft, ChevronRight, Edit2 } from 'lucide-react';
+import { Upload, Trash2, X, Plus, Image as ImageIcon, Maximize2, ChevronLeft, ChevronRight, Edit2, MapPin } from 'lucide-react';
 import { useNotification } from '@/components/NotificationContext';
 import ConfirmModal from '@/components/ConfirmModal';
 import Image from 'next/image';
@@ -16,6 +16,9 @@ export default function PortfolioPage() {
   const [selectedFiles, setSelectedFiles] = useState<{file: File, preview: string}[]>([]);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   
+  // Filtering State
+  const [selectedLocationFilter, setSelectedLocationFilter] = useState('all');
+
   // Confirm Modal State
   const [itemToDelete, setItemToDelete] = useState<number | null>(null);
   const [isDeletingAll, setIsDeletingAll] = useState(false);
@@ -24,10 +27,10 @@ export default function PortfolioPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 20;
 
-  // Scroll to top on page change
+  // Scroll to top on page change or filter change
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, [currentPage]);
+  }, [currentPage, selectedLocationFilter]);
 
   useEffect(() => {
     loadItems();
@@ -124,7 +127,7 @@ export default function PortfolioPage() {
 
   // Edit State & Logic
   const [itemToEdit, setItemToEdit] = useState<any>(null);
-  const [editData, setEditData] = useState({ title: '', category: '' });
+  const [editData, setEditData] = useState({ title: '', category: '', location: 'australia' });
 
   const handleUpdate = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -144,14 +147,24 @@ export default function PortfolioPage() {
 
   const startEdit = (item: any) => {
     setItemToEdit(item);
-    setEditData({ title: item.title, category: item.category || '' });
+    setEditData({ 
+      title: item.title, 
+      category: item.category || '', 
+      location: item.location || 'australia' 
+    });
   };
+
+  // Filter Items by Location Selection
+  const filteredItemsByLocation = items.filter(item => {
+    if (selectedLocationFilter === 'all') return true;
+    return (item.location || 'australia').toLowerCase() === selectedLocationFilter.toLowerCase();
+  });
 
   // Pagination Logic
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = items.slice(indexOfFirstItem, indexOfLastItem);
-  const totalPages = Math.ceil(items.length / itemsPerPage);
+  const currentItems = filteredItemsByLocation.slice(indexOfFirstItem, indexOfLastItem);
+  const totalPages = Math.ceil(filteredItemsByLocation.length / itemsPerPage);
 
   if (loading) {
     return (
@@ -166,7 +179,7 @@ export default function PortfolioPage() {
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
           <h1 className="text-3xl font-bold text-gray-900">Portfolio</h1>
-          <p className="text-gray-500 mt-1">Manage and upload work images.</p>
+          <p className="text-gray-500 mt-1">Manage, target by location (India, Australia, Canada), and upload portfolio assets.</p>
         </div>
         <div className="flex gap-3 w-full sm:w-auto">
           {items.length > 0 && (
@@ -188,17 +201,42 @@ export default function PortfolioPage() {
         </div>
       </div>
 
+      <div className="flex flex-wrap gap-2 border-b border-gray-200 pb-2">
+        {[
+          { key: 'all', label: 'All Locations' },
+          { key: 'australia', label: 'Australia' },
+          { key: 'australia-about', label: 'Australia About Us' },
+          { key: 'india', label: 'India' },
+          { key: 'canada', label: 'Canada' },
+        ].map((tab) => (
+          <button
+            key={tab.key}
+            onClick={() => {
+              setSelectedLocationFilter(tab.key);
+              setCurrentPage(1);
+            }}
+            className={`px-5 py-2 rounded-xl text-sm font-bold transition-all ${
+              selectedLocationFilter === tab.key
+                ? 'bg-black text-white shadow-md'
+                : 'text-gray-500 hover:text-black hover:bg-gray-100'
+            }`}
+          >
+            {tab.label}
+          </button>
+        ))}
+      </div>
+
       {/* Portfolio Stats Bar */}
-      {items.length > 0 && (
+      {filteredItemsByLocation.length > 0 && (
         <div className="bg-white p-4 rounded-xl border border-gray-100 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 bg-orange-50 rounded-lg flex items-center justify-center text-[#ff9900]">
               <ImageIcon size={20} />
             </div>
             <div>
-              <p className="text-xs font-medium text-gray-400 uppercase tracking-wider">Inventory Status</p>
+              <p className="text-xs font-medium text-gray-400 uppercase tracking-wider">Inventory Status ({selectedLocationFilter.toUpperCase()})</p>
               <p className="text-sm font-bold text-gray-900">
-                Showing <span className="text-[#ff9900]">{Math.min(indexOfFirstItem + 1, items.length)} – {Math.min(indexOfLastItem, items.length)}</span> of <span className="text-[#ff9900]">{items.length}</span> Total Assets
+                Showing <span className="text-[#ff9900]">{Math.min(indexOfFirstItem + 1, filteredItemsByLocation.length)} – {Math.min(indexOfLastItem, filteredItemsByLocation.length)}</span> of <span className="text-[#ff9900]">{filteredItemsByLocation.length}</span> Assets
               </p>
             </div>
           </div>
@@ -209,56 +247,100 @@ export default function PortfolioPage() {
         </div>
       )}
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
-        {currentItems.map((item) => (
-          <div 
-            key={item.id} 
-            className="group bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col"
-          >
-            {/* Image Section */}
-            <div 
-              className="relative aspect-square cursor-pointer overflow-hidden bg-gray-50"
-              onClick={() => setSelectedImage(item.imageUrl)}
-            >
-              <Image 
-                src={item.imageUrl} 
-                alt={item.title} 
-                fill 
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                className="object-contain p-2 group-hover:scale-105 transition-transform duration-500"
-                priority={items.indexOf(item) < 4}
-              />
-              <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity bg-white/90 backdrop-blur-md p-2 rounded-lg shadow-sm">
-                <Maximize2 size={16} className="text-[#ff9900]" />
-              </div>
-            </div>
+      {/* Listing Format Table */}
+      {filteredItemsByLocation.length > 0 ? (
+        <div className="bg-white rounded-3xl border border-gray-100 shadow-sm overflow-hidden">
+          <div className="overflow-x-auto">
+            <table className="w-full min-w-[700px] border-collapse text-left">
+              <thead>
+                <tr className="bg-gray-50 border-b border-gray-100">
+                  <th className="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-widest w-[110px]">Preview</th>
+                  <th className="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-widest">Asset Title</th>
+                  <th className="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-widest w-[180px]">Category</th>
+                  <th className="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-widest w-[200px]">Target Location</th>
+                  <th className="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-widest w-[150px] text-right">Actions</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-100">
+                {currentItems.map((item) => (
+                  <tr 
+                    key={item.id} 
+                    className="hover:bg-gray-50/50 transition-colors group"
+                  >
+                    {/* Thumbnail Preview */}
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <div 
+                        className="relative w-16 h-12 rounded-xl overflow-hidden bg-gray-50 border border-gray-100 cursor-pointer hover:border-[#ff9900] transition-colors"
+                        onClick={() => setSelectedImage(item.imageUrl)}
+                      >
+                        <Image 
+                          src={item.imageUrl} 
+                          alt={item.title} 
+                          fill 
+                          sizes="80px"
+                          className="object-cover p-1"
+                          unoptimized
+                        />
+                        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity rounded-xl">
+                          <Maximize2 size={12} className="text-white" />
+                        </div>
+                      </div>
+                    </td>
 
-            {/* Content Section */}
-            <div className="p-4 flex items-center justify-between gap-4 bg-white border-t border-gray-50">
-              <div className="flex-1 min-w-0">
-                <h3 className="text-sm font-bold text-gray-900 truncate">{item.title}</h3>
-                <p className="text-[10px] text-gray-400 font-medium uppercase tracking-wider mt-0.5">{item.category}</p>
-              </div>
-              <div className="flex items-center gap-1 flex-shrink-0">
-                <button 
-                  onClick={(e) => { e.stopPropagation(); startEdit(item); }}
-                  className="p-2.5 text-gray-400 hover:text-[#ff9900] hover:bg-orange-50 rounded-xl transition-all"
-                  title="Edit Details"
-                >
-                  <Edit2 size={18} />
-                </button>
-                <button 
-                  onClick={(e) => { e.stopPropagation(); setItemToDelete(item.id); }}
-                  className="p-2.5 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-xl transition-all"
-                  title="Delete Image"
-                >
-                  <Trash2 size={18} />
-                </button>
-              </div>
-            </div>
+                    {/* Title */}
+                    <td className="px-6 py-4">
+                      <div className="font-bold text-gray-900 text-sm max-w-[280px] truncate" title={item.title}>
+                        {item.title}
+                      </div>
+                    </td>
+
+                    {/* Category */}
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <span className="inline-flex items-center text-xs font-semibold text-gray-600 bg-gray-100 px-3 py-1 rounded-full uppercase tracking-wider">
+                        {item.category || 'General'}
+                      </span>
+                    </td>
+
+                    {/* Target Location */}
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <span className="inline-flex items-center gap-1.5 text-xs font-bold text-[#ff9900] bg-orange-50/80 px-3 py-1 rounded-full uppercase tracking-wider">
+                        <MapPin size={12} />
+                        {item.location === "australia-about" ? "Australia About Us" : item.location || 'Australia'}
+                      </span>
+                    </td>
+
+                    {/* Actions */}
+                    <td className="px-6 py-4 whitespace-nowrap text-right">
+                      <div className="flex items-center justify-end gap-1.5">
+                        <button 
+                          onClick={(e) => { e.stopPropagation(); startEdit(item); }}
+                          className="p-2.5 text-gray-400 hover:text-[#ff9900] hover:bg-orange-50 rounded-xl transition-all"
+                          title="Edit Details"
+                        >
+                          <Edit2 size={18} />
+                        </button>
+                        <button 
+                          onClick={(e) => { e.stopPropagation(); setItemToDelete(item.id); }}
+                          className="p-2.5 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-xl transition-all"
+                          title="Delete Image"
+                        >
+                          <Trash2 size={18} />
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
-        ))}
-      </div>
+        </div>
+      ) : (
+        <div className="text-center py-20 bg-white rounded-3xl border-2 border-dashed border-gray-200">
+          <ImageIcon className="mx-auto text-gray-300 mb-4" size={48} />
+          <h3 className="text-lg font-bold text-gray-900">No images uploaded for this location</h3>
+          <p className="text-gray-400 text-sm mt-1">Click the button in the top-right to upload images targeting {selectedLocationFilter.toUpperCase()}.</p>
+        </div>
+      )}
 
       {/* Pagination Controls */}
       {totalPages > 1 && (
@@ -330,7 +412,7 @@ export default function PortfolioPage() {
 
       {/* Upload Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-[100] p-4">
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-[100] p-4 backdrop-blur-sm">
           <div className="bg-white rounded-2xl w-full max-w-2xl overflow-hidden shadow-2xl animate-in zoom-in-95 duration-300">
             <div className="p-4 sm:p-6 border-b border-gray-100 flex justify-between items-center bg-gray-50">
               <h2 className="text-lg sm:text-xl font-bold text-gray-900">Upload Portfolio Images</h2>
@@ -339,12 +421,12 @@ export default function PortfolioPage() {
               </button>
             </div>
             <form onSubmit={handleSubmit} className="p-4 sm:p-6 space-y-6 max-h-[80vh] overflow-y-auto">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <div className="space-y-1">
                   <label className="text-sm font-bold text-gray-700">Project Title (Optional)</label>
                   <input 
                     name="title" 
-                    className="w-full p-2.5 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#ff9900] outline-none"
+                    className="w-full p-2.5 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#ff9900] outline-none text-black"
                     placeholder="e.g. Modern Web Design"
                   />
                 </div>
@@ -352,9 +434,22 @@ export default function PortfolioPage() {
                   <label className="text-sm font-bold text-gray-700">Category</label>
                   <input 
                     name="category" 
-                    className="w-full p-2.5 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#ff9900] outline-none"
-                    placeholder="e.g. Web Development (Use 'General' for root folder)"
+                    className="w-full p-2.5 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#ff9900] outline-none text-black"
+                    placeholder="e.g. Web Development"
                   />
+                </div>
+                <div className="space-y-1">
+                  <label className="text-sm font-bold text-gray-700">Target Location</label>
+                  <select 
+                    name="location" 
+                    className="w-full p-2.5 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#ff9900] outline-none text-black"
+                    defaultValue={selectedLocationFilter !== 'all' ? selectedLocationFilter : 'australia'}
+                  >
+                    <option value="australia">Australia</option>
+                    <option value="australia-about">Australia About Us</option>
+                    <option value="india">India</option>
+                    <option value="canada">Canada</option>
+                  </select>
                 </div>
               </div>
 
@@ -438,6 +533,7 @@ export default function PortfolioPage() {
               fill
               className="object-contain"
               priority
+              unoptimized
             />
           </div>
         </div>
@@ -459,7 +555,7 @@ export default function PortfolioPage() {
                   type="text" 
                   value={editData.title}
                   onChange={(e) => setEditData({...editData, title: e.target.value})}
-                  className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#ff9900] outline-none transition-all"
+                  className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#ff9900] outline-none transition-all text-black"
                   placeholder="Enter project name"
                   required
                 />
@@ -471,16 +567,30 @@ export default function PortfolioPage() {
                   type="text" 
                   value={editData.category}
                   onChange={(e) => setEditData({...editData, category: e.target.value})}
-                  className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#ff9900] outline-none transition-all"
+                  className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#ff9900] outline-none transition-all text-black"
                   placeholder="e.g. Web Design, Logo, SEO"
                 />
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-sm font-bold text-gray-700">Target Location</label>
+                <select 
+                  value={editData.location}
+                  onChange={(e) => setEditData({...editData, location: e.target.value})}
+                  className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#ff9900] outline-none transition-all text-black"
+                >
+                  <option value="australia">Australia</option>
+                  <option value="australia-about">Australia About Us</option>
+                  <option value="india">India</option>
+                  <option value="canada">Canada</option>
+                </select>
               </div>
 
               <div className="pt-4 flex gap-3">
                 <button 
                   type="button"
                   onClick={() => setItemToEdit(null)}
-                  className="flex-1 px-6 py-3 rounded-xl border border-gray-200 font-bold hover:bg-gray-50 transition-all"
+                  className="flex-1 px-6 py-3 rounded-xl border border-gray-200 font-bold hover:bg-gray-50 transition-all text-gray-700"
                 >
                   Cancel
                 </button>

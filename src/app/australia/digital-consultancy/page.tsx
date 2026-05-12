@@ -3,87 +3,63 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  Smartphone,
-  Search,
-  Users,
-  Target,
-  ArrowRight,
-  ChevronsRight,
-  ShieldCheck,
-  Zap
-} from "lucide-react";
 
 export default function DigitalConsultancy() {
-  const strategyCards = [
-    {
-      title: "Mobile Marketing",
-      desc: "Our fully dedicated mobile marketing team specializes in advertising and building connections over mobile devices. We configure tailored push notifications, instant messaging, and audience categorization to connect with customers instantly.",
-      icon: <Smartphone size={24} className="text-black" />
-    },
-    {
-      title: "Consumer Behaviors",
-      desc: "Our specialized analytical team observes and tracks consumer behavior. By monitoring views, ratings, and customer feedback, we make data-driven decisions to optimize your business products and services for maximum conversions.",
-      icon: <Users size={24} className="text-black" />
-    },
-    {
-      title: "Search Visibility",
-      desc: "Boost your website's search engine presence and make your business stand out from competitors. Gaining consistent authority and a highly profitable ROI is our focus, ensuring cost-effective growth for your enterprise.",
-      icon: <Search size={24} className="text-black" />
-    }
-  ];
-
   return (
     <main className="min-h-screen bg-[#F1F1F1] font-sans">
-      {/* 1. Hero Section */}
-      <section className="relative py-10  overflow-hidden bg-[#F1F1F1]">
-        <div className="absolute inset-0 z-0 bg-[radial-gradient(#ff9900_1px,transparent_1px)] [background-size:16px_16px] opacity-[0.03]" />
+      {/* Hero Section */}
+      <section className="relative py-10 md:py-10 overflow-hidden bg-[#F1F1F1]">
+        {/* Subtle grid pattern for premium visual styling */}
+        <div className="absolute inset-0 z-0 bg-[radial-gradient(#000000_1px,transparent_1px)] [background-size:24px_24px] opacity-[0.015]" />
         
-        <div className="max-w-7xl mx-auto px-4 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+          
+          {/* Top section: Two-column grid, ordered to show the image first on mobile */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             
-            {/* Left Column: Titles & Descriptions */}
-            <div className="lg:col-span-7 space-y-8">
+            {/* Left Column: Titles & First 2 Paragraphs (order-2 on mobile, order-1 on desktop) */}
+            <div className="lg:col-span-7 space-y-8 order-2 lg:order-1">
               <div className="space-y-4">
                 <h1
                   style={{ fontFamily: "'Playfair Display', serif" }}
-                  className="text-4xl md:text-6xl font-bold text-black leading-tight"
+                  className="text-4xl md:text-5xl lg:text-[54px] font-bold text-black leading-[1.15] font-serif"
                 >
-                  Digital Marketing Consultancy SEO Consultants Sydney
+                  Digital Marketing<br className="hidden md:inline" /> Consultancy & SEO<br className="hidden md:inline" /> Consultants Sydney
                 </h1>
               </div>
 
-              <h2 className="text-2xl font-bold text-gray-800">
+              <h2 
+                style={{ fontFamily: "'Playfair Display', serif" }}
+                className="text-2xl md:text-3xl font-bold text-black font-serif"
+              >
                 Digital Marketing Consultancy Services
               </h2>
 
-              <div className="space-y-6 text-gray-600 text-lg leading-relaxed">
+              <div className="space-y-6 text-[#333333] text-[15px] md:text-base leading-relaxed font-sans">
                 <p>
-                  Gaining consistency and a profitable ROI is the main objective of our digital agency. If you are located in <span className="text-black font-semibold">Stanhope Gardens, Blacktown</span>, or anywhere across Sydney, our team of experts is here to ensure cost-effectiveness while keeping your business up to the mark.
+                  Digital Marketing Consultants Stanhope Gardens, Blacktown, Gaining
+                  consistency and a profitable ROI is the aim of our digital agency. Cost
+                  effectiveness and keeping your business up to the mark, is our sure-shot
+                  game.
                 </p>
                 <p>
-                  A sound digital strategy focuses on gaining popularity, reducing overheads, maximizing efficiency, and connecting deeply with your target market. With the extensive usage of social media platforms and search engines like Google, placing your brand directly in front of active searchers is the absolute key to success.
+                  A digital strategy that focuses on gaining popularity, reducing costs, being
+                  efficient and effective and connecting better with your audience, is the best
+                  strategy ever. With the various social media platforms being used extensively
+                  and the Google search engine in particular, it will be beneficial to use such
+                  ways to advertise your business there.
                 </p>
               </div>
-
-              {/* <div className="pt-4">
-                <Link
-                  href="#get-started"
-                  className="inline-flex items-center gap-2 text-black font-bold px-8 py-4 rounded-full shadow-lg shadow-[#ff9900]/20 hover:bg-black hover:text-[#ff9900] transition-colors duration-300"
-                >
-                  Explore Strategies <ArrowRight size={18} />
-                </Link>
-              </div> */}
             </div>
 
-            {/* Right Column: High-fidelity concept image */}
-            <div className="lg:col-span-5 flex justify-center">
-              <div className="relative w-full aspect-square max-w-[500px] rounded-[3rem] overflow-hidden e p-4">
+            {/* Right Column: High-fidelity illustration (order-1 on mobile, order-2 on desktop) */}
+            <div className="lg:col-span-5 flex justify-center order-1 lg:order-2">
+              <div className="relative w-full aspect-[4/3] max-w-[540px]">
                 <Image
                   src="https://flymediatech.com/australia/wp-content/uploads/2024/03/bestr-it.png"
-                  alt="SEO & Digital Marketing Concept"
+                  alt="Digital Marketing Consultancy & SEO Consultants Sydney"
                   fill
-                  className="object-contain p-4"
+                  className="object-contain"
                   unoptimized
                   priority
                 />
@@ -91,6 +67,36 @@ export default function DigitalConsultancy() {
             </div>
 
           </div>
+
+          {/* Bottom Section: Full-width Paragraphs 3, 4 & 5 */}
+          <div className="mt-12 lg:mt-16 space-y-6 text-[#333333] text-[15px] md:text-base leading-relaxed font-sans w-full max-w-full">
+            <p>
+              Every single person on this earth now is owning a mobile phone. Browsing on the
+              internet is simply so cheap and easy to understand. The SEO and Digital
+              Marketing Consultancy Services in Sydney becomes mandatory to boost online sale
+              and business. Thus, showcasing our business products and services in such a
+              widely used platform, is the ultimate goal.
+            </p>
+            <p>
+              <Link 
+                href="/social-media-optimization" 
+                className="text-[#e25c5c] underline hover:text-[#c23c3c] font-semibold transition-colors duration-200"
+              >
+                Mobile marketing
+              </Link>{" "}
+              team is what we separately possess that is fully dedicated to advertising and
+              making connections over the phones via the internet. Sending push-up messages,
+              notifications and checking out and classifying the interest of the public, can
+              make the businesses, focus on its target audience more quickly.
+            </p>
+            <p>
+              A special team has been dedicated to observe consumer behaviors. Tracking the
+              views and rating and feedbacks of the viewers, a final decision can be taken on
+              how to improvise better on our business products and services. Make your website
+              more visible on the search engines and get them noticed!
+            </p>
+          </div>
+
         </div>
       </section>
     </main>

@@ -1,13 +1,6 @@
 import mysql from 'mysql2/promise';
 import * as dotenv from 'dotenv';
-import sequelize from '../src/lib/db.js';
-import SEOConfig from '../src/models/SEOConfig.js';
-import FAQ from '../src/models/FAQ.js';
-import ContactQuery from '../src/models/ContactQuery.js';
-import Portfolio from '../src/models/Portfolio.js';
-import Career from '../src/models/Career.js';
-import User from '../src/models/User.js';
-import PageSEO from '../src/models/PageSEO.js';
+import { initModels } from '../src/models/index';
 
 dotenv.config();
 
@@ -31,10 +24,9 @@ async function setup() {
     console.log(`Database "${dbName}" checked/created successfully.`);
     await connection.end();
 
-    // 2. Sync models
-    console.log('Synchronizing models...');
-    // This will create/update tables for all registered models
-    await sequelize.sync({ alter: true });
+    // 2. Sync models using our robust export
+    console.log('Synchronizing database models...');
+    await initModels();
     
     console.log('-----------------------------------------');
     console.log('SUCCESS: Database and tables are ready!');
