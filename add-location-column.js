@@ -14,19 +14,38 @@ const sequelize = new Sequelize(
 
 async function run() {
   try {
-    console.log('Connecting to database and altering "Portfolios" table...');
+    console.log('Connecting to database and altering table...');
     const queryInterface = sequelize.getQueryInterface();
-    const tableInfo = await queryInterface.describeTable('Portfolios');
+    
+    // Get all tables in the database to solve Linux MySQL case sensitivity
+    const tables = await queryInterface.showAllTables();
+    let tableName = 'Portfolios';
+    
+    if (tables.includes('portfolios')) {
+      tableName = 'portfolios';
+    } else if (tables.includes('Portfolios')) {
+      tableName = 'Portfolios';
+    } else {
+      const match = tables.find(t => t.toLowerCase() === 'portfolios');
+      if (match) {
+        tableName = match;
+      } else {
+        throw new Error(`Table "Portfolios" (or "portfolios") does not exist in the database. Available tables: ${tables.join(', ')}`);
+      }
+    }
+
+    console.log(`Targeting table: "${tableName}"...`);
+    const tableInfo = await queryInterface.describeTable(tableName);
     
     if (!tableInfo.location) {
-      await queryInterface.addColumn('Portfolios', 'location', {
+      await queryInterface.addColumn(tableName, 'location', {
         type: Sequelize.STRING,
         allowNull: true,
         defaultValue: 'australia',
       });
-      console.log('SUCCESS: "location" column has been successfully added to the "Portfolios" table.');
+      console.log(`SUCCESS: "location" column has been successfully added to the "${tableName}" table.`);
     } else {
-      console.log('INFO: "location" column already exists in the "Portfolios" table.');
+      console.log(`INFO: "location" column already exists in the "${tableName}" table.`);
     }
     process.exit(0);
   } catch (err) {
