@@ -6,7 +6,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { ChevronDown, ChevronRight, Menu, X, Phone } from "lucide-react";
 import { IoMdArrowDropdown } from "react-icons/io";
-import { NAV_LINKS, HEADER_LOCATIONS, AUSTRALIA_HEADER_LOCATIONS, MEGA_MENU_DATA, AUSTRALIA_MEGA_MENU_DATA } from "@/constants";
+import { NAV_LINKS, HEADER_LOCATIONS, AUSTRALIA_HEADER_LOCATIONS, MEGA_MENU_DATA, AUSTRALIA_MEGA_MENU_DATA, CANADA_MEGA_MENU_DATA } from "@/constants";
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -17,6 +17,8 @@ export default function Header() {
   const [isClickTriggered, setIsClickTriggered] = useState(false);
   const pathname = usePathname();
   const isAustraliaAboutUs = pathname === "/australia/about-us" || pathname?.startsWith("/australia");
+  const isEdmonton = false;
+  const isCanada = pathname === "/canada" || pathname?.startsWith("/canada");
 
   const locationMenuData = {
     "Brisbane": [
@@ -34,6 +36,14 @@ export default function Header() {
     ]
   };
 
+  const canadaLocationMenuData = {
+    "Edmonton": [
+      { name: "Website Designing in Edmonton", href: "/canada/website-designing-company-in-edmonton" }
+    ]
+  };
+
+  const activeLocationData = isCanada ? canadaLocationMenuData : locationMenuData;
+
   const navLinks = isAustraliaAboutUs
     ? [
       { name: "About Us", href: "/australia/about-us" },
@@ -45,7 +55,14 @@ export default function Header() {
       { name: "Blog", href: "/blog" },
       { name: "Contact Us", href: "/contact-us" },
     ]
-    : NAV_LINKS;
+    : isCanada
+      ? [
+        { name: "About Us", href: "/about-us" },
+        { name: "Services", href: "/#", hasDropdown: true },
+        { name: "Location", href: "/#", hasDropdown: true },
+        { name: "Contact Us", href: "/contact-us" },
+      ]
+      : NAV_LINKS;
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
@@ -79,7 +96,7 @@ export default function Header() {
   return (
     <div className="sticky top-0 z-50 w-full">
       {/* Top Bar with Location Dropdown (Desktop Hover & Mobile/Tablet Click-to-Toggle) */}
-      {true && (
+      {!isEdmonton && (
         <div
           className="relative w-full bg-black py-2 text-white flex justify-center items-center gap-1 group/loc cursor-pointer z-[60]"
           onMouseEnter={() => setIsLocDropdownOpen(true)}
@@ -141,22 +158,24 @@ export default function Header() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
 
           {/* Mobile & Tablet Call Icon (Visible on < lg, hidden on lg, elevated to relative z-50 to float above menu overlay) */}
-          <Link
-            href="tel:+919888484310"
-            className="lg:hidden w-11 h-11 bg-black rounded-full flex items-center justify-center text-white transition-all hover:bg-[#ff9900] hover:scale-105 active:scale-95 shadow-md flex-shrink-0 relative z-50"
-            aria-label="Call Us"
-          >
-            <svg
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              className="w-5 h-5 text-white"
+          {!isEdmonton && (
+            <Link
+              href="tel:+919888484310"
+              className="lg:hidden w-11 h-11 bg-black rounded-full flex items-center justify-center text-white transition-all hover:bg-[#ff9900] hover:scale-105 active:scale-95 shadow-md flex-shrink-0 relative z-50"
+              aria-label="Call Us"
             >
-              <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-2.2 2.2a15.045 15.045 0 0 1-6.59-6.59l2.2-2.21a.96.96 0 0 0 .25-1A11.56 11.56 0 0 1 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.62c0-.55-.45-1-1-1z" />
-            </svg>
-          </Link>
+              <svg
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                className="w-5 h-5 text-white"
+              >
+                <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-2.2 2.2a15.045 15.045 0 0 1-6.59-6.59l2.2-2.21a.96.96 0 0 0 .25-1A11.56 11.56 0 0 1 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.62c0-.55-.45-1-1-1z" />
+              </svg>
+            </Link>
+          )}
 
           {/* Logo (Centered on mobile/tablet < lg, left-aligned on lg) */}
-          <div className="lg:static flex-grow lg:flex-grow-0 flex justify-center lg:justify-start z-50">
+          <div className={`lg:static z-50 ${isEdmonton ? "w-full flex justify-center" : "flex-grow lg:flex-grow-0 flex justify-center lg:justify-start"}`}>
             <Link href="/" className="flex items-center">
               <div className="relative h-10 w-40 sm:h-14 sm:w-56">
                 <Image
@@ -172,208 +191,217 @@ export default function Header() {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8">
-            {navLinks.map((link) => {
-              const isActive = pathname === link.href;
-              const hasMegaMenu = link.name === "Services" || link.name === "Packages" || link.name === "What We Do";
-              const megaMenuData = hasMegaMenu
-                ? (isAustraliaAboutUs ? AUSTRALIA_MEGA_MENU_DATA : MEGA_MENU_DATA)[link.name as keyof typeof MEGA_MENU_DATA]
-                : null;
+          {!isEdmonton && (
+            <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8">
+              {navLinks.map((link) => {
+                const isActive = pathname === link.href;
+                const hasMegaMenu = link.name === "Services" || link.name === "Packages" || link.name === "What We Do";
+                const megaMenuData = hasMegaMenu
+                  ? (isAustraliaAboutUs
+                      ? AUSTRALIA_MEGA_MENU_DATA
+                      : isCanada
+                        ? (CANADA_MEGA_MENU_DATA as any)
+                        : MEGA_MENU_DATA)[link.name as keyof typeof MEGA_MENU_DATA]
+                  : null;
 
-              return (
-                <div
-                  key={link.name}
-                  className="nav-item-container h-full flex items-center relative"
-                  onMouseEnter={() => {
-                    if (link.hasDropdown && !isClickTriggered) {
-                      setActiveMenu(link.name);
-                    }
-                  }}
-                  onMouseLeave={() => {
-                    if (link.hasDropdown && !isClickTriggered) {
-                      setActiveMenu(null);
-                    }
-                  }}
-                >
-                  <Link
-                    href={link.href}
-                    onClick={(e) => {
-                      if (link.hasDropdown) {
-                        e.preventDefault();
-                        const isCurrentlyOpen = activeMenu === link.name;
-                        setActiveMenu(isCurrentlyOpen ? null : link.name);
-                        setIsClickTriggered(!isCurrentlyOpen);
-                      } else {
-                        setActiveMenu(null);
-                        setIsClickTriggered(false);
+                return (
+                  <div
+                    key={link.name}
+                    className="nav-item-container h-full flex items-center relative"
+                    onMouseEnter={() => {
+                      if (link.hasDropdown && !isClickTriggered) {
+                        setActiveMenu(link.name);
                       }
                     }}
-                    className={`flex items-center gap-1 text-[13px] font-normal tracking-tight transition-all duration-300 relative py-4 ${(isActive || activeMenu === link.name) ? "text-[#ff9900]" : "text-black hover:text-[#ff9900]"
-                      }`}
+                    onMouseLeave={() => {
+                      if (link.hasDropdown && !isClickTriggered) {
+                        setActiveMenu(null);
+                      }
+                    }}
                   >
-                    {link.name}
-                    {link.hasDropdown && (
-                      <IoMdArrowDropdown
-                        size={18}
-                        className={`transition-transform duration-300 ${activeMenu === link.name ? "rotate-180" : ""}`}
-                      />
-                    )}
-                    <span className={`absolute bottom-3 left-0 h-0.5 bg-[#ff9900] transition-all duration-300 ${(isActive || activeMenu === link.name) ? "w-full" : "w-0"
-                      }`} />
-                  </Link>
-
-                  {/* Mega Menu Dropdown */}
-                  {hasMegaMenu && megaMenuData && (
-                    <div
-                      className={`fixed left-0 w-full bg-[#000000] text-white shadow-2xl transition-all duration-300 origin-top z-[100] py-0 top-[110px] ${activeMenu === link.name
-                          ? "opacity-100 visible translate-y-0 pointer-events-auto"
-                          : "opacity-0 invisible -translate-y-2 pointer-events-none"
+                    <Link
+                      href={link.href}
+                      onClick={(e) => {
+                        if (link.hasDropdown) {
+                          e.preventDefault();
+                          const isCurrentlyOpen = activeMenu === link.name;
+                          setActiveMenu(isCurrentlyOpen ? null : link.name);
+                          setIsClickTriggered(!isCurrentlyOpen);
+                        } else {
+                          setActiveMenu(null);
+                          setIsClickTriggered(false);
+                        }
+                      }}
+                      className={`flex items-center gap-1 text-[13px] font-normal tracking-tight transition-all duration-300 relative py-4 ${(isActive || activeMenu === link.name) ? "text-[#ff9900]" : "text-black hover:text-[#ff9900]"
                         }`}
                     >
-                      {/* Triangular Pointer pointing to the selected nav item */}
-                      <div className={`absolute -top-2 h-4 w-4 bg-black rotate-45 z-[110] hidden lg:block border-t border-l border-white/5 ${
-                          link.name === "Services" ? "left-[36%] xl:left-[36.5%]" :
-                          link.name === "Packages" ? "left-[43%] xl:left-[43.5%]" :
-                          "left-[51%] xl:left-[51.5%]"
+                      {link.name}
+                      {link.hasDropdown && (
+                        <IoMdArrowDropdown
+                          size={18}
+                          className={`transition-transform duration-300 ${activeMenu === link.name ? "rotate-180" : ""}`}
+                        />
+                      )}
+                      <span className={`absolute bottom-3 left-0 h-0.5 bg-[#ff9900] transition-all duration-300 ${(isActive || activeMenu === link.name) ? "w-full" : "w-0"
                         }`} />
-                      <div className="max-w-7xl mx-auto flex h-full min-h-[450px]">
-                        {/* Left Sidebar Content */}
-                        <div className="w-[30%] py-5 pr-8  border-r border-white/5 flex flex-col justify-between relative overflow-hidden">
-                          <div className="relative z-10">
-                            <div className="bg-[#723700] p-6 rounded-xl mb-6 shadow-xl">
-                              <p className="text-sm font-medium leading-relaxed text-white">
-                                {megaMenuData.sidebar.description}
-                              </p>
+                    </Link>
+
+                    {/* Mega Menu Dropdown */}
+                    {hasMegaMenu && megaMenuData && (
+                      <div
+                        className={`fixed left-0 w-full bg-[#000000] text-white shadow-2xl transition-all duration-300 origin-top z-[100] py-0 top-[110px] ${activeMenu === link.name
+                          ? "opacity-100 visible translate-y-0 pointer-events-auto"
+                          : "opacity-0 invisible -translate-y-2 pointer-events-none"
+                          }`}
+                      >
+                        {/* Triangular Pointer pointing to the selected nav item */}
+                        <div className={`absolute -top-2 h-4 w-4 bg-black rotate-45 z-[110] hidden lg:block border-t border-l border-white/5 ${link.name === "Services" ? "left-[36%] xl:left-[36.5%]" :
+                            link.name === "Packages" ? "left-[43%] xl:left-[43.5%]" :
+                              "left-[51%] xl:left-[51.5%]"
+                          }`} />
+                        <div className="max-w-7xl mx-auto flex h-full min-h-[450px]">
+                          {/* Left Sidebar Content */}
+                          <div className="w-[30%] py-5 pr-8  border-r border-white/5 flex flex-col justify-between relative overflow-hidden">
+                            <div className="relative z-10">
+                              <div className="bg-[#723700] p-6 rounded-xl mb-6 shadow-xl">
+                                <p className="text-sm font-medium leading-relaxed text-white">
+                                  {megaMenuData.sidebar.description}
+                                </p>
+                              </div>
+
                             </div>
 
+                            {/* Rocket/Butterfly Image */}
+                            <div className="absolute top-40 right-[-100px] bottom-0  h-50 inset-0 z-10">
+                              <Image
+                                src={megaMenuData.sidebar.image}
+                                alt="Decorative"
+                                fill
+                                className="object-contain object-bottom transform hover:scale-110 transition-transform duration-700"
+                                sizes="300px"
+                              />
+                            </div>
                           </div>
 
-                          {/* Rocket/Butterfly Image */}
-                          <div className="absolute top-40 right-[-100px] bottom-0  h-50 inset-0 z-10">
-                            <Image
-                              src={megaMenuData.sidebar.image}
-                              alt="Decorative"
-                              fill
-                              className="object-contain object-bottom transform hover:scale-110 transition-transform duration-700"
-                              sizes="300px"
-                            />
+                          {/* Right Links Grid */}
+                          <div className="w-[70%] p-1 grid grid-cols-3   bg-black content-start">
+                            {megaMenuData.links.map((sublink: any) => (
+                              <Link
+                                key={sublink.name}
+                                href={sublink.href}
+                                onClick={() => {
+                                  setActiveMenu(null);
+                                  setIsClickTriggered(true);
+                                }}
+                                className="group/subitem flex items-center gap-4 hover:bg-white/5 p-3 rounded-lg transition-all duration-300"
+                              >
+                                <div className="relative h-10 w-10 flex-shrink-0 group-hover/subitem:scale-110 transition-transform">
+                                  <Image
+                                    src={sublink.icon}
+                                    alt={sublink.name}
+                                    fill
+                                    className="object-contain"
+                                    sizes="40px"
+                                  />
+                                </div>
+                                <div className="flex flex-col">
+                                  <span className="text-[15px] font-normal text-white group-hover/subitem:text-[#ff9900] transition-colors leading-tight">
+                                    {sublink.name}
+                                  </span>
+                                </div>
+                              </Link>
+                            ))}
                           </div>
                         </div>
+                      </div>
+                    )}
 
-                        {/* Right Links Grid */}
-                        <div className="w-[70%] p-1 grid grid-cols-3   bg-black content-start">
-                          {megaMenuData.links.map((sublink: any) => (
-                            <Link
-                              key={sublink.name}
-                              href={sublink.href}
-                              onClick={() => {
-                                setActiveMenu(null);
-                                setIsClickTriggered(true);
-                              }}
-                              className="group/subitem flex items-center gap-4 hover:bg-white/5 p-3 rounded-lg transition-all duration-300"
+                    {/* Custom Location Dropdown for Australia */}
+                    {link.name === "Location" && (
+                      <div
+                        className={`absolute top-full left-1/2 -translate-x-1/2 w-72 bg-[#ffffff] text-black shadow-2xl transition-all duration-300 origin-top z-[100] border border-white/10 rounded-2xl p-2 ${activeMenu === "Location"
+                          ? "opacity-100 visible translate-y-0 pointer-events-auto"
+                          : "opacity-0 invisible -translate-y-2 pointer-events-none"
+                          }`}
+                      >
+                        {/* Invisible Hover Bridge to prevent premature onMouseLeave */}
+                        <div className="absolute -top-6 left-0 right-0 h-6 bg-transparent" />
+
+                        {/* Triangular Pointer pointing to the Location nav link */}
+                        <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 h-3 w-3 bg-white rotate-45 z-[110] border-t border-l border-white/10" />
+
+                        <div className="flex flex-col space-y-1 relative z-10">
+                          {Object.entries(activeLocationData).map(([city, items]) => (
+                            <div
+                              key={city}
+                              className="relative group/city"
                             >
-                              <div className="relative h-10 w-10 flex-shrink-0 group-hover/subitem:scale-110 transition-transform">
-                                <Image
-                                  src={sublink.icon}
-                                  alt={sublink.name}
-                                  fill
-                                  className="object-contain"
-                                  sizes="40px"
-                                />
+                              <div className="flex items-center justify-between px-4 py-2.5 rounded-xl hover:bg-[#000000]/10 hover:text-[#ff9900] transition-colors cursor-pointer text-sm font-semibold">
+                                <span>{city}</span>
+                                <ChevronRight size={16} />
                               </div>
-                              <div className="flex flex-col">
-                                <span className="text-[15px] font-normal text-white group-hover/subitem:text-[#ff9900] transition-colors leading-tight">
-                                  {sublink.name}
-                                </span>
+
+                              {/* Submenu on Hover */}
+                              <div className="absolute top-0 left-full ml-2 w-72 bg-white text-black shadow-2xl opacity-0 invisible group-hover/city:opacity-100 group-hover/city:visible transition-all duration-300 border border-white/10 rounded-2xl p-2 space-y-1">
+
+                                {/* Invisible Hover Bridge */}
+                                <div className="absolute top-0 -left-4 bottom-0 w-4 bg-transparent" />
+
+                                {items.map((item) => (
+                                  <Link
+                                    key={item.name}
+                                    href={item.href}
+                                    className="block px-4 py-2.5 text-xs font-semibold rounded-lg hover:bg-[#ff9900] hover:text-black transition-colors"
+                                    onClick={() => {
+                                      setActiveMenu(null);
+                                      setIsClickTriggered(false);
+                                    }}
+                                  >
+                                    {item.name}
+                                  </Link>
+                                ))}
                               </div>
-                            </Link>
+                            </div>
                           ))}
                         </div>
                       </div>
-                    </div>
-                  )}
-
-                  {/* Custom Location Dropdown for Australia */}
-                  {link.name === "Location" && (
-                    <div
-                      className={`absolute top-full left-1/2 -translate-x-1/2 w-72 bg-[#ffffff] text-black shadow-2xl transition-all duration-300 origin-top z-[100] border border-white/10 rounded-2xl p-2 ${activeMenu === "Location"
-                        ? "opacity-100 visible translate-y-0 pointer-events-auto"
-                        : "opacity-0 invisible -translate-y-2 pointer-events-none"
-                        }`}
-                    >
-                      {/* Invisible Hover Bridge to prevent premature onMouseLeave */}
-                      <div className="absolute -top-6 left-0 right-0 h-6 bg-transparent" />
-
-                      {/* Triangular Pointer pointing to the Location nav link */}
-                      <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 h-3 w-3 bg-white rotate-45 z-[110] border-t border-l border-white/10" />
-
-                      <div className="flex flex-col space-y-1 relative z-10">
-                        {Object.entries(locationMenuData).map(([city, items]) => (
-                          <div
-                            key={city}
-                            className="relative group/city"
-                          >
-                            <div className="flex items-center justify-between px-4 py-2.5 rounded-xl hover:bg-[#000000]/10 hover:text-[#ff9900] transition-colors cursor-pointer text-sm font-semibold">
-                              <span>{city}</span>
-                              <ChevronRight size={16} />
-                            </div>
-
-                            {/* Submenu on Hover */}
-                            <div className="absolute top-0 left-full ml-2 w-72 bg-white text-black shadow-2xl opacity-0 invisible group-hover/city:opacity-100 group-hover/city:visible transition-all duration-300 border border-white/10 rounded-2xl p-2 space-y-1">
-
-                              {/* Invisible Hover Bridge */}
-                              <div className="absolute top-0 -left-4 bottom-0 w-4 bg-transparent" />
-
-                              {items.map((item) => (
-                                <Link
-                                  key={item.name}
-                                  href={item.href}
-                                  className="block px-4 py-2.5 text-xs font-semibold rounded-lg hover:bg-[#ff9900] hover:text-black transition-colors"
-                                  onClick={() => {
-                                    setActiveMenu(null);
-                                    setIsClickTriggered(false);
-                                  }}
-                                >
-                                  {item.name}
-                                </Link>
-                              ))}
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-          </nav>
+                    )}
+                  </div>
+                );
+              })}
+            </nav>
+          )}
 
           {/* Desktop Call Action */}
-          <div className="hidden lg:flex items-center">
-            <Link
-              href="tel:+919888484310"
-              className="rounded-full bg-black px-10 py-3.5 text-sm font-normal text-white tracking-normal transition-all hover:bg-[#ff9900] active:scale-95 shadow-lg"
-            >
-              Call Now
-            </Link>
-          </div>
+          {!isEdmonton && (
+            <div className="hidden lg:flex items-center">
+              <Link
+                href="tel:+919888484310"
+                className="rounded-full bg-black px-10 py-3.5 text-sm font-normal text-white tracking-normal transition-all hover:bg-[#ff9900] active:scale-95 shadow-lg"
+              >
+                Call Now
+              </Link>
+            </div>
+          )}
 
           {/* Mobile Menu Toggle (Visible on < lg, hidden on lg) */}
-          <button
-            className="lg:hidden w-11 h-11 flex items-center justify-center bg-white border-2 border-[#ff9900] rounded-xl text-black hover:bg-gray-50 transition-colors z-50 flex-shrink-0"
-            onClick={() => {
-              setIsMobileMenuOpen(!isMobileMenuOpen);
-              setIsMobileLocOpen(false);
-            }}
-            aria-label="Toggle Menu"
-          >
-            {isMobileMenuOpen ? <X size={22} className="text-black" /> : <Menu size={22} className="text-black" />}
-          </button>
+          {!isEdmonton && (
+            <button
+              className="lg:hidden w-11 h-11 flex items-center justify-center bg-white border-2 border-[#ff9900] rounded-xl text-black hover:bg-gray-50 transition-colors z-50 flex-shrink-0"
+              onClick={() => {
+                setIsMobileMenuOpen(!isMobileMenuOpen);
+                setIsMobileLocOpen(false);
+              }}
+              aria-label="Toggle Menu"
+            >
+              {isMobileMenuOpen ? <X size={22} className="text-black" /> : <Menu size={22} className="text-black" />}
+            </button>
+          )}
         </div>
       </header>
 
       {/* Mobile Menu */}
-      {isMobileMenuOpen && (
+      {!isEdmonton && isMobileMenuOpen && (
         <div className="fixed inset-0 z-40 bg-white lg:hidden">
           <div className="flex flex-col h-full pt-24 px-6 overflow-y-auto">
 
@@ -424,7 +452,11 @@ export default function Header() {
                 const isActive = pathname === link.href;
                 const hasMegaMenu = link.name === "Services" || link.name === "Packages" || link.name === "What We Do" || link.name === "Location";
                 const megaMenuData = (link.name === "Services" || link.name === "Packages" || link.name === "What We Do")
-                  ? (isAustraliaAboutUs ? AUSTRALIA_MEGA_MENU_DATA : MEGA_MENU_DATA)[link.name as keyof typeof MEGA_MENU_DATA]
+                  ? (isAustraliaAboutUs
+                      ? AUSTRALIA_MEGA_MENU_DATA
+                      : isCanada
+                        ? (CANADA_MEGA_MENU_DATA as any)
+                        : MEGA_MENU_DATA)[link.name as keyof typeof MEGA_MENU_DATA]
                   : null;
                 const isExpanded = expandedSection === link.name;
 
@@ -480,7 +512,7 @@ export default function Header() {
                     {/* Mobile Location Accordion Content */}
                     {link.name === "Location" && isExpanded && (
                       <div className="grid grid-cols-1 gap-4 pb-6 pl-4">
-                        {Object.entries(locationMenuData).map(([city, items]) => (
+                        {Object.entries(activeLocationData).map(([city, items]) => (
                           <div key={city} className="space-y-2 border-b border-gray-100 pb-3 last:border-0 last:pb-0">
                             <h4 className="text-xs font-bold text-[#ff9900] uppercase tracking-wider">{city}</h4>
                             <div className="flex flex-col space-y-2 pl-2">

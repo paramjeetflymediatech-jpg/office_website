@@ -3,7 +3,6 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
 
 export default function SEOPricingTable() {
   const plans = ["Starter", "Bronze", "Silver"];
@@ -83,13 +82,7 @@ export default function SEOPricingTable() {
   return (
     <div className="overflow-x-auto font-sans">
       <div className="max-w-[1400px] mx-auto px-4">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="min-w-[900px] border border-gray-300 rounded-lg overflow-hidden shadow-2xl"
-        >
+        <div className="min-w-[900px] border border-gray-300 rounded-lg overflow-hidden shadow-2xl">
           <table className="w-full text-left border-collapse">
             <thead>
               <tr className="bg-white border-b border-gray-300">
@@ -163,7 +156,7 @@ export default function SEOPricingTable() {
               ))}
             </tbody>
           </table>
-        </motion.div>
+        </div>
       </div>
     </div>
   );

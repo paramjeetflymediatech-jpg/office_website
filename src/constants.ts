@@ -189,6 +189,29 @@ export const AUSTRALIA_MEGA_MENU_DATA = {
   }
 };
 
+export const CANADA_MEGA_MENU_DATA = {
+  "Services": {
+    sidebar: {
+      title: "Digital Marketing Canada",
+      description: "Explore and Excel in the digital marketing world with our comprehensive, data-driven and result-oriented digital marketing services in Canada. Whether it is SEO, Web Designing, Mobile Marketing, PPC, Content Marketing Strategy or Social Media Marketing, we have got all your needs covered.",
+      image: "/dropdown-icons/butterfly.webp"
+    },
+    links: [
+      { name: "Web Designing", href: "/canada/web-design", icon: "/dropdown-icons/web-design-devep.webp" },
+      { name: "Digital Consultancy", href: "/canada/digital-consultancy", icon: "/dropdown-icons/digital-consultancy-icon.webp" },
+      { name: "Mobile Marketing", href: "/canada/mobile-marketing", icon: "/dropdown-icons/mobile-marketing-1.webp" },
+      { name: "Youtube Advertising Agency", href: "/canada/youtube-advertising-agency-sydney", icon: "/Services/youtube-logo.png" },
+      { name: "Reputation Management", href: "/canada/reputation-management", icon: "/Services/web-develop-1.png" },
+      { name: "Paid Search Agency", href: "/canada/paid-search-agency-sydney", icon: "/Services/paymen.png" },
+      { name: "Website Development", href: "/canada/web-development", icon: "/Services/mobile-marketing-1.png" },
+      { name: "Google Display Advertising", href: "/canada/google-display-advertising-agency", icon: "/Services/google.png" },
+      { name: "Facebook Marketing", href: "/canada/facebook-marketing-sydney", icon: "/Services/facebook-logo-1.png" },
+      { name: "Google Shopping Ads", href: "/canada/google-shopping-ads-agency-sydney", icon: "/Services/fdksfhd.png" },
+      { name: "Content Marketing Strategy", href: "/canada/content-marketing-strategy", icon: "/Services/contentr.png" },
+    ]
+  },
+};
+
 export const CMS_PLATFORMS = ['WP', 'PHP', 'MG', 'DR', 'JO', 'SH'];
 
 export const PAYMENT_GATEWAYS = ['AMEX', 'MAESTRO', 'MASTER', 'VISA', 'DIRECT', 'PAYPAL'];
@@ -219,7 +242,7 @@ export const HEADER_LOCATIONS = [
     name: "Canada",
     href: "/canada",
     subLocations: [
-      { name: "Edmonton", href: "/canada/edmonton" }
+      { name: "Edmonton", href: "/canada/website-designing-company-in-edmonton" }
     ]
   },
   {
@@ -234,7 +257,7 @@ export const AUSTRALIA_HEADER_LOCATIONS = [
     name: "Canada",
     href: "/canada",
     subLocations: [
-      { name: "Edmonton", href: "/canada/edmonton" }
+      { name: "Edmonton", href: "/canada/website-designing-company-in-edmonton" }
     ]
   },
   {
