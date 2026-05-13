@@ -66,12 +66,12 @@ export default function InstagramMarketingPage() {
   return (
     <main className="min-h-screen bg-[#EFEFEF]">
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-4 bg-[#EFEFEF]">
+      <section className="pt-16 pb-10 px-4 bg-[#EFEFEF]">
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
           
           {/* Left Column: Image */}
           <div className="w-full lg:w-1/2 flex justify-center">
-            <div className="w-full max-w-[600px] overflow-hidden">
+            <div className="w-full max-w-[600px] lg:max-w-[440px] overflow-hidden">
               <img 
                 loading="lazy" 
                 decoding="async" 
@@ -88,7 +88,11 @@ export default function InstagramMarketingPage() {
 
           {/* Right Column: Text Content */}
           <div className="w-full lg:w-1/2 space-y-6">
-            <h1 className="text-4xl md:text-5xl font-bold text-black  leading-tight">
+
+            <h1 
+              style={{ fontFamily: "'Playfair Display', sans-serif" }}
+              className="text-4xl md:text-5xl font-bold text-black leading-tight"
+            >
               An Instagram Marketing Company in Ludhiana
             </h1>
             
@@ -107,8 +111,11 @@ export default function InstagramMarketingPage() {
         <div className="max-w-7xl mx-auto flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-20">
           
           {/* Left Column: Text Content */}
-          <div className="w-full lg:w-1/2 space-y-6">
-            <h2 className="text-3xl md:text-4xl font-bold text-black leading-tight">
+          <div className="w-full lg:w-1/2 space-y-2">
+            <h2 
+              style={{ fontFamily: "'Playfair Display', sans-serif" }}
+              className="text-3xl md:text-4xl font-bold text-black leading-tight"
+            >
               Optimization of the account
             </h2>
             
@@ -116,14 +123,20 @@ export default function InstagramMarketingPage() {
               The best Instagram accounts always have the following peculiarly maintained things that make their profile unique from the others:
             </p>
 
-            <h2 className="text-3xl md:text-4xl font-bold text-black leading-tight pt-4">
+            <h2 
+              style={{ fontFamily: "'Playfair Display', sans-serif" }}
+              className="text-3xl md:text-4xl font-bold text-black leading-tight pt-4"
+            >
               Bio
             </h2>
             <p className="text-gray-600 text-[15px] sm:text-base leading-relaxed">
               Bio is of utmost significance for the profile on Instagram. Because from the bio itself the user can envision what the account is all about and what nature he would be getting to experience. A good bio is always accompanied by relevant emojis.
             </p>
 
-            <h2 className="text-3xl md:text-4xl font-bold text-black leading-tight pt-4">
+            <h2 
+              style={{ fontFamily: "'Playfair Display', sans-serif" }}
+              className="text-3xl md:text-4xl font-bold text-black leading-tight pt-4"
+            >
               Profile Picture
             </h2>
             <p className="text-gray-600 text-[15px] sm:text-base leading-relaxed">
@@ -174,7 +187,10 @@ export default function InstagramMarketingPage() {
 
           {/* Right Column: Text Content */}
           <div className="w-full lg:w-1/2 space-y-6">
-            <h2 className="text-3xl md:text-4xl font-bold text-black leading-tight">
+            <h2 
+              style={{ fontFamily: "'Playfair Display', sans-serif" }}
+              className="text-3xl md:text-4xl font-bold text-black leading-tight"
+            >
               Follow relevant accounts
             </h2>
             
@@ -203,7 +219,10 @@ export default function InstagramMarketingPage() {
                 <div className="mb-6 bg-orange-50 w-14 h-14 rounded-full flex items-center justify-center">
                   {strategy.icon}
                 </div>
-                <h3 className="text-xl font-bold text-black mb-4">
+                <h3 
+                  style={{ fontFamily: "'Playfair Display', sans-serif" }}
+                  className="text-xl font-bold text-black mb-4"
+                >
                   {strategy.title}
                 </h3>
                 <p className="text-gray-600 leading-relaxed text-[15px] whitespace-pre-wrap">
@@ -218,7 +237,10 @@ export default function InstagramMarketingPage() {
       {/* Final CTA Text Section */}
       <section className="py-10 px-4 bg-[#EFEFEF]">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-2xl md:text-xl font-bold text-black leading-relaxed">
+          <h2 
+            style={{ fontFamily: "'Playfair Display', sans-serif" }}
+            className="text-2xl md:text-xl font-bold text-black leading-relaxed"
+          >
             So if you are looking for effective Instagram marketing strategies then please contact us. We shall be very happy to be given a chance to escalate your followers.
           </h2>
         </div>

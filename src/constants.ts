@@ -130,6 +130,65 @@ export const MEGA_MENU_DATA = {
   }
 };
 
+export const AUSTRALIA_MEGA_MENU_DATA = {
+  "Services": {
+    sidebar: {
+      title: "Digital Marketing Australia",
+      description: "Explore and Excel in the digital marketing world with our comprehensive, data-driven and result-oriented digital marketing services in Australia. Whether it is SEO, Web Designing, Mobile Marketing, PPC, Content Marketing Strategy or Social Media Marketing, we have got all your needs covered.",
+      image: "/dropdown-icons/butterfly.webp"
+    },
+    links: [
+      { name: "Web Designing", href: "/australia/web-design", icon: "/dropdown-icons/web-design-devep.webp" },
+      { name: "Digital Consultancy", href: "/australia/digital-consultancy", icon: "/dropdown-icons/digital-consultancy-icon.webp" },
+      { name: "Mobile Marketing", href: "/australia/mobile-marketing", icon: "/dropdown-icons/mobile-marketing-1.webp" },
+      { name: "Youtube Advertising Agency", href: "/australia/youtube-advertising-agency-sydney", icon: "/services/youtube-logo.png" },
+      { name: "Reputation Management", href: "/australia/reputation-management", icon: "/services/web-develop-1.png" },
+      { name: "Paid Search Agency", href: "/australia/paid-search-agency-sydney", icon: "/services/paymen.png" },
+      { name: "Website Development", href: "/australia/web-development", icon: "/services/mobile-marketing-1.png" },
+      { name: "Google Display Advertising", href: "/australia/google-display-advertising-agency", icon: "/services/google.png" },
+      { name: "Facebook Marketing", href: "/australia/facebook-marketing-sydney", icon: "/services/facebook-logo-1.png" },
+      { name: "Google Shopping Ads", href: "/australia/google-shopping-ads-agency-sydney", icon: "/services/fdksfhd.png" },
+      { name: "Content Marketing Strategy", href: "/australia/content-marketing-strategy", icon: "/services/contentr.png" },
+    ]
+  },
+  "Packages": {
+    sidebar: {
+      title: "Packages",
+      description: "Our extensive range of services covers multiple aspects of digital marketing and caters to your distinct requirements. Thus, we offer multiple packages such as Web Design, Logo Design, PPC management, SEO package and more. These can be tailored as per your unique requirements in Australia.",
+      image: "/dropdown-icons/ROCKET-FLY.webp"
+    },
+    links: [
+      { name: "Logo Design", href: "/australia/logo-design-sydney", icon: "/dropdown-icons/logo-design.webp" },
+      { name: "SEO Packages", href: "/australia/seo-packages", icon: "/dropdown-icons/SEO.webp" },
+      { name: "Digital Marketing", href: "/australia/digital-marketing", icon: "/dropdown-icons/digital-consultancy-icon.webp" },
+      { name: "Web Design", href: "/australia/web-designing-packages", icon: "/dropdown-icons/web-design-devep.webp" },
+      { name: "Pay Per Click (PPC) Packages", href: "/australia/ppc", icon: "/dropdown-icons/Pay-per-click111.webp" },
+      { name: "Ecommerce Website Development", href: "/australia/ecommerce-website-development", icon: "/dropdown-icons/ecommerce.webp" },
+      { name: "Social Media Branding", href: "/australia/social-media-branding", icon: "/dropdown-icons/social-media-icon.webp" }
+    ]
+  },
+  "What We Do": {
+    sidebar: {
+      title: "Local Services",
+      description: "We serve multiple locations across Australia, providing top-notch web design, development, and digital marketing services customized to local business needs in Brisbane, Melbourne, Sydney, and surrounding areas.",
+      image: "/dropdown-icons/butterfly.webp"
+    },
+    links: [
+      { name: "SEO", href: "/australia/search-engine-optimization", icon: "/WhatWeDo/fgfgfg.png" },
+      { name: "Local SEO", href: "/australia/local-seo", icon: "/WhatWeDo/r07.png" },
+      { name: "Social Media Marketing", href: "/australia/social-media-marketing", icon: "/WhatWeDo/social-media-icon.png" },
+      { name: "Pay Per Click", href: "/australia/pay-per-click", icon: "/WhatWeDo/ffjdksfnsd.png" },
+      { name: "Enterprise SEO Agency", href: "/australia/enterprise-seo-agency-sydney", icon: "/WhatWeDo/enterprise-seo.png" },
+      { name: "Ecommerce SEO Agency", href: "/australia/ecommerce-seo-agency-sydney", icon: "/WhatWeDo/r10.png" },
+      { name: "SEO Website Migration", href: "/australia/seo-website-migration-services-sydney", icon: "/WhatWeDo/migr.png" },
+      { name: "On Page SEO", href: "/australia/on-page-seo-optimization-services-sydney", icon: "/WhatWeDo/gfsdfgfsd.png" },
+      { name: "Technical SEO Services", href: "/australia/technical-seo-services-sydney", icon: "/WhatWeDo/r11-1.png" },
+      { name: "Link Building Agency", href: "/australia/link-building-agency-sydney", icon: "/WhatWeDo/link.png" },
+      { name: "Off Page SEO", href: "/australia/off-page-seo-services-sydney", icon: "/WhatWeDo/offpage-seo.png" }
+    ]
+  }
+};
+
 export const CMS_PLATFORMS = ['WP', 'PHP', 'MG', 'DR', 'JO', 'SH'];
 
 export const PAYMENT_GATEWAYS = ['AMEX', 'MAESTRO', 'MASTER', 'VISA', 'DIRECT', 'PAYPAL'];

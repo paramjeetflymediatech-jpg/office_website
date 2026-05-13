@@ -6,7 +6,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { ChevronDown, ChevronRight, Menu, X, Phone } from "lucide-react";
 import { IoMdArrowDropdown } from "react-icons/io";
-import { NAV_LINKS, HEADER_LOCATIONS, AUSTRALIA_HEADER_LOCATIONS, MEGA_MENU_DATA } from "@/constants";
+import { NAV_LINKS, HEADER_LOCATIONS, AUSTRALIA_HEADER_LOCATIONS, MEGA_MENU_DATA, AUSTRALIA_MEGA_MENU_DATA } from "@/constants";
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -36,7 +36,7 @@ export default function Header() {
 
   const navLinks = isAustraliaAboutUs
     ? [
-      { name: "About Us", href: "/about-us" },
+      { name: "About Us", href: "/australia/about-us" },
       { name: "How We Work", href: "/how-we-work" },
       { name: "Services", href: "/#", hasDropdown: true },
       { name: "Packages", href: "/#", hasDropdown: true },
@@ -176,7 +176,9 @@ export default function Header() {
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
               const hasMegaMenu = link.name === "Services" || link.name === "Packages" || link.name === "What We Do";
-              const megaMenuData = hasMegaMenu ? MEGA_MENU_DATA[link.name as keyof typeof MEGA_MENU_DATA] : null;
+              const megaMenuData = hasMegaMenu
+                ? (isAustraliaAboutUs ? AUSTRALIA_MEGA_MENU_DATA : MEGA_MENU_DATA)[link.name as keyof typeof MEGA_MENU_DATA]
+                : null;
 
               return (
                 <div
@@ -421,7 +423,9 @@ export default function Header() {
               {navLinks.map((link) => {
                 const isActive = pathname === link.href;
                 const hasMegaMenu = link.name === "Services" || link.name === "Packages" || link.name === "What We Do" || link.name === "Location";
-                const megaMenuData = (link.name === "Services" || link.name === "Packages" || link.name === "What We Do") ? MEGA_MENU_DATA[link.name as keyof typeof MEGA_MENU_DATA] : null;
+                const megaMenuData = (link.name === "Services" || link.name === "Packages" || link.name === "What We Do")
+                  ? (isAustraliaAboutUs ? AUSTRALIA_MEGA_MENU_DATA : MEGA_MENU_DATA)[link.name as keyof typeof MEGA_MENU_DATA]
+                  : null;
                 const isExpanded = expandedSection === link.name;
 
                 return (
