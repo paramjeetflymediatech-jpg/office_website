@@ -6,7 +6,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { ChevronDown, ChevronRight, Menu, X, Phone } from "lucide-react";
 import { IoMdArrowDropdown } from "react-icons/io";
-import { NAV_LINKS, HEADER_LOCATIONS, AUSTRALIA_HEADER_LOCATIONS, MEGA_MENU_DATA, AUSTRALIA_MEGA_MENU_DATA, CANADA_MEGA_MENU_DATA } from "@/constants";
+import { NAV_LINKS, HEADER_LOCATIONS, AUSTRALIA_HEADER_LOCATIONS, CANADA_HEADER_LOCATIONS, MEGA_MENU_DATA, AUSTRALIA_MEGA_MENU_DATA, CANADA_MEGA_MENU_DATA } from "@/constants";
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -39,6 +39,17 @@ export default function Header() {
   const canadaLocationMenuData = {
     "Edmonton": [
       { name: "Website Designing in Edmonton", href: "/canada/website-designing-company-in-edmonton" }
+    ],
+    "Vancouver": [
+      { name: "Website Designing in Vancouver", href: "/canada/website-designing-company-in-vancouver" },
+      { name: "Google Adwords Company in Vancouver", href: "/canada/google-adwords-company-in-vancouver" },
+      { name: "SEO Agency & SEO Experts in Vancouver", href: "/canada/seo-agency-seo-experts-in-vancouver" },
+      { name: "Mobile App Development in Vancouver", href: "/canada/mobile-app-development-in-vancouver" },
+      // { name: "Web Designing & Web Development in Vancouver", href: "/canada/web-designing-web-development-in-vancouver" },
+      { name: "SMO Agency & SMO Experts in Vancouver", href: "/canada/smo-agency-smo-experts-in-vancouver" },
+      { name: "Best Digital Marketing Agency in Vancouver", href: "/canada/best-digital-marketing-agency-in-vancouver" },
+      { name: "AI SEO Agency in Vancouver", href: "/canada/ai-seo-agency-in-vancouver" },
+      { name: "E-Commerce SEO Agency in Vancouver", href: "/canada/e-commerce-seo-agency-in-vancouver" }
     ]
   };
 
@@ -57,9 +68,11 @@ export default function Header() {
     ]
     : isCanada
       ? [
-        { name: "About Us", href: "/about-us" },
+        { name: "About Us", href: "/canada/about-us" },
         { name: "Services", href: "/#", hasDropdown: true },
         { name: "Location", href: "/#", hasDropdown: true },
+        { name: "Portfolio", href: "/canada/portfolio" },
+        { name: "Blog", href: "/blog" },
         { name: "Contact Us", href: "/contact-us" },
       ]
       : NAV_LINKS;
@@ -121,7 +134,7 @@ export default function Header() {
               }`}
           >
             <div className="flex flex-col">
-              {(isAustraliaAboutUs ? AUSTRALIA_HEADER_LOCATIONS : HEADER_LOCATIONS).map((loc) => (
+              {(isAustraliaAboutUs ? AUSTRALIA_HEADER_LOCATIONS : isCanada ? CANADA_HEADER_LOCATIONS : HEADER_LOCATIONS).map((loc: { name: string; href: string; subLocations?: { name: string; href: string; }[] }) => (
                 <div key={loc.name} className="relative group/sub">
                   <Link
                     href={loc.href}
@@ -197,11 +210,11 @@ export default function Header() {
                 const isActive = pathname === link.href;
                 const hasMegaMenu = link.name === "Services" || link.name === "Packages" || link.name === "What We Do";
                 const megaMenuData = hasMegaMenu
-                  ? (isAustraliaAboutUs
-                      ? AUSTRALIA_MEGA_MENU_DATA
-                      : isCanada
-                        ? (CANADA_MEGA_MENU_DATA as any)
-                        : MEGA_MENU_DATA)[link.name as keyof typeof MEGA_MENU_DATA]
+                  ? (isCanada
+                      ? CANADA_MEGA_MENU_DATA[link.name as keyof typeof CANADA_MEGA_MENU_DATA] || MEGA_MENU_DATA[link.name as keyof typeof MEGA_MENU_DATA]
+                      : isAustraliaAboutUs
+                        ? AUSTRALIA_MEGA_MENU_DATA[link.name as keyof typeof AUSTRALIA_MEGA_MENU_DATA] || MEGA_MENU_DATA[link.name as keyof typeof MEGA_MENU_DATA]
+                        : MEGA_MENU_DATA[link.name as keyof typeof MEGA_MENU_DATA])
                   : null;
 
                 return (
@@ -452,11 +465,11 @@ export default function Header() {
                 const isActive = pathname === link.href;
                 const hasMegaMenu = link.name === "Services" || link.name === "Packages" || link.name === "What We Do" || link.name === "Location";
                 const megaMenuData = (link.name === "Services" || link.name === "Packages" || link.name === "What We Do")
-                  ? (isAustraliaAboutUs
-                      ? AUSTRALIA_MEGA_MENU_DATA
-                      : isCanada
-                        ? (CANADA_MEGA_MENU_DATA as any)
-                        : MEGA_MENU_DATA)[link.name as keyof typeof MEGA_MENU_DATA]
+                  ? (isCanada
+                      ? CANADA_MEGA_MENU_DATA[link.name as keyof typeof CANADA_MEGA_MENU_DATA] || MEGA_MENU_DATA[link.name as keyof typeof MEGA_MENU_DATA]
+                      : isAustraliaAboutUs
+                        ? AUSTRALIA_MEGA_MENU_DATA[link.name as keyof typeof AUSTRALIA_MEGA_MENU_DATA] || MEGA_MENU_DATA[link.name as keyof typeof MEGA_MENU_DATA]
+                        : MEGA_MENU_DATA[link.name as keyof typeof MEGA_MENU_DATA])
                   : null;
                 const isExpanded = expandedSection === link.name;
 

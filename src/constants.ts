@@ -197,17 +197,17 @@ export const CANADA_MEGA_MENU_DATA = {
       image: "/dropdown-icons/butterfly.webp"
     },
     links: [
-      { name: "Web Designing", href: "/canada/web-design", icon: "/dropdown-icons/web-design-devep.webp" },
-      { name: "Digital Consultancy", href: "/canada/digital-consultancy", icon: "/dropdown-icons/digital-consultancy-icon.webp" },
-      { name: "Mobile Marketing", href: "/canada/mobile-marketing", icon: "/dropdown-icons/mobile-marketing-1.webp" },
-      { name: "Youtube Advertising Agency", href: "/canada/youtube-advertising-agency-sydney", icon: "/Services/youtube-logo.png" },
-      { name: "Reputation Management", href: "/canada/reputation-management", icon: "/Services/web-develop-1.png" },
-      { name: "Paid Search Agency", href: "/canada/paid-search-agency-sydney", icon: "/Services/paymen.png" },
-      { name: "Website Development", href: "/canada/web-development", icon: "/Services/mobile-marketing-1.png" },
-      { name: "Google Display Advertising", href: "/canada/google-display-advertising-agency", icon: "/Services/google.png" },
-      { name: "Facebook Marketing", href: "/canada/facebook-marketing-sydney", icon: "/Services/facebook-logo-1.png" },
-      { name: "Google Shopping Ads", href: "/canada/google-shopping-ads-agency-sydney", icon: "/Services/fdksfhd.png" },
-      { name: "Content Marketing Strategy", href: "/canada/content-marketing-strategy", icon: "/Services/contentr.png" },
+      { name: "Web Designing", href: "/canada/web-designing", icon: "/dropdown-icons/web-design-devep.webp" },
+      { name: "Digital Marketing", href: "/canada/digital-marketing-agency-in-edmonton", icon: "/dropdown-icons/digital-consultancy-icon.webp" },
+      // { name: "Mobile Marketing", href: "/canada/mobile-marketing", icon: "/dropdown-icons/mobile-marketing-1.webp" },
+      // { name: "Youtube Advertising Agency", href: "/canada/youtube-advertising-agency-sydney", icon: "/Services/youtube-logo.png" },
+      // { name: "Reputation Management", href: "/canada/reputation-management", icon: "/Services/web-develop-1.png" },
+      // { name: "Paid Search Agency", href: "/canada/paid-search-agency-sydney", icon: "/Services/paymen.png" },
+      // { name: "Website Development", href: "/canada/web-development", icon: "/Services/mobile-marketing-1.png" },
+      // { name: "Google Display Advertising", href: "/canada/google-display-advertising-agency", icon: "/Services/google.png" },
+      // { name: "Facebook Marketing", href: "/canada/facebook-marketing-sydney", icon: "/Services/facebook-logo-1.png" },
+      // { name: "Google Shopping Ads", href: "/canada/google-shopping-ads-agency-sydney", icon: "/Services/fdksfhd.png" },
+      // { name: "Content Marketing Strategy", href: "/canada/content-marketing-strategy", icon: "/Services/contentr.png" },
     ]
   },
 };
@@ -241,9 +241,10 @@ export const HEADER_LOCATIONS = [
   {
     name: "Canada",
     href: "/canada",
-    subLocations: [
-      { name: "Edmonton", href: "/canada/website-designing-company-in-edmonton" }
-    ]
+    // subLocations: [
+    //   { name: "Edmonton", href: "/canada/website-designing-company-in-edmonton" },
+    //   { name: "Vancouver", href: "/canada/website-designing-company-in-vancouver" }
+    // ]
   },
   {
     name: "Australia",
@@ -256,12 +257,25 @@ export const AUSTRALIA_HEADER_LOCATIONS = [
   {
     name: "Canada",
     href: "/canada",
-    subLocations: [
-      { name: "Edmonton", href: "/canada/website-designing-company-in-edmonton" }
-    ]
+    // subLocations: [
+    //   { name: "Edmonton", href: "/canada/website-designing-company-in-edmonton" },
+    //   { name: "Vancouver", href: "/canada/website-designing-company-in-vancouver" }
+    // ]
   },
   {
     name: "India",
     href: "/",
+  },
+];
+
+// Top bar locations shown on CANADA pages (/canada/*)
+export const CANADA_HEADER_LOCATIONS = [
+  {
+    name: "India",
+    href: "/",
+  },
+  {
+    name: "Australia",
+    href: "/australia/about-us",
   },
 ];
