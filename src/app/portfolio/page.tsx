@@ -137,26 +137,33 @@ export default function PortfolioPage() {
       </section>
 
       {/* Main Content Container */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-24 -mt-10 relative z-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-24 pt-8 relative z-20">
         {/* Filter Tabs - Floating Style */}
-        <div className="mb-16">
+        <div className="mb-12">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.1 }}
-            className="flex flex-wrap justify-center gap-3 bg-white/80 backdrop-blur-md p-6 rounded-3xl shadow-xl shadow-black/5 border border-white/50"
+            className="flex flex-wrap justify-center gap-6 md:gap-8 p-6"
           >
             {categories.map((cat, idx) => (
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`px-8 py-3 rounded-full font-bold transition-all duration-300 border-2 ${
+                className={`relative pb-1 font-bold transition-all duration-300 ${
                   activeCategory === cat
-                    ? 'bg-black border-black text-white shadow-xl scale-105'
-                    : 'bg-white border-gray-100 text-gray-500 hover:border-[#ff9900] hover:text-[#ff9900]'
+                    ? 'text-[#ff9900]'
+                    : 'text-gray-500 hover:text-[#ff9900]'
                 }`}
               >
                 {cat}
+                {/* Underline for active state */}
+                {activeCategory === cat && (
+                  <motion.div 
+                    layoutId="activeFilterUnderline"
+                    className="absolute left-0 right-0 bottom-0 h-0.5 bg-[#ff9900]"
+                  />
+                )}
               </button>
             ))}
           </motion.div>
@@ -174,18 +181,10 @@ export default function PortfolioPage() {
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.4, delay: (index % 20) * 0.05 }}
                 viewport={{ once: true }}
-                className="group relative bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 aspect-square cursor-pointer"
+                className="group relative overflow-hidden aspect-[3/2] cursor-pointer"
                 onClick={() => setSelectedImage(item.imageUrl)}
               >
-                <Image src={item.imageUrl} alt={item.title} fill className="object-contain p-2 transition-transform duration-700 group-hover:scale-105" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-8">
-                  <div className="translate-y-4 group-hover:translate-y-0 transition-transform duration-500 space-y-2">
-                    <span className="text-[#ff9900] text-xs font-bold uppercase tracking-widest">{item.category}</span>
-                    <h3 className="text-white text-xl font-serif font-bold">{item.title}</h3>
-                    <div className="w-8 h-0.5 bg-[#ff9900] rounded-full"></div>
-                    <div className="pt-4"><div className="inline-flex items-center gap-2 text-white/80 text-sm font-medium"><Maximize2 size={16} />View Project</div></div>
-                  </div>
-                </div>
+                <Image src={item.imageUrl} alt={item.title} fill className="object-cover transition-transform duration-700 group-hover:scale-110" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
               </motion.div>
             ))}
           </AnimatePresence>
@@ -202,17 +201,6 @@ export default function PortfolioPage() {
           </div>
         )}
 
-        {/* End of Gallery Indicator */}
-        {visibleCount >= filteredItems.length && filteredItems.length > 0 && (
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mt-20 p-10 border-t border-gray-100">
-            <div className="w-12 h-12 bg-gray-50 rounded-full flex items-center justify-center mx-auto mb-4">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gray-300">
-                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/>
-              </svg>
-            </div>
-            <p className="text-gray-400 font-serif italic text-lg">You've reached the end of our success stories.</p>
-          </motion.div>
-        )}
 
         {/* Empty State */}
         {filteredItems.length === 0 && (

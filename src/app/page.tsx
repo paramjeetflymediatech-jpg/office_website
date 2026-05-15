@@ -78,10 +78,10 @@ export default function Home() {
         <div className="max-w-7xl mx-auto grid grid-cols-1 bg-img['/image.png'] lg:grid-cols-2 md:grid-cols-2 items-center relative z-10 w-full gap-12 lg:gap-0">
           {/* Left Content */}
           <div className=" text-center lg:text-left flex flex-col items-center lg:items-start order-2 md:order-1">
-            <h2 className="text-[#ff9900] text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-serif font-bold leading-tight flex justify-center lg:justify-start min-h-[1.2em]">
+            <h2 className="text-[#FA7E09] text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-serif font-bold leading-tight flex justify-center lg:justify-start min-h-[1.2em]">
               <TypewriterText key={textIndex} text={SLIDING_TEXTS[textIndex]} speed={70} />
             </h2>
-            <h1 className="text-[28px] sm:text-[34px] md:text-[42px] lg:text-[50px] font-serif font-black text-black leading-[1.2] max-w-3xl mt-2">
+            <h1 className="text-[32px] md:text-[42px] font-bold text-[#000] leading-tight md:leading-[56px] max-w-3xl mt-2" style={{ fontFamily: '"Playfair Display", Sans-serif' }}>
               With Your Trusted Partner For Result-Oriented Digital Marketing Solutions
             </h1>
             <p className="text-gray-700 font-medium max-w-lg leading-relaxed pt-2 text-[16px]">
@@ -89,12 +89,12 @@ export default function Home() {
             </p>
 
             <div className="flex flex-col sm:flex-row items-center gap-6 sm:gap-8 pt-4 w-full sm:w-auto">
-              <Link href="/about-us" className="group flex items-center justify-center gap-2 text-[#ff9900] font-bold text-lg hover:text-black transition-colors w-full sm:w-auto">
+              <Link href="/about-us" className="group flex items-center justify-center gap-2 text-[#FA7E09] font-bold text-lg hover:text-black transition-colors w-full sm:w-auto">
                 About Us
                 <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
 
-              <Link href="/contact-us" className="bg-[#ff9900] text-white font-bold px-8 sm:px-10 py-4 rounded-full flex items-center justify-center gap-3 text-lg shadow-xl shadow-[#ff9900]/20 hover:bg-black transition-all hover:scale-105 w-full sm:w-auto">
+              <Link href="/contact-us" className="bg-[#FA7E09] text-white font-bold px-8 sm:px-10 py-4 rounded-full flex items-center justify-center gap-3 text-lg shadow-xl shadow-[#ff9900]/20 hover:bg-[#FF9A3B] transition-all hover:scale-105 w-full sm:w-auto">
                 Contact Us
                 <div className="flex gap-0.5">
                   <ChevronRight className="w-4 h-4" />
@@ -155,7 +155,7 @@ export default function Home() {
       <section className="bg-[#fdf0e1] py-20 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-12 lg:gap-20">
-            
+
             {/* Left: Monitor Display */}
             <div className="relative order-1 lg:order-1">
               <SEOMonitor />

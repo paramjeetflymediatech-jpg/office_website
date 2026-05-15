@@ -144,14 +144,14 @@ export default function CareerPage() {
                     {career.status}
                   </span>
                 </div>
-                <p className="text-sm sm:text-base text-gray-600 leading-relaxed max-w-4xl">{career.description}</p>
+                <p className="text-sm sm:text-base text-gray-600 leading-relaxed max-w-4xl break-words">{career.description}</p>
                 
                 {career.requirements && (
                   <div className="pt-2">
                     <p className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Key Requirements:</p>
-                    <ul className="list-disc list-inside text-xs text-gray-500 space-y-0.5">
+                    <ul className="list-disc list-inside text-xs text-gray-500 space-y-0.5 break-words">
                       {career.requirements.split('\n').filter(Boolean).slice(0, 3).map((req: string, i: number) => (
-                        <li key={i}>{req}</li>
+                        <li key={i} className="break-all">{req}</li>
                       ))}
                     </ul>
                   </div>
@@ -230,7 +230,7 @@ export default function CareerPage() {
               <div className="p-6 md:p-8 flex-1 flex flex-col justify-between gap-6">
                 <div>
                   <h4 className="text-xs font-extrabold text-gray-400 uppercase tracking-wider mb-2">Message / Intro:</h4>
-                  <p className="text-gray-600 text-sm leading-relaxed whitespace-pre-wrap italic">
+                  <p className="text-gray-600 text-sm leading-relaxed whitespace-pre-wrap italic break-words">
                     {app.message ? `"${app.message}"` : "Applicant left no custom message details."}
                   </p>
                 </div>
@@ -295,13 +295,43 @@ export default function CareerPage() {
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-1">
-                  <label className="text-xs font-bold text-gray-500 uppercase tracking-wider">Job Title</label>
+                  <label className="text-xs font-bold text-gray-500 uppercase tracking-wider">Job Title *</label>
                   <input 
                     name="title" 
                     required 
                     defaultValue={editingCareer?.title}
                     className="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl focus:border-[#ff9900] outline-none"
-                    placeholder="e.g. React Native Developer"
+                    placeholder="e.g. SEO Executive"
+                  />
+                </div>
+                <div className="space-y-1">
+                  <label className="text-xs font-bold text-gray-500 uppercase tracking-wider">Post Name</label>
+                  <input 
+                    name="post"
+                    defaultValue={editingCareer?.post}
+                    className="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl focus:border-[#ff9900] outline-none"
+                    placeholder="e.g. SEO (Search Engine Optimization)"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div className="space-y-1">
+                  <label className="text-xs font-bold text-gray-500 uppercase tracking-wider">No. of Vacancies</label>
+                  <input 
+                    name="vacancies"
+                    defaultValue={editingCareer?.vacancies}
+                    className="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl focus:border-[#ff9900] outline-none"
+                    placeholder="e.g. 2"
+                  />
+                </div>
+                <div className="space-y-1">
+                  <label className="text-xs font-bold text-gray-500 uppercase tracking-wider">Experience Required</label>
+                  <input 
+                    name="experience"
+                    defaultValue={editingCareer?.experience}
+                    className="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl focus:border-[#ff9900] outline-none"
+                    placeholder="e.g. 0-3 years"
                   />
                 </div>
                 <div className="space-y-1">
@@ -318,26 +348,26 @@ export default function CareerPage() {
               </div>
 
               <div className="space-y-1">
-                <label className="text-xs font-bold text-gray-500 uppercase tracking-wider">Description</label>
+                <label className="text-xs font-bold text-gray-500 uppercase tracking-wider">Job Description (One point per line)</label>
                 <textarea 
                   name="description" 
-                  rows={3} 
+                  rows={5} 
                   required
                   defaultValue={editingCareer?.description}
-                  className="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl focus:border-[#ff9900] outline-none resize-none"
-                  placeholder="Summarize the core roles, responsibilities, and team requirements..."
+                  className="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl focus:border-[#ff9900] outline-none resize-y"
+                  placeholder="Knowledge of SEO on-page & off page...&#10;Must be able to perform all off-page tasks...&#10;Good knowledge of meta tags, sitemap..."
                 />
               </div>
 
               <div className="space-y-1">
-                <label className="text-xs font-bold text-gray-500 uppercase tracking-wider">Requirements (One per line)</label>
+                <label className="text-xs font-bold text-gray-500 uppercase tracking-wider">Required Skills (One per line)</label>
                 <textarea 
                   name="requirements" 
-                  rows={5} 
+                  rows={4} 
                   required
                   defaultValue={editingCareer?.requirements}
                   className="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl focus:border-[#ff9900] outline-none resize-y"
-                  placeholder="3+ years React development experience&#10;Proficiency in Next.js and Tailwind CSS&#10;Strong communication skills"
+                  placeholder="Excellent command of English&#10;Creative writing ability&#10;Good knowledge of MS-Word"
                 />
               </div>
 

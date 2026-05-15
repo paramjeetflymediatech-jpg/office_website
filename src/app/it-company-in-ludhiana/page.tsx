@@ -134,39 +134,39 @@ const ITExpertServicesSection = () => {
   );
 };
 
-const ITCallToAction = () => (
-  <div className="py-24 bg-black text-white text-center relative overflow-hidden border-t border-white/5">
-    {/* Decorative blur elements */}
-    <div className="absolute top-0 right-1/4 w-80 h-80 bg-[#ff9900]/10 rounded-full blur-3xl -z-10" />
-    <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-blue-600/5 rounded-full blur-3xl -z-10" />
+// const ITCallToAction = () => (
+//   <div className="py-24 bg-black text-white text-center relative overflow-hidden border-t border-white/5">
+//     {/* Decorative blur elements */}
+//     <div className="absolute top-0 right-1/4 w-80 h-80 bg-[#ff9900]/10 rounded-full blur-3xl -z-10" />
+//     <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-blue-600/5 rounded-full blur-3xl -z-10" />
 
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-      <span className="text-[#ff9900] text-xs font-bold uppercase tracking-widest bg-[#ff9900]/10 px-4 py-1.5 rounded-full border border-[#ff9900]/20 inline-block">
-        Connect With Ludhiana's Best IT Team
-      </span>
-      <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold leading-tight max-w-3xl mx-auto">
-        Ready to Scale Your Digital Infrastructure?
-      </h2>
-      <p className="text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
-        Let us customize an off of services aligned fully around your brand's specific needs, targets, and goals. Reach out to our specialist team today.
-      </p>
-      <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-        <Link 
-          href="/contact-us" 
-          className="bg-[#ff9900] text-black font-black px-12 py-4 rounded-xl uppercase tracking-wider hover:bg-white hover:text-black transition-all shadow-lg shadow-[#ff9900]/25 text-sm"
-        >
-          Get In Touch With Us
-        </Link>
-        <Link 
-          href="tel:+919888484310" 
-          className="border border-white/20 text-white font-black px-12 py-4 rounded-xl uppercase tracking-wider hover:bg-white hover:text-black transition-all text-sm flex items-center justify-center gap-2"
-        >
-          <PhoneCall className="w-4 h-4" /> Call +91-98884-84310
-        </Link>
-      </div>
-    </div>
-  </div>
-);
+//     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+//       <span className="text-[#ff9900] text-xs font-bold uppercase tracking-widest bg-[#ff9900]/10 px-4 py-1.5 rounded-full border border-[#ff9900]/20 inline-block">
+//         Connect With Ludhiana's Best IT Team
+//       </span>
+//       <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold leading-tight max-w-3xl mx-auto">
+//         Ready to Scale Your Digital Infrastructure?
+//       </h2>
+//       <p className="text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
+//         Let us customize an off of services aligned fully around your brand's specific needs, targets, and goals. Reach out to our specialist team today.
+//       </p>
+//       <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+//         <Link 
+//           href="/contact-us" 
+//           className="bg-[#ff9900] text-black font-black px-12 py-4 rounded-xl uppercase tracking-wider hover:bg-white hover:text-black transition-all shadow-lg shadow-[#ff9900]/25 text-sm"
+//         >
+//           Get In Touch With Us
+//         </Link>
+//         <Link 
+//           href="tel:+919888484310" 
+//           className="border border-white/20 text-white font-black px-12 py-4 rounded-xl uppercase tracking-wider hover:bg-white hover:text-black transition-all text-sm flex items-center justify-center gap-2"
+//         >
+//           <PhoneCall className="w-4 h-4" /> Call +91-98884-84310
+//         </Link>
+//       </div>
+//     </div>
+//   </div>
+// );
 
 // --- Main Page Component ---
 
@@ -191,7 +191,7 @@ export default function ITCompany() {
     <ServicePage {...data} bgClass="bg-white">
       <ITHeroSection />
       <ITExpertServicesSection />
-      <ITCallToAction />
+      {/* <ITCallToAction /> */}
     </ServicePage>
   );
 }

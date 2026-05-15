@@ -2,6 +2,37 @@ import { getSEOConfig } from '@/app/actions/seo';
 import { PageSEO } from '@/models';
 import { headers } from 'next/headers';
 
+function formatDynamicMetadata(path: string, businessName = "Fly Media Technology") {
+  if (!path || path === '/' || path === '/index') {
+    return {
+      title: `${businessName} | Result-Oriented Digital Marketing Solutions`,
+      description: "Make your business reach new heights of digital success through our comprehensive range of digital marketing solutions including SEO, SMO, Web Design, and PPC."
+    };
+  }
+
+  const cleanPath = path.replace(/^\/+|\/+$/g, '').split('?')[0];
+  const segments = cleanPath.split('/');
+  const lastSegment = segments[segments.length - 1];
+
+  let formattedTitle = lastSegment
+    .split('-')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+
+  // Preserve common SEO acronyms
+  formattedTitle = formattedTitle
+    .replace(/\bSeo\b/g, 'SEO')
+    .replace(/\bSmo\b/g, 'SMO')
+    .replace(/\bPpc\b/g, 'PPC')
+    .replace(/\bAi\b/g, 'AI')
+    .replace(/\bSmm\b/g, 'SMM');
+
+  return {
+    title: `${formattedTitle} | ${businessName}`,
+    description: `Expert ${formattedTitle} solutions by ${businessName}. Partner with our specialized team to accelerate your digital growth and maximize ROI.`
+  };
+}
+
 export default async function DynamicSEO() {
   const config = await getSEOConfig();
   if (!config) return null;
@@ -15,15 +46,17 @@ export default async function DynamicSEO() {
     pathname = '/';
   }
   
-  if (pathname !== '/' && pathname.endsWith('/')) {
-    pathname = pathname.slice(0, -1);
-  }
+  const cleanTargetPath = pathname.replace(/^\/+|\/+$/g, '').split('?')[0];
 
-  // Try to find page-specific SEO
-  const pageSeoRaw = await PageSEO.findOne({ where: { pageUrl: pathname } });
-  const pageSeo = pageSeoRaw ? pageSeoRaw.get({ plain: true }) : null;
+  // Try to find page-specific SEO using robust in-memory matching across all records
+  const allPageSeos = await PageSEO.findAll({ raw: true });
+  const pageSeo = allPageSeos.find(item => {
+    const cleanItemPath = (item.pageUrl || '').replace(/^\/+|\/+$/g, '').split('?')[0];
+    return cleanItemPath === cleanTargetPath;
+  });
 
-  console.log(`[SEO Debug] Path: "${pathname}" | Found SEO: ${pageSeo ? 'YES (' + pageSeo.title + ')' : 'NO'}`);
+  console.log(`[SEO Debug] Target: "${cleanTargetPath}" | Found SEO: ${pageSeo ? 'YES (' + pageSeo.title + ')' : 'NO (Using Dynamic Route SEO)'}`);
+
   // Generate structured schema if custom JSON is not provided
   let generatedSchema = null;
   if (!config.globalSchema && config.businessName) {
@@ -60,18 +93,8 @@ export default async function DynamicSEO() {
   const schemaToRender = config.globalSchema || (generatedSchema ? JSON.stringify(generatedSchema) : null);
   const pageSchema = pageSeo?.customSchema;
 
-  // Final Title & Description (Priority: Page SEO > Business Config > Default)
-  const finalTitle = pageSeo?.title || (config.businessName ? `${config.businessName} | Digital Marketing` : "Fly Media Technology");
-  const finalDesc = pageSeo?.description || config.businessDescription || "Best Digital Marketing Company";
-
   return (
     <>
-      {/* Dynamic Metadata */}
-      <title>{finalTitle}</title>
-      <meta name="description" content={finalDesc} />
-      {pageSeo?.keywords && <meta name="keywords" content={pageSeo.keywords} />}
-      {!pageSeo && <meta name="keywords" content="digital marketing, seo, website design" />}
-
       {/* Structured Data (Global) */}
       {schemaToRender && (
         <script

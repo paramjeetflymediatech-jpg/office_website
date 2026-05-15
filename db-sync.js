@@ -102,8 +102,8 @@ async function run() {
     console.log('Connecting to database and synchronizing tables...');
     await sequelize.authenticate();
     console.log('Database connection established successfully.');
-    
-    await sequelize.sync({ alter: true });
+
+    await sequelize.sync();
     console.log('SUCCESS: All tables (Portfolios, FAQs, Careers, ContactQueries, etc.) have been successfully created and synchronized!');
     process.exit(0);
   } catch (error) {

@@ -23,6 +23,10 @@ export default function PortfolioPage() {
   const [itemToDelete, setItemToDelete] = useState<number | null>(null);
   const [isDeletingAll, setIsDeletingAll] = useState(false);
 
+  // Bulk Selection State
+  const [selectedIds, setSelectedIds] = useState<number[]>([]);
+  const [isDeletingSelected, setIsDeletingSelected] = useState(false);
+
   // Pagination State
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 20;
@@ -117,12 +121,41 @@ export default function PortfolioPage() {
     if (result.success) {
       showNotification('success', 'All images deleted successfully');
       setCurrentPage(1);
+      setSelectedIds([]);
       await loadItems();
     } else {
       showNotification('error', result.error || 'Failed to delete all images');
     }
     setIsDeletingAll(false);
     setIsUploading(false);
+  };
+
+  const handleDeleteSelected = async () => {
+    setIsUploading(true);
+    let successCount = 0;
+    for (const id of selectedIds) {
+      const result = await deletePortfolioItem(id);
+      if (result.success) successCount++;
+    }
+    showNotification('success', `${successCount} image(s) deleted successfully`);
+    setSelectedIds([]);
+    setIsDeletingSelected(false);
+    await loadItems();
+    setIsUploading(false);
+  };
+
+  const toggleSelectItem = (id: number) => {
+    setSelectedIds(prev =>
+      prev.includes(id) ? prev.filter(i => i !== id) : [...prev, id]
+    );
+  };
+
+  const toggleSelectAll = () => {
+    if (selectedIds.length === currentItems.length && currentItems.length > 0) {
+      setSelectedIds([]);
+    } else {
+      setSelectedIds(currentItems.map(i => i.id));
+    }
   };
 
   // Edit State & Logic
@@ -247,6 +280,34 @@ export default function PortfolioPage() {
         </div>
       )}
 
+      {/* Bulk Selection Action Bar */}
+      {selectedIds.length > 0 && (
+        <div className="sticky top-4 z-40 bg-gray-900 text-white rounded-2xl px-6 py-4 flex items-center justify-between shadow-2xl border border-white/10">
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 bg-[#ff9900] rounded-lg flex items-center justify-center font-black text-sm">
+              {selectedIds.length}
+            </div>
+            <span className="font-bold text-sm">{selectedIds.length} item{selectedIds.length > 1 ? 's' : ''} selected</span>
+          </div>
+          <div className="flex gap-3">
+            <button
+              onClick={() => setSelectedIds([])}
+              className="px-4 py-2 rounded-xl text-sm font-bold text-gray-300 hover:text-white hover:bg-white/10 transition-all"
+            >
+              Clear
+            </button>
+            <button
+              onClick={() => setIsDeletingSelected(true)}
+              disabled={isUploading}
+              className="flex items-center gap-2 bg-red-500 hover:bg-red-600 text-white px-5 py-2 rounded-xl text-sm font-bold transition-all disabled:opacity-50"
+            >
+              <Trash2 size={16} />
+              Delete Selected
+            </button>
+          </div>
+        </div>
+      )}
+
       {/* Listing Format Table */}
       {filteredItemsByLocation.length > 0 ? (
         <div className="bg-white rounded-3xl border border-gray-100 shadow-sm overflow-hidden">
@@ -254,6 +315,15 @@ export default function PortfolioPage() {
             <table className="w-full min-w-[700px] border-collapse text-left">
               <thead>
                 <tr className="bg-gray-50 border-b border-gray-100">
+                  <th className="px-4 py-4 w-[52px]">
+                    <input
+                      type="checkbox"
+                      checked={selectedIds.length === currentItems.length && currentItems.length > 0}
+                      onChange={toggleSelectAll}
+                      className="w-4 h-4 rounded accent-[#ff9900] cursor-pointer"
+                      title="Select all on this page"
+                    />
+                  </th>
                   <th className="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-widest w-[110px]">Preview</th>
                   <th className="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-widest">Asset Title</th>
                   <th className="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-widest w-[180px]">Category</th>
@@ -265,8 +335,18 @@ export default function PortfolioPage() {
                 {currentItems.map((item) => (
                   <tr 
                     key={item.id} 
-                    className="hover:bg-gray-50/50 transition-colors group"
+                    className={`hover:bg-gray-50/50 transition-colors group ${selectedIds.includes(item.id) ? 'bg-orange-50/60' : ''}`}
                   >
+                    {/* Checkbox */}
+                    <td className="px-4 py-4 whitespace-nowrap">
+                      <input
+                        type="checkbox"
+                        checked={selectedIds.includes(item.id)}
+                        onChange={() => toggleSelectItem(item.id)}
+                        className="w-4 h-4 rounded accent-[#ff9900] cursor-pointer"
+                      />
+                    </td>
+
                     {/* Thumbnail Preview */}
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div 
@@ -624,6 +704,15 @@ export default function PortfolioPage() {
         onConfirm={handleDeleteAll}
         onCancel={() => !isUploading && setIsDeletingAll(false)}
         confirmText={isUploading ? 'Deleting All...' : 'Yes, Delete Everything'}
+      />
+
+      <ConfirmModal
+        isOpen={isDeletingSelected}
+        title={`Delete ${selectedIds.length} Selected Image${selectedIds.length > 1 ? 's' : ''}?`}
+        message={`Are you sure you want to delete ${selectedIds.length} selected item${selectedIds.length > 1 ? 's' : ''}? This action cannot be undone.`}
+        onConfirm={handleDeleteSelected}
+        onCancel={() => !isUploading && setIsDeletingSelected(false)}
+        confirmText={isUploading ? 'Deleting...' : `Delete ${selectedIds.length} Item${selectedIds.length > 1 ? 's' : ''}`}
       />
     </div>
   );

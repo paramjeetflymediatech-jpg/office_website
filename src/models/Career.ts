@@ -4,6 +4,9 @@ import sequelize from '../lib/db';
 class Career extends Model {
   declare id: number;
   declare title: string;
+  declare post: string;
+  declare vacancies: string;
+  declare experience: string;
   declare description: string;
   declare requirements: string;
   declare status: string;
@@ -19,6 +22,18 @@ Career.init(
     title: {
       type: DataTypes.STRING,
       allowNull: false,
+    },
+    post: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    vacancies: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    experience: {
+      type: DataTypes.STRING,
+      allowNull: true,
     },
     description: {
       type: DataTypes.TEXT,

@@ -5,17 +5,19 @@ import { revalidatePath } from 'next/cache';
 import fs from 'fs/promises';
 import path from 'path';
 
-export async function getBlogs() {
+export async function getBlogs(region?: string) {
   try {
-    console.log('[BlogAction] Fetching fresh blog posts...');
-    // Proactively sync table if it doesn't exist
-    await Blog.sync({ alter: true });
-    
+    await Blog.sync();
+    console.log(`[BlogAction] Fetching fresh blog posts for region: ${region || 'global'}...`);
+
+    const whereClause = region ? { region } : {};
+
     const blogs = await Blog.findAll({
+      where: whereClause,
       order: [['createdAt', 'DESC']],
       raw: true
     });
-    return blogs;
+    return JSON.parse(JSON.stringify(blogs));
   } catch (error) {
     console.error('[BlogAction] Fetch Error:', error);
     return [];
@@ -24,12 +26,12 @@ export async function getBlogs() {
 
 export async function getBlogBySlug(slug: string) {
   try {
-    await Blog.sync({ alter: true });
+    await Blog.sync();
     const blog = await Blog.findOne({
       where: { slug },
       raw: true
     });
-    return blog;
+    return blog ? JSON.parse(JSON.stringify(blog)) : null;
   } catch (error) {
     console.error('[BlogAction] Fetch by Slug Error:', error);
     return null;
@@ -38,9 +40,8 @@ export async function getBlogBySlug(slug: string) {
 
 export async function getBlogById(id: number) {
   try {
-    await Blog.sync({ alter: true });
     const blog = await Blog.findByPk(id, { raw: true });
-    return blog;
+    return blog ? JSON.parse(JSON.stringify(blog)) : null;
   } catch (error) {
     console.error('[BlogAction] Fetch by ID Error:', error);
     return null;
@@ -53,11 +54,21 @@ export async function createBlog(formData: FormData) {
   const excerpt = formData.get('excerpt') as string;
   const content = formData.get('content') as string;
   const category = formData.get('category') as string;
+  const region = formData.get('region') as string || 'global';
   const dateStr = formData.get('date') as string || new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
   const imageFile = formData.get('imageFile') as File | null;
   const imageUrlInput = formData.get('imageUrl') as string || '';
+  const metaTitle = formData.get('metaTitle') as string || '';
+  const metaDescription = formData.get('metaDescription') as string || '';
+  const focusKeyword = formData.get('focusKeyword') as string || '';
+  const keywords = formData.get('keywords') as string || '';
+  const schema = formData.get('schema') as string || '';
+  const ogTitle = formData.get('ogTitle') as string || '';
+  const ogDescription = formData.get('ogDescription') as string || '';
+  const ogImage = formData.get('ogImage') as string || '';
 
   try {
+    await Blog.sync();
     let finalImageUrl = imageUrlInput;
 
     // Handle image file upload if provided
@@ -74,7 +85,7 @@ export async function createBlog(formData: FormData) {
     }
 
     if (!finalImageUrl) {
-      finalImageUrl = 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=800&auto=format&fit=crop&q=60'; // fallback
+      finalImageUrl = ''; // fallback
     }
 
     const blog = await Blog.create({
@@ -83,9 +94,18 @@ export async function createBlog(formData: FormData) {
       excerpt,
       content,
       category,
+      region,
       date: dateStr,
       image: finalImageUrl,
-      views: 0
+      views: 0,
+      metaTitle,
+      metaDescription,
+      focusKeyword,
+      keywords,
+      schema,
+      ogTitle,
+      ogDescription,
+      ogImage,
     });
 
     revalidatePath('/blog');
@@ -103,17 +123,27 @@ export async function updateBlog(id: number, formData: FormData) {
   const excerpt = formData.get('excerpt') as string;
   const content = formData.get('content') as string;
   const category = formData.get('category') as string;
+  const region = formData.get('region') as string || 'global';
   const dateStr = formData.get('date') as string;
   const imageFile = formData.get('imageFile') as File | null;
   const imageUrlInput = formData.get('imageUrl') as string || '';
+  const metaTitle = formData.get('metaTitle') as string || '';
+  const metaDescription = formData.get('metaDescription') as string || '';
+  const focusKeyword = formData.get('focusKeyword') as string || '';
+  const keywords = formData.get('keywords') as string || '';
+  const schema = formData.get('schema') as string || '';
+  const ogTitle = formData.get('ogTitle') as string || '';
+  const ogDescription = formData.get('ogDescription') as string || '';
+  const ogImage = formData.get('ogImage') as string || '';
 
   try {
+    await Blog.sync();
     const blog = await Blog.findByPk(id);
     if (!blog) {
       return { success: false, error: 'Blog post not found' };
     }
 
-    let finalImageUrl = imageUrlInput || blog.image;
+    let finalImageUrl = imageUrlInput; // Use the provided URL (or empty if removed)
 
     // Handle new image file upload if provided
     if (imageFile && imageFile.size > 0) {
@@ -125,7 +155,7 @@ export async function updateBlog(id: number, formData: FormData) {
       const filePath = path.join(uploadDir, fileName);
 
       await fs.writeFile(filePath, buffer);
-      
+
       // Attempt to clean up old uploaded file if it was custom
       if (blog.image.startsWith('/uploads/blog/')) {
         try {
@@ -145,8 +175,17 @@ export async function updateBlog(id: number, formData: FormData) {
       excerpt,
       content,
       category,
+      region,
       date: dateStr || blog.date,
-      image: finalImageUrl
+      image: finalImageUrl,
+      metaTitle,
+      metaDescription,
+      focusKeyword,
+      keywords,
+      schema,
+      ogTitle,
+      ogDescription,
+      ogImage,
     });
 
     revalidatePath('/blog');
@@ -206,7 +245,7 @@ export async function incrementBlogViews(id: number) {
 // Seed helper to populate with original 6 posts if database table is empty
 export async function seedOriginalBlogs() {
   try {
-    await Blog.sync({ alter: true });
+    await Blog.sync();
     const count = await Blog.count();
     if (count > 0) {
       return { success: true, message: 'Already seeded' };

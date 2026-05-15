@@ -17,6 +17,7 @@ export async function getPageSEOs() {
 
 export async function updatePageSEO(formData: FormData) {
   try {
+    await PageSEO.sync();
     const id = formData.get('id');
     const data = {
       pageUrl: formData.get('pageUrl') as string,
@@ -24,12 +25,21 @@ export async function updatePageSEO(formData: FormData) {
       description: formData.get('description') as string,
       keywords: formData.get('keywords') as string,
       customSchema: formData.get('customSchema') as string,
+      ogTitle: formData.get('ogTitle') as string,
+      ogDescription: formData.get('ogDescription') as string,
+      ogImage: formData.get('ogImage') as string,
     };
 
     if (id) {
       await PageSEO.update(data, { where: { id } });
     } else {
-      await PageSEO.create(data);
+      // Check if pageUrl already exists to avoid unique constraint error
+      const existing = await PageSEO.findOne({ where: { pageUrl: data.pageUrl } });
+      if (existing) {
+        await existing.update(data);
+      } else {
+        await PageSEO.create(data);
+      }
     }
 
     revalidatePath('/');

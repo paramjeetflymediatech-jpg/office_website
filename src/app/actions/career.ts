@@ -5,6 +5,7 @@ import { revalidatePath } from 'next/cache';
 
 export async function getCareers() {
   try {
+    await Career.sync();
     const careers = await Career.findAll({ order: [['createdAt', 'DESC']] });
     return careers.map(c => c.toJSON());
   } catch (error) {
@@ -16,18 +17,23 @@ export async function getCareers() {
 export async function upsertCareer(formData: FormData) {
   const id = formData.get('id') ? Number(formData.get('id')) : null;
   const title = formData.get('title') as string;
+  const post = formData.get('post') as string;
+  const vacancies = formData.get('vacancies') as string;
+  const experience = formData.get('experience') as string;
   const description = formData.get('description') as string;
   const requirements = formData.get('requirements') as string;
   const status = formData.get('status') as string;
 
   try {
+    await Career.sync();
     if (id) {
-      await Career.update({ title, description, requirements, status }, { where: { id } });
+      await Career.update({ title, post, vacancies, experience, description, requirements, status }, { where: { id } });
     } else {
-      await Career.create({ title, description, requirements, status });
+      await Career.create({ title, post, vacancies, experience, description, requirements, status });
     }
 
     revalidatePath('/admin/career');
+    revalidatePath('/current-job-opening');
     return { success: true };
   } catch (error) {
     console.error('Error upserting career:', error);
@@ -61,7 +67,7 @@ export async function applyToJob(formData: FormData) {
 
   try {
     // Proactively sync database table
-    await Application.sync({ alter: true });
+    await Application.sync();
 
     if (!resumeFile || resumeFile.size === 0) {
       return { success: false, error: 'Resume file is required' };
@@ -95,7 +101,7 @@ export async function applyToJob(formData: FormData) {
 
 export async function getApplications() {
   try {
-    await Application.sync({ alter: true });
+    await Application.sync();
     const apps = await Application.findAll({ order: [['createdAt', 'DESC']] });
     return apps.map(a => a.toJSON());
   } catch (error) {

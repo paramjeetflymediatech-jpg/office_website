@@ -11,6 +11,15 @@ class Blog extends Model {
   declare excerpt: string;
   declare content: string;
   declare category: string;
+  declare region: string;
+  declare metaTitle: string;
+  declare metaDescription: string;
+  declare focusKeyword: string;
+  declare keywords: string;
+  declare schema: string;
+  declare ogTitle: string;
+  declare ogDescription: string;
+  declare ogImage: string;
 }
 
 Blog.init(
@@ -52,6 +61,43 @@ Blog.init(
     category: {
       type: DataTypes.STRING,
       allowNull: false,
+    },
+    region: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      defaultValue: 'global',
+    },
+    metaTitle: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    metaDescription: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+    },
+    focusKeyword: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    keywords: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+    },
+    schema: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+    },
+    ogTitle: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    ogDescription: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+    },
+    ogImage: {
+      type: DataTypes.STRING,
+      allowNull: true,
     },
   },
   {

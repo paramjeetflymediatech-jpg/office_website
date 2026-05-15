@@ -63,7 +63,7 @@ export default function Header() {
       { name: "Packages", href: "/#", hasDropdown: true },
       { name: "What We Do", href: "/#", hasDropdown: true },
       { name: "Location", href: "/#", hasDropdown: true },
-      { name: "Blog", href: "/blog" },
+      { name: "Blog", href: "/australia/blog" },
       { name: "Contact Us", href: "/contact-us" },
     ]
     : isCanada
@@ -138,7 +138,8 @@ export default function Header() {
                 <div key={loc.name} className="relative group/sub">
                   <Link
                     href={loc.href}
-                    className="flex items-center justify-between px-6 py-3.5 text-sm font-normal tracking-normal hover:bg-[#ff9900] hover:text-white transition-colors border-b border-gray-50 last:border-b-0"
+                    className="flex items-center justify-between px-6 py-3.5 text-[15px] font-medium tracking-normal hover:bg-[#ff9900] hover:text-white transition-colors border-b border-gray-50 last:border-b-0"
+                    style={{ fontFamily: '"Poppins", Sans-serif' }}
                     onClick={() => setIsLocDropdownOpen(false)}
                   >
                     {loc.name}
@@ -152,7 +153,8 @@ export default function Header() {
                         <Link
                           key={sub.name}
                           href={sub.href}
-                          className="block px-6 py-3 text-sm font-medium tracking-normal hover:bg-[#ff9900] hover:text-white transition-colors"
+                          className="block px-6 py-3 text-[15px] font-medium tracking-normal hover:bg-[#ff9900] hover:text-white transition-colors"
+                          style={{ fontFamily: '"Poppins", Sans-serif' }}
                           onClick={() => setIsLocDropdownOpen(false)}
                         >
                           {sub.name}
@@ -198,6 +200,7 @@ export default function Header() {
                   sizes="(max-width: 768px) 160px, 224px"
                   className="object-contain"
                   priority
+                  unoptimized={true}
                 />
               </div>
             </Link>
@@ -211,10 +214,10 @@ export default function Header() {
                 const hasMegaMenu = link.name === "Services" || link.name === "Packages" || link.name === "What We Do";
                 const megaMenuData = hasMegaMenu
                   ? (isCanada
-                      ? CANADA_MEGA_MENU_DATA[link.name as keyof typeof CANADA_MEGA_MENU_DATA] || MEGA_MENU_DATA[link.name as keyof typeof MEGA_MENU_DATA]
-                      : isAustraliaAboutUs
-                        ? AUSTRALIA_MEGA_MENU_DATA[link.name as keyof typeof AUSTRALIA_MEGA_MENU_DATA] || MEGA_MENU_DATA[link.name as keyof typeof MEGA_MENU_DATA]
-                        : MEGA_MENU_DATA[link.name as keyof typeof MEGA_MENU_DATA])
+                    ? CANADA_MEGA_MENU_DATA[link.name as keyof typeof CANADA_MEGA_MENU_DATA] || MEGA_MENU_DATA[link.name as keyof typeof MEGA_MENU_DATA]
+                    : isAustraliaAboutUs
+                      ? AUSTRALIA_MEGA_MENU_DATA[link.name as keyof typeof AUSTRALIA_MEGA_MENU_DATA] || MEGA_MENU_DATA[link.name as keyof typeof MEGA_MENU_DATA]
+                      : MEGA_MENU_DATA[link.name as keyof typeof MEGA_MENU_DATA])
                   : null;
 
                 return (
@@ -245,7 +248,7 @@ export default function Header() {
                           setIsClickTriggered(false);
                         }
                       }}
-                      className={`flex items-center gap-1 text-[13px] font-normal tracking-tight transition-all duration-300 relative py-4 ${(isActive || activeMenu === link.name) ? "text-[#ff9900]" : "text-black hover:text-[#ff9900]"
+                      className={`flex items-center gap-1 text-[14px] font-normal tracking-tight transition-all duration-300 relative py-4 ${(isActive || activeMenu === link.name) ? "text-[#ff9900]" : "text-black hover:text-[#ff9900]"
                         }`}
                     >
                       {link.name}
@@ -269,8 +272,8 @@ export default function Header() {
                       >
                         {/* Triangular Pointer pointing to the selected nav item */}
                         <div className={`absolute -top-2 h-4 w-4 bg-black rotate-45 z-[110] hidden lg:block border-t border-l border-white/5 ${link.name === "Services" ? "left-[36%] xl:left-[36.5%]" :
-                            link.name === "Packages" ? "left-[43%] xl:left-[43.5%]" :
-                              "left-[51%] xl:left-[51.5%]"
+                          link.name === "Packages" ? "left-[43%] xl:left-[43.5%]" :
+                            "left-[51%] xl:left-[51.5%]"
                           }`} />
                         <div className="max-w-7xl mx-auto flex h-full min-h-[450px]">
                           {/* Left Sidebar Content */}
@@ -318,7 +321,7 @@ export default function Header() {
                                   />
                                 </div>
                                 <div className="flex flex-col">
-                                  <span className="text-[15px] font-normal text-white group-hover/subitem:text-[#ff9900] transition-colors leading-tight">
+                                  <span className="text-[17px] font-semibold text-white group-hover/subitem:text-[#ff9900] transition-colors leading-tight" style={{ fontFamily: '"Poppins", Sans-serif' }}>
                                     {sublink.name}
                                   </span>
                                 </div>
@@ -349,7 +352,7 @@ export default function Header() {
                               key={city}
                               className="relative group/city"
                             >
-                              <div className="flex items-center justify-between px-4 py-2.5 rounded-xl hover:bg-[#000000]/10 hover:text-[#ff9900] transition-colors cursor-pointer text-sm font-semibold">
+                              <div className="flex items-center justify-between px-4 py-2.5 rounded-xl hover:bg-[#000000]/10 hover:text-[#ff9900] transition-colors cursor-pointer text-[15px] font-medium" style={{ fontFamily: '"Poppins", Sans-serif' }}>
                                 <span>{city}</span>
                                 <ChevronRight size={16} />
                               </div>
@@ -364,7 +367,8 @@ export default function Header() {
                                   <Link
                                     key={item.name}
                                     href={item.href}
-                                    className="block px-4 py-2.5 text-xs font-semibold rounded-lg hover:bg-[#ff9900] hover:text-black transition-colors"
+                                    className="block px-4 py-2.5 text-[15px] font-medium rounded-lg hover:bg-[#ff9900] hover:text-black transition-colors"
+                                    style={{ fontFamily: '"Poppins", Sans-serif' }}
                                     onClick={() => {
                                       setActiveMenu(null);
                                       setIsClickTriggered(false);
@@ -466,10 +470,10 @@ export default function Header() {
                 const hasMegaMenu = link.name === "Services" || link.name === "Packages" || link.name === "What We Do" || link.name === "Location";
                 const megaMenuData = (link.name === "Services" || link.name === "Packages" || link.name === "What We Do")
                   ? (isCanada
-                      ? CANADA_MEGA_MENU_DATA[link.name as keyof typeof CANADA_MEGA_MENU_DATA] || MEGA_MENU_DATA[link.name as keyof typeof MEGA_MENU_DATA]
-                      : isAustraliaAboutUs
-                        ? AUSTRALIA_MEGA_MENU_DATA[link.name as keyof typeof AUSTRALIA_MEGA_MENU_DATA] || MEGA_MENU_DATA[link.name as keyof typeof MEGA_MENU_DATA]
-                        : MEGA_MENU_DATA[link.name as keyof typeof MEGA_MENU_DATA])
+                    ? CANADA_MEGA_MENU_DATA[link.name as keyof typeof CANADA_MEGA_MENU_DATA] || MEGA_MENU_DATA[link.name as keyof typeof MEGA_MENU_DATA]
+                    : isAustraliaAboutUs
+                      ? AUSTRALIA_MEGA_MENU_DATA[link.name as keyof typeof AUSTRALIA_MEGA_MENU_DATA] || MEGA_MENU_DATA[link.name as keyof typeof MEGA_MENU_DATA]
+                      : MEGA_MENU_DATA[link.name as keyof typeof MEGA_MENU_DATA])
                   : null;
                 const isExpanded = expandedSection === link.name;
 

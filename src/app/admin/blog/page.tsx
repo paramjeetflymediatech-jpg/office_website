@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { getBlogs, deleteBlog, seedOriginalBlogs } from '@/app/actions/blog';
-import { Plus, Trash2, Edit, BookOpen, Eye, Calendar, Sparkles } from 'lucide-react';
+import { Plus, Trash2, Edit, BookOpen, Eye, Calendar, Sparkles, Search } from 'lucide-react';
 import { useNotification } from '@/components/NotificationContext';
 import ConfirmModal from '@/components/ConfirmModal';
 
@@ -13,6 +13,18 @@ export default function AdminBlogPage() {
   const [loading, setLoading] = useState(true);
   const [actionLoading, setActionLoading] = useState(false);
   const [blogToDelete, setBlogToDelete] = useState<number | null>(null);
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const filteredBlogs = blogs.filter(blog => {
+    const searchLower = searchQuery.toLowerCase();
+    const cleanSearch = searchLower.startsWith('/') ? searchLower.slice(1) : searchLower;
+    return (
+      blog.title?.toLowerCase().includes(searchLower) || 
+      blog.slug?.toLowerCase().includes(cleanSearch) ||
+      `/${blog.slug?.toLowerCase()}`.includes(searchLower) ||
+      blog.region?.toLowerCase().includes(searchLower)
+    );
+  });
 
   useEffect(() => {
     loadBlogs();
@@ -101,9 +113,24 @@ export default function AdminBlogPage() {
               </p>
             </div>
           </div>
-          <div className="flex items-center gap-2 text-xs font-bold text-gray-500 bg-gray-50 px-3 py-1.5 rounded-full border border-gray-100">
+          
+          {/* Search Bar */}
+          <div className="relative flex-1 sm:max-w-md w-full">
+            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
+              <Search size={18} />
+            </div>
+            <input
+              type="text"
+              placeholder="Search by title or slug..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="block w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#ff9900]/30 focus:border-[#ff9900] transition-all text-sm font-medium placeholder:text-gray-400"
+            />
+          </div>
+
+          <div className="hidden sm:flex items-center gap-2 text-xs font-bold text-gray-500 bg-gray-50 px-3 py-1.5 rounded-full border border-gray-100 shrink-0">
             <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-            Live Blog Operational
+            Live
           </div>
         </div>
       )}
@@ -129,6 +156,12 @@ export default function AdminBlogPage() {
             </Link>
           </div>
         </div>
+      ) : filteredBlogs.length === 0 ? (
+        <div className="bg-white p-12 text-center rounded-2xl border border-gray-100 shadow-sm">
+          <Search className="w-12 h-12 text-gray-300 mx-auto mb-4" />
+          <h3 className="text-lg font-bold text-gray-900 mb-1">No blogs match your search</h3>
+          <p className="text-gray-500">Try adjusting your search query or clear it to see all blogs.</p>
+        </div>
       ) : (
         <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
           <div className="overflow-x-auto">
@@ -143,15 +176,21 @@ export default function AdminBlogPage() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-50">
-                {blogs.map((blog) => (
+                {filteredBlogs.map((blog) => (
                   <tr key={blog.id} className="hover:bg-gray-50/50 transition-colors">
                     <td className="p-4 sm:p-5">
                       <div className="flex items-center gap-4">
-                        <img 
-                          src={blog.image} 
-                          alt={blog.title}
-                          className="w-12 h-12 object-cover rounded-lg bg-gray-50"
-                        />
+                        {blog.image ? (
+                          <img 
+                            src={blog.image} 
+                            alt={blog.title}
+                            className="w-12 h-12 object-cover rounded-lg bg-gray-50 flex-shrink-0"
+                          />
+                        ) : (
+                          <div className="w-12 h-12 rounded-lg bg-gray-100 flex items-center justify-center flex-shrink-0 text-gray-400">
+                            <BookOpen size={20} />
+                          </div>
+                        )}
                         <div className="min-w-0 max-w-xs md:max-w-md">
                           <p className="font-bold text-gray-900 truncate">{blog.title}</p>
                           <p className="text-xs text-gray-400 truncate">/{blog.slug}</p>
@@ -159,9 +198,16 @@ export default function AdminBlogPage() {
                       </div>
                     </td>
                     <td className="p-4 sm:p-5">
-                      <span className="inline-flex items-center px-2.5 py-1.5 rounded-full text-xs font-semibold bg-orange-50 text-[#ff9900]">
-                        {blog.category}
-                      </span>
+                      <div className="flex flex-col gap-2 items-start">
+                        <span className="inline-flex items-center px-2.5 py-1.5 rounded-full text-xs font-semibold bg-orange-50 text-[#ff9900]">
+                          {blog.category}
+                        </span>
+                        <span className={`inline-flex items-center px-2 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider ${
+                          blog.region === 'australia' ? 'bg-blue-50 text-blue-600 border border-blue-100' : 'bg-gray-100 text-gray-500 border border-gray-200'
+                        }`}>
+                          {blog.region || 'Global'}
+                        </span>
+                      </div>
                     </td>
                     <td className="p-4 sm:p-5 text-sm text-gray-500">
                       <div className="flex items-center gap-1.5">

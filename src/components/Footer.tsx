@@ -190,7 +190,7 @@ export default function Footer() {
         {/* Copyright Bar */}
         <div className="mt-10 pt-5 border-t border-white/10 text-center max-w-7xl mx-auto">
           <p className="text-[13px] font-semibold text-white ">
-            Copyright © 2011 - 2024 Flymediatech.com. All Rights Reserved.
+            Copyright © 2011 - 2026 Flymediatech.com. All Rights Reserved.
           </p>
         </div>
       </div>

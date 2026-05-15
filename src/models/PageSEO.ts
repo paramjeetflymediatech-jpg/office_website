@@ -8,6 +8,9 @@ class PageSEO extends Model {
   declare description: string | null;
   declare keywords: string | null;
   declare customSchema: string | null;
+  declare ogTitle: string | null;
+  declare ogDescription: string | null;
+  declare ogImage: string | null;
   declare readonly createdAt: Date;
   declare readonly updatedAt: Date;
 }
@@ -38,6 +41,18 @@ PageSEO.init(
     },
     customSchema: {
       type: DataTypes.TEXT,
+      allowNull: true,
+    },
+    ogTitle: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    ogDescription: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+    },
+    ogImage: {
+      type: DataTypes.STRING,
       allowNull: true,
     },
   },

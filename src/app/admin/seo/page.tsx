@@ -616,6 +616,44 @@ export default function SEOPage() {
                     placeholder='{ "@type": "Product", ... }'
                   />
                 </div>
+
+                <div className="relative flex py-4 items-center">
+                  <div className="flex-grow border-t border-gray-100"></div>
+                  <span className="flex-shrink mx-4 text-[10px] font-bold text-gray-400 uppercase tracking-widest">Social Media (Open Graph)</span>
+                  <div className="flex-grow border-t border-gray-100"></div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="space-y-1">
+                    <label className="text-sm font-bold text-gray-700">OG Title</label>
+                    <input 
+                      name="ogTitle" 
+                      defaultValue={editingSeo?.ogTitle || ''}
+                      className="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#ff9900] outline-none"
+                      placeholder="Title for social shares"
+                    />
+                  </div>
+                  <div className="space-y-1">
+                    <label className="text-sm font-bold text-gray-700">OG Image URL</label>
+                    <input 
+                      name="ogImage" 
+                      defaultValue={editingSeo?.ogImage || ''}
+                      className="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#ff9900] outline-none"
+                      placeholder="https://.../og-image.jpg"
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-1">
+                  <label className="text-sm font-bold text-gray-700">OG Description</label>
+                  <textarea 
+                    name="ogDescription" 
+                    defaultValue={editingSeo?.ogDescription || ''}
+                    rows={2}
+                    className="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#ff9900] outline-none"
+                    placeholder="Brief summary for social sharing..."
+                  />
+                </div>
               </div>
 
               <div className="flex justify-end gap-3 pt-4 border-t border-gray-100">
