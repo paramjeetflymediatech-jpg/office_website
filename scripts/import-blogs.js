@@ -36,17 +36,26 @@ async function insertBlogs() {
 
       try {
         const [rows] = await connection.execute(
-          'INSERT INTO blogs (title, slug, content, excerpt, image, date, category, region, views, createdAt, updatedAt) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), NOW())',
+          'INSERT INTO blogs (title, slug, content, excerpt, image, date, category, region, views, metaTitle, metaDescription, keywords, ogTitle, ogDescription, ogImage, canonicalUrl, metaRobots, twitterCard, createdAt, updatedAt) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), NOW())',
           [
             title,
             slug,
             content,
             excerpt,
-            '/uploads/blog/default.jpg',
+            blog.image || '/uploads/blog/default.jpg',
             date,
             'SEO & Marketing',
             'global',
-            Math.floor(Math.random() * 100)
+            Math.floor(Math.random() * 100),
+            blog.seo_title || title,
+            blog.seo_description || excerpt,
+            blog.seo_keywords || '',
+            blog.seo_title || title,
+            blog.seo_description || excerpt,
+            blog.image || '/uploads/blog/default.jpg',
+            `https://flymediatech.com/blog/${slug}`,
+            'index, follow',
+            'summary_large_image'
           ]
         );
         count++;

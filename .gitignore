@@ -45,5 +45,8 @@ next-env.d.ts
 public/uploads/
 
 # Large data files
-blog_data/*.json
+blog_data/postmeta_clean.json
+blog_data/Egb5OL_postmeta*.json
+# Keep blog.json as it is small
+!blog_data/blog.json
 
