@@ -6,7 +6,7 @@ const mysql = require('mysql2/promise');
 async function insertBlogs() {
   let connection;
   try {
-    const dataPath = path.join(__dirname, '../blog_data/blog.json');
+    const dataPath = path.join(__dirname, '../blog_data/blog_with_meta_id.json');
     const blogsData = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
 
     console.log(`[Script] Found ${blogsData.length} blogs to insert.`);
