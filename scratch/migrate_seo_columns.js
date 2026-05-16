@@ -48,6 +48,8 @@ async function migrate() {
 
         const tables = ['blogs', 'pageseos'];
         const columns = [
+            { name: 'region', type: "VARCHAR(50) DEFAULT 'global'", only: 'blogs' },
+            { name: 'views', type: "INT DEFAULT 0", only: 'blogs' },
             { name: 'metaTitle', type: 'VARCHAR(255) NULL', only: 'blogs' },
             { name: 'metaDescription', type: 'TEXT NULL', only: 'blogs' },
             { name: 'focusKeyword', type: 'VARCHAR(255) NULL', only: 'blogs' },
