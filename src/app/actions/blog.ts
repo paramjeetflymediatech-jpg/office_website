@@ -66,6 +66,9 @@ export async function createBlog(formData: FormData) {
   const ogTitle = formData.get('ogTitle') as string || '';
   const ogDescription = formData.get('ogDescription') as string || '';
   const ogImage = formData.get('ogImage') as string || '';
+  const canonicalUrl = formData.get('canonicalUrl') as string || '';
+  const metaRobots = formData.get('metaRobots') as string || 'index, follow';
+  const twitterCard = formData.get('twitterCard') as string || 'summary_large_image';
 
   try {
     await Blog.sync();
@@ -106,6 +109,9 @@ export async function createBlog(formData: FormData) {
       ogTitle,
       ogDescription,
       ogImage,
+      canonicalUrl,
+      metaRobots,
+      twitterCard,
     });
 
     revalidatePath('/blog');
@@ -135,6 +141,9 @@ export async function updateBlog(id: number, formData: FormData) {
   const ogTitle = formData.get('ogTitle') as string || '';
   const ogDescription = formData.get('ogDescription') as string || '';
   const ogImage = formData.get('ogImage') as string || '';
+  const canonicalUrl = formData.get('canonicalUrl') as string || '';
+  const metaRobots = formData.get('metaRobots') as string || 'index, follow';
+  const twitterCard = formData.get('twitterCard') as string || 'summary_large_image';
 
   try {
     await Blog.sync();
@@ -186,6 +195,9 @@ export async function updateBlog(id: number, formData: FormData) {
       ogTitle,
       ogDescription,
       ogImage,
+      canonicalUrl,
+      metaRobots,
+      twitterCard,
     });
 
     revalidatePath('/blog');
@@ -255,7 +267,7 @@ export async function seedOriginalBlogs() {
       {
         title: "Top 10 Moving Companies In Calgary",
         slug: "top-10-moving-companies-in-calgary",
-        image: "https://flymediatech.com/wp-content/uploads/2026/05/2293.jpg",
+        image: "/uploads/2026/05/2293.jpg",
         date: "May 6, 2026",
         excerpt: "Introduction Modern moving services require more than just manual labour; most importantly, it demands advanced logistics, specialised equipment and extraordinary protection protocols. This blog highlights the top ten moving companies",
         content: `Introduction Modern moving services require more than just manual labour; most importantly, it demands advanced logistics, specialised equipment and extraordinary protection protocols. This blog highlights the top ten moving companies in Calgary, which differ by their advanced service features and high-tier operational standards. These moving industry leaders are selected based on the integration of modern moving technologies such as GPS-tracked transportation vehicles, climate-adaptive handling and inventory mapping systems to provide the most effective moving experience. Each mentioned moving company maintains full licensing and comprehensive liability insurance, offering multi-layered safety nets for your belongings. Their service menu goes beyond basic transport, especially featuring technical specialities like white glove handling for delicate electronics, custom crating for high-value art and modular scheduling to fit with the continuously changing timelines of Calgary’s real estate market. Their focus is on prioritising transparent binding cost estimates and professional-grade packing materials. These companies provide a perfect technical infrastructure necessary for a seamless residential or commercial transition.
@@ -286,7 +298,7 @@ The top ten moving companies in Calgary are:
       {
         title: "Have A Look At The Best 10 Movers In Regina",
         slug: "have-a-look-at-the-best-movers-in-regina",
-        image: "https://flymediatech.com/wp-content/uploads/2026/05/2289.jpg",
+        image: "/uploads/2026/05/2289.jpg",
         date: "May 6, 2026",
         excerpt: "Having a stress-free moving process while ensuring that your belongings are safely handled is the usual concern for most individuals; this is where the professionals and skilled movers of Galaxy",
         content: `Having a stress-free moving process while ensuring that your belongings are safely handled is the usual concern for most individuals; this is where the professionals and skilled movers of Galaxy Movers Regina step in to help with their top quality services. Moving into a new home or relocating your workspace is complex and challenging. It needs a detailed set of packing methods, safe transit strategies and secure unloading structures to ensure complete protection of your goods. Selecting the right mover from the numerous options in Regina depends on various factors like company profile, reliability, cost-efficiency and services. This list highlights the top ten best moving options in Regina based on these strict guidelines.`,
@@ -295,7 +307,7 @@ The top ten moving companies in Calgary are:
       {
         title: "What Are The Stages Of UX Research Process? Read Along To Get To Know About Them",
         slug: "what-are-the-stages-of-ux-research-process-read-along-to-get-to-know-about-them",
-        image: "https://flymediatech.com/wp-content/uploads/2025/12/Why-is-WordPress-Becoming-the-Most-Popular-Choice-for-Web-Development-Read-to-Find-Out.png",
+        image: "/uploads/2025/12/Why-is-WordPress-Becoming-the-Most-Popular-Choice-for-Web-Development-Read-to-Find-Out.png",
         date: "April 17, 2026",
         excerpt: "The User Experience process involves various stages such as defining clear objectives, developing a UX research plan, selecting the right research method, collecting data and conducting an analysis. This helps",
         content: `The User Experience process involves various stages such as defining clear objectives, developing a UX research plan, selecting the right research method, collecting data and conducting an analysis. This helps in understanding the target audience in a more comprehensive manner and provides a structured framework to improve product-market fit.`,
@@ -304,7 +316,7 @@ The top ten moving companies in Calgary are:
       {
         title: "How Does Online Credibility Speak Louder Than The Promised Claims?",
         slug: "how-does-online-credibility-speak-louder-than-the-promised-claims",
-        image: "https://flymediatech.com/wp-content/uploads/2026/01/Are-You-Planning-On-Improving-Your-ROI-Here-Are-Some-Strategies.png",
+        image: "/uploads/2026/01/Are-You-Planning-On-Improving-Your-ROI-Here-Are-Some-Strategies.png",
         date: "April 14, 2026",
         excerpt: "In the digital era and ever-evolving businesses, everything is bought, booked, or closed only when one feels it to be reliable and worthy enough to trust. Now, trust is something",
         content: `In the digital era and ever-evolving businesses, everything is bought, booked, or closed only when one feels it to be reliable and worthy enough to trust. Now, trust is something that can never be bought or built in an instant. It requires consistent performance, verified proof, customer reviews, and high-quality services to speak on behalf of your brand.`,
@@ -313,7 +325,7 @@ The top ten moving companies in Calgary are:
       {
         title: "How Is AI Changing The Future Of Digital Marketing?",
         slug: "how-is-ai-changing-the-future-of-digital-marketing",
-        image: "https://flymediatech.com/wp-content/uploads/2025/09/Understand-the-Key-Differences-Between-AEO-and-GEO-.jpg",
+        image: "/uploads/2025/09/Understand-the-Key-Differences-Between-AEO-and-GEO-.jpg",
         date: "April 10, 2026",
         excerpt: "The world of digital marketing is currently undergoing its most significant shift, as artificial intelligence is no longer just a futuristic concept or a tool for tech agencies; it has",
         content: `The world of digital marketing is currently undergoing its most significant shift, as artificial intelligence is no longer just a futuristic concept or a tool for tech agencies; it has quickly become the primary framework driving content production, audience analytics, search visibility, and personalized customer interactions.`,
@@ -322,9 +334,10 @@ The top ten moving companies in Calgary are:
       {
         title: "What Can Be The Strategic Planning To Manage the Review System In Compliance With Fake Review Regulation?",
         slug: "what-can-be-the-strategic-planning-to-manage-the-review-system-in-compliance-with-fake-review-regulation",
-        image: "https://flymediatech.com/wp-content/uploads/2025/09/5596173_55724-scaled.jpg",
+        image: "/uploads/2025/09/5596173_55724-scaled.jpg",
         date: "April 6, 2026",
         excerpt: "Have you ever wondered about the vital role played by the customers’ reviews on your specific product? If not, then you might be missing out on something major that can",
+
         content: `Have you ever wondered about the vital role played by the customers’ reviews on your specific product? If not, then you might be missing out on something major that can drastically impact your brand value. Managing customer feedback while fully complying with the latest fake review regulations requires clear protocols, customer verification, and secure platform logging.`,
         category: "Google Business Profile"
       }
@@ -342,5 +355,31 @@ The top ten moving companies in Calgary are:
   } catch (error: any) {
     console.error('[BlogAction] Seeding Error:', error);
     return { success: false, error: error.message };
+  }
+}
+
+export async function getLegacyBlogData(slug: string) {
+  try {
+    const fs = require('fs/promises');
+    const path = require('path');
+    const blogFilePath = path.join(process.cwd(), 'blog_data', 'blog.json');
+    
+    if (await fs.access(blogFilePath).then(() => true).catch(() => false)) {
+      const blogs = JSON.parse(await fs.readFile(blogFilePath, 'utf8'));
+      const blog = blogs.find((b: any) => b.slug === slug);
+      if (blog) {
+        return { 
+          success: true, 
+          data: {
+            metaTitle: blog.seo_title,
+            metaDescription: blog.seo_description,
+            keywords: blog.seo_keywords
+          } 
+        };
+      }
+    }
+    return { success: false, error: 'Legacy data not found for this slug' };
+  } catch (error) {
+    return { success: false, error: 'Failed to fetch legacy data' };
   }
 }

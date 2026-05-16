@@ -20,6 +20,13 @@ export default function SEOPage() {
   const [editingSeo, setEditingSeo] = useState<any>(null);
   const [itemToDelete, setItemToDelete] = useState<number | null>(null);
   const [isSyncConfirmOpen, setIsSyncConfirmOpen] = useState(false);
+  
+  // Pagination & Search state
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [totalCount, setTotalCount] = useState(0);
+  const limit = 10;
 
   const [config, setConfig] = useState({
     businessName: '',
@@ -48,9 +55,9 @@ export default function SEOPage() {
 
   async function loadData() {
     setLoading(true);
-    const [data, pages] = await Promise.all([
+    const [data, seoResult] = await Promise.all([
       getSEOConfig(),
-      getPageSEOs()
+      getPageSEOs(currentPage, limit, searchTerm)
     ]);
 
     if (data) {
@@ -76,9 +83,28 @@ export default function SEOPage() {
       });
     }
 
-    if (pages) setPageSeos(pages);
+    if (seoResult.success) {
+      setPageSeos(seoResult.data);
+      setTotalPages(seoResult.totalPages);
+      setTotalCount(seoResult.totalCount);
+    }
     setLoading(false);
   }
+
+  // Reload pages when pagination or search changes
+  useEffect(() => {
+    if (!loading) {
+      const reloadPages = async () => {
+        const seoResult = await getPageSEOs(currentPage, limit, searchTerm);
+        if (seoResult.success) {
+          setPageSeos(seoResult.data);
+          setTotalPages(seoResult.totalPages);
+          setTotalCount(seoResult.totalCount);
+        }
+      };
+      reloadPages();
+    }
+  }, [currentPage, searchTerm]);
 
   const handleSync = async () => {
     setSyncing(true);
@@ -499,6 +525,22 @@ export default function SEOPage() {
       ) : (
         /* Page-wise SEO Section */
         <div className="space-y-6">
+          <div className="flex flex-col md:flex-row gap-4 items-center justify-between mb-2">
+            <div className="relative w-full md:w-96">
+              <input
+                type="text"
+                placeholder="Search by URL or Title..."
+                value={searchTerm}
+                onChange={(e) => { setSearchTerm(e.target.value); setCurrentPage(1); }}
+                className="w-full pl-10 pr-4 py-2.5 bg-white border border-gray-200 rounded-xl focus:border-[#ff9900] outline-none transition-all"
+              />
+              <Globe className="absolute left-3 top-3 text-gray-400" size={18} />
+            </div>
+            <div className="text-sm text-gray-500 font-bold">
+              Total: {totalCount} entries
+            </div>
+          </div>
+
           <div className="grid grid-cols-1 gap-4">
             {pageSeos.length === 0 ? (
               <div className="bg-white p-12 text-center rounded-xl border border-dashed border-gray-200">
@@ -543,6 +585,52 @@ export default function SEOPage() {
               ))
             )}
           </div>
+
+          {/* Pagination UI */}
+          {totalPages > 1 && (
+            <div className="flex items-center justify-center gap-2 mt-8">
+              <button
+                onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
+                disabled={currentPage === 1}
+                className="px-4 py-2 bg-white border border-gray-200 rounded-lg font-bold text-gray-600 disabled:opacity-50 hover:bg-gray-50 transition-all"
+              >
+                Previous
+              </button>
+              
+              <div className="flex items-center gap-1">
+                {[...Array(totalPages)].map((_, i) => {
+                  const pg = i + 1;
+                  // Only show current, first, last, and neighbors
+                  if (pg === 1 || pg === totalPages || (pg >= currentPage - 1 && pg <= currentPage + 1)) {
+                    return (
+                      <button
+                        key={pg}
+                        onClick={() => setCurrentPage(pg)}
+                        className={`w-10 h-10 rounded-lg font-bold transition-all ${
+                          currentPage === pg 
+                            ? 'bg-[#ff9900] text-white shadow-md shadow-orange-100' 
+                            : 'bg-white border border-gray-200 text-gray-600 hover:bg-gray-50'
+                        }`}
+                      >
+                        {pg}
+                      </button>
+                    );
+                  } else if (pg === currentPage - 2 || pg === currentPage + 2) {
+                    return <span key={pg} className="px-1 text-gray-400">...</span>;
+                  }
+                  return null;
+                })}
+              </div>
+
+              <button
+                onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
+                disabled={currentPage === totalPages}
+                className="px-4 py-2 bg-white border border-gray-200 rounded-lg font-bold text-gray-600 disabled:opacity-50 hover:bg-gray-50 transition-all"
+              >
+                Next
+              </button>
+            </div>
+          )}
         </div>
       )}
 
@@ -604,6 +692,45 @@ export default function SEOPage() {
                     className="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#ff9900] outline-none"
                     placeholder="web design, agency, digital marketing"
                   />
+                </div>
+
+                <div className="space-y-1">
+                  <label className="text-sm font-bold text-gray-700">Canonical URL</label>
+                  <input 
+                    name="canonicalUrl" 
+                    defaultValue={editingSeo?.canonicalUrl || ''}
+                    className="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#ff9900] outline-none"
+                    placeholder="https://flymediatech.com/your-page"
+                  />
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="space-y-1">
+                    <label className="text-sm font-bold text-gray-700">Meta Robots</label>
+                    <select
+                      name="metaRobots"
+                      defaultValue={editingSeo?.metaRobots || 'index, follow'}
+                      className="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#ff9900] outline-none"
+                    >
+                      <option value="index, follow">Index, Follow</option>
+                      <option value="noindex, follow">Noindex, Follow</option>
+                      <option value="index, nofollow">Index, Nofollow</option>
+                      <option value="noindex, nofollow">Noindex, Nofollow</option>
+                    </select>
+                  </div>
+                  <div className="space-y-1">
+                    <label className="text-sm font-bold text-gray-700">Twitter Card</label>
+                    <select
+                      name="twitterCard"
+                      defaultValue={editingSeo?.twitterCard || 'summary_large_image'}
+                      className="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#ff9900] outline-none"
+                    >
+                      <option value="summary">Summary</option>
+                      <option value="summary_large_image">Summary Large Image</option>
+                      <option value="app">App</option>
+                      <option value="player">Player</option>
+                    </select>
+                  </div>
                 </div>
 
                 <div className="space-y-1">

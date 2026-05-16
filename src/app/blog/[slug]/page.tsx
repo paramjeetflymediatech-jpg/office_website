@@ -60,10 +60,10 @@ export default function SingleBlogPage() {
   return (
     <main className="min-h-screen bg-[#EFEFEF] pb-20">
       {/* Full Width Headline Banner */}
-      <section className="w-full pt-32 pb-16 md:pt-40 md:pb-24 mb-12" style={{ backgroundColor: '#FA7E09' }}>
+      <section className="w-full pt-10 pb-16 md:pt-10 md:pb-10 mb-12" style={{ backgroundColor: '#FA7E09' }}>
         <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div className="relative inline-block flex-1">
-            <h1 className="text-3xl md:text-5xl font-bold text-white mb-2 leading-tight max-w-4xl" style={{ fontFamily: '"Playfair Display", sans-serif' }}>
+            <h1 className="text-xl md:text-3xl font-bold text-white mb-2 leading-tight max-w-4xl" style={{ fontFamily: '"Playfair Display", sans-serif' }}>
               {blog.title}
             </h1>
             <span className="block w-16 border-t-[4px] border-black mt-4"></span>
@@ -80,8 +80,8 @@ export default function SingleBlogPage() {
       <div className="max-w-7xl mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           
-          {/* Sidebar Form - 4 columns on desktop (Left Side) */}
-          <div className="lg:col-span-4 order-1">
+          {/* Sidebar Form - 4 columns on desktop (Appears LAST on mobile) */}
+          <div className="lg:col-span-4 order-2 lg:order-1">
             <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 lg:sticky top-32">
               <h2 className="text-2xl font-bold text-black mb-6" style={{ fontFamily: '"Playfair Display", sans-serif' }}>Contact Us</h2>
               
@@ -131,8 +131,8 @@ export default function SingleBlogPage() {
             </div>
           </div>
 
-          {/* Main Blog Post Content - 8 columns on desktop (Right Side) */}
-          <div className="lg:col-span-8 order-2">
+          {/* Main Blog Post Content - 8 columns on desktop (Appears FIRST on mobile) */}
+          <div className="lg:col-span-8 order-1 lg:order-2">
             <article className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
               {/* Featured Image */}
               {blog.image && (
@@ -140,7 +140,7 @@ export default function SingleBlogPage() {
                   <img 
                     loading="lazy" 
                     src={blog.image} 
-                    className="w-full h-auto object-cover max-h-[500px]" 
+                    className="w-full h-auto object-contain max-h-[500px]" 
                     alt={blog.title}
                   />
                 </div>

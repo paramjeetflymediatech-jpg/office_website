@@ -3,7 +3,8 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useNotification } from '@/components/NotificationContext';
-import { ChevronLeft, Save, Upload, RefreshCw, X } from 'lucide-react';
+import { getLegacyBlogData } from '@/app/actions/blog';
+import { ChevronLeft, Save, Upload, RefreshCw, X, Zap, Globe, Share2 } from 'lucide-react';
 import Link from 'next/link';
 
 interface BlogFormProps {
@@ -36,6 +37,9 @@ export default function BlogForm({ initialData, onSubmitAction }: BlogFormProps)
   const [ogTitle, setOgTitle] = useState(initialData?.ogTitle || '');
   const [ogDescription, setOgDescription] = useState(initialData?.ogDescription || '');
   const [ogImage, setOgImage] = useState(initialData?.ogImage || '');
+  const [canonicalUrl, setCanonicalUrl] = useState(initialData?.canonicalUrl || '');
+  const [metaRobots, setMetaRobots] = useState(initialData?.metaRobots || 'index, follow');
+  const [twitterCard, setTwitterCard] = useState(initialData?.twitterCard || 'summary_large_image');
 
   const isEdit = !!initialData;
 
@@ -73,6 +77,39 @@ export default function BlogForm({ initialData, onSubmitAction }: BlogFormProps)
     }
   };
 
+  const handleFetchLegacySEO = async () => {
+    if (!slug) {
+      showNotification('error', 'Slug is required to fetch legacy data');
+      return;
+    }
+
+    setLoading(true);
+    const result = await getLegacyBlogData(slug);
+    if (result.success && result.data) {
+      const data = result.data;
+      if (data.metaTitle) setMetaTitle(data.metaTitle);
+      if (data.metaDescription) setMetaDescription(data.metaDescription);
+      if (data.keywords) setKeywords(data.keywords);
+      
+      // Auto-fill OG as well
+      if (data.metaTitle) setOgTitle(data.metaTitle);
+      if (data.metaDescription) setOgDescription(data.metaDescription);
+      if (imageUrl) setOgImage(imageUrl);
+
+      showNotification('success', 'SEO data fetched from WordPress successfully!');
+    } else {
+      showNotification('error', result.error || 'Failed to fetch legacy SEO data');
+    }
+    setLoading(false);
+  };
+
+  const handleSyncSocial = () => {
+    setOgTitle(metaTitle || title);
+    setOgDescription(metaDescription || excerpt);
+    setOgImage(imageUrl);
+    showNotification('success', 'Social meta synced with page SEO');
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!title || !slug || !excerpt || !content || !category) {
@@ -99,6 +136,9 @@ export default function BlogForm({ initialData, onSubmitAction }: BlogFormProps)
     formData.append('ogTitle', ogTitle);
     formData.append('ogDescription', ogDescription);
     formData.append('ogImage', ogImage);
+    formData.append('canonicalUrl', canonicalUrl);
+    formData.append('metaRobots', metaRobots);
+    formData.append('twitterCard', twitterCard);
     if (imageFile) {
       formData.append('imageFile', imageFile);
     }
@@ -304,6 +344,15 @@ export default function BlogForm({ initialData, onSubmitAction }: BlogFormProps)
                 </svg>
               </div>
               <h3 className="font-bold text-gray-900">SEO Management</h3>
+              <button
+                type="button"
+                onClick={handleFetchLegacySEO}
+                className="ml-auto flex items-center gap-1 text-[10px] font-bold uppercase tracking-widest bg-orange-50 text-[#ff9900] px-2 py-1 rounded hover:bg-orange-100 transition-colors"
+                title="Fetch from WordPress blog.json"
+              >
+                <Zap size={10} />
+                Sync WP
+              </button>
             </div>
 
             <div className="space-y-2">
@@ -361,6 +410,50 @@ export default function BlogForm({ initialData, onSubmitAction }: BlogFormProps)
             </div>
 
             <div className="space-y-2">
+              <label className="text-xs font-bold text-gray-400 uppercase tracking-wider flex items-center gap-1">
+                <Globe size={12} />
+                Canonical URL
+              </label>
+              <input
+                type="text"
+                value={canonicalUrl}
+                onChange={(e) => setCanonicalUrl(e.target.value)}
+                className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl focus:border-green-500 outline-none transition-all"
+                placeholder="https://flymediatech.in/blog/..."
+              />
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">Meta Robots</label>
+                <select
+                  value={metaRobots}
+                  onChange={(e) => setMetaRobots(e.target.value)}
+                  className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl focus:border-green-500 outline-none transition-all"
+                >
+                  <option value="index, follow">Index, Follow</option>
+                  <option value="noindex, follow">Noindex, Follow</option>
+                  <option value="index, nofollow">Index, Nofollow</option>
+                  <option value="noindex, nofollow">Noindex, Nofollow</option>
+                </select>
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">Twitter Card</label>
+                <select
+                  value={twitterCard}
+                  onChange={(e) => setTwitterCard(e.target.value)}
+                  className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl focus:border-green-500 outline-none transition-all"
+                >
+                  <option value="summary">Summary</option>
+                  <option value="summary_large_image">Summary Large Image</option>
+                  <option value="app">App</option>
+                  <option value="player">Player</option>
+                </select>
+              </div>
+            </div>
+
+            <div className="space-y-2">
               <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">Custom Page Schema</label>
               <textarea
                 value={schema}
@@ -374,6 +467,14 @@ export default function BlogForm({ initialData, onSubmitAction }: BlogFormProps)
             <div className="relative flex py-2 items-center">
               <div className="flex-grow border-t border-gray-100"></div>
               <span className="flex-shrink mx-4 text-xs font-bold text-gray-400 uppercase tracking-wider">Social Sharing (OG)</span>
+              <button
+                type="button"
+                onClick={handleSyncSocial}
+                className="flex items-center gap-1 text-[10px] font-bold uppercase tracking-widest text-[#ff9900] hover:underline"
+              >
+                <RefreshCw size={10} />
+                Sync
+              </button>
               <div className="flex-grow border-t border-gray-100"></div>
             </div>
 

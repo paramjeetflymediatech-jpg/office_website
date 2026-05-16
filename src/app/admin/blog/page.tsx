@@ -3,7 +3,8 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { getBlogs, deleteBlog, seedOriginalBlogs } from '@/app/actions/blog';
-import { Plus, Trash2, Edit, BookOpen, Eye, Calendar, Sparkles, Search } from 'lucide-react';
+import { syncAllBlogSEO } from '@/app/actions/pageSeo';
+import { Plus, Trash2, Edit, BookOpen, Eye, Calendar, Sparkles, Search, RefreshCw } from 'lucide-react';
 import { useNotification } from '@/components/NotificationContext';
 import ConfirmModal from '@/components/ConfirmModal';
 
@@ -14,6 +15,8 @@ export default function AdminBlogPage() {
   const [actionLoading, setActionLoading] = useState(false);
   const [blogToDelete, setBlogToDelete] = useState<number | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 15;
 
   const filteredBlogs = blogs.filter(blog => {
     const searchLower = searchQuery.toLowerCase();
@@ -25,6 +28,16 @@ export default function AdminBlogPage() {
       blog.region?.toLowerCase().includes(searchLower)
     );
   });
+
+  // Pagination calculations
+  const totalPages = Math.ceil(filteredBlogs.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const currentBlogs = filteredBlogs.slice(startIndex, startIndex + itemsPerPage);
+
+  // Reset to page 1 when searching
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchQuery]);
 
   useEffect(() => {
     loadBlogs();
@@ -62,6 +75,19 @@ export default function AdminBlogPage() {
     setActionLoading(false);
   };
 
+  const handleSyncSEO = async () => {
+    if (!confirm('This will synchronize SEO metadata (Title, Description, Keywords) for all 733+ blogs. Proceed?')) return;
+    
+    setActionLoading(true);
+    const result = await syncAllBlogSEO();
+    if (result.success) {
+      showNotification('success', result.message || 'SEO data synchronized successfully!');
+    } else {
+      showNotification('error', result.error || 'Failed to sync SEO data');
+    }
+    setActionLoading(false);
+  };
+
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-[400px]">
@@ -89,6 +115,15 @@ export default function AdminBlogPage() {
               Seed Initial Blogs
             </button>
           )}
+          <button 
+            onClick={handleSyncSEO}
+            disabled={actionLoading}
+            className="flex items-center justify-center gap-2 border-2 border-blue-100 text-blue-600 bg-blue-50 px-6 py-2.5 rounded-lg font-bold hover:bg-blue-100 transition-all flex-1 sm:flex-none"
+            title="Sync SEO metadata from blog.json to Database"
+          >
+            <RefreshCw size={20} className={actionLoading ? 'animate-spin' : ''} />
+            Sync SEO
+          </button>
           <Link 
             href="/admin/blog/new"
             className="flex items-center justify-center gap-2 bg-[#ff9900] text-white px-6 py-2.5 rounded-lg font-bold hover:bg-black transition-all flex-1 sm:flex-none shadow-lg shadow-orange-100 text-center"
@@ -176,7 +211,7 @@ export default function AdminBlogPage() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-50">
-                {filteredBlogs.map((blog) => (
+                {currentBlogs.map((blog) => (
                   <tr key={blog.id} className="hover:bg-gray-50/50 transition-colors">
                     <td className="p-4 sm:p-5">
                       <div className="flex items-center gap-4">
@@ -243,6 +278,59 @@ export default function AdminBlogPage() {
                 ))}
               </tbody>
             </table>
+          </div>
+        </div>
+      )}
+
+      {/* Pagination Controls */}
+      {filteredBlogs.length > itemsPerPage && (
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-white p-4 rounded-xl border border-gray-100 shadow-sm">
+          <p className="text-sm text-gray-500 font-medium">
+            Showing <span className="text-gray-900 font-bold">{startIndex + 1}</span> to <span className="text-gray-900 font-bold">{Math.min(startIndex + itemsPerPage, filteredBlogs.length)}</span> of <span className="text-gray-900 font-bold">{filteredBlogs.length}</span> articles
+          </p>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+              disabled={currentPage === 1}
+              className="px-4 py-2 text-sm font-bold text-gray-600 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+            >
+              Previous
+            </button>
+            <div className="flex items-center gap-1 overflow-x-auto max-w-[200px] sm:max-w-none px-2">
+              {Array.from({ length: Math.min(totalPages, 7) }).map((_, i) => {
+                let pageNum;
+                if (totalPages <= 7) {
+                  pageNum = i + 1;
+                } else if (currentPage <= 4) {
+                  pageNum = i + 1;
+                } else if (currentPage >= totalPages - 3) {
+                  pageNum = totalPages - 6 + i;
+                } else {
+                  pageNum = currentPage - 3 + i;
+                }
+
+                return (
+                  <button
+                    key={pageNum}
+                    onClick={() => setCurrentPage(pageNum)}
+                    className={`w-10 h-10 flex items-center justify-center rounded-lg text-sm font-bold transition-all ${
+                      currentPage === pageNum
+                        ? 'bg-[#ff9900] text-white shadow-lg shadow-orange-100'
+                        : 'text-gray-600 hover:bg-orange-50 hover:text-[#ff9900]'
+                    }`}
+                  >
+                    {pageNum}
+                  </button>
+                );
+              })}
+            </div>
+            <button
+              onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+              disabled={currentPage === totalPages}
+              className="px-4 py-2 text-sm font-bold text-gray-600 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+            >
+              Next
+            </button>
           </div>
         </div>
       )}

@@ -88,22 +88,24 @@ export async function generateMetadata(): Promise<Metadata> {
     const finalTitle = pageSeo?.title || blogSeo?.metaTitle || blogSeo?.title || dynamicSeo.title;
     const finalDesc = pageSeo?.description || blogSeo?.metaDescription || blogSeo?.excerpt || dynamicSeo.description;
     const finalKeywords = pageSeo?.keywords || blogSeo?.keywords || "digital marketing, SEO, SMO, website design, PPC, web development";
-
-    const canonicalUrl = `https://flymediatech.com${pathname}`;
+    const finalCanonical = pageSeo?.canonicalUrl || blogSeo?.canonicalUrl || `https://flymediatech.com${pathname}`;
+    const robotsValue = pageSeo?.metaRobots || blogSeo?.metaRobots || 'index, follow';
+    const isNoIndex = robotsValue.includes('noindex');
+    const isNoFollow = robotsValue.includes('nofollow');
 
     return {
       title: finalTitle,
       description: finalDesc,
       keywords: finalKeywords,
       alternates: {
-        canonical: canonicalUrl,
+        canonical: finalCanonical,
       },
       robots: {
-        index: true,
-        follow: true,
+        index: !isNoIndex,
+        follow: !isNoFollow,
         googleBot: {
-          index: true,
-          follow: true,
+          index: !isNoIndex,
+          follow: !isNoFollow,
           'max-video-preview': -1,
           'max-image-preview': 'large',
           'max-snippet': -1,
@@ -115,12 +117,12 @@ export async function generateMetadata(): Promise<Metadata> {
         images: (pageSeo?.ogImage || blogSeo?.ogImage || blogSeo?.image) 
           ? [{ url: (pageSeo?.ogImage || blogSeo?.ogImage || blogSeo?.image) as string }] 
           : [],
-        url: canonicalUrl,
+        url: finalCanonical,
         siteName: businessName,
         type: pathname.includes('/blog/') ? 'article' : 'website',
       },
       twitter: {
-        card: 'summary_large_image',
+        card: (pageSeo?.twitterCard || blogSeo?.twitterCard || 'summary_large_image') as any,
         title: pageSeo?.ogTitle || blogSeo?.ogTitle || finalTitle,
         description: pageSeo?.ogDescription || blogSeo?.ogDescription || finalDesc,
         images: (pageSeo?.ogImage || blogSeo?.ogImage || blogSeo?.image) 

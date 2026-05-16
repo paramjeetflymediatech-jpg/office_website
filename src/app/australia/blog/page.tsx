@@ -28,7 +28,7 @@ export default function BlogPage() {
   return (
     <main className="min-h-screen bg-[#EFEFEF] pb-20">
       {/* Full Width Headline Banner */}
-      <section className="w-full pt-32 pb-16 md:pt-20 md:pb-24 mb-12" style={{ backgroundColor: '#FA7E09' }}>
+      <section className="w-full pt-10 pb-16 md:pt-10 md:pb-12 mb-12" style={{ backgroundColor: '#FA7E09' }}>
         <div className="max-w-7xl mx-auto px-4">
           <div className="relative inline-block">
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-2" style={{ fontFamily: '"Playfair Display", sans-serif' }}>

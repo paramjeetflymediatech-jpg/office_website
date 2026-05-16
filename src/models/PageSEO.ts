@@ -11,6 +11,9 @@ class PageSEO extends Model {
   declare ogTitle: string | null;
   declare ogDescription: string | null;
   declare ogImage: string | null;
+  declare canonicalUrl: string | null;
+  declare metaRobots: string | null;
+  declare twitterCard: string | null;
   declare readonly createdAt: Date;
   declare readonly updatedAt: Date;
 }
@@ -54,6 +57,20 @@ PageSEO.init(
     ogImage: {
       type: DataTypes.STRING,
       allowNull: true,
+    },
+    canonicalUrl: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    metaRobots: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      defaultValue: 'index, follow',
+    },
+    twitterCard: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      defaultValue: 'summary_large_image',
     },
   },
   {

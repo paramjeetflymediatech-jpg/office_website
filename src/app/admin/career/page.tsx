@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { getCareers, upsertCareer, deleteCareer, getApplications, deleteApplication } from '@/app/actions/career';
-import { Plus, Trash2, Edit2, X, Save, FileText, Download, User, Briefcase, Mail, Phone, Calendar } from 'lucide-react';
+import { Plus, Trash2, Edit2, X, Save, FileText, Download, User, Briefcase, Mail, Phone, Calendar, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useNotification } from '@/components/NotificationContext';
 import ConfirmModal from '@/components/ConfirmModal';
 
@@ -20,6 +20,11 @@ export default function CareerPage() {
   const [applications, setApplications] = useState<any[]>([]);
   const [appToDelete, setAppToDelete] = useState<number | null>(null);
   const [careerToDelete, setCareerToDelete] = useState<number | null>(null);
+  
+  // Pagination State
+  const [currentOpeningsPage, setCurrentOpeningsPage] = useState(1);
+  const [currentAppsPage, setCurrentAppsPage] = useState(1);
+  const itemsPerPage = 10;
 
   useEffect(() => {
     loadData();
@@ -33,6 +38,18 @@ export default function CareerPage() {
     setApplications(appsData);
     setLoading(false);
   }
+
+  // Pagination Logic for Openings
+  const indexOfLastOpening = currentOpeningsPage * itemsPerPage;
+  const indexOfFirstOpening = indexOfLastOpening - itemsPerPage;
+  const currentOpenings = careers.slice(indexOfFirstOpening, indexOfLastOpening);
+  const totalOpeningsPages = Math.ceil(careers.length / itemsPerPage);
+
+  // Pagination Logic for Applications
+  const indexOfLastApp = currentAppsPage * itemsPerPage;
+  const indexOfFirstApp = indexOfLastApp - itemsPerPage;
+  const currentApps = applications.slice(indexOfFirstApp, indexOfLastApp);
+  const totalAppsPages = Math.ceil(applications.length / itemsPerPage);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -130,7 +147,7 @@ export default function CareerPage() {
       {/* Tab Contents: Job Openings */}
       {activeTab === 'openings' && (
         <div className="grid grid-cols-1 gap-4">
-          {careers.map((career) => (
+          {currentOpenings.map((career) => (
             <div 
               key={career.id} 
               className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex flex-col sm:flex-row justify-between items-start gap-4 hover:shadow-md transition-shadow duration-300"
@@ -180,6 +197,41 @@ export default function CareerPage() {
               </div>
             </div>
           ))}
+
+          {/* Openings Pagination */}
+          {totalOpeningsPages > 1 && (
+            <div className="flex justify-center items-center gap-2 mt-8">
+              <button
+                onClick={() => setCurrentOpeningsPage(prev => Math.max(prev - 1, 1))}
+                disabled={currentOpeningsPage === 1}
+                className="p-2.5 rounded-xl border border-gray-200 text-gray-400 hover:text-[#ff9900] disabled:opacity-30 disabled:cursor-not-allowed transition-all hover:bg-white bg-gray-50"
+              >
+                <ChevronLeft size={20} />
+              </button>
+              <div className="flex items-center gap-1.5">
+                {Array.from({ length: totalOpeningsPages }).map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setCurrentOpeningsPage(i + 1)}
+                    className={`w-10 h-10 rounded-xl font-bold transition-all ${
+                      currentOpeningsPage === i + 1
+                        ? 'bg-[#ff9900] text-white shadow-lg shadow-orange-100'
+                        : 'text-gray-400 hover:text-black hover:bg-white bg-gray-50 border border-transparent'
+                    }`}
+                  >
+                    {i + 1}
+                  </button>
+                ))}
+              </div>
+              <button
+                onClick={() => setCurrentOpeningsPage(prev => Math.min(prev + 1, totalOpeningsPages))}
+                disabled={currentOpeningsPage === totalOpeningsPages}
+                className="p-2.5 rounded-xl border border-gray-200 text-gray-400 hover:text-[#ff9900] disabled:opacity-30 disabled:cursor-not-allowed transition-all hover:bg-white bg-gray-50"
+              >
+                <ChevronRight size={20} />
+              </button>
+            </div>
+          )}
           {careers.length === 0 && (
             <div className="text-center py-16 bg-white rounded-2xl border border-gray-100 text-gray-500 shadow-sm">
               <Briefcase className="w-12 h-12 text-gray-300 mx-auto mb-3" />
@@ -193,7 +245,7 @@ export default function CareerPage() {
       {/* Tab Contents: Candidate Applications */}
       {activeTab === 'applications' && (
         <div className="grid grid-cols-1 gap-6">
-          {applications.map((app) => (
+          {currentApps.map((app) => (
             <div 
               key={app.id} 
               className="bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden flex flex-col md:flex-row md:items-stretch"
@@ -267,6 +319,41 @@ export default function CareerPage() {
               </div>
             </div>
           ))}
+
+          {/* Applications Pagination */}
+          {totalAppsPages > 1 && (
+            <div className="flex justify-center items-center gap-2 mt-8">
+              <button
+                onClick={() => setCurrentAppsPage(prev => Math.max(prev - 1, 1))}
+                disabled={currentAppsPage === 1}
+                className="p-2.5 rounded-xl border border-gray-200 text-gray-400 hover:text-[#ff9900] disabled:opacity-30 disabled:cursor-not-allowed transition-all hover:bg-white bg-gray-50"
+              >
+                <ChevronLeft size={20} />
+              </button>
+              <div className="flex items-center gap-1.5">
+                {Array.from({ length: totalAppsPages }).map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setCurrentAppsPage(i + 1)}
+                    className={`w-10 h-10 rounded-xl font-bold transition-all ${
+                      currentAppsPage === i + 1
+                        ? 'bg-[#ff9900] text-white shadow-lg shadow-orange-100'
+                        : 'text-gray-400 hover:text-black hover:bg-white bg-gray-50 border border-transparent'
+                    }`}
+                  >
+                    {i + 1}
+                  </button>
+                ))}
+              </div>
+              <button
+                onClick={() => setCurrentAppsPage(prev => Math.min(prev + 1, totalAppsPages))}
+                disabled={currentAppsPage === totalAppsPages}
+                className="p-2.5 rounded-xl border border-gray-200 text-gray-400 hover:text-[#ff9900] disabled:opacity-30 disabled:cursor-not-allowed transition-all hover:bg-white bg-gray-50"
+              >
+                <ChevronRight size={20} />
+              </button>
+            </div>
+          )}
 
           {applications.length === 0 && (
             <div className="text-center py-16 bg-white rounded-2xl border border-gray-100 text-gray-500 shadow-sm">

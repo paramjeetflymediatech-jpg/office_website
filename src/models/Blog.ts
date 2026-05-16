@@ -20,6 +20,9 @@ class Blog extends Model {
   declare ogTitle: string;
   declare ogDescription: string;
   declare ogImage: string;
+  declare canonicalUrl: string;
+  declare metaRobots: string;
+  declare twitterCard: string;
 }
 
 Blog.init(
@@ -98,6 +101,20 @@ Blog.init(
     ogImage: {
       type: DataTypes.STRING,
       allowNull: true,
+    },
+    canonicalUrl: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    metaRobots: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      defaultValue: 'index, follow',
+    },
+    twitterCard: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      defaultValue: 'summary_large_image',
     },
   },
   {
