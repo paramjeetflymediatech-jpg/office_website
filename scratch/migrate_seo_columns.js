@@ -12,8 +12,50 @@ async function migrate() {
     try {
         console.log('Starting migration via raw SQL...');
 
+        // 1. Create tables if they don't exist
+        await connection.query(`
+            CREATE TABLE IF NOT EXISTS blogs (
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                title VARCHAR(255) NOT NULL,
+                slug VARCHAR(255) NOT NULL UNIQUE,
+                content TEXT,
+                excerpt TEXT,
+                image VARCHAR(255),
+                category VARCHAR(100),
+                region VARCHAR(50) DEFAULT 'global',
+                date VARCHAR(50),
+                views INT DEFAULT 0,
+                createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+                updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+            )
+        `);
+
+        await connection.query(`
+            CREATE TABLE IF NOT EXISTS pageseos (
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                pageUrl VARCHAR(255) NOT NULL UNIQUE,
+                title VARCHAR(255) NOT NULL,
+                description TEXT,
+                keywords TEXT,
+                customSchema TEXT,
+                ogTitle VARCHAR(255),
+                ogDescription TEXT,
+                ogImage VARCHAR(255),
+                createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+                updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+            )
+        `);
+
         const tables = ['blogs', 'pageseos'];
         const columns = [
+            { name: 'metaTitle', type: 'VARCHAR(255) NULL', only: 'blogs' },
+            { name: 'metaDescription', type: 'TEXT NULL', only: 'blogs' },
+            { name: 'focusKeyword', type: 'VARCHAR(255) NULL', only: 'blogs' },
+            { name: 'keywords', type: 'TEXT NULL', only: 'blogs' },
+            { name: 'schema', type: 'TEXT NULL', only: 'blogs' },
+            { name: 'ogTitle', type: 'VARCHAR(255) NULL', only: 'blogs' },
+            { name: 'ogDescription', type: 'TEXT NULL', only: 'blogs' },
+            { name: 'ogImage', type: 'VARCHAR(255) NULL', only: 'blogs' },
             { name: 'canonicalUrl', type: 'VARCHAR(255) NULL' },
             { name: 'metaRobots', type: "VARCHAR(255) NULL DEFAULT 'index, follow'" },
             { name: 'twitterCard', type: "VARCHAR(255) NULL DEFAULT 'summary_large_image'" }
@@ -25,12 +67,13 @@ async function migrate() {
             const existingColumns = rows.map(r => r.Field);
 
             for (const col of columns) {
+                // If the column is restricted to a specific table, check it
+                if (col.only && col.only !== table) continue;
+                
                 if (!existingColumns.includes(col.name)) {
                     console.log(`Adding column ${col.name} to ${table}...`);
                     await connection.query(`ALTER TABLE ${table} ADD COLUMN ${col.name} ${col.type}`);
                     console.log(`Successfully added ${col.name} to ${table}`);
-                } else {
-                    console.log(`Column ${col.name} already exists in ${table}`);
                 }
             }
         }
