@@ -9,7 +9,7 @@ async function insertBlogs() {
     const dataPath = path.join(__dirname, '../blog_data/blog_with_meta_id.json');
     const blogsData = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
 
-    console.log(`[Script] Found ${blogsData.length} blogs to insert.`);
+    console.log(`[Script] Found ${blogsData.length} blogs to insert.`,blogsData );
 
     connection = await mysql.createConnection({
       host: process.env.DB_HOST || 'localhost',
@@ -25,6 +25,7 @@ async function insertBlogs() {
 
     for (const blog of blogsData) {
       const { slug, content } = blog;
+      console.log(blogsData[0])
 
       const title = slug
         .split('-')
