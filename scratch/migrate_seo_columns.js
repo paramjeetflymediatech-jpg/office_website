@@ -31,7 +31,7 @@ async function migrate() {
         `);
 
         await connection.query(`
-            CREATE TABLE IF NOT EXISTS pageseos (
+            CREATE TABLE IF NOT EXISTS PageSEOs (
                 id INT AUTO_INCREMENT PRIMARY KEY,
                 pageUrl VARCHAR(255) NOT NULL UNIQUE,
                 title VARCHAR(255) NOT NULL,
@@ -46,8 +46,9 @@ async function migrate() {
             )
         `);
 
-        const tables = ['blogs', 'pageseos'];
+        const tables = ['blogs', 'PageSEOs'];
         const columns = [
+            { name: 'pageUrl', type: "VARCHAR(255) NOT NULL UNIQUE", only: 'PageSEOs' },
             { name: 'region', type: "VARCHAR(50) DEFAULT 'global'", only: 'blogs' },
             { name: 'views', type: "INT DEFAULT 0", only: 'blogs' },
             { name: 'metaTitle', type: 'VARCHAR(255) NULL', only: 'blogs' },
