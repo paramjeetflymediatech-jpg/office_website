@@ -72,7 +72,7 @@ async function migrate() {
                 
                 if (!existingColumns.includes(col.name)) {
                     console.log(`Adding column ${col.name} to ${table}...`);
-                    await connection.query(`ALTER TABLE ${table} ADD COLUMN ${col.name} ${col.type}`);
+                    await connection.query(`ALTER TABLE ${table} ADD COLUMN \`${col.name}\` ${col.type}`);
                     console.log(`Successfully added ${col.name} to ${table}`);
                 }
             }
