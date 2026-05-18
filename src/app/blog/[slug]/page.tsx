@@ -1,61 +1,56 @@
-"use client";
-
-import React, { useEffect, useState, useRef } from "react";
-import { useParams } from "next/navigation";
+import React from "react";
 import Link from "next/link";
 import { Eye, ChevronLeft, BookOpen } from "lucide-react";
 import { getBlogBySlug, incrementBlogViews } from "@/app/actions/blog";
+import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 
-export default function SingleBlogPage() {
-  const params = useParams();
-  const slug = params.slug as string;
-  const [blog, setBlog] = useState<any>(null);
-  const [loading, setLoading] = useState(true);
-  const incrementedRef = useRef(false);
+interface PageProps {
+  params: Promise<{ slug: string }>;
+}
 
-  useEffect(() => {
-    async function loadBlog() {
-      if (slug) {
-        const data = await getBlogBySlug(slug);
-        if (data) {
-          setBlog(data);
-          // Increment view counter only once per mount
-          if (!incrementedRef.current) {
-            incrementedRef.current = true;
-            await incrementBlogViews(data.id);
-          }
-        }
-      }
-      setLoading(false);
-    }
-    loadBlog();
-  }, [slug]);
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const blog = await getBlogBySlug(slug);
+  if (!blog) return {};
 
-  if (loading) {
-    return (
-      <div className="flex items-center justify-center min-h-screen bg-[#EFEFEF]">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#ff9900]"></div>
-      </div>
-    );
-  }
+  const cleanDescription = blog.metaDescription || 
+    (blog.excerpt ? blog.excerpt.replace(/<[^>]*>?/gm, '').trim() : '');
+
+  return {
+    title: blog.metaTitle || blog.title,
+    description: cleanDescription.slice(0, 155),
+    keywords: blog.keywords || blog.category,
+    alternates: {
+      canonical: blog.canonicalUrl || `https://flymediatech.com/blog/${slug}`,
+    },
+    openGraph: {
+      title: blog.ogTitle || blog.metaTitle || blog.title,
+      description: (blog.ogDescription || cleanDescription).slice(0, 155),
+      images: blog.ogImage || blog.image ? [{ url: blog.ogImage || blog.image }] : [],
+      url: blog.canonicalUrl || `https://flymediatech.com/blog/${slug}`,
+      type: "article",
+    },
+    twitter: {
+      card: (blog.twitterCard as any) || "summary_large_image",
+      title: blog.ogTitle || blog.title,
+      description: (blog.ogDescription || cleanDescription).slice(0, 155),
+      images: blog.ogImage || blog.image ? [blog.ogImage || blog.image] : [],
+    },
+    robots: blog.metaRobots || "index, follow",
+  };
+}
+
+export default async function SingleBlogPage({ params }: PageProps) {
+  const { slug } = await params;
+  const blog = await getBlogBySlug(slug);
 
   if (!blog) {
-    return (
-      <div className="min-h-screen bg-[#EFEFEF] py-32 px-4 flex flex-col items-center justify-center text-center">
-        <div className="max-w-md bg-white p-12 rounded-2xl border border-gray-100 shadow-sm">
-          <BookOpen className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-          <h1 className="text-2xl font-bold text-gray-900 mb-2">Post Not Found</h1>
-          <p className="text-gray-500 mb-8">The blog article you are looking for does not exist or has been removed.</p>
-          <Link 
-            href="/blog" 
-            className="px-6 py-3 bg-[#ff9900] text-white font-bold rounded-xl hover:bg-black transition-colors"
-          >
-            Back to Blog
-          </Link>
-        </div>
-      </div>
-    );
+    notFound();
   }
+
+  // Increment views on render safely on the server
+  await incrementBlogViews(blog.id);
 
   return (
     <main className="min-h-screen bg-[#EFEFEF] pb-20">

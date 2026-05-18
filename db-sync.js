@@ -15,15 +15,24 @@ const sequelize = new Sequelize(
 // Define models in vanilla JS to synchronize schema directly with the DB
 const SEOConfig = sequelize.define('SEOConfig', {
   id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true },
-  businessName: Sequelize.STRING,
-  logoUrl: Sequelize.STRING,
-  phone: Sequelize.STRING,
-  email: Sequelize.STRING,
-  address: Sequelize.TEXT,
-  socialLinks: Sequelize.TEXT,
-  globalSchema: Sequelize.TEXT,
-  headerScripts: Sequelize.TEXT,
-  footerScripts: Sequelize.TEXT,
+  businessName: { type: Sequelize.STRING, allowNull: true },
+  businessDescription: { type: Sequelize.TEXT, allowNull: true },
+  logoUrl: { type: Sequelize.STRING, allowNull: true },
+  phone: { type: Sequelize.STRING, allowNull: true },
+  email: { type: Sequelize.STRING, allowNull: true },
+  streetAddress: { type: Sequelize.TEXT, allowNull: true },
+  city: { type: Sequelize.STRING, allowNull: true },
+  state: { type: Sequelize.STRING, allowNull: true },
+  postalCode: { type: Sequelize.STRING, allowNull: true },
+  countryCode: { type: Sequelize.STRING, allowNull: true },
+  latitude: { type: Sequelize.STRING, allowNull: true },
+  longitude: { type: Sequelize.STRING, allowNull: true },
+  socialLinks: { type: Sequelize.TEXT, allowNull: true },
+  googleAnalyticsId: { type: Sequelize.STRING, allowNull: true },
+  googleTagManagerId: { type: Sequelize.STRING, allowNull: true },
+  globalSchema: { type: Sequelize.TEXT, allowNull: true },
+  headerScripts: { type: Sequelize.TEXT, allowNull: true },
+  footerScripts: { type: Sequelize.TEXT, allowNull: true },
 });
 
 const FAQ = sequelize.define('FAQ', {
@@ -67,23 +76,41 @@ const User = sequelize.define('User', {
 
 const PageSEO = sequelize.define('PageSEO', {
   id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true },
-  pagePath: { type: Sequelize.STRING, allowNull: false, unique: true },
-  title: Sequelize.STRING,
+  pageUrl: { type: Sequelize.STRING, allowNull: false, unique: true },
+  title: { type: Sequelize.STRING, allowNull: false },
   description: Sequelize.TEXT,
   keywords: Sequelize.TEXT,
-  metaTags: Sequelize.TEXT,
+  customSchema: Sequelize.TEXT,
+  ogTitle: Sequelize.STRING,
+  ogDescription: Sequelize.TEXT,
+  ogImage: Sequelize.STRING,
+  canonicalUrl: Sequelize.STRING,
+  metaRobots: { type: Sequelize.STRING, defaultValue: 'index, follow' },
+  twitterCard: { type: Sequelize.STRING, defaultValue: 'summary_large_image' },
 });
 
 const Blog = sequelize.define('Blog', {
   id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true },
   title: { type: Sequelize.STRING, allowNull: false },
   slug: { type: Sequelize.STRING, allowNull: false, unique: true },
-  content: { type: Sequelize.TEXT, allowNull: false },
-  excerpt: Sequelize.TEXT,
-  featuredImage: Sequelize.STRING,
-  category: Sequelize.STRING,
-  tags: Sequelize.STRING,
+  image: { type: Sequelize.STRING, allowNull: false },
+  date: { type: Sequelize.STRING, allowNull: false },
   views: { type: Sequelize.INTEGER, defaultValue: 0 },
+  excerpt: { type: Sequelize.TEXT, allowNull: false },
+  content: { type: Sequelize.TEXT, allowNull: false },
+  category: { type: Sequelize.STRING, allowNull: false },
+  region: { type: Sequelize.STRING, allowNull: false, defaultValue: 'global' },
+  metaTitle: Sequelize.STRING,
+  metaDescription: Sequelize.TEXT,
+  focusKeyword: Sequelize.STRING,
+  keywords: Sequelize.TEXT,
+  schema: Sequelize.TEXT,
+  ogTitle: Sequelize.STRING,
+  ogDescription: Sequelize.TEXT,
+  ogImage: Sequelize.STRING,
+  canonicalUrl: Sequelize.STRING,
+  metaRobots: { type: Sequelize.STRING, defaultValue: 'index, follow' },
+  twitterCard: { type: Sequelize.STRING, defaultValue: 'summary_large_image' },
 });
 
 const Application = sequelize.define('Application', {
@@ -103,7 +130,7 @@ async function run() {
     await sequelize.authenticate();
     console.log('Database connection established successfully.');
 
-    await sequelize.sync();
+    await sequelize.sync({ alter: true });
     console.log('SUCCESS: All tables (Portfolios, FAQs, Careers, ContactQueries, etc.) have been successfully created and synchronized!');
     process.exit(0);
   } catch (error) {

@@ -16,7 +16,7 @@ const initModels = async () => {
 
     // Sync all models
     // In production, you might want to use migrations instead of sync()
-    await sequelize.sync();
+    await sequelize.sync({ alter: true });
     console.log('All models synchronized.');
   } catch (error) {
     console.error('Unable to connect to the database:', error);
