@@ -76,6 +76,7 @@ PageSEO.init(
   {
     sequelize,
     modelName: 'PageSEO',
+    tableName: 'pageseos',
   }
 );
 

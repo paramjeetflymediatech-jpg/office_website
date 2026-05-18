@@ -106,6 +106,7 @@ SEOConfig.init(
   {
     sequelize,
     modelName: 'SEOConfig',
+    tableName: 'seoconfigs',
   }
 );
 
