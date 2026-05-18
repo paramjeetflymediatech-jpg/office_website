@@ -54,7 +54,15 @@ async function importYoastMeta() {
 
     const rawPostmeta = fs.readFileSync(postmetaPath, 'utf8');
     console.log('[SEO Import] Parsing JSON...');
-    const postmetaArray = JSON.parse(rawPostmeta);
+    const json = JSON.parse(rawPostmeta);
+    
+    const tableObj = json.find(obj => obj.type === 'table' && obj.name === 'Egb5OL_postmeta') || json[2];
+    if (!tableObj || !tableObj.data) {
+      console.error('[SEO Import] Could not locate Egb5OL_postmeta table data inside JSON.');
+      return;
+    }
+    
+    const postmetaArray = tableObj.data;
     console.log(`[SEO Import] Loaded ${postmetaArray.length} postmeta entries. Filtering for our blogs...`);
 
     const seoDataByPostId = {};
