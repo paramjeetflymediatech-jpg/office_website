@@ -79,10 +79,7 @@ async function importAustraliaBlogs() {
         const featMedia = post._embedded['wp:featuredmedia'][0];
         const sourceUrl = featMedia?.media_details?.sizes?.full?.source_url || featMedia?.source_url;
         if (sourceUrl) {
-          image = sourceUrl.replace('https://flymediatech.com/wp-content/uploads/', '/uploads/')
-                           .replace('https://flymediatech.com.au/wp-content/uploads/', '/uploads/')
-                           .replace('http://flymediatech.com/wp-content/uploads/', '/uploads/')
-                           .replace('http://flymediatech.com.au/wp-content/uploads/', '/uploads/');
+          image = sourceUrl.replace(/^https?:\/\/[^\/]+\/(?:australia\/)?wp-content\/uploads\//i, '/uploads/');
           console.log(`[Script] Resolved image URL from embedded media: ${image}`);
         }
       }
@@ -95,10 +92,7 @@ async function importAustraliaBlogs() {
             const mediaData = await res.json();
             const sourceUrl = mediaData?.media_details?.sizes?.full?.source_url || mediaData?.source_url;
             if (sourceUrl) {
-              image = sourceUrl.replace('https://flymediatech.com/wp-content/uploads/', '/uploads/')
-                               .replace('https://flymediatech.com.au/wp-content/uploads/', '/uploads/')
-                               .replace('http://flymediatech.com/wp-content/uploads/', '/uploads/')
-                               .replace('http://flymediatech.com.au/wp-content/uploads/', '/uploads/');
+              image = sourceUrl.replace(/^https?:\/\/[^\/]+\/(?:australia\/)?wp-content\/uploads\//i, '/uploads/');
               console.log(`[Script] Resolved image URL from live fetch: ${image}`);
             }
           }
