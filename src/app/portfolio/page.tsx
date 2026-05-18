@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { getPortfolioItems } from '@/app/actions/portfolio';
-import { X, Search, Maximize2 ,ChevronRight} from 'lucide-react';
+import { X, Search, Maximize2, Minimize2, ChevronRight, ChevronLeft, ZoomIn, ZoomOut, RotateCcw, Share2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 
@@ -13,11 +13,76 @@ export default function PortfolioPage() {
   const [categories, setCategories] = useState<string[]>(['All']);
   const [activeCategory, setActiveCategory] = useState('All');
   const [loading, setLoading] = useState(true);
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
   
-  // High-End Full Infinite Scroll State
   const [visibleCount, setVisibleCount] = useState(20);
   const loadMoreRef = useRef<HTMLDivElement>(null);
+
+  // Interactive Lightbox State and Handlers
+  const [scale, setScale] = useState(1);
+  const [rotate, setRotate] = useState(0);
+  const [copied, setCopied] = useState(false);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+  const lightboxRef = useRef<HTMLDivElement>(null);
+
+  const toggleFullscreen = () => {
+    if (!lightboxRef.current) return;
+    if (!document.fullscreenElement) {
+      lightboxRef.current.requestFullscreen().then(() => setIsFullscreen(true)).catch(err => console.log(err));
+    } else {
+      document.exitFullscreen();
+      setIsFullscreen(false);
+    }
+  };
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && "scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+    window.scrollTo(0, 0);
+
+    return () => {
+      if (typeof window !== "undefined" && "scrollRestoration" in window.history) {
+        window.history.scrollRestoration = "auto";
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    const handleFullscreenChange = () => {
+      setIsFullscreen(!!document.fullscreenElement);
+    };
+    document.addEventListener("fullscreenchange", handleFullscreenChange);
+    return () => document.removeEventListener("fullscreenchange", handleFullscreenChange);
+  }, []);
+
+  const handleShare = (e: React.MouseEvent, url: string) => {
+    e.stopPropagation();
+    navigator.clipboard.writeText(url);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  useEffect(() => {
+    setScale(1);
+    setRotate(0);
+  }, [selectedImageIndex]);
+
+  // Keyboard Arrow Key Navigation
+  useEffect(() => {
+    function handleKeyDown(e: KeyboardEvent) {
+      if (selectedImageIndex === null) return;
+      if (e.key === 'ArrowRight') {
+        setSelectedImageIndex((prev) => (prev !== null ? (prev + 1) % filteredItems.length : null));
+      } else if (e.key === 'ArrowLeft') {
+        setSelectedImageIndex((prev) => (prev !== null ? (prev - 1 + filteredItems.length) % filteredItems.length : null));
+      } else if (e.key === 'Escape') {
+        setSelectedImageIndex(null);
+      }
+    }
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [selectedImageIndex, filteredItems]);
 
   useEffect(() => {
     async function load() {
@@ -182,7 +247,10 @@ export default function PortfolioPage() {
                 transition={{ duration: 0.4, delay: (index % 20) * 0.05 }}
                 viewport={{ once: true }}
                 className="group relative overflow-hidden aspect-[3/2] cursor-pointer"
-                onClick={() => setSelectedImage(item.imageUrl)}
+                onClick={() => {
+                  const idx = filteredItems.findIndex(x => x.id === item.id);
+                  setSelectedImageIndex(idx !== -1 ? idx : null);
+                }}
               >
                 <Image src={item.imageUrl} alt={item.title} fill className="object-cover transition-transform duration-700 group-hover:scale-110" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
               </motion.div>
@@ -241,13 +309,13 @@ export default function PortfolioPage() {
               desc: "Flymedia Technology Case Study For Restaurants Based in Australia",
               image: "/portfolio/1.avif", // Using existing asset as placeholder
               tag: "Web Strategy",
-              link: "/portfolio/flymedia-technology-case-study-for-australian-restaurant/"
+              link: "/flymedia-technology-case-study-for-australian-restaurant/"
             },
             {
               title: "Transformative Car Rentals Digital Journey",
               desc: "Transformative Car Rentals Digital Journey With Fly Media Technology’s Digital Marketing Techniques",
               image: "/portfolio/2.avif",
-              link: "/portfolio/fly-media-technology-case-study-for-car-rentals/",
+              link: "/fly-media-technology-case-study-for-car-rentals/",
               tag: "Branding"
             },
             {
@@ -255,53 +323,169 @@ export default function PortfolioPage() {
               desc: "Boosting Business Growth Of A Technology Company In Australia: A Fly Media Technology Case Study",
               image: "/portfolio/3.avif",
               tag: "Digital Growth",
-              link: "/portfolio/fly-media-technology-case-study-for-a-technology-company/"
+              link: "/fly-media-technology-case-study-for-a-technology-company/"
             }
           ].map((study, i) => (
-            <motion.div 
-              key={i}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.2 }}
-              className="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-gray-100 flex flex-col h-full"
-            >
-              <div className="relative h-64 overflow-hidden">
-                <Image src={study.image} alt={study.title} fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
-                {/* <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest text-[#ff9900] shadow-sm">
-                  {study.tag}
-                </div> */}
-              </div>
-              <div className="p-8 space-y-4 flex-1 flex flex-col">
-                <h3 className="text-2xl font-serif font-bold text-gray-900 group-hover:text-[#ff9900] transition-colors">
-                  {study.title}
-                </h3>
-                <p className="text-gray-600 leading-relaxed flex-1">
-                  {study.desc}
-                </p>
-                <Link href={study.link} passHref target='_blank'>
-                <div className="pt-4">
-                  <button className="flex items-center gap-2 text-black font-bold group/btn">
-                    Read Full Story
-                    <div className="w-6 h-6 bg-black text-white rounded-full flex items-center justify-center group-hover/btn:bg-[#ff9900] transition-colors">
-                      <ChevronRight size={14} />
-                    </div>
-                  </button>
+            <Link key={i} href={study.link} className="flex flex-col h-full group">
+              <motion.div 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.2 }}
+                className="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-gray-100 flex flex-col h-full w-full"
+              >
+                <div className="relative h-64 overflow-hidden">
+                  <Image src={study.image} alt={study.title} fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
                 </div>
-                </Link>
-              </div>
-            </motion.div>
+                <div className="p-8 space-y-4 flex-1 flex flex-col justify-between">
+                  <div className="space-y-4">
+                    <h3 className="text-2xl font-serif font-bold text-gray-900 group-hover:text-[#ff9900] transition-colors">
+                      {study.title}
+                    </h3>
+                    <p className="text-gray-600 leading-relaxed">
+                      {study.desc}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            </Link>
           ))}
         </div>
       </section>
 
       {/* Lightbox */}
       <AnimatePresence>
-        {selectedImage && (
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[200] bg-black/95 backdrop-blur-xl flex items-center justify-center p-4 sm:p-10" onClick={() => setSelectedImage(null)}>
-            <motion.button initial={{ scale: 0 }} animate={{ scale: 1 }} className="absolute top-6 right-6 text-white/50 hover:text-white bg-white/10 p-3 rounded-full"><X size={32} /></motion.button>
-            <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="relative w-full h-full flex items-center justify-center pointer-events-none">
-              <div className="relative w-full max-w-5xl h-full max-h-[85vh] pointer-events-auto"><Image src={selectedImage} alt="Enlarged view" fill className="object-contain" priority /></div>
+        {selectedImageIndex !== null && filteredItems[selectedImageIndex] && (
+          <motion.div 
+            ref={lightboxRef}
+            initial={{ opacity: 0 }} 
+            animate={{ opacity: 1 }} 
+            exit={{ opacity: 0 }} 
+            className="fixed inset-0 z-[200] bg-black/95 backdrop-blur-xl flex flex-col items-center justify-center p-4 sm:p-10 select-none" 
+            onClick={() => setSelectedImageIndex(null)}
+          >
+            {/* Premium Top Navigation Control Bar */}
+            <div 
+              className="absolute top-0 left-0 right-0 h-16 bg-black/60 backdrop-blur-md flex items-center justify-between px-6 z-50 border-b border-white/10"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Left Side: Counter */}
+              <div className="text-white/90 font-mono text-sm tracking-wider font-semibold">
+                {selectedImageIndex + 1} / {filteredItems.length}
+              </div>
+
+              {/* Right Side Controls */}
+              <div className="flex items-center gap-1.5 sm:gap-3 text-white">
+                {copied && (
+                  <span className="text-xs text-[#ff9900] font-bold animate-pulse mr-2">
+                    Link Copied!
+                  </span>
+                )}
+                
+                {/* Reset Zoom & Rotate */}
+                <button
+                  title="Reset"
+                  className="p-2 hover:bg-white/10 hover:text-[#ff9900] rounded-lg transition-colors duration-200"
+                  onClick={() => { setScale(1); setRotate(0); }}
+                >
+                  <RotateCcw size={20} />
+                </button>
+
+                {/* Zoom Out */}
+                <button
+                  title="Zoom Out"
+                  className="p-2 hover:bg-white/10 hover:text-[#ff9900] rounded-lg transition-colors duration-200"
+                  onClick={() => setScale(prev => Math.max(0.5, prev - 0.25))}
+                >
+                  <ZoomOut size={20} />
+                </button>
+
+                {/* Zoom In */}
+                <button
+                  title="Zoom In"
+                  className="p-2 hover:bg-white/10 hover:text-[#ff9900] rounded-lg transition-colors duration-200"
+                  onClick={() => setScale(prev => Math.min(3.0, prev + 0.25))}
+                >
+                  <ZoomIn size={20} />
+                </button>
+
+                {/* Fullscreen Toggle */}
+                <button
+                  title="Toggle Fullscreen"
+                  className="p-2 hover:bg-white/10 hover:text-[#ff9900] rounded-lg transition-colors duration-200"
+                  onClick={toggleFullscreen}
+                >
+                  {isFullscreen ? <Minimize2 size={20} /> : <Maximize2 size={20} />}
+                </button>
+
+                {/* Share Link */}
+                <button
+                  title="Copy Image URL"
+                  className="p-2 hover:bg-white/10 hover:text-[#ff9900] rounded-lg transition-colors duration-200"
+                  onClick={(e) => handleShare(e, filteredItems[selectedImageIndex].imageUrl)}
+                >
+                  <Share2 size={20} />
+                </button>
+
+                {/* Close Button */}
+                <button
+                  title="Close Gallery"
+                  className="p-2 hover:bg-[#ff9900] hover:text-white bg-white/10 rounded-lg transition-colors duration-200 ml-1.5"
+                  onClick={() => setSelectedImageIndex(null)}
+                >
+                  <X size={20} />
+                </button>
+              </div>
+            </div>
+
+            {/* Left Slider Arrow */}
+            <button
+              className="hidden md:block absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-[#ff9900] hover:scale-105 active:scale-95 text-white p-3.5 sm:p-4 rounded-full transition-all duration-300 z-10 focus:outline-none shadow-lg border border-white/5"
+              onClick={(e) => {
+                e.stopPropagation();
+                setSelectedImageIndex((prev) => 
+                  prev !== null ? (prev - 1 + filteredItems.length) % filteredItems.length : null
+                );
+              }}
+            >
+              <ChevronLeft size={36} />
+            </button>
+
+            {/* Right Slider Arrow */}
+            <button
+              className="hidden md:block absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-[#ff9900] hover:scale-105 active:scale-95 text-white p-3.5 sm:p-4 rounded-full transition-all duration-300 z-10 focus:outline-none shadow-lg border border-white/5"
+              onClick={(e) => {
+                e.stopPropagation();
+                setSelectedImageIndex((prev) => 
+                  prev !== null ? (prev + 1) % filteredItems.length : null
+                );
+              }}
+            >
+              <ChevronRight size={36} />
+            </button>
+
+            {/* Image Container with Dynamic Transition & Custom Zoom Scale/Rotate Transform */}
+            <motion.div 
+               key={selectedImageIndex}
+               initial={{ opacity: 0, x: 80, scale: 0.95 }} 
+               animate={{ opacity: 1, x: 0, scale: 1 }} 
+               exit={{ opacity: 0, x: -80, scale: 0.95 }} 
+               transition={{ type: 'spring', stiffness: 350, damping: 32 }}
+               className="relative w-full h-full flex items-center justify-center pointer-events-none mt-16"
+            >
+               <div 
+                 className="relative w-full max-w-5xl h-full max-h-[80vh] pointer-events-auto transition-transform duration-200 ease-out"
+                 style={{ transform: `scale(${scale}) rotate(${rotate}deg)` }}
+               >
+                 <Image 
+                   src={filteredItems[selectedImageIndex].imageUrl} 
+                   alt={filteredItems[selectedImageIndex].title || "Enlarged view"} 
+                   fill 
+                   className="object-contain" 
+                   priority 
+                   unoptimized
+                 />
+               </div>
             </motion.div>
           </motion.div>
         )}

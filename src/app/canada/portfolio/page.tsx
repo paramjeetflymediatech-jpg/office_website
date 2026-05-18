@@ -8,6 +8,19 @@ import { Phone, ChevronRight } from "lucide-react";
 import LocationPortfolio from "@/components/LocationPortfolio";
 
 export default function CanadaPortfolioPage() {
+  React.useEffect(() => {
+    if (typeof window !== "undefined" && "scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+    window.scrollTo(0, 0);
+
+    return () => {
+      if (typeof window !== "undefined" && "scrollRestoration" in window.history) {
+        window.history.scrollRestoration = "auto";
+      }
+    };
+  }, []);
+
   return (
     <main className="min-h-screen bg-gray-50 pb-20 font-sans text-black">
       {/* Premium Hero Banner Section */}
@@ -70,56 +83,55 @@ export default function CanadaPortfolioPage() {
               title: "Restaurant Website Design & Development",
               desc: "Flymedia Technology case study for high-performance hospitality web solutions.",
               image: "/portfolio/1.avif",
-              link: "/portfolio/flymedia-technology-case-study-for-australian-restaurant/"
+              link: "/flymedia-technology-case-study-for-australian-restaurant/"
             },
             {
               title: "Transformative Car Rentals Digital Journey",
               desc: "Accelerating reservation volume and search visibility through customized digital marketing techniques.",
               image: "/portfolio/2.avif",
-              link: "/portfolio/fly-media-technology-case-study-for-car-rentals/"
+              link: "/fly-media-technology-case-study-for-car-rentals/"
             },
             {
               title: "Boosting Enterprise Digital Growth",
               desc: "Strategic search domination and UI/UX modernization for technology service providers.",
               image: "/portfolio/3.avif",
-              link: "/portfolio/fly-media-technology-case-study-for-a-technology-company/"
+              link: "/fly-media-technology-case-study-for-a-technology-company/"
             }
           ].map((study, i) => (
-            <div
-              key={i}
-              className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col h-full"
-            >
-              <div className="relative h-56 overflow-hidden bg-gray-100">
-                <Image
-                  src={study.image}
-                  alt={study.title}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-              </div>
-              <div className="p-6 sm:p-8 space-y-4 flex-1 flex flex-col justify-between">
-                <div className="space-y-3">
-                  <h3
-                    style={{ fontFamily: "'Playfair Display', serif" }}
-                    className="text-xl font-serif font-bold text-gray-900 group-hover:text-[#ff9900] transition-colors"
-                  >
-                    {study.title}
-                  </h3>
-                  <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
-                    {study.desc}
-                  </p>
+            <Link key={i} href={study.link} className="flex flex-col h-full group">
+              <div
+                className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col h-full w-full"
+              >
+                <div className="relative h-56 overflow-hidden bg-gray-100">
+                  <Image
+                    src={study.image}
+                    alt={study.title}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
                 </div>
+                <div className="p-6 sm:p-8 space-y-4 flex-1 flex flex-col justify-between">
+                  <div className="space-y-3">
+                    <h3
+                      style={{ fontFamily: "'Playfair Display', serif" }}
+                      className="text-xl font-serif font-bold text-gray-900 group-hover:text-[#ff9900] transition-colors"
+                    >
+                      {study.title}
+                    </h3>
+                    <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
+                      {study.desc}
+                    </p>
+                  </div>
 
-                <Link href={study.link} target="_blank" className="pt-2 inline-block">
-                  <button className="flex items-center gap-2 text-sm font-bold text-black group/btn hover:text-[#ff9900] transition-colors">
+                  <div className="pt-2 flex items-center gap-2 text-sm font-bold text-black group-hover:text-[#ff9900] transition-colors">
                     Read Full Story
-                    <div className="w-5 h-5 bg-black text-white rounded-full flex items-center justify-center group-hover/btn:bg-[#ff9900] transition-colors">
+                    <div className="w-5 h-5 bg-black text-white rounded-full flex items-center justify-center group-hover:bg-[#ff9900] transition-colors">
                       <ChevronRight size={12} />
                     </div>
-                  </button>
-                </Link>
+                  </div>
+                </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </section>

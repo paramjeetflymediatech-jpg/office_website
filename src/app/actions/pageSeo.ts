@@ -85,58 +85,40 @@ export async function deletePageSEO(id: number) {
 
 export async function syncAllBlogSEO() {
   try {
-    const fs = require('fs');
-    const path = require('path');
-    const blogFilePath = path.join(process.cwd(), 'blog_data', 'blog.json');
-    
-    if (!fs.existsSync(blogFilePath)) {
-      return { success: false, error: 'blog.json not found' };
-    }
-
-    const blogs = JSON.parse(fs.readFileSync(blogFilePath, 'utf8'));
     let updatedCount = 0;
     let createdCount = 0;
 
     const { Blog } = await import('@/models');
+    
+    // Fetch all blogs from the database (both global and australia)
+    const blogs = await Blog.findAll();
 
     for (const blog of blogs) {
       if (!blog.slug) continue;
       
-      const pageUrl = `/blog/${blog.slug}`;
+      const pageUrl = blog.region === 'australia'
+        ? `/australia/blog/${blog.slug}`
+        : `/blog/${blog.slug}`;
+
       const seoData = {
-        title: blog.seo_title || blog.title || '',
-        description: blog.seo_description || '',
-        keywords: blog.seo_keywords || '',
-        ogTitle: blog.seo_title || blog.title || '',
-        ogDescription: blog.seo_description || '',
-        ogImage: blog.image || '',
-        canonicalUrl: `https://flymediatech.com${pageUrl}`,
-        metaRobots: 'index, follow',
-        twitterCard: 'summary_large_image'
+        title: blog.metaTitle || blog.title || '',
+        description: blog.metaDescription || blog.excerpt || '',
+        keywords: blog.keywords || '',
+        ogTitle: blog.ogTitle || blog.metaTitle || blog.title || '',
+        ogDescription: blog.ogDescription || blog.metaDescription || '',
+        ogImage: blog.ogImage || blog.image || '',
+        canonicalUrl: blog.canonicalUrl || `https://flymediatech.com${pageUrl}`,
+        metaRobots: blog.metaRobots || 'index, follow',
+        twitterCard: blog.twitterCard || 'summary_large_image'
       };
 
-      // 1. Update PageSEO table
+      // Update PageSEO table
       const [record, created] = await PageSEO.upsert({
         pageUrl,
         ...seoData
       });
       if (created) createdCount++;
       else updatedCount++;
-
-      // 2. Update Blog table
-      await Blog.update({
-        metaTitle: seoData.title,
-        metaDescription: seoData.description,
-        keywords: seoData.keywords,
-        ogTitle: seoData.ogTitle,
-        ogDescription: seoData.ogDescription,
-        ogImage: seoData.ogImage,
-        canonicalUrl: seoData.canonicalUrl,
-        metaRobots: seoData.metaRobots,
-        twitterCard: seoData.twitterCard
-      }, {
-        where: { slug: blog.slug }
-      });
     }
 
     revalidatePath('/');

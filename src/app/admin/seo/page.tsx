@@ -204,15 +204,6 @@ export default function SEOPage() {
       {/* Tab Switcher */}
       <div className="flex gap-2 p-1 bg-gray-100 rounded-xl w-fit">
         <button 
-          onClick={() => setActiveTab('global')}
-          className={`flex items-center gap-2 px-6 py-2.5 rounded-lg font-bold transition-all ${
-            activeTab === 'global' ? 'bg-white text-[#ff9900] shadow-sm' : 'text-gray-500 hover:text-gray-700'
-          }`}
-        >
-          <Settings size={18} />
-          Global SEO
-        </button>
-        <button 
           onClick={() => setActiveTab('pages')}
           className={`flex items-center gap-2 px-6 py-2.5 rounded-lg font-bold transition-all ${
             activeTab === 'pages' ? 'bg-white text-[#ff9900] shadow-sm' : 'text-gray-500 hover:text-gray-700'
@@ -220,6 +211,15 @@ export default function SEOPage() {
         >
           <Layout size={18} />
           Page-wise SEO
+        </button>
+        <button 
+          onClick={() => setActiveTab('global')}
+          className={`flex items-center gap-2 px-6 py-2.5 rounded-lg font-bold transition-all ${
+            activeTab === 'global' ? 'bg-white text-[#ff9900] shadow-sm' : 'text-gray-500 hover:text-gray-700'
+          }`}
+        >
+          <Settings size={18} />
+          Global SEO
         </button>
       </div>
 

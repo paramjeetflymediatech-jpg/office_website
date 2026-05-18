@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { getPortfolioItems } from "@/app/actions/portfolio";
-import { X, Maximize2, Search } from "lucide-react";
+import { X, Maximize2, Minimize2, Search, ChevronRight, ChevronLeft, ZoomIn, ZoomOut, RotateCcw, Share2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface LocationPortfolioProps {
@@ -61,11 +61,63 @@ export default function LocationPortfolio({ location }: LocationPortfolioProps) 
   const [categories, setCategories] = useState<string[]>(["All"]);
   const [activeCategory, setActiveCategory] = useState("All");
   const [loading, setLoading] = useState(true);
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
 
-  // Pagination / Load More settings
   const [visibleCount, setVisibleCount] = useState(12);
   const loadMoreRef = useRef<HTMLDivElement>(null);
+
+  // Interactive Lightbox State and Handlers
+  const [scale, setScale] = useState(1);
+  const [rotate, setRotate] = useState(0);
+  const [copied, setCopied] = useState(false);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+  const lightboxRef = useRef<HTMLDivElement>(null);
+
+  const toggleFullscreen = () => {
+    if (!lightboxRef.current) return;
+    if (!document.fullscreenElement) {
+      lightboxRef.current.requestFullscreen().then(() => setIsFullscreen(true)).catch(err => console.log(err));
+    } else {
+      document.exitFullscreen();
+      setIsFullscreen(false);
+    }
+  };
+
+  useEffect(() => {
+    const handleFullscreenChange = () => {
+      setIsFullscreen(!!document.fullscreenElement);
+    };
+    document.addEventListener("fullscreenchange", handleFullscreenChange);
+    return () => document.removeEventListener("fullscreenchange", handleFullscreenChange);
+  }, []);
+
+  const handleShare = (e: React.MouseEvent, url: string) => {
+    e.stopPropagation();
+    navigator.clipboard.writeText(url);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  useEffect(() => {
+    setScale(1);
+    setRotate(0);
+  }, [selectedImageIndex]);
+
+  // Keyboard Arrow Key Navigation
+  useEffect(() => {
+    function handleKeyDown(e: KeyboardEvent) {
+      if (selectedImageIndex === null) return;
+      if (e.key === "ArrowRight") {
+        setSelectedImageIndex((prev) => (prev !== null ? (prev + 1) % filteredItems.length : null));
+      } else if (e.key === "ArrowLeft") {
+        setSelectedImageIndex((prev) => (prev !== null ? (prev - 1 + filteredItems.length) % filteredItems.length : null));
+      } else if (e.key === "Escape") {
+        setSelectedImageIndex(null);
+      }
+    }
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [selectedImageIndex, filteredItems]);
 
   useEffect(() => {
     async function load() {
@@ -192,7 +244,10 @@ export default function LocationPortfolio({ location }: LocationPortfolioProps) 
                 transition={{ duration: 0.4, delay: (index % 12) * 0.04 }}
                 viewport={{ once: true }}
                 className="group relative bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:border-gray-200 border border-gray-100 aspect-[3/2] cursor-pointer transition-all duration-300"
-                onClick={() => setSelectedImage(item.imageUrl)}
+                onClick={() => {
+                  const idx = filteredItems.findIndex(x => x.id === item.id);
+                  setSelectedImageIndex(idx !== -1 ? idx : null);
+                }}
               >
                 <div className="relative w-full h-full p-3 bg-[#FCFCFC] flex items-center justify-center">
                   <Image
@@ -253,31 +308,131 @@ export default function LocationPortfolio({ location }: LocationPortfolioProps) 
 
       {/* Lightbox Slideshow Modal */}
       <AnimatePresence>
-        {selectedImage && (
+        {selectedImageIndex !== null && filteredItems[selectedImageIndex] && (
           <motion.div
+            ref={lightboxRef}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[300] bg-black/95 backdrop-blur-xl flex items-center justify-center p-4 sm:p-10"
-            onClick={() => setSelectedImage(null)}
+            className="fixed inset-0 z-[300] bg-black/95 backdrop-blur-xl flex flex-col items-center justify-center p-4 sm:p-10 select-none"
+            onClick={() => setSelectedImageIndex(null)}
           >
-            <motion.button
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              className="absolute top-6 right-6 text-white/60 hover:text-white bg-white/15 p-3 rounded-full hover:bg-white/20 transition-all shadow-md"
+            {/* Premium Top Navigation Control Bar */}
+            <div 
+              className="absolute top-0 left-0 right-0 h-16 bg-black/60 backdrop-blur-md flex items-center justify-between px-6 z-50 border-b border-white/10"
+              onClick={(e) => e.stopPropagation()}
             >
-              <X size={24} />
-            </motion.button>
+              {/* Left Side: Counter */}
+              <div className="text-white/90 font-mono text-sm tracking-wider font-semibold">
+                {selectedImageIndex + 1} / {filteredItems.length}
+              </div>
+
+              {/* Right Side Controls */}
+              <div className="flex items-center gap-1.5 sm:gap-3 text-white">
+                {copied && (
+                  <span className="text-xs text-[#ff9900] font-bold animate-pulse mr-2">
+                    Link Copied!
+                  </span>
+                )}
+                
+                {/* Reset Zoom & Rotate */}
+                <button
+                  title="Reset"
+                  className="p-2 hover:bg-white/10 hover:text-[#ff9900] rounded-lg transition-colors duration-200"
+                  onClick={() => { setScale(1); setRotate(0); }}
+                >
+                  <RotateCcw size={20} />
+                </button>
+
+                {/* Zoom Out */}
+                <button
+                  title="Zoom Out"
+                  className="p-2 hover:bg-white/10 hover:text-[#ff9900] rounded-lg transition-colors duration-200"
+                  onClick={() => setScale(prev => Math.max(0.5, prev - 0.25))}
+                >
+                  <ZoomOut size={20} />
+                </button>
+
+                {/* Zoom In */}
+                <button
+                  title="Zoom In"
+                  className="p-2 hover:bg-white/10 hover:text-[#ff9900] rounded-lg transition-colors duration-200"
+                  onClick={() => setScale(prev => Math.min(3.0, prev + 0.25))}
+                >
+                  <ZoomIn size={20} />
+                </button>
+
+                {/* Fullscreen Toggle */}
+                <button
+                  title="Toggle Fullscreen"
+                  className="p-2 hover:bg-white/10 hover:text-[#ff9900] rounded-lg transition-colors duration-200"
+                  onClick={toggleFullscreen}
+                >
+                  {isFullscreen ? <Minimize2 size={20} /> : <Maximize2 size={20} />}
+                </button>
+
+                {/* Share Link */}
+                <button
+                  title="Copy Image URL"
+                  className="p-2 hover:bg-white/10 hover:text-[#ff9900] rounded-lg transition-colors duration-200"
+                  onClick={(e) => handleShare(e, filteredItems[selectedImageIndex].imageUrl)}
+                >
+                  <Share2 size={20} />
+                </button>
+
+                {/* Close Button */}
+                <button
+                  title="Close Gallery"
+                  className="p-2 hover:bg-[#ff9900] hover:text-white bg-white/10 rounded-lg transition-colors duration-200 ml-1.5"
+                  onClick={() => setSelectedImageIndex(null)}
+                >
+                  <X size={20} />
+                </button>
+              </div>
+            </div>
+
+            {/* Left Slider Arrow */}
+            <button
+              className="hidden md:block absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-[#ff9900] hover:scale-105 active:scale-95 text-white p-3.5 sm:p-4 rounded-full transition-all duration-300 z-10 focus:outline-none shadow-lg border border-white/5"
+              onClick={(e) => {
+                e.stopPropagation();
+                setSelectedImageIndex((prev) => 
+                  prev !== null ? (prev - 1 + filteredItems.length) % filteredItems.length : null
+                );
+              }}
+            >
+              <ChevronLeft size={36} />
+            </button>
+
+            {/* Right Slider Arrow */}
+            <button
+              className="hidden md:block absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-[#ff9900] hover:scale-105 active:scale-95 text-white p-3.5 sm:p-4 rounded-full transition-all duration-300 z-10 focus:outline-none shadow-lg border border-white/5"
+              onClick={(e) => {
+                e.stopPropagation();
+                setSelectedImageIndex((prev) => 
+                  prev !== null ? (prev + 1) % filteredItems.length : null
+                );
+              }}
+            >
+              <ChevronRight size={36} />
+            </button>
+
+            {/* Image Container with Dynamic Transition & Custom Zoom Scale/Rotate Transform */}
             <motion.div
-              initial={{ scale: 0.95, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.95 }}
-              className="relative w-full h-full flex items-center justify-center pointer-events-none"
+              key={selectedImageIndex}
+              initial={{ opacity: 0, x: 80, scale: 0.95 }}
+              animate={{ scale: 1, opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -80, scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 350, damping: 32 }}
+              className="relative w-full h-full flex items-center justify-center pointer-events-none mt-16"
             >
-              <div className="relative w-full max-w-5xl h-full max-h-[85vh] pointer-events-auto">
+              <div 
+                className="relative w-full max-w-5xl h-full max-h-[80vh] pointer-events-auto transition-transform duration-200 ease-out"
+                style={{ transform: `scale(${scale}) rotate(${rotate}deg)` }}
+              >
                 <Image
-                  src={selectedImage}
-                  alt="Enlarged Portfolio View"
+                  src={filteredItems[selectedImageIndex].imageUrl}
+                  alt={filteredItems[selectedImageIndex].title || "Enlarged Portfolio View"}
                   fill
                   className="object-contain"
                   priority
