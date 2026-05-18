@@ -36,7 +36,7 @@ async function importAustraliaBlogs() {
       const slug = post.slug;
       const title = post.title?.rendered || slug.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
       const content = post.content?.rendered || '';
-      
+
       // Keep curated excerpt or fall back
       let excerpt = post.excerpt?.rendered || '';
       if (!excerpt) {

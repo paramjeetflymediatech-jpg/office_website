@@ -75,8 +75,8 @@ export default async function SingleBlogPage({ params }: PageProps) {
       <div className="max-w-7xl mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
 
-          {/* Sidebar Form - 4 columns on desktop (Left Side) */}
-          <div className="lg:col-span-4 order-1">
+          {/* Sidebar Form - 4 columns on desktop (Appears AFTER blog content on mobile) */}
+          <div className="lg:col-span-4 order-2 lg:order-1">
             <div className="bg-[#FA7E09] p-8 rounded-xl shadow-sm border border-gray-100 lg:sticky top-32">
               <h2 className="text-2xl font-bold text-white mb-6" style={{ fontFamily: '"Playfair Display", sans-serif' }}>Contact Us</h2>
 
@@ -126,8 +126,8 @@ export default async function SingleBlogPage({ params }: PageProps) {
             </div>
           </div>
 
-          {/* Main Blog Post Content - 8 columns on desktop (Right Side) */}
-          <div className="lg:col-span-8 order-2">
+          {/* Main Blog Post Content - 8 columns on desktop (Appears FIRST on mobile) */}
+          <div className="lg:col-span-8 order-1 lg:order-2">
             <article className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
               {/* Featured Image */}
               {blog.image && (

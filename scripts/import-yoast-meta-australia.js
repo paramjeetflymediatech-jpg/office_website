@@ -51,7 +51,7 @@ async function importYoastMeta() {
 
     // 2. Read postmeta_australia.json and extract SEO parameters
     console.log('[SEO Import] Reading postmeta_australia.json (268.9 MB)...');
-    
+
     const rawPostmeta = fs.readFileSync(postmetaPath, 'utf8');
     console.log('[SEO Import] Parsing JSON...');
     const postmetaArray = JSON.parse(rawPostmeta);
@@ -62,14 +62,14 @@ async function importYoastMeta() {
     for (const item of postmetaArray) {
       const postIdStr = item.post_id ? item.post_id.toString() : '';
       if (!postIdStr || !idToSlugMap[postIdStr]) continue; // Only care about our Australia posts
-      
+
       const metaKey = item.meta_key;
       if (!TARGET_META_KEYS.includes(metaKey)) continue; // Only care about Yoast SEO keys
 
       if (!seoDataByPostId[postIdStr]) {
         seoDataByPostId[postIdStr] = {};
       }
-      
+
       seoDataByPostId[postIdStr][metaKey] = item.meta_value;
     }
 
@@ -102,7 +102,7 @@ async function importYoastMeta() {
         ogImage = ogImage.replace(/^https?:\/\/[^\/]+\/(?:australia\/)?wp-content\/uploads\//i, '/uploads/');
       }
       const canonicalUrl = meta['_yoast_wpseo_canonical'] || `https://flymediatech.com/australia/blog/${slug}`;
-      
+
       const noindex = meta['_yoast_wpseo_meta-robots-noindex'];
       const metaRobots = noindex === '1' || noindex === 'noindex' ? 'noindex, nofollow' : 'index, follow';
 
