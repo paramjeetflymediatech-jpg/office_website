@@ -1,5 +1,6 @@
 import ServicePage from "@/components/ServicePage";
 import SEOSection from "@/components/SEOSection";
+import ContactFormSection from "@/components/ContactFormSection";
 
 export default function SEOMarketing() {
   const data = {
@@ -15,6 +16,7 @@ export default function SEOMarketing() {
   return (
     <ServicePage {...data}>
       <SEOSection />
+      <ContactFormSection />
     </ServicePage>
   );
 }

@@ -1,5 +1,6 @@
 import ServicePage from "@/components/ServicePage";
 import MobileAppsSection from "@/components/MobileAppsSection";
+import ContactFormSection from "@/components/ContactFormSection";
 
 export default function MobileAppsDevelopment() {
   const data = {
@@ -15,6 +16,7 @@ export default function MobileAppsDevelopment() {
   return (
     <ServicePage {...data}>
       <MobileAppsSection />
+      <ContactFormSection />
     </ServicePage>
   );
 }

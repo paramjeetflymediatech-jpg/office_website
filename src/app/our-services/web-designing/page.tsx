@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ChevronRight, Phone, Mail, MapPin, CheckCircle2, Star, Clock, Award } from "lucide-react";
 import SEOMonitor from "@/components/SEOMonitor";
+import ContactFormSection from "@/components/ContactFormSection";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 
 const PortfolioSlider = () => {
@@ -424,7 +425,7 @@ export default function WebDesigningPage() {
           </div>
         </div>
       </section>
+      <ContactFormSection />
     </div>
   );
 }
-

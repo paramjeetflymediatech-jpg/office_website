@@ -1,5 +1,6 @@
 import ServicePage from "@/components/ServicePage";
 import PaymentGatewaySection from "@/components/PaymentGatewaySection";
+import ContactFormSection from "@/components/ContactFormSection";
 
 export default function PaymentGateway() {
   const data = {
@@ -16,6 +17,7 @@ export default function PaymentGateway() {
   return (
     <ServicePage {...data}>
       <PaymentGatewaySection />
+      <ContactFormSection />
     </ServicePage>
   );
 }

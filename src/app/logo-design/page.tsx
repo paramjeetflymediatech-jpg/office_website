@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Check, X, Shield, Star, Zap, Award, CheckCircle, HelpCircle } from "lucide-react";
+import ContactFormSection from "@/components/ContactFormSection";
 
 export default function LogoDesign() {
   const plans = ["Basic", "Startup", "Professional"];
@@ -83,7 +84,7 @@ export default function LogoDesign() {
                         ) : feature.isAction ? (
                           <div className="flex justify-center">
                             <Link
-                              href="/contact-us"
+                               href="/contact-us/"
                               className="bg-[#ff9900] hover:bg-white hover:text-black text-white font-extrabold px-6 py-2.5 rounded-full text-sm uppercase tracking-wider transition-all duration-300 shadow-md hover:scale-105"
                             >
                               {val}
@@ -103,6 +104,8 @@ export default function LogoDesign() {
           </div>
         </div>
       </section>
+
+      <ContactFormSection />
     </main>
   );
 }
