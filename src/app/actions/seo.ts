@@ -98,8 +98,49 @@ export async function deleteFAQ(id: number) {
 
 export async function syncDatabase() {
   try {
-    const { initModels } = await import('@/models');
+    const { initModels, PageSEO } = await import('@/models');
     await initModels();
+
+    // Import from JSON dump to populate database table
+    const fs = await import('fs');
+    const path = await import('path');
+    const dumpPath = path.join(process.cwd(), 'blog_data/pageseos_dump.json');
+    if (fs.existsSync(dumpPath)) {
+      const dumpData = JSON.parse(fs.readFileSync(dumpPath, 'utf8'));
+      for (const item of dumpData) {
+        if (!item.pageUrl) continue;
+        const [record, created] = await PageSEO.findOrCreate({
+          where: { pageUrl: item.pageUrl },
+          defaults: {
+            title: item.title,
+            description: item.description,
+            keywords: item.keywords,
+            customSchema: item.customSchema,
+            ogTitle: item.ogTitle,
+            ogDescription: item.ogDescription,
+            ogImage: item.ogImage,
+            canonicalUrl: item.canonicalUrl,
+            metaRobots: item.metaRobots,
+            twitterCard: item.twitterCard || 'summary_large_image',
+          }
+        });
+        if (!created) {
+          await record.update({
+            title: item.title,
+            description: item.description,
+            keywords: item.keywords,
+            customSchema: item.customSchema,
+            ogTitle: item.ogTitle,
+            ogDescription: item.ogDescription,
+            ogImage: item.ogImage,
+            canonicalUrl: item.canonicalUrl,
+            metaRobots: item.metaRobots,
+            twitterCard: item.twitterCard || 'summary_large_image',
+          });
+        }
+      }
+    }
+
     return { success: true };
   } catch (error: any) {
     console.error('Database sync failed:', error);

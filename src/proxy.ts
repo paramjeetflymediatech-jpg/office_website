@@ -11,16 +11,17 @@ export async function proxy(request: NextRequest) {
 
     if (pathname.startsWith('/admin')) {
       const session = request.cookies.get('session')?.value;
+      const cleanPath = pathname.replace(/\/$/, '');
       
-      if (pathname === '/admin/login' && session) {
+      if (cleanPath === '/admin/login' && session) {
         try {
           await decrypt(session);
-          return NextResponse.redirect(new URL('/admin', request.url));
+          return NextResponse.redirect(new URL('/admin/', request.url));
         } catch (error) {}
       }
 
-      if (pathname !== '/admin/login' && !session) {
-        return NextResponse.redirect(new URL('/admin/login', request.url));
+      if (cleanPath !== '/admin/login' && !session) {
+        return NextResponse.redirect(new URL('/admin/login/', request.url));
       }
     }
 

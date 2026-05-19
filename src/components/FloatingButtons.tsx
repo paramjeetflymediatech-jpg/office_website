@@ -1,7 +1,15 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 export default function FloatingButtons() {
+  const pathname = usePathname();
+  const isAdminOrLogin = pathname?.startsWith("/admin") || pathname?.includes("/login") || pathname === "/login";
+
+  if (isAdminOrLogin) return null;
+
   return (
     <>
       {/* Floating Call Button */}
