@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import ContactFormSection from "@/components/ContactFormSection";
 
 export default function ENTHospitalDigitalMarketing() {
   return (
@@ -290,6 +291,7 @@ export default function ENTHospitalDigitalMarketing() {
           </div>
         </div>
       </section>
+      <ContactFormSection />
     </div>
   );
 }

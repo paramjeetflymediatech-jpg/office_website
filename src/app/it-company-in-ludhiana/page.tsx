@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { FaInstagram } from "react-icons/fa";
 import ServicePage from "@/components/ServicePage";
+import ContactFormSection from "@/components/ContactFormSection";
 
 // --- Components ---
 
@@ -192,6 +193,7 @@ export default function ITCompany() {
       <ITHeroSection />
       <ITExpertServicesSection />
       {/* <ITCallToAction /> */}
+      <ContactFormSection />
     </ServicePage>
   );
 }

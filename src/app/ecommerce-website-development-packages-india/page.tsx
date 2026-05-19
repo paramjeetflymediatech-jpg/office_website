@@ -16,11 +16,6 @@ export default function EcommercePackages() {
 
   return (
     <ServicePage {...data} bgClass="bg-[#F1F1F1]">
-      <div className="pt-12 pb-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h1 className="text-4xl md:text-5xl font-serif font-bold text-black mb-6">
-          Ecommerce Website Development
-        </h1>
-      </div>
       <EcommercePackagesSection />
       <EcommercePricingTable />
       <EcommercePostPricingSection />

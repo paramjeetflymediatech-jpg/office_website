@@ -18,6 +18,9 @@ import {
   Compass
 } from "lucide-react";
 
+import ContactFormSection from "@/components/ContactFormSection";
+
+
 export default function NABHConsultants() {
   const serviceAreas = [
     "Hospitals",
@@ -299,8 +302,8 @@ export default function NABHConsultants() {
             NABH Accreditation certification is the need of the hour. It imposes strict policies to ensure better health services for patients within a hospital. If you are new to this domain and need reliable NABH consultants in Ludhiana, FlyMedia Technology is here with the required set of skills and industry experience.
           </p>
         </section>
-
-      </div>
+        <ContactFormSection />
+              </div>
     </div>
   );
 }

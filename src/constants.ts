@@ -77,7 +77,7 @@ export const MEGA_MENU_DATA = {
     },
     links: [
       { name: "Web Designing", href: "/our-services/web-designing", icon: "/dropdown-icons/web-design-devep.webp" },
-      { name: "Digital Marketing", href: "/digital-marketing", icon: "/dropdown-icons/digital-consultancy-icon.webp" },
+      { name: "Digital Marketing", href: "/social-media-optimization", icon: "/dropdown-icons/digital-consultancy-icon.webp" },
       { name: "Mobile Apps", href: "/mobile-apps-development", icon: "/dropdown-icons/mobile-marketing-1.webp" },
       { name: "SEO – Marketing Services", href: "/our-services/seo-marketing-services", icon: "/dropdown-icons/SEO.webp" },
       { name: "Web Based Softwares", href: "/our-services/web-based-softwares", icon: "/dropdown-icons/r06.webp" },
@@ -98,9 +98,9 @@ export const MEGA_MENU_DATA = {
       image: "/dropdown-icons/ROCKET-FLY.webp"
     },
     links: [
-      { name: "Logo Design", href: "/logo-design-packages-india", icon: "/dropdown-icons/logo-design.webp" },
-      { name: "SEO Packages", href: "/seo-packages-india", icon: "/dropdown-icons/SEO.webp" },
-      { name: "Digital Marketing", href: "/digital-marketing-packages-india", icon: "/dropdown-icons/digital-consultancy-icon.webp" },
+      { name: "Logo Design", href: "/logo-design", icon: "/dropdown-icons/logo-design.webp" },
+      { name: "SEO Packages", href: "/seo-packages", icon: "/dropdown-icons/SEO.webp" },
+      { name: "Digital Marketing", href: "/social-media-optimization", icon: "/dropdown-icons/digital-consultancy-icon.webp" },
       { name: "Web Design", href: "/website-designing-packages-india", icon: "/dropdown-icons/web-design-devep.webp" },
       { name: "PPC Management", href: "/google-ads-ppc-packages-india", icon: "/dropdown-icons/Pay-per-click111.webp" },
       { name: "Ecommerce Website Development", href: "/ecommerce-website-development-packages-india", icon: "/dropdown-icons/ecommerce.webp" },
@@ -121,10 +121,10 @@ export const MEGA_MENU_DATA = {
       { name: "IVF Clinic & Hospitals", href: "/ivf-clinic-digital-marketing-india", icon: "/dropdown-icons/r04.webp" },
       { name: "CMS For Website", href: "/cms-for-website", icon: "/dropdown-icons/r05.webp" },
       { name: "Cosmetic Surgery", href: "/cosmetic-surgery-digital-marketing", icon: "/dropdown-icons/r07.webp" },
-      { name: "Hair Transplant Clinics", href: "/hair-transplant-clinic-digital-marketing", icon: "/dropdown-icons/r08.webp" },
+      { name: "Hair Transplant Clinics", href: "/hair-transplant-marketing-in-india", icon: "/dropdown-icons/r08.webp" },
       { name: "NABH Consultants", href: "/nabh-consultants", icon: "/dropdown-icons/r10.webp" },
-      { name: "Orthopedic Hospital", href: "/orthopedic-hospital-digital-marketing", icon: "/dropdown-icons/r11-1.webp" },
-      { name: "Facelift Surgeons", href: "/facelift-surgeons-digital-marketing", icon: "/dropdown-icons/r02.webp" },
+      { name: "Orthopedic Hospital", href: "/orthopedic-online-marketing", icon: "/dropdown-icons/r11-1.webp" },
+      { name: "Facelift Surgeons", href: "/digital-marketing-for-facelift-surgeons", icon: "/dropdown-icons/r02.webp" },
       { name: "ENT Hospital", href: "/ent-hospital-digital-marketing", icon: "/dropdown-icons/r01.webp" }
     ]
   }

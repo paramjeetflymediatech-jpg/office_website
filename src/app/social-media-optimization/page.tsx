@@ -43,14 +43,12 @@ export default function SocialMediaOptimization() {
             
             {/* Left: Rocket Image */}
             <div className="relative aspect-square flex items-center justify-center order-2 lg:order-1">
-              <div className="absolute inset-0 rounded-full blur-[120px] animate-pulse" />
               <Image 
                 src="/social-media-optimization/rocket.png" 
                 alt="Best SMO Company" 
                 width={500} 
                 height={500} 
-                className="relative z-10 drop-shadow-[0_50px_100px_rgba(0,0,0,0.15)] animate-bounce"
-                style={{ animationDuration: "6s" }}
+                className="relative z-10 drop-shadow-[0_50px_100px_rgba(0,0,0,0.15)]"
                 priority
               />
             </div>

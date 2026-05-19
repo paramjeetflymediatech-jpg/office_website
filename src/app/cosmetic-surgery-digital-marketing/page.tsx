@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { BarChart3, ClipboardList, Smartphone, UserCheck } from "lucide-react";
 import ServicePage from "@/components/ServicePage";
-import ContactSection from "@/components/ContactSection";
+import ContactFormSection from "@/components/ContactFormSection";
 
 // --- Hero Section ---
 const CosmeticHeroSection = () => (
@@ -159,13 +159,7 @@ const CosmeticSeoBoostSection = () => {
 // --- Content & Punjab Marketing Section ---
 const CosmeticContentSection = () => (
   <section className="py-12 bg-[#F1F1F1]">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      {/* Ending Block Container */}
-      <div className="bg-white p-8 md:p-12 rounded-3xl shadow-sm border border-gray-150">
-        <p className="leading-relaxed text-gray-700 text-base md:text-lg font-medium">
-          To get all these things done correctly, hire the professionals who offer you effective <strong className="text-black font-extrabold">Plastic surgery Digital Marketing in Punjab</strong>. With the <Link href="https://flymediatech.com/" className="text-[#ff9900] font-bold hover:underline">best digital marketing company</Link> on your side, continuously, you will have a new patient base and your practice will be noticed by everyone and your business will be on the top.
-        </p>
-      </div>
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">      
     </div>
   </section>
 );
@@ -188,9 +182,7 @@ export default function CosmeticSurgeryMarketing() {
       <CosmeticImprovementSection />
       <CosmeticSeoBoostSection />
       <CosmeticContentSection />
-      <div id="contact">
-        <ContactSection />
-      </div>
+      <ContactFormSection />
     </ServicePage>
   );
 }

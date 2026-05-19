@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import ContactFormSection from "./ContactFormSection";
 
 export default function EcommercePostPricingSection() {
   return (
@@ -84,6 +85,7 @@ export default function EcommercePostPricingSection() {
           </div>
         </div>
       </section>
+      <ContactFormSection />
     </div>
   );
 }
