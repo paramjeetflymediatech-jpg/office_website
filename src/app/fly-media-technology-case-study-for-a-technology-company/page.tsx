@@ -283,7 +283,7 @@ export default function TechCompanyCaseStudy() {
       </section>
 
       {/* Footer link to go back to portfolio */}
-      <section className="bg-white py-12 border-t border-gray-100">
+      {/* <section className="bg-white py-12 border-t border-gray-100">
         <div className="max-w-6xl mx-auto px-6 flex justify-center">
           <Link
             href="/portfolio"
@@ -292,7 +292,7 @@ export default function TechCompanyCaseStudy() {
             Back To Portfolio <ExternalLink size={16} />
           </Link>
         </div>
-      </section>
+      </section> */}
 
     </main>
   );

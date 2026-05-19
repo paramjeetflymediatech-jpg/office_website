@@ -1,15 +1,32 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import Image from "next/image";
 import { getPortfolioItems } from "@/app/actions/portfolio";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search, X, ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function AustraliaPortfolio() {
+  const [mounted, setMounted] = useState(false);
   const [portfolioItems, setPortfolioItems] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedImageIdx, setSelectedImageIdx] = useState<number | null>(null);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (selectedImageIdx !== null) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [selectedImageIdx]);
 
   useEffect(() => {
     async function load() {
@@ -158,65 +175,70 @@ export default function AustraliaPortfolio() {
       </section>
 
       {/* Lightbox Slideshow Modal with Slider Controls */}
-      <AnimatePresence>
-        {selectedImageIdx !== null && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[300] bg-black/95 backdrop-blur-xl flex items-center justify-center p-4 sm:p-10"
-            onClick={() => setSelectedImageIdx(null)}
-          >
-            {/* Close Button */}
-            <motion.button
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              className="absolute top-6 right-6 text-white/60 hover:text-white bg-white/10 hover:bg-white/20 p-3 rounded-full transition-all shadow-md z-50"
-              onClick={() => setSelectedImageIdx(null)}
-            >
-              <X size={24} />
-            </motion.button>
+      {mounted && typeof document !== "undefined"
+        ? createPortal(
+            <AnimatePresence>
+              {selectedImageIdx !== null && (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="fixed inset-0 z-[9999] bg-black/95 backdrop-blur-xl flex items-center justify-center p-4 sm:p-10"
+                  onClick={() => setSelectedImageIdx(null)}
+                >
+                  {/* Close Button */}
+                  <motion.button
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    className="absolute top-6 right-6 text-white/60 hover:text-white bg-white/10 hover:bg-white/20 p-3 rounded-full transition-all shadow-md z-50"
+                    onClick={() => setSelectedImageIdx(null)}
+                  >
+                    <X size={24} />
+                  </motion.button>
 
-            {/* Slider Navigation: Prev */}
-            <button
-              onClick={handlePrev}
-              className="absolute left-6 text-white/60 hover:text-white bg-white/10 hover:bg-white/20 p-3 rounded-full transition-all shadow-md z-50 hidden sm:block"
-            >
-              <ChevronLeft size={28} />
-            </button>
+                  {/* Slider Navigation: Prev */}
+                  <button
+                    onClick={handlePrev}
+                    className="absolute left-6 text-white/60 hover:text-white bg-white/10 hover:bg-white/20 p-3 rounded-full transition-all shadow-md z-50 hidden sm:block"
+                  >
+                    <ChevronLeft size={28} />
+                  </button>
 
-            {/* Enlarged Image container */}
-            <motion.div
-              initial={{ scale: 0.95, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.95 }}
-              className="relative w-full h-full flex flex-col items-center justify-center pointer-events-none"
-            >
-              <div className="relative w-full max-w-5xl h-full max-h-[80vh] pointer-events-auto">
-                <Image
-                  src={portfolioItems[selectedImageIdx].imageUrl}
-                  alt={portfolioItems[selectedImageIdx].title}
-                  fill
-                  className="object-contain"
-                  priority
-                  unoptimized
-                />
-              </div>
-              <p className="text-white font-semibold mt-4 text-center text-sm tracking-wide bg-black/40 py-2 px-6 rounded-full border border-white/10">
-                {portfolioItems[selectedImageIdx].title}
-              </p>
-            </motion.div>
+                  {/* Enlarged Image container */}
+                  <motion.div
+                    initial={{ scale: 0.95, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    exit={{ scale: 0.95 }}
+                    className="relative w-full h-full flex flex-col items-center justify-center pointer-events-none"
+                  >
+                    <div className="relative w-full max-w-5xl h-full max-h-[80vh] pointer-events-auto">
+                      <Image
+                        src={portfolioItems[selectedImageIdx].imageUrl}
+                        alt={portfolioItems[selectedImageIdx].title}
+                        fill
+                        className="object-contain"
+                        priority
+                        unoptimized
+                      />
+                    </div>
+                    <p className="text-white font-semibold mt-4 text-center text-sm tracking-wide bg-black/40 py-2 px-6 rounded-full border border-white/10">
+                      {portfolioItems[selectedImageIdx].title}
+                    </p>
+                  </motion.div>
 
-            {/* Slider Navigation: Next */}
-            <button
-              onClick={handleNext}
-              className="absolute right-6 text-white/60 hover:text-white bg-white/10 hover:bg-white/20 p-3 rounded-full transition-all shadow-md z-50 hidden sm:block"
-            >
-              <ChevronRight size={28} />
-            </button>
-          </motion.div>
-        )}
-      </AnimatePresence>
+                  {/* Slider Navigation: Next */}
+                  <button
+                    onClick={handleNext}
+                    className="absolute right-6 text-white/60 hover:text-white bg-white/10 hover:bg-white/20 p-3 rounded-full transition-all shadow-md z-50 hidden sm:block"
+                  >
+                    <ChevronRight size={28} />
+                  </button>
+                </motion.div>
+              )}
+            </AnimatePresence>,
+            document.body
+          )
+        : null}
     </>
   );
 }
