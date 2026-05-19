@@ -60,21 +60,49 @@ const LaravelFeaturesIntroSection = () => (
 
 const LaravelCustomServicesSection = () => {
   const features = [
-    { title: "Provides strong protection against common vulnerabilities", desc: "Laravel is an amazing framework, ensuring that your website remains protected from attackers in an effective manner. Due to its built-in security features, you can ensure that your website remains protected from SQL injection and malicious scripts." },
-    { title: "Offers high performance and scalability", desc: "Using Laravel for website development helps in increasing the functionality of the web applications by making them run smoothly and rapidly. This eliminates the need to reload the website from scratch." },
-    { title: "Includes better handling of websites", desc: "Our Laravel website development ensures that your website can manage high traffic without any hassle. Along with this, the Laravel framework also allows your website to manage the message queues efficiently." },
-    { title: "Efficiently reduces time-to-market", desc: "You can effectively contribute to the fast launching of your product, reducing the need to wait for months. Laravel helps in eliminating repetitive tasks, allowing focus on core business logic." }
+    {
+      title: "Provides strong protection against common vulnerabilities",
+      desc: (
+        <>
+          Laravel is an amazing framework, ensuring that your website remains protected from attackers in an effective manner. Due to its built-in security features, you can ensure that your website remains protected from SQL injection and malicious scripts. By using Eloquent ORM (Object Relational Mapper), your security information and data remain secure in an essential manner.
+        </>
+      )
+    },
+    {
+      title: "Offers high performance and scalability",
+      desc: (
+        <>
+          Using Laravel for website development can be your optimum choice, as it helps in increasing the functionality of the web applications by making them run smoothly and rapidly. This eliminates the need to reload the website from scratch, as it helps in route caching and loading the pages faster. At Flymedia Technology, we ensure that your business’s website is developed in a manner that it can effectively handle high traffic.
+        </>
+      )
+    },
+    {
+      title: "Includes better handling of websites",
+      desc: (
+        <>
+          By engaging with the professionals of Flymedia Technology for <strong className="text-black font-bold font-sans">Laravel website development in Ludhiana</strong>, you can make certain that your website can manage high traffic without any hassle. Along with this, the Laravel framework also allows your website to manage the message queues efficiently.
+        </>
+      )
+    },
+    {
+      title: "Efficiently reduces time-to-market",
+      desc: (
+        <>
+          You can effectively contribute to the fate of launching your product, hence reducing the need to wait for months for product launch. Laravel helps in eliminating the need to perform repetitive tasks, which allows you to focus on your core business logic.
+        </>
+      )
+    }
   ];
 
   return (
-    <div className="py-20 bg-[#F1F1F1]">
+    <div className=" bg-[#F1F1F1]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="space-y-10 text-gray-700 text-sm md:text-[15px] leading-relaxed max-w-6xl">
           {features.map((f, i) => (
-            <div key={i} className="bg-[#F1F1F1] p-8 md:p-10 rounded-2xl border border-gray-200/50 group">
-              <h3 className="text-xl font-bold text-black mb-4 leading-tight group-hover:text-[#ff9900] transition-colors">{f.title}</h3>
-              <p className="text-gray-700 leading-relaxed text-[15px]">{f.desc}</p>
-            </div>
+            <p key={i}>
+              <strong className="text-black font-bold font-sans text-sm md:text-[15px]">{f.title}: </strong>
+              {f.desc}
+            </p>
           ))}
         </div>
         <div className="flex flex-col lg:flex-row items-center gap-16 ">
@@ -118,16 +146,22 @@ const LaravelServicesGridSection = () => {
 };
 
 const LaravelPartnershipSection = () => (
-  <div className="py-20 bg-white">
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
-      <div className="space-y-8">
-        <h2 className="text-3xl md:text-4xl font-serif font-bold text-black leading-tight">Advantages of partnering with Flymedia Technology to grow your business</h2>
-        <div className="text-gray-700 text-left space-y-6 text-base md:text-lg leading-relaxed mt-12">
-          <p>Our highly intellectual team ensures that your business can witness rapid growth by comprehensively opting for a PHP-based framework for website development. Our process includes a CMS that allows your business to achieve effective results.</p>
-          <p>We provide premium website development services at an affordable rate to help you avoid high costs. We ensure that <strong className="text-black font-bold">the Laravel mobile app development cost in Punjab</strong> remains budget-friendly for you.</p>
-          <div className="bg-[#F1F1F1] p-8 rounded-2xl border-l-4 border-[#ff9900]">
-            <p className="italic font-medium text-black text-center">The bottom line is that joining hands with the professionals of Flymedia Technology can effectively contribute to your rapid business growth and maximum profits.</p>
-          </div>
+  <div className=" bg-[#F1F1F1]">
+    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="bg-white rounded-lg shadow-sm border border-gray-200/60 p-8 md:p-14 space-y-8">
+        <h2 className="text-3xl md:text-[38px] font-serif font-bold text-black leading-tight text-center">
+          Advantages of partnering with Flymedia Technology to grow your business
+        </h2>
+        <div className="text-gray-600 text-center space-y-6 text-sm md:text-[15px] leading-relaxed max-w-4xl mx-auto font-medium">
+          <p>
+            Our highly intellectual team ensures that your business can witness rapid growth by comprehensively opting for a PHP-based framework for website development. Our process of developing websites for your business’s purposes includes a CMS Content Management System) that allows your business to achieve effective and precise results in terms of maximum visibility and better user experience.
+          </p>
+          <p>
+            The professional team of Flymedia Technology are all ears to your specific concerns regarding your business’s website development, hence providing the results accordingly. Along with this, we provide premium website development services at an affordable rate to help you avoid high costs. You can engage with us without worrying about the high costs for Laravel web development and achieve the optimum results eventually. Considering this, we ensure that <strong className="text-black font-bold">the Laravel mobile app development cost in Punjab</strong> remains budget-friendly for you, without compromising our result-oriented services.
+          </p>
+          <p>
+            The bottom line is that joining hands with the professionals of Flymedia Technology can effectively contribute to your rapid business growth and maximum profits. Therefore, leading your business with the latest digital marketing strategies of Flymedia Technology towards the path of success and growth can be your comprehensive and wise decision.
+          </p>
         </div>
       </div>
     </div>
@@ -154,7 +188,7 @@ export default function LaravelDevelopment() {
           <span>Laravel Website Development in India</span>
         </h1>
       </div>
-      <div className="pb-24">
+      <div className="pb-10">
         <LaravelInfoSection />
         <LaravelFeaturesIntroSection />
         <LaravelCustomServicesSection />
