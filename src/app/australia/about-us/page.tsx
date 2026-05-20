@@ -280,7 +280,7 @@ export default function AustraliaAboutUs() {
             <div className="absolute bg-[#ff9900] -z-10" />
             <div className="relative bg-white p-4 overflow-hidden aspect-square">
               <Image
-                src="https://flymediatech.com/australia/wp-content/uploads/2024/07/BALAYA.jpg"
+                src="/uploads/2024/07/BALAYA.jpg"
                 alt="Mr. Bala"
                 fill
                 className="object-cover "
@@ -367,7 +367,7 @@ export default function AustraliaAboutUs() {
             playsInline
             className="w-full h-full object-cover"
           >
-            <source src="https://flymediatech.com/australia/wp-content/uploads/2024/03/4785844_Shape_Blast_Explosion_1280x7201.mp4" type="video/mp4" />
+            <source src="/uploads/2024/03/4785844_Shape_Blast_Explosion_1280x7201.mp4" type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-black/60" />
         </div>
