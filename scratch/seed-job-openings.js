@@ -12,45 +12,6 @@ const sequelize = new Sequelize(
   }
 );
 
-// Define model locally to ensure perfect schema alignment
-const Career = sequelize.define('Career', {
-  id: {
-    type: DataTypes.INTEGER,
-    autoIncrement: true,
-    primaryKey: true,
-  },
-  title: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  post: {
-    type: DataTypes.STRING,
-    allowNull: true,
-  },
-  vacancies: {
-    type: DataTypes.STRING,
-    allowNull: true,
-  },
-  experience: {
-    type: DataTypes.STRING,
-    allowNull: true,
-  },
-  description: {
-    type: DataTypes.TEXT,
-    allowNull: false,
-  },
-  requirements: {
-    type: DataTypes.TEXT,
-    allowNull: false,
-  },
-  status: {
-    type: DataTypes.STRING,
-    defaultValue: 'OPEN',
-  },
-}, {
-  tableName: 'careers'
-});
-
 const jobsData = [
   {
     title: "SEO",
@@ -235,10 +196,60 @@ async function seed() {
   try {
     console.log('Connecting to database...');
     await sequelize.authenticate();
-    console.log('Connected successfully! Seeding job openings...');
+    console.log('Connected successfully!');
 
-    // Clear existing open careers to avoid duplicates (optional, or just create new ones)
-    console.log('Cleaning up existing careers...');
+    const queryInterface = sequelize.getQueryInterface();
+    const tables = await queryInterface.showAllTables();
+    console.log('Available tables:', tables);
+
+    // Find the correct case-sensitive table name for Careers/careers
+    const matchedTable = tables.find(t => t.toLowerCase() === 'careers');
+    if (!matchedTable) {
+      console.log('Table matching "careers" was not found.');
+      process.exit(1);
+    }
+    console.log(`Detected case-sensitive table name: "${matchedTable}"`);
+
+    // Define model dynamically using matched table name
+    const Career = sequelize.define('Career', {
+      id: {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true,
+      },
+      title: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      post: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+      vacancies: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+      experience: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+      description: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+      },
+      requirements: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+      },
+      status: {
+        type: DataTypes.STRING,
+        defaultValue: 'OPEN',
+      },
+    }, {
+      tableName: matchedTable
+    });
+
+    console.log(`Cleaning up existing careers in "${matchedTable}"...`);
     await Career.destroy({ where: {} });
 
     console.log('Inserting 9 new job openings...');
