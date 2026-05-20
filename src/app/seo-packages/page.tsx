@@ -148,7 +148,7 @@ export default function SEOPackages() {
       {/* JSON-LD Structured Data */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema, null, 2) }}
       />
     </ServicePage>
   );

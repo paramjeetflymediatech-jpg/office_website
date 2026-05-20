@@ -400,7 +400,7 @@ export default function AboutUs() {
                   "text": f.a
                 }
               }))
-            })
+            }, null, 2)
           }}
         />
 

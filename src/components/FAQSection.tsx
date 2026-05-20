@@ -120,6 +120,24 @@ export default function FAQSection() {
           ))}
         </div>
       </div>
+      {/* Dynamic FAQ Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: FAQ_DATA.map((faq) => ({
+              "@type": "Question",
+              name: faq.question,
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: faq.answer,
+              },
+            })),
+          }, null, 2),
+        }}
+      />
     </section>
   );
 }

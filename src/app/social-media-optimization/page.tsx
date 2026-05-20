@@ -378,6 +378,24 @@ export default function SocialMediaOptimization() {
       {/* Symmetric Contact Section */}
       <ContactFormSection />
 
+      {/* Dynamic FAQ Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: [...col1Faqs, ...col2Faqs].map((faq) => ({
+              "@type": "Question",
+              name: faq.q,
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: faq.a,
+              },
+            })),
+          }, null, 2),
+        }}
+      />
     </div>
   );
 }

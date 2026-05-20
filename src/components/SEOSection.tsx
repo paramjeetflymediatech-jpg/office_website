@@ -693,7 +693,7 @@ export default function SEOSection() {
         {/* Structured JSON-LD Schema */}
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema, null, 2) }}
         />
       </section>
     </div>
