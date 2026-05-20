@@ -29,8 +29,8 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
-        source: '/blog/:slug',
-        destination: '/:slug/',
+        source: '/australia/blog/:slug',
+        destination: '/australia/:slug/',
         permanent: true,
       },
     ];
