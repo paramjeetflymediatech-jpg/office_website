@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+import { revalidatePath } from 'next/cache';
 import ContactQuery from '@/models/ContactQuery';
 
 export async function POST(request: Request) {
@@ -15,7 +16,7 @@ export async function POST(request: Request) {
       );
     }
 
-    // 1. Save to Database
+    // 1. Save to Database first
     try {
       await ContactQuery.create({
         name,
@@ -25,11 +26,13 @@ export async function POST(request: Request) {
         message,
         status: 'NEW'
       });
+      // Invalidate admin contact cache so new submission appears immediately
+      revalidatePath('/admin/contact');
     } catch (dbError) {
       console.error('Database Error:', dbError);
     }
 
-    // 2. Send Email via Nodemailer
+    // 2. Build transporter & mail payloads
     const transporter = nodemailer.createTransport({
       host: process.env.EMAIL_HOST || 'smtp.gmail.com',
       port: parseInt(process.env.EMAIL_PORT || '587'),
@@ -40,22 +43,12 @@ export async function POST(request: Request) {
       },
     });
 
-    const mailOptions = {
+    const adminMail = {
       from: `"Contact Form" <${process.env.EMAIL_USER}>`,
       to: process.env.ADMIN_EMAIL || 'anujguptaflymedia@gmail.com',
       replyTo: email,
       subject: `New Contact Form Submission: ${subject || 'General Inquiry'}`,
-      text: `
-        New submission received from the contact form:
-        
-        Name: ${name}
-        Email: ${email}
-        Phone: ${phone || 'N/A'}
-        Subject: ${subject || 'N/A'}
-        
-        Message:
-        ${message}
-      `,
+      text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone || 'N/A'}\nSubject: ${subject || 'N/A'}\n\nMessage:\n${message}`,
       html: `
         <h3>New Contact Form Submission</h3>
         <p><strong>Name:</strong> ${name}</p>
@@ -68,35 +61,39 @@ export async function POST(request: Request) {
       `,
     };
 
-    if (process.env.EMAIL_USER && process.env.EMAIL_PASS) {
-      // Send to Admin
-      await transporter.sendMail(mailOptions);
-
-      // 3. Send Auto-Reply to User
-      const autoReplyOptions = {
-        from: `"Flymedia Technology" <${process.env.EMAIL_USER}>`,
-        to: email,
-        subject: 'Enquiry Received - Flymedia Technology',
-        text: `Hi ${name}, we have received your enquiry and our team will contact you shortly.`,
-        html: `
-          <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #eee; border-radius: 10px;">
-            <h2 style="color: #ff9900;">Inquiry Received</h2>
-            <p>Hi <strong>${name}</strong>,</p>
-            <p>Thank you for reaching out to <strong>Flymedia Technology</strong>.</p>
-            <p>We have received your enquiry regarding <strong>${subject || 'our services'}</strong> and our team will contact you shortly.</p>
-            <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee;">
-              <p style="margin: 0; color: #666;">Best Regards,</p>
-              <p style="margin: 5px 0 0 0; font-weight: bold; color: #000;">Flymedia Technology Team</p>
-              <p style="margin: 5px 0 0 0; font-size: 12px; color: #999;">Plot no, 20, Vishal Nagar Ext, Ludhiana, Punjab 141001</p>
-            </div>
+    const autoReply = {
+      from: `"Flymedia Technology" <${process.env.EMAIL_USER}>`,
+      to: email,
+      subject: 'Enquiry Received - Flymedia Technology',
+      text: `Hi ${name}, we have received your enquiry and our team will contact you shortly.`,
+      html: `
+        <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #eee; border-radius: 10px;">
+          <h2 style="color: #ff9900;">Inquiry Received</h2>
+          <p>Hi <strong>${name}</strong>,</p>
+          <p>Thank you for reaching out to <strong>Flymedia Technology</strong>.</p>
+          <p>We have received your enquiry regarding <strong>${subject || 'our services'}</strong> and our team will contact you shortly.</p>
+          <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee;">
+            <p style="margin: 0; color: #666;">Best Regards,</p>
+            <p style="margin: 5px 0 0 0; font-weight: bold; color: #000;">Flymedia Technology Team</p>
+            <p style="margin: 5px 0 0 0; font-size: 12px; color: #999;">Plot no, 20, Vishal Nagar Ext, Ludhiana, Punjab 141001</p>
           </div>
-        `,
-      };
-      await transporter.sendMail(autoReplyOptions);
+        </div>
+      `,
+    };
+
+    // 3. Fire emails in the background — no await, respond instantly
+    if (process.env.EMAIL_USER && process.env.EMAIL_PASS) {
+      transporter.sendMail(adminMail).catch((err) =>
+        console.error('Admin email error:', err)
+      );
+      transporter.sendMail(autoReply).catch((err) =>
+        console.error('Auto-reply email error:', err)
+      );
     } else {
-      console.warn('Nodemailer credentials not found. Emails not sent.');
+      console.warn('Email credentials not configured — emails skipped.');
     }
 
+    // Respond immediately without waiting for SMTP
     return NextResponse.json(
       { message: 'Thank you for your message. We will get back to you soon!' },
       { status: 200 }

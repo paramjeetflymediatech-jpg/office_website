@@ -2,42 +2,62 @@
 
 import React, { useState, useEffect } from 'react';
 import { getContactQueries, updateQueryStatus, deleteQuery } from '@/app/actions/contact';
-import { Mail, Trash2, Eye, X, CheckCircle } from 'lucide-react';
+import { Mail, Trash2, Eye, X, RefreshCw } from 'lucide-react';
 
 export default function ContactAdminPage() {
   const [queries, setQueries] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const [refreshing, setRefreshing] = useState(false);
   const [selectedQuery, setSelectedQuery] = useState<any>(null);
 
   useEffect(() => {
     loadQueries();
+    // Auto-refresh when user comes back to this tab
+    const onFocus = () => loadQueries();
+    window.addEventListener('focus', onFocus);
+    return () => window.removeEventListener('focus', onFocus);
   }, []);
 
-  async function loadQueries() {
+  async function loadQueries(isManual = false) {
+    if (isManual) setRefreshing(true);
+    else setLoading(true);
     const data = await getContactQueries();
     setQueries(data);
     setLoading(false);
+    setRefreshing(false);
   }
 
   const handleStatusChange = async (id: number, status: string) => {
     const result = await updateQueryStatus(id, status);
-    if (result.success) loadQueries();
+    if (result.success) loadQueries(true);
   };
 
   const handleDelete = async (id: number) => {
     if (confirm('Delete this query?')) {
       const result = await deleteQuery(id);
-      if (result.success) loadQueries();
+      if (result.success) loadQueries(true);
     }
   };
 
-  if (loading) return <div className="p-8 text-center">Loading...</div>;
+  if (loading) return <div className="p-8 text-center text-gray-500">Loading contact queries...</div>;
 
   return (
     <div className="space-y-8">
-      <div>
-        <h1 className="text-3xl font-bold text-gray-900">Contact Queries</h1>
-        <p className="text-gray-500 mt-1">Manage inquiries from your website visitors.</p>
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-3xl font-bold text-gray-900">Contact Queries</h1>
+          <p className="text-gray-500 mt-1">
+            {queries.length} {queries.length === 1 ? 'inquiry' : 'inquiries'} from your website visitors.
+          </p>
+        </div>
+        <button
+          onClick={() => loadQueries(true)}
+          disabled={refreshing}
+          className="flex items-center gap-2 px-4 py-2 bg-[#ff9900] text-white rounded-lg font-bold text-sm hover:bg-black transition-all disabled:opacity-60"
+        >
+          <RefreshCw size={16} className={refreshing ? 'animate-spin' : ''} />
+          {refreshing ? 'Refreshing...' : 'Refresh'}
+        </button>
       </div>
 
       <div className="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">

@@ -1,9 +1,9 @@
 import React from 'react';
 import Link from 'next/link';
-import { 
-  Users, 
-  Mail, 
-  Image as ImageIcon, 
+import {
+  Users,
+  Mail,
+  Image as ImageIcon,
   Briefcase,
   BookOpen,
   Globe,
@@ -41,15 +41,15 @@ export default async function AdminDashboard() {
           <p className="text-xs sm:text-sm text-gray-500 mt-1">Real-time database statistics and quick management links.</p>
         </div>
         <div className="flex flex-wrap items-center gap-2 sm:gap-3">
-          <Link 
-            href="/admin/blog/new" 
+          <Link
+            href="/admin/blog/new"
             className="flex items-center gap-2 bg-[#ff9900] text-white px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-bold hover:bg-black transition-all shadow-md shadow-orange-100"
           >
             <Plus size={16} />
             New Blog
           </Link>
-          <Link 
-            href="/admin/portfolio" 
+          <Link
+            href="/admin/portfolio"
             className="flex items-center gap-2 bg-gray-900 text-white px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-bold hover:bg-[#ff9900] transition-all shadow-md"
           >
             <Plus size={16} />
@@ -60,39 +60,39 @@ export default async function AdminDashboard() {
 
       {/* Dynamic Statistics Grid - Optimized specifically for iPad Mini, iPad Air & Desktop */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-5 gap-4 sm:gap-6">
-        <StatCard 
-          icon={<Mail className="text-blue-600" />} 
-          label="Contact Queries" 
-          value={queriesCount} 
-          change="Live" 
+        <StatCard
+          icon={<Mail className="text-blue-600" />}
+          label="Contact Queries"
+          value={queriesCount}
+          change="Live"
           color="bg-blue-50"
         />
-        <StatCard 
-          icon={<ImageIcon className="text-purple-600" />} 
-          label="Portfolio Items" 
-          value={portfolioCount} 
-          change="Live" 
+        <StatCard
+          icon={<ImageIcon className="text-purple-600" />}
+          label="Portfolio Items"
+          value={portfolioCount}
+          change="Live"
           color="bg-purple-50"
         />
-        <StatCard 
-          icon={<Briefcase className="text-orange-600" />} 
-          label="Open Job Roles" 
-          value={jobsCount} 
-          change="Live" 
+        <StatCard
+          icon={<Briefcase className="text-orange-600" />}
+          label="Open Job Roles"
+          value={jobsCount}
+          change="Live"
           color="bg-orange-50"
         />
-        <StatCard 
-          icon={<FileText className="text-emerald-600" />} 
-          label="Job Applications" 
-          value={appsCount} 
-          change="Live" 
+        <StatCard
+          icon={<FileText className="text-emerald-600" />}
+          label="Job Applications"
+          value={appsCount}
+          change="Live"
           color="bg-emerald-50"
         />
-        <StatCard 
-          icon={<BookOpen className="text-pink-600" />} 
-          label="Published Blogs" 
-          value={blogsCount} 
-          change="Live" 
+        <StatCard
+          icon={<BookOpen className="text-pink-600" />}
+          label="Published Blogs"
+          value={blogsCount}
+          change="Live"
           color="bg-pink-50"
         />
       </div>

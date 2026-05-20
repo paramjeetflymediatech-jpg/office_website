@@ -1,24 +1,45 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 
 export default function ContactFormSection() {
-  const [formData, setFormData] = React.useState({
+  const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
+    subject: "",
     message: ""
   });
+  const [loading, setLoading] = useState(false);
+  const [toast, setToast] = useState<{ type: "success" | "error"; text: string } | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    alert("Thank you for getting in touch with us! We will contact you shortly.");
-    setFormData({ name: "", email: "", phone: "", message: "" });
+    setLoading(true);
+    setToast(null);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+      if (res.ok) {
+        setToast({ type: "success", text: data.message || "Thank you! We will get back to you soon." });
+        setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
+      } else {
+        setToast({ type: "error", text: data.error || "Something went wrong. Please try again." });
+      }
+    } catch {
+      setToast({ type: "error", text: "Network error. Please check your connection and try again." });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -104,6 +125,22 @@ export default function ContactFormSection() {
               Get In Touch With Us
             </h2>
 
+            {/* Success / Error toast */}
+            {toast && (
+              <div className={`mb-6 flex items-start gap-3 px-4 py-3 text-sm font-medium border ${
+                toast.type === "success"
+                  ? "bg-green-50 border-green-300 text-green-800"
+                  : "bg-red-50 border-red-300 text-red-800"
+              }`}>
+                {toast.type === "success" ? (
+                  <svg className="w-5 h-5 shrink-0 mt-0.5 fill-green-600" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/></svg>
+                ) : (
+                  <svg className="w-5 h-5 shrink-0 mt-0.5 fill-red-600" viewBox="0 0 20 20"><path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd"/></svg>
+                )}
+                <span>{toast.text}</span>
+              </div>
+            )}
+
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="w-full">
@@ -114,7 +151,8 @@ export default function ContactFormSection() {
                     onChange={handleChange}
                     placeholder="Enter your name"
                     required
-                    className="w-full bg-white border border-gray-300 rounded-none px-4 py-3.5 text-gray-950 placeholder-gray-500 font-medium focus:outline-none focus:ring-1 focus:ring-black text-xs sm:text-sm"
+                    disabled={loading}
+                    className="w-full bg-white border border-gray-300 rounded-none px-4 py-3.5 text-gray-950 placeholder-gray-500 font-medium focus:outline-none focus:ring-1 focus:ring-black text-xs sm:text-sm disabled:opacity-60"
                   />
                 </div>
                 <div className="w-full">
@@ -125,21 +163,37 @@ export default function ContactFormSection() {
                     onChange={handleChange}
                     placeholder="Enter your email"
                     required
-                    className="w-full bg-white border border-gray-300 rounded-none px-4 py-3.5 text-gray-950 placeholder-gray-500 font-medium focus:outline-none focus:ring-1 focus:ring-black text-xs sm:text-sm"
+                    disabled={loading}
+                    className="w-full bg-white border border-gray-300 rounded-none px-4 py-3.5 text-gray-950 placeholder-gray-500 font-medium focus:outline-none focus:ring-1 focus:ring-black text-xs sm:text-sm disabled:opacity-60"
                   />
                 </div>
               </div>
 
-              <div className="w-full">
-                <input
-                  type="tel"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  placeholder="Enter your phone number"
-                  required
-                  className="w-full bg-white border border-gray-300 rounded-none px-4 py-3.5 text-gray-950 placeholder-gray-500 font-medium focus:outline-none focus:ring-1 focus:ring-black text-xs sm:text-sm"
-                />
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="w-full">
+                  <input
+                    type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    placeholder="Enter your phone number"
+                    required
+                    disabled={loading}
+                    className="w-full bg-white border border-gray-300 rounded-none px-4 py-3.5 text-gray-950 placeholder-gray-500 font-medium focus:outline-none focus:ring-1 focus:ring-black text-xs sm:text-sm disabled:opacity-60"
+                  />
+                </div>
+                <div className="w-full">
+                  <input
+                    type="text"
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleChange}
+                    placeholder="Subject (e.g. SEO, Web Design)"
+                    required
+                    disabled={loading}
+                    className="w-full bg-white border border-gray-300 rounded-none px-4 py-3.5 text-gray-950 placeholder-gray-500 font-medium focus:outline-none focus:ring-1 focus:ring-black text-xs sm:text-sm disabled:opacity-60"
+                  />
+                </div>
               </div>
 
               <div className="w-full">
@@ -148,18 +202,26 @@ export default function ContactFormSection() {
                   value={formData.message}
                   onChange={handleChange}
                   rows={4}
-                  placeholder="Type you message here..."
+                  placeholder="Type your message here..."
                   required
-                  className="w-full bg-white border border-gray-300 rounded-none px-4 py-3.5 text-gray-950 placeholder-gray-500 font-medium focus:outline-none focus:ring-1 focus:ring-black text-xs sm:text-sm resize-none"
+                  disabled={loading}
+                  className="w-full bg-white border border-gray-300 rounded-none px-4 py-3.5 text-gray-950 placeholder-gray-500 font-medium focus:outline-none focus:ring-1 focus:ring-black text-xs sm:text-sm resize-none disabled:opacity-60"
                 />
               </div>
 
               <div>
                 <button
                   type="submit"
-                  className="bg-black text-white hover:bg-[#FA7E09] hover:text-white transition-all duration-300 font-bold px-10 py-3.5 rounded-full text-sm sm:text-base shadow-md"
+                  disabled={loading}
+                  className="inline-flex items-center gap-2 bg-black text-white hover:bg-[#FA7E09] hover:text-white transition-all duration-300 font-bold px-10 py-3.5 rounded-full text-sm sm:text-base shadow-md disabled:opacity-60 disabled:cursor-not-allowed"
                 >
-                  Submit
+                  {loading && (
+                    <svg className="animate-spin w-4 h-4" viewBox="0 0 24 24" fill="none">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"/>
+                    </svg>
+                  )}
+                  {loading ? "Sending..." : "Submit"}
                 </button>
               </div>
             </form>
