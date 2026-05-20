@@ -3,9 +3,17 @@
 import { SEOConfig, FAQ } from '@/models';
 import { revalidatePath } from 'next/cache';
 
-export async function getSEOConfig() {
+export async function getSEOConfig(region: string = 'global') {
   try {
-    const config = await SEOConfig.findOne({ where: { id: 1 } });
+    let config = await SEOConfig.findOne({ where: { region } });
+    if (!config && region !== 'global') {
+      // Fallback to global config if a regional one is not found
+      config = await SEOConfig.findOne({ where: { region: 'global' } });
+    }
+    if (!config) {
+      // Final fallback to the first record (id: 1) if no region-specific records exist yet
+      config = await SEOConfig.findOne({ where: { id: 1 } });
+    }
     if (!config) return null;
     return config.get({ plain: true });
   } catch (error) {
@@ -15,7 +23,9 @@ export async function getSEOConfig() {
 }
 
 export async function updateSEOConfig(formData: FormData) {
+  const region = (formData.get('region') as string) || 'global';
   const data = {
+    region,
     businessName: formData.get('businessName') as string,
     businessDescription: formData.get('businessDescription') as string,
     logoUrl: formData.get('logoUrl') as string,
@@ -38,7 +48,7 @@ export async function updateSEOConfig(formData: FormData) {
 
   try {
     const [config, created] = await SEOConfig.findOrCreate({
-      where: { id: 1 },
+      where: { region },
       defaults: data
     });
 

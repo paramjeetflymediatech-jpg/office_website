@@ -3,6 +3,7 @@ import sequelize from '../lib/db';
 
 class SEOConfig extends Model {
   declare id: number;
+  declare region: string | null;
   declare businessName: string | null;
   declare businessDescription: string | null;
   declare logoUrl: string | null;
@@ -29,6 +30,11 @@ SEOConfig.init(
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true,
+    },
+    region: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      defaultValue: 'global',
     },
     businessName: {
       type: DataTypes.STRING,

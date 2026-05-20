@@ -14,6 +14,7 @@ export default function SEOPage() {
   const [saving, setSaving] = useState(false);
   const [syncing, setSyncing] = useState(false);
   const [isEditingGlobal, setIsEditingGlobal] = useState(false);
+  const [selectedRegion, setSelectedRegion] = useState<string>('global');
 
   // Page SEO state
   const [pageSeos, setPageSeos] = useState<any[]>([]);
@@ -54,10 +55,59 @@ export default function SEOPage() {
     loadData();
   }, []);
 
+  async function loadRegionConfig(regionName: string) {
+    setLoading(true);
+    const data = await getSEOConfig(regionName);
+    if (data) {
+      setConfig({
+        businessName: data.businessName || '',
+        businessDescription: data.businessDescription || '',
+        logoUrl: data.logoUrl || '',
+        phone: data.phone || '',
+        email: data.email || '',
+        streetAddress: data.streetAddress || '',
+        city: data.city || '',
+        state: data.state || '',
+        postalCode: data.postalCode || '',
+        countryCode: data.countryCode || '',
+        latitude: data.latitude || '',
+        longitude: data.longitude || '',
+        socialLinks: data.socialLinks || '',
+        googleAnalyticsId: data.googleAnalyticsId || '',
+        googleTagManagerId: data.googleTagManagerId || '',
+        globalSchema: data.globalSchema || '',
+        headerScripts: data.headerScripts || '',
+        footerScripts: data.footerScripts || ''
+      });
+    } else {
+      setConfig({
+        businessName: '',
+        businessDescription: '',
+        logoUrl: '',
+        phone: '',
+        email: '',
+        streetAddress: '',
+        city: '',
+        state: '',
+        postalCode: '',
+        countryCode: '',
+        latitude: '',
+        longitude: '',
+        socialLinks: '',
+        googleAnalyticsId: '',
+        googleTagManagerId: '',
+        globalSchema: '',
+        headerScripts: '',
+        footerScripts: ''
+      });
+    }
+    setLoading(false);
+  }
+
   async function loadData() {
     setLoading(true);
     const [data, seoResult] = await Promise.all([
-      getSEOConfig(),
+      getSEOConfig(selectedRegion),
       getPageSEOs(currentPage, limit, searchTerm)
     ]);
 
@@ -92,6 +142,11 @@ export default function SEOPage() {
     setLoading(false);
   }
 
+  const handleRegionChange = async (regionName: string) => {
+    setSelectedRegion(regionName);
+    await loadRegionConfig(regionName);
+  };
+
   // Reload pages when pagination or search changes
   useEffect(() => {
     if (!loading) {
@@ -124,11 +179,13 @@ export default function SEOPage() {
     e.preventDefault();
     setSaving(true);
     const formData = new FormData(e.currentTarget);
+    formData.append('region', selectedRegion);
     const result = await updateSEOConfig(formData);
 
     if (result.success) {
-      showNotification('success', 'Global SEO configuration updated!');
+      showNotification('success', `Global SEO configuration for ${selectedRegion} updated!`);
       setIsEditingGlobal(false);
+      loadRegionConfig(selectedRegion);
     } else {
       showNotification('error', result.error || 'Failed to update configuration');
     }
@@ -233,9 +290,35 @@ export default function SEOPage() {
       </div>
 
       {activeTab === 'global' ? (
-        !isEditingGlobal ? (
-          /* ── READ-ONLY SUMMARY CARD ── */
-          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5">
+        <div className="space-y-6">
+          {/* Target SEO Region Panel */}
+          <div className="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div className="flex items-center gap-3.5">
+              <div className="p-3.5 bg-orange-50 text-[#ff9900] rounded-2xl flex items-center justify-center">
+                <Globe size={24} />
+              </div>
+              <div>
+                <h2 className="text-lg font-bold text-gray-900 leading-snug">Target SEO Region</h2>
+                <p className="text-xs text-gray-500 mt-0.5">Configure global metadata, schemas, and tracking specific to a region.</p>
+              </div>
+            </div>
+            <div className="w-full sm:w-72">
+              <select
+                value={selectedRegion}
+                onChange={(e) => handleRegionChange(e.target.value)}
+                disabled={isEditingGlobal || saving}
+                className="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl font-bold text-gray-800 focus:ring-2 focus:ring-[#ff9900] outline-none disabled:opacity-50 transition-all cursor-pointer"
+              >
+                <option value="global">Global / India (Default)</option>
+                <option value="canada">Canada (/canada)</option>
+                <option value="australia">Australia (/australia)</option>
+              </select>
+            </div>
+          </div>
+
+          {!isEditingGlobal ? (
+            /* ── READ-ONLY SUMMARY CARD ── */
+            <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5">
 
             {/* Business Info */}
             <div className="bg-white rounded-xl border border-gray-100 shadow-sm p-6 space-y-4">
@@ -632,7 +715,8 @@ export default function SEOPage() {
               </div>
             </aside>
           </div>
-        )
+          )}
+        </div>
       ) : (
         /* Page-wise SEO Section */
         <div className="space-y-6">
