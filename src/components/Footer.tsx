@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Phone, Mail, MapPin } from "lucide-react";
+import { usePathname } from "next/navigation";
 import {
   SOCIAL_LINKS,
   QUICK_LINKS,
@@ -23,6 +24,67 @@ const SocialIcon = ({ d, color, href }: { d: string; color: string; href: string
 );
 
 export default function Footer() {
+  const pathname = usePathname();
+  const isAustralia = pathname === "/australia/about-us" || pathname?.startsWith("/australia");
+  const isCanada = pathname === "/canada" || pathname?.startsWith("/canada");
+
+  const phone = isAustralia
+    ? "+61 434 500 077"
+    : isCanada
+      ? "+1 236-885-5725"
+      : "+91-98884-84310";
+
+  const phoneTel = isAustralia
+    ? "+61434500077"
+    : isCanada
+      ? "+12368855725"
+      : "+919888484310";
+
+  const quickLinks = isAustralia
+    ? [
+        { name: "About Us", href: "/australia/about-us" },
+        { name: "How We Work", href: "/how-we-work" },
+        { name: "Blog", href: "/australia/blog" },
+        { name: "Contact Us", href: "/australia/contact-us" },
+      ]
+    : isCanada
+      ? [
+          { name: "About Us", href: "/canada/about-us" },
+          { name: "Portfolio", href: "/canada/portfolio" },
+          { name: "Blog", href: "/blog" },
+          { name: "Contact Us", href: "/canada/contact-us" },
+        ]
+      : QUICK_LINKS;
+
+  const services = isAustralia
+    ? [
+        { name: "Web Designing", href: "/australia/web-design" },
+        { name: "Digital Consultancy", href: "/australia/digital-consultancy" },
+        { name: "Mobile Marketing", href: "/australia/mobile-marketing" },
+        { name: "Youtube Advertising", href: "/australia/youtube-advertising-agency-sydney" },
+        { name: "Reputation Management", href: "/australia/reputation-management" },
+        { name: "Paid Search Agency", href: "/australia/paid-search-agency-sydney" },
+        { name: "Website Development", href: "/australia/web-development" },
+        { name: "Google Display Ads", href: "/australia/google-display-advertising-agency" },
+        { name: "Facebook Marketing", href: "/australia/facebook-marketing-sydney" },
+        { name: "Google Shopping Ads", href: "/australia/google-shopping-ads-agency-sydney" },
+        { name: "Content Strategy", href: "/australia/content-marketing-strategy" },
+      ]
+    : isCanada
+      ? [
+          { name: "Web Designing", href: "/canada/web-designing" },
+          { name: "Digital Marketing Agency", href: "/canada/digital-marketing-agency-in-edmonton" },
+          { name: "Website Designing Vancouver", href: "/canada/website-designing-company-in-vancouver" },
+          { name: "Google Adwords Vancouver", href: "/canada/google-adwords-company-in-vancouver" },
+          { name: "SEO Agency Vancouver", href: "/canada/seo-agency-seo-experts-in-vancouver" },
+          { name: "Mobile App Dev Vancouver", href: "/canada/mobile-app-development-in-vancouver" },
+          { name: "SMO Agency Vancouver", href: "/canada/smo-agency-smo-experts-in-vancouver" },
+          { name: "Best Digital Marketing Agency", href: "/canada/best-digital-marketing-agency-in-vancouver" },
+          { name: "AI SEO Agency Vancouver", href: "/canada/ai-seo-agency-in-vancouver" },
+          { name: "E-Commerce SEO Vancouver", href: "/canada/e-commerce-seo-agency-in-vancouver" },
+        ]
+      : OUR_SERVICES;
+
   return (
     <footer className="relative bg-black pt-16 pb-4 text-white overflow-hidden font-sans">
       {/* Star Background Effect */}
@@ -47,12 +109,16 @@ export default function Footer() {
             </div>
             <div className="space-y-4">
               <div className="flex items-center gap-3 text-sm font-semibold">
-                <Phone size={20} className="text-[#ff9900]" />
-                <span className="text-white">+91-98884-84310</span>
+                <a href={`tel:${phoneTel}`} className="flex items-center gap-3 hover:text-[#ff9900] transition-colors">
+                  <Phone size={20} className="text-[#ff9900]" />
+                  <span className="text-white">{phone}</span>
+                </a>
               </div>
               <div className="flex items-center gap-3 text-sm font-semibold">
-                <Mail size={20} className="text-[#ff9900]" />
-                <span className="text-white">anujguptaflymedia@gmail.com</span>
+                <a href="mailto:anujguptaflymedia@gmail.com" className="flex items-center gap-3 hover:text-[#ff9900] transition-colors">
+                  <Mail size={20} className="text-[#ff9900]" />
+                  <span className="text-white">anujguptaflymedia@gmail.com</span>
+                </a>
               </div>
             </div>
 
@@ -67,15 +133,17 @@ export default function Footer() {
                   className="object-contain"
                 />
               </Link>
-              <Link href="#" className="relative h-30 w-30">
-                <Image
-                  src="/dropdown-icons/pghoepwe.webp"
-                  alt="PhonePe Partner"
-                  fill
-                  sizes="112px"
-                  className="object-contain"
-                />
-              </Link>
+              {!isAustralia &&  (
+                <Link href="#" className="relative h-30 w-30">
+                  <Image
+                    src="/dropdown-icons/pghoepwe.webp"
+                    alt="PhonePe Partner"
+                    fill
+                    sizes="112px"
+                    className="object-contain"
+                  />
+                </Link>
+              )}
             </div>
           </div>
 
@@ -117,8 +185,8 @@ export default function Footer() {
           <div className="lg:col-span-3">
             <h4 className="text-xl font-bold uppercase tracking-tight mb-8 border-l-4 border-[#ff9900] pl-4 leading-none">Quick Links</h4>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3.5 text-[12.4px] text-white font-medium">
-              {QUICK_LINKS.map((link, i) => (
-                <Link key={i} href={link.href} className="transition-colors">
+              {quickLinks.map((link, i) => (
+                <Link key={i} href={link.href} className="transition-colors hover:text-[#ff9900]">
                   {link.name}
                 </Link>
               ))}
@@ -130,15 +198,15 @@ export default function Footer() {
             <h4 className="text-xl font-bold uppercase tracking-tight mb-8 border-l-4 border-[#ff9900] pl-4 leading-none">Our Services</h4>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3.5 text-[12.4px] text-white font-medium">
               <div className="flex flex-col gap-3.5">
-                {OUR_SERVICES.slice(0, Math.ceil(OUR_SERVICES.length / 2)).map((link, i) => (
-                  <Link key={i} href={link.href} className="transition-colors">
+                {services.slice(0, Math.ceil(services.length / 2)).map((link, i) => (
+                  <Link key={i} href={link.href} className="transition-colors hover:text-[#ff9900]">
                     {link.name}
                   </Link>
                 ))}
               </div>
               <div className="flex flex-col gap-3.5">
-                {OUR_SERVICES.slice(Math.ceil(OUR_SERVICES.length / 2)).map((link, i) => (
-                  <Link key={i} href={link.href} className="transition-colors leading-tight">
+                {services.slice(Math.ceil(services.length / 2)).map((link, i) => (
+                  <Link key={i} href={link.href} className="transition-colors leading-tight hover:text-[#ff9900]">
                     {link.name}
                   </Link>
                 ))}

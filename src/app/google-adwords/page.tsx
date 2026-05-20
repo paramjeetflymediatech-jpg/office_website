@@ -1,157 +1,199 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
-import { 
-  TrendingUp, 
-  Target, 
-  BarChart, 
-  DollarSign, 
-  CheckCircle,
-  HelpCircle
-} from "lucide-react";
+import { ChevronDown, ChevronUp } from "lucide-react";
 import ServicePage from "@/components/ServicePage";
 import ContactFormSection from "@/components/ContactFormSection";
 
-// --- Hero Section ---
-const GoogleAdwordsHero = () => {
-  const features = [
-    { icon: <Target className="text-[#FA7E09]" size={24} />, text: "Highly Target Keywords" },
-    { icon: <TrendingUp className="text-[#FA7E09]" size={24} />, text: "Instant Quality Traffic" },
-    { icon: <BarChart className="text-[#FA7E09]" size={24} />, text: "Detailed Analytics" },
-    { icon: <DollarSign className="text-[#FA7E09]" size={24} />, text: "Maximum Campaign ROI" },
-  ];
-
+// --- Hero / Hiring Section ---
+const HiringHero = () => {
   return (
-    <div className="bg-[#F1F1F1] pt-16 pb-20 overflow-hidden">
+    <section className="bg-[#F1F1F1] pt-10 pb-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          
-          {/* Left Side Details */}
-          <div className="lg:col-span-7 space-y-6 order-2 lg:order-1">
-            <div className="space-y-4">
-              <h1 className="text-4xl md:text-5xl font-serif font-bold text-black leading-tight">
-                Google AdWords (PPC) Management Services
-              </h1>
-              <p className="text-lg font-semibold text-[#FA7E09]">
-                Get instant leads, maximum exposure, and certified Google Ads experts.
-              </p>
-            </div>
-
-            <p className="text-gray-600 text-base md:text-lg leading-relaxed font-medium">
-              Want to see your business at the very top of Google Search instantly? Our Google AdWords & Pay-Per-Click (PPC) optimization solutions place your brand directly in front of buyers actively seeking your products. We construct highly-focused campaigns that eliminate wasted ad spend and generate immediate phone calls and leads.
-            </p>
-
-            {/* Grid of features */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-4">
-              {features.map((item, idx) => (
-                <div key={idx} className="flex flex-col items-center text-center space-y-3">
-                  <div className="w-12 h-12 rounded-xl bg-orange-50 flex items-center justify-center shadow-sm">
-                    {item.icon}
-                  </div>
-                  <span className="text-xs sm:text-sm font-semibold text-gray-700 leading-tight">
-                    {item.text}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Right Side Image */}
-          <div className="lg:col-span-5 flex justify-center order-1 lg:order-2">
-            <div className="relative w-full max-w-[460px]">
-              <Image 
-                src="/cosmetic-surgery-digital-marketing/04.png" 
-                alt="Google AdWords PPC Services Illustration" 
-                width={600} 
-                height={600} 
-                className="w-full h-auto object-contain"
+          {/* Left Side: Illustration */}
+          <div className="lg:col-span-5 flex justify-center">
+            <div className="relative w-full aspect-square max-w-[460px]">
+              <Image
+                src="https://flymediatech.com/australia/wp-content/uploads/2024/03/imgmenu025.png"
+                alt="We Are Hiring Illustration"
+                fill
+                className="object-contain"
+                unoptimized
                 priority
               />
             </div>
           </div>
 
+          {/* Right Side Details */}
+          <div className="lg:col-span-7 space-y-6">
+            <h1 className="text-4xl md:text-5xl lg:text-[54px] font-serif font-bold text-black leading-tight">
+              We Are Hiring!
+            </h1>
+            <p className="text-gray-700 text-base md:text-[17px] leading-relaxed font-semibold">
+              Google Adword Specialist in Ludhiana and Google Adwords Jobs in Punjab, We are requiring the candidates to fulfil the vacancies of the google Adword jobs in Ludhiana. We are desiring the google adword specialist who has undergone the google adword training course. This is the main thing which we look for in our candidates, as the course is designed by the industry experts who are accountable for running the sundry successful campaigns with Google Adwords since the last decade.
+            </p>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
-// --- Custom Parallax Feature Section ---
-const ParallaxAdwordsSection = () => (
-  <section 
-    className="relative py-28 overflow-hidden bg-cover bg-center bg-fixed flex items-center justify-center"
-    style={{
-      backgroundImage: "linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('/bgimg.png')",
-    }}
-  >
-    <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 text-center text-white relative z-10 space-y-8">
-      <h2 className="text-2xl md:text-3xl font-serif font-bold text-white max-w-4xl mx-auto">
-        Drive Highly Targeted Leads With Certified Google Partners
-      </h2>
-      <p className="text-lg sm:text-xl font-serif leading-relaxed max-w-5xl mx-auto">
-        Flymedia Technology is an official Premier Google Partner. We construct search ads, visual display ads, remarketing funnels, and shopping campaigns that scale your sales immediately.
-      </p>
-    </div>
-  </section>
-);
+// --- Importance Section ---
+const ImportanceSection = () => {
+  return (
+    <section className="py-16 bg-[#F1F1F1] border-t border-gray-200/50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 text-center">
+        <h2 className="text-3xl md:text-4xl lg:text-[42px] font-serif font-bold text-black leading-tight max-w-5xl mx-auto">
+          Importance Of The Google Adword Programme
+        </h2>
+        <p className="text-gray-700 text-base md:text-[17px] leading-relaxed max-w-6xl mx-auto font-semibold">
+          Google AdWords is one of the greatest advertising programs which help you to expand your business by escalating the number of potential customers. If you have good knowledge and the skill in running google ads, then it becomes easy for you to show your ad based on the specific keywords or the targeted group of audience. The potential benefit of using google adword is that you can set your budget.
+        </p>
+        <div className="pt-6 space-y-3">
+          <p className="text-xl md:text-2xl font-serif font-bold text-black max-w-4xl mx-auto leading-tight">
+            Why Should You Apply For This Profile At Flymedia Technology?
+          </p>
+          <p className="text-[#EC7317] text-base md:text-lg font-bold uppercase tracking-wider">
+            You will enjoy the following benefits at the flymedia technology:
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+};
 
-// --- Core PPC Services ---
-const CorePpcSection = () => {
-  const cards = [
+// --- Salary & Ambience Section ---
+const SalaryAmbienceSection = () => {
+  return (
+    <section className="py-16 bg-[#F1F1F1] border-t border-gray-200/50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          {/* Left Column: Details */}
+          <div className="lg:col-span-7 space-y-8">
+            <div className="space-y-4">
+              <h2 className="text-2xl md:text-3xl lg:text-[34px] font-serif font-bold text-black leading-tight">
+                The Great Salary Package
+              </h2>
+              <p className="text-gray-700 text-base md:text-[17px] leading-relaxed font-semibold">
+                Depending upon your skills and calibre, we are ready to pay a great salary package. But we demand your loyalty, passion and dedication to complete the projects with the ultimate precision, creativity and relevancy.
+              </p>
+            </div>
+            
+            <div className="space-y-4 pt-6 border-t border-gray-200/50">
+              <h2 className="text-2xl md:text-3xl lg:text-[34px] font-serif font-bold text-black leading-tight">
+                The Great Ambience
+              </h2>
+              <p className="text-gray-700 text-base md:text-[17px] leading-relaxed font-semibold">
+                We promote a completely cordial work culture in which the employees attempt to accomplish the projects with teamwork. The positive vibes of work and the perks which you get after showing an improvement in your performance are all that an employee can want from the company.
+              </p>
+            </div>
+          </div>
+
+          {/* Right Column: Salatuy Coins Image */}
+          <div className="lg:col-span-5 flex justify-center">
+            <div className="relative w-full aspect-square max-w-[460px]">
+              <Image
+                src="https://flymediatech.com/australia/wp-content/uploads/2024/03/salatuy-page.png"
+                alt="Salary and Ambience Illustration"
+                fill
+                className="object-contain"
+                unoptimized
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// --- FAQ / Accordion Section ---
+const AccordionSection = () => {
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+
+  const faqItems = [
     {
-      title: "Search Campaigns",
-      desc: "Bid on high-intent buyer keywords and display your website at the top of Google search results for immediate traffic.",
-      icon: <Target className="text-[#FA7E09]" size={28} />
+      title: "The Growth Scope",
+      content: "Throughout your work period at our company, you will not only be working in the designated sphere. Rather we aim at giving each of the employees multiple opportunities to grow in the other spheres of the same field as well."
     },
     {
-      title: "Remarketing Funnels",
-      desc: "Re-target individuals who visited your website but did not buy, converting them into brand buyers through persistent ad displays.",
-      icon: <HelpCircle className="text-[#FA7E09]" size={28} />
+      title: "Your Knowledge Gets Enhanced",
+      content: "While working under the supervision of the seniors and the team leaders, you will get to learn a lot. This learning will prove to be quintessentially helpful for you when you will be promoted to the higher posts."
     },
     {
-      title: "Google Shopping Ads",
-      desc: "Perfect for eCommerce brands. Showcase your products, prices, and reviews right inside search listings to drive orders.",
-      icon: <CheckCircle className="text-[#FA7E09]" size={28} />
+      title: "Work With The International Clients",
+      content: "We have 70% of the clients who are of international origin. Here you get a great thing to mention in your experience when you will apply to Multinational Companies."
     },
     {
-      title: "Ad Optimization",
-      desc: "Continuous A/B testing of headlines, copy, ad extensions, and landing pages to ensure your cost-per-click stays low.",
-      icon: <TrendingUp className="text-[#FA7E09]" size={28} />
+      title: "We Groom Your Work Ethics",
+      content: "Work ethics are one of the essential pillars of any company. At flymedia technology, we make sure that we provide the perfect atmosphere that helps you to grow within the work ethical boundaries."
+    },
+    {
+      title: "The Collective Efforts To Touch The Sky",
+      content: "In our IT company, we believe that the positive efforts of every employee will help our company to grow and touch the sky. We want each of your employees to grow along with the company."
+    },
+    {
+      title: "We Provide You Training As Well",
+      content: "If you are fresher and still want to make your career in this field, then we shall be providing you with a whole lot of opportunities to get trained and work as the learnt executive to carry out the various responsibilities of the Google Adword executive."
+    },
+    {
+      title: "How Do We Intend To Provide The Learning Of The Google Adword Course?",
+      content: "Usually, we follow the curriculum for the google training course to infuse the learning in you. We intend to provide the advanced certificate to our apprentices by making them tough the heights after starting from the basic level."
     }
   ];
 
   return (
-    <section className="py-20 bg-[#EFEFEF]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
-        
-        <div className="max-w-4xl mx-auto text-center space-y-4">
-          <h2 className="text-3xl md:text-4xl font-serif font-bold text-black">
-            Our Google Ads Strategy
-          </h2>
-          <p className="text-gray-600 text-base md:text-lg font-medium">
-            We focus on metrics that truly count: Conversions, Sales, and positive Return on Ad Spend (ROAS).
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {cards.map((item, idx) => (
-            <div 
-              key={idx}
-              className="bg-[#EFEFEF] border border-gray-200 p-8 rounded-2xl flex flex-col items-center text-center space-y-6 hover:shadow-lg transition-all duration-300 shadow-sm"
-            >
-              <div className="w-14 h-14 bg-orange-50 rounded-xl flex items-center justify-center shadow-inner">
-                {item.icon}
-              </div>
-              <h3 className="text-xl font-bold text-black">{item.title}</h3>
-              <p className="text-gray-600 text-sm md:text-base leading-relaxed font-medium">
-                {item.desc}
-              </p>
+    <section className="py-16 bg-[#F1F1F1] border-t border-gray-200/50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          {/* Left Column: FAQs Question Illustration */}
+          <div className="lg:col-span-5 flex justify-center order-2 lg:order-1">
+            <div className="relative w-full aspect-square max-w-[460px]">
+              <Image
+                src="https://flymediatech.com/australia/wp-content/uploads/2024/03/FAQS.png"
+                alt="FAQs Illustration"
+                fill
+                className="object-contain"
+                unoptimized
+              />
             </div>
-          ))}
-        </div>
+          </div>
 
+          {/* Right Column: Accordion Toggles */}
+          <div className="lg:col-span-7 space-y-4 order-1 lg:order-2">
+            <div className="space-y-4">
+              {faqItems.map((item, idx) => {
+                const isOpen = activeIndex === idx;
+                return (
+                  <div 
+                    key={idx} 
+                    className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden"
+                  >
+                    <button
+                      onClick={() => setActiveIndex(isOpen ? null : idx)}
+                      className="flex justify-between items-center w-full px-6 py-5 text-left font-serif font-bold text-base md:text-lg text-black hover:text-[#EC7317] transition-all duration-300 bg-white"
+                    >
+                      <span className="pr-4 leading-tight">{item.title}</span>
+                      <span className="text-[#EC7317] shrink-0">
+                        {isOpen ? <ChevronUp size={22} /> : <ChevronDown size={22} />}
+                      </span>
+                    </button>
+                    {isOpen && (
+                      <div className="px-6 pb-6 pt-1 bg-white border-t border-gray-50">
+                        <p className="text-gray-700 text-sm md:text-base leading-relaxed font-semibold">
+                          {item.content}
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
@@ -160,20 +202,21 @@ const CorePpcSection = () => {
 // --- Main Container ---
 export default function GoogleAdwordsPage() {
   const pageSEO = {
-    title: "Google AdWords (PPC) Management Services | Premier PPC Agency",
-    h1: ["Google AdWords Management"],
+    title: "Google Adwords Specialist Jobs in Ludhiana & Punjab | Flymedia Technology",
+    h1: ["Google AdWords Specialist Jobs in Punjab"],
     paragraphs: [
-      "Supercharge your conversions with ROI-oriented Google Ads campaigns. Partner with Flymedia Technology to construct search, display, and remarketing Google Ad campaigns."
+      "Fulfill your career aspirations at Flymedia Technology. Join our dedicated Google AdWords specialist team in Ludhiana and build robust Google Ad campaigns."
     ],
     folderName: "flymediatech.com_home",
-    images: ["r02.png"]
+    images: ["salatuy-page.png"]
   };
 
   return (
-    <ServicePage {...pageSEO} bgClass="bg-white">
-      <GoogleAdwordsHero />
-      <ParallaxAdwordsSection />
-      <CorePpcSection />
+    <ServicePage {...pageSEO} bgClass="bg-[#F1F1F1]">
+      <HiringHero />
+      <ImportanceSection />
+      <SalaryAmbienceSection />
+      <AccordionSection />
       <ContactFormSection />
     </ServicePage>
   );

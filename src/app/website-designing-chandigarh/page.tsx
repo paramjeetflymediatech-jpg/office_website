@@ -3,11 +3,11 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { 
-  Laptop, 
-  Layers, 
-  Search, 
-  Smartphone, 
+import {
+  Laptop,
+  Layers,
+  Search,
+  Smartphone,
   CheckCircle,
   TrendingUp,
   Eye,
@@ -15,15 +15,14 @@ import {
   Code
 } from "lucide-react";
 import ServicePage from "@/components/ServicePage";
-import ContactFormSection from "@/components/ContactFormSection";
 
 // --- Hero Section ---
 const WebDesignHero = () => {
   return (
-    <div className="bg-white pt-16 pb-20 overflow-hidden">
+    <div className="bg-[#F1F1F1] pt-16 pb-20 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          
+
           {/* Left Side Details */}
           <div className="lg:col-span-7 space-y-6 order-2 lg:order-1">
             <div className="space-y-4">
@@ -40,11 +39,11 @@ const WebDesignHero = () => {
           {/* Right Side Image */}
           <div className="lg:col-span-5 flex justify-center order-1 lg:order-2">
             <div className="relative w-full max-w-[480px]">
-              <Image 
-                src="/web-designing/MAIN.png" 
-                alt="Website Designing in Chandigarh | Website Design Cost" 
-                width={600} 
-                height={500} 
+              <Image
+                src="/imgdsd.png"
+                alt="Website Designing in Chandigarh | Website Design Cost"
+                width={600}
+                height={500}
                 className="w-full h-auto object-contain"
                 priority
               />
@@ -60,9 +59,9 @@ const WebDesignHero = () => {
 // --- Centered Core Highlights Section ---
 const CoreHighlightsSection = () => {
   return (
-    <section className="py-20 bg-[#F9F9F9] border-t border-gray-100">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16 text-center">
-        
+    <section className="py-20 bg-[#F1F1F1] border-t border-gray-100">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16 text-center">
+
         {/* Block 1 */}
         <div className="space-y-6">
           <h2 className="text-3xl md:text-4xl font-serif font-bold text-black leading-tight">
@@ -71,17 +70,17 @@ const CoreHighlightsSection = () => {
           <h3 className="text-lg md:text-xl font-medium text-[#FA7E09] italic">
             Authenticity, Honesty, & Personal Voice – 3 Main Factors of the Online World
           </h3>
-          <p className="text-gray-600 text-base md:text-lg leading-relaxed max-w-4xl mx-auto font-medium">
+          <p className="text-gray-600 text-base md:text-lg leading-relaxed max-w-7xl mx-auto font-medium">
             The <strong className="text-black">Flymedia Technology</strong> website designing team works on the aspect of boosting the business image on a large scale so that it helps the business to grow. If you have been in search of the best company to avail the service of the best website designing in Punjab, then Flymedia Technology is all set to make your dreams come into a reality.
           </p>
         </div>
 
         {/* Block 2 */}
-        <div className="space-y-6 pt-8 border-t border-gray-200/50">
+        <div className="space-y-6  border-t border-gray-200/50">
           <h2 className="text-3xl md:text-4xl font-serif font-bold text-black leading-tight">
             Get the website design that connects the user
           </h2>
-          <p className="text-gray-600 text-base md:text-lg leading-relaxed max-w-4xl mx-auto font-medium">
+          <p className="text-gray-600 text-base md:text-lg leading-relaxed max-w-7xl mx-auto font-medium">
             For a website owner, it only takes <strong className="text-[#FA7E09]">2.6 seconds</strong> to connect to your business. So, keeping it catchy and effective is important? The skillfulness of our website designing and development team will make your website leave an everlasting impression on your customer.
           </p>
         </div>
@@ -94,18 +93,18 @@ const CoreHighlightsSection = () => {
 // --- Legitimacy Section ---
 const LegitimacySection = () => {
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-[#F1F1F1]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          
+
           {/* Left Side Image */}
           <div className="lg:col-span-5 flex justify-center">
             <div className="relative w-full max-w-[440px]">
-              <Image 
-                src="/web-designing/mobi.png" 
-                alt="Make your brand legitimate through the robust web design" 
-                width={500} 
-                height={500} 
+              <Image
+                src="/PAYE.png"
+                alt="Make your brand legitimate through the robust web design"
+                width={500}
+                height={500}
                 className="w-full h-auto object-contain"
               />
             </div>
@@ -114,9 +113,6 @@ const LegitimacySection = () => {
           {/* Right Side Content */}
           <div className="lg:col-span-7 space-y-6">
             <div className="space-y-3">
-              <span className="inline-block text-xs font-bold uppercase tracking-wider text-white bg-[#FA7E09] px-3.5 py-1.5 rounded-full shadow-sm">
-                Payment Gateway Integration
-              </span>
               <h2 className="text-3xl md:text-4xl font-serif font-bold text-black leading-tight">
                 Make your brand legitimate through the robust web design
               </h2>
@@ -163,19 +159,19 @@ const FeaturesGridSection = () => {
   ];
 
   return (
-    <section className="py-20 bg-[#F9F9F9] border-y border-gray-100">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-        
+    <section className="py-20 bg-[#F1F1F1] border-y border-gray-100">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+
         <div className="text-center space-y-4">
           <h2 className="text-3xl md:text-4xl font-serif font-bold text-black">
             What makes our website designing service the best?
           </h2>
-          <p className="text-gray-600 text-base md:text-lg max-w-3xl mx-auto font-medium">
+          <p className="text-gray-600 text-base md:text-lg max-w-7xl mx-auto font-medium">
             Ultimately it’s all about satisfaction and we have successfully managed to fulfill the website design needs for various businesses. Our website design service stand out from the rest because of:
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-7xl mx-auto">
           {/* Column 1 */}
           <ul className="space-y-4">
             {list1.map((item, idx) => (
@@ -222,30 +218,23 @@ const BenefitsSection = () => {
   ];
 
   return (
-    <section className="py-20 bg-white">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+    <section className="py-20 bg-[#F1F1F1]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         
-        <div className="text-center space-y-4">
-          <h2 className="text-3xl md:text-4xl font-serif font-bold text-black">
+        <div className="text-center">
+          <h2 className="text-3xl md:text-4xl lg:text-[42px] font-serif font-bold text-black max-w-6xl mx-auto leading-tight">
             Why is it beneficial to hire a professional website designing company – Flymedia Technology?
           </h2>
-          <span className="block w-16 h-1 bg-[#FA7E09] mx-auto rounded-full"></span>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
-          {benefits.map((item, idx) => (
-            <div 
-              key={idx}
-              className="bg-white border border-gray-100 p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow flex items-start gap-4"
-            >
-              <div className="w-8 h-8 rounded-full bg-orange-50 flex items-center justify-center shrink-0">
-                <span className="text-xs font-bold text-[#FA7E09]">{idx + 1}</span>
-              </div>
-              <p className="text-gray-700 text-sm md:text-base font-semibold leading-snug">
+        <div className="max-w-7xl mx-auto pl-6 sm:pl-12 lg:pl-16">
+          <ul className="list-disc space-y-3.5 text-gray-800 text-base md:text-[17px] font-semibold leading-relaxed">
+            {benefits.map((item, idx) => (
+              <li key={idx} className="pl-2">
                 {item}
-              </p>
-            </div>
-          ))}
+              </li>
+            ))}
+          </ul>
         </div>
 
       </div>
@@ -256,16 +245,16 @@ const BenefitsSection = () => {
 // --- Business Growth Section ---
 const BusinessGrowthSection = () => {
   return (
-    <section className="py-20 bg-[#F9F9F9] border-t border-gray-100">
+    <section className="py-20 bg-[#F1F1F1] border-t border-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          
+
           {/* Left Side Content */}
           <div className="lg:col-span-7 space-y-6">
             <h2 className="text-3xl md:text-4xl font-serif font-bold text-black leading-tight">
               Grow your company and business – Best Website design
             </h2>
-            
+
             <p className="text-gray-600 text-base md:text-lg leading-relaxed font-medium">
               Your website is depicting what your business is about. It is right to say that, it is the sole of your business. This will be the point where you will be touching the customer and the conversion rate will get to the point where you wanted. One of the research has shown that <strong className="text-black">‘Best website design and seamless navigation impacts 94% of first-time visitors.’</strong> Not only that but your business credibility will boost with the website design by around 75%. Our website design is focused on boosting your:
             </p>
@@ -296,11 +285,11 @@ const BusinessGrowthSection = () => {
           {/* Right Side Image */}
           <div className="lg:col-span-5 flex justify-center">
             <div className="relative w-full max-w-[440px]">
-              <Image 
-                src="/web-designing/BRANDING.png" 
-                alt="Grow your company and business - Best Website design" 
-                width={500} 
-                height={500} 
+              <Image
+                src="/web-des.png"
+                alt="Grow your company and business - Best Website design"
+                width={500}
+                height={500}
                 className="w-full h-auto object-contain"
               />
             </div>
@@ -325,30 +314,23 @@ const DevServicesSection = () => {
   ];
 
   return (
-    <section className="py-20 bg-white">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 text-center">
-        
-        <div className="space-y-4">
-          <h2 className="text-3xl md:text-4xl font-serif font-bold text-black">
+    <section className="py-20 bg-[#F1F1F1]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+
+        <div className="text-center">
+          <h2 className="text-3xl md:text-4xl lg:text-[42px] font-serif font-bold text-black max-w-6xl mx-auto leading-tight">
             Not limited to website designing, get the best of website development services
           </h2>
-          <span className="block w-16 h-1 bg-[#FA7E09] mx-auto rounded-full"></span>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
-          {services.map((item, idx) => (
-            <div 
-              key={idx}
-              className="bg-white border border-gray-200 p-6 rounded-2xl flex flex-col items-center justify-center text-center space-y-4 shadow-sm hover:shadow-md transition-shadow"
-            >
-              <div className="w-12 h-12 rounded-xl bg-orange-50 flex items-center justify-center">
-                <Code className="text-[#FA7E09]" size={24} />
-              </div>
-              <h3 className="text-base md:text-lg font-bold text-black leading-tight">
+        <div className="max-w-7xl mx-auto pl-6 sm:pl-12 lg:pl-16">
+          <ul className="list-disc space-y-3.5 text-gray-800 text-base md:text-[17px] font-semibold leading-relaxed">
+            {services.map((item, idx) => (
+              <li key={idx} className="pl-2">
                 {item}
-              </h3>
-            </div>
-          ))}
+              </li>
+            ))}
+          </ul>
         </div>
 
       </div>
@@ -359,20 +341,20 @@ const DevServicesSection = () => {
 // --- Concluding Paragraph & Map ---
 const ConcludingSection = () => {
   return (
-    <section className="py-20 bg-[#F9F9F9] border-t border-gray-100">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 text-center">
-        
+    <section className="py-20 bg-[#F1F1F1] border-t border-gray-100">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 text-center">
+
         <div className="space-y-6">
           <h2 className="text-3xl md:text-4xl font-serif font-bold text-black leading-tight">
             Flymedia Technology – Offering website design solutions to various business platforms
           </h2>
-          <p className="text-gray-600 text-base md:text-lg leading-relaxed max-w-4xl mx-auto font-medium">
+          <p className="text-gray-600 text-base md:text-lg leading-relaxed max-w-7xl mx-auto font-medium">
             Real-world functionality, seamless navigation, and attractive design are the key aspects of developing a website. Our professional team with their unparalleled services is ready to help you build the best website with the right design and all the perfect development needs. Get a hold of our website agency today to fulfill all your website designing requirements. Best solutions and options await you at a competitive price!
           </p>
         </div>
 
         {/* Embedded Iframe Map */}
-        <div className="relative h-96 w-full max-w-4xl mx-auto overflow-hidden border border-gray-200 shadow-2xl rounded-2xl">
+        <div className="relative h-96 w-full max-w-7xl mx-auto overflow-hidden border border-gray-200 shadow-2xl rounded-2xl">
           <iframe
             src="https://maps.google.com/maps?q=FlyMedia%20Technology%20-%20Best%20Website%20Designing%20and%20Digital%20Marketing%20Company%20In%20Ludhiana&t=m&z=16&output=embed&iwloc=near"
             width="100%"
@@ -412,7 +394,6 @@ export default function WebsiteDesigningChandigarh() {
       <BusinessGrowthSection />
       <DevServicesSection />
       <ConcludingSection />
-      <ContactFormSection />
     </ServicePage>
   );
 }

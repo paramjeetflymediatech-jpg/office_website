@@ -20,6 +20,30 @@ export default function Header() {
   const isEdmonton = false;
   const isCanada = pathname === "/canada" || pathname?.startsWith("/canada");
 
+  const getPhoneNumber = () => {
+    if (isAustraliaAboutUs) {
+      return { href: "tel:+61434500077", label: "+61 434 500 077" };
+    }
+    if (isCanada) {
+      return { href: "tel:+12368855725", label: "+1 236-885-5725" };
+    }
+    return { href: "tel:+919888484310", label: "+91-98884-84310" };
+  };
+
+  const { href: phoneHref, label: phoneLabel } = getPhoneNumber();
+
+  const getLogoHref = () => {
+    if (isAustraliaAboutUs) {
+      return "/australia/about-us";
+    }
+    if (isCanada) {
+      return "/canada";
+    }
+    return "/";
+  };
+
+  const logoHref = getLogoHref();
+
   const locationMenuData = {
     "Brisbane": [
       { name: "Website Design in Brisbane", href: "/australia/website-design-in-brisbane" },
@@ -64,7 +88,7 @@ export default function Header() {
       { name: "What We Do", href: "/#", hasDropdown: true },
       { name: "Location", href: "/#", hasDropdown: true },
       { name: "Blog", href: "/australia/blog" },
-      { name: "Contact Us", href: "/contact-us" },
+      { name: "Contact Us", href: "/australia/contact-us" },
     ]
     : isCanada
       ? [
@@ -73,7 +97,7 @@ export default function Header() {
         { name: "Location", href: "/#", hasDropdown: true },
         { name: "Portfolio", href: "/canada/portfolio" },
         { name: "Blog", href: "/blog" },
-        { name: "Contact Us", href: "/contact-us" },
+        { name: "Contact Us", href: "/canada/contact-us" },
       ]
       : NAV_LINKS;
 
@@ -175,7 +199,7 @@ export default function Header() {
           {/* Mobile & Tablet Call Icon (Visible on < lg, hidden on lg, elevated to relative z-50 to float above menu overlay) */}
           {!isEdmonton && (
             <Link
-              href="tel:+919888484310"
+              href={phoneHref}
               className="lg:hidden w-11 h-11 bg-black rounded-full flex items-center justify-center text-white transition-all hover:bg-[#ff9900] hover:scale-105 active:scale-95 shadow-md flex-shrink-0 relative z-50"
               aria-label="Call Us"
             >
@@ -189,9 +213,8 @@ export default function Header() {
             </Link>
           )}
 
-          {/* Logo (Centered on mobile/tablet < lg, left-aligned on lg) */}
           <div className={`lg:static z-50 ${isEdmonton ? "w-full flex justify-center" : "flex-grow lg:flex-grow-0 flex justify-center lg:justify-start"}`}>
-            <Link href="/" className="flex items-center">
+            <Link href={logoHref} className="flex items-center">
               <div className="relative h-10 w-40 sm:h-14 sm:w-56">
                 <Image
                   src="/logo.png"
@@ -393,7 +416,7 @@ export default function Header() {
           {!isEdmonton && (
             <div className="hidden lg:flex items-center">
               <Link
-                href="tel:+919888484310"
+                href={phoneHref}
                 className="rounded-full bg-black px-10 py-3.5 text-sm font-normal text-white tracking-normal transition-all hover:bg-[#ff9900] active:scale-95 shadow-lg"
               >
                 Call Now
@@ -556,11 +579,11 @@ export default function Header() {
             {/* Mobile Call CTA */}
             <div className="mt-auto pt-10 pb-10">
               <Link
-                href="tel:+919888484310"
+                href={phoneHref}
                 className="flex items-center justify-center gap-3 w-full bg-[#ff9900] py-5 rounded-xl text-white font-normal tracking-normal shadow-xl"
               >
                 <Phone size={20} fill="white" />
-                Call +91-98884-84310
+                Call {phoneLabel}
               </Link>
             </div>
           </div>

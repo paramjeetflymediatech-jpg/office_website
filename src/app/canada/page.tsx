@@ -179,7 +179,7 @@ export default function CanadaLandingPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             style={{ fontFamily: "'Playfair Display', serif" }}
-            className="inline-block bg-[#EC7317] text-white font-black px-8 py-3.5 rounded-2xl shadow-2xl text-xl md:text-3xl  tracking-wider mb-6 border border-white/10"
+            className="inline-block bg-[#EC7317] text-white font-bold px-8 py-3.5 rounded-2xl shadow-2xl text-2xl md:text-7xl  tracking-wider mb-6 border border-white/10"
           >
             Refine The Success
           </motion.div>
@@ -201,7 +201,7 @@ export default function CanadaLandingPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
             style={{ fontFamily: "'Playfair Display', serif" }}
-            className="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight tracking-tight mb-8 drop-shadow-lg max-w-5xl"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight tracking-tight mb-8 drop-shadow-lg max-w-5xl"
           >
             Canada's Premier Digital Marketing Experts
           </motion.h1>

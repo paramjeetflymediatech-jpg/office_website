@@ -3,12 +3,34 @@
 import React, { useState } from "react";
 import { MapPin, Phone, Mail, Send, CheckCircle, Loader2 } from "lucide-react";
 import { motion } from "framer-motion";
+import { usePathname } from "next/navigation";
 
 interface ContactSectionProps {
   className?: string;
 }
 
 export default function ContactSection({ className = "" }: ContactSectionProps) {
+  const pathname = usePathname();
+  const isAustralia = pathname?.startsWith("/australia");
+  const isCanada = pathname?.startsWith("/canada");
+
+  const address = isAustralia
+    ? "35 Edgewood Dr, Stanhope Gardens NSW 2768, Australia"
+    : isCanada
+      ? "7664 126a St, Surrey, BC V3W 4A9, Canada"
+      : "Plot no, 20, Vishal Nagar Ext, opposite Kashish Cafe, Ludhiana, Punjab 141001";
+
+  const phone = isAustralia
+    ? "+61 434 500 077"
+    : isCanada
+      ? "+1 236-885-5725"
+      : "+91-98884-84310";
+
+  const phoneTel = isAustralia
+    ? "+61434500077"
+    : isCanada
+      ? "+12368855725"
+      : "+919888484310";
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -101,18 +123,24 @@ export default function ContactSection({ className = "" }: ContactSectionProps) 
                   <div>
                     <h4 className="text-sm font-black text-gray-400 tracking-widest mb-1">Our Location</h4>
                     <p className="text-black font-semibold leading-snug">
-                      Plot no, 20, Vishal Nagar Ext, opposite Kashish Cafe, Ludhiana, Punjab 141001
+                      {address}
                     </p>
                   </div>
                 </div>
 
                 <div className="flex gap-6 group">
                   <div className="w-14 h-14 bg-gray-50 flex items-center justify-center rounded-2xl group-hover:bg-[#ff9900] transition-colors duration-300">
-                    <Phone className="text-[#ff9900] group-hover:text-white transition-colors" size={28} />
+                    <a href={`tel:${phoneTel}`}>
+                      <Phone className="text-[#ff9900] group-hover:text-white transition-colors" size={28} />
+                    </a>
                   </div>
                   <div>
                     <h4 className="text-sm font-black text-gray-400 tracking-widest mb-1">Phone Number</h4>
-                    <p className="text-black font-semibold text-xl">+91-98884-84310</p>
+                    <p className="text-black font-semibold text-xl">
+                      <a href={`tel:${phoneTel}`} className="hover:text-[#ff9900] transition-colors">
+                        {phone}
+                      </a>
+                    </p>
                   </div>
                 </div>
 
