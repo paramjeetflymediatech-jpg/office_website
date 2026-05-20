@@ -299,7 +299,7 @@ export default function RequestFreeQuote() {
                   </div>
                   <div>
                     <p className="text-xs text-gray-400 font-bold uppercase tracking-wider">Email Us</p>
-                    <p className="text-sm font-bold text-white group-hover:text-[#ff9900] transition-colors">info@flymediatech.com</p>
+                    <p className="text-sm font-bold text-white group-hover:text-[#ff9900] transition-colors">anujguptaflymedia@gmail.com</p>
                   </div>
                 </a>
 
@@ -319,7 +319,7 @@ export default function RequestFreeQuote() {
                   </div>
                   <div>
                     <p className="text-xs text-gray-400 font-bold uppercase tracking-wider">Ludhiana Head Office</p>
-                    <p className="text-sm font-bold text-white">Feroze Gandhi Market, Ludhiana, India</p>
+                    <p className="text-sm font-bold text-white">Plot no, 20, Vishal Nagar Ext, Vishal Nagar, Ludhiana, Punjab 141001</p>
                   </div>
                 </div>
               </div>

@@ -66,6 +66,9 @@ export const OUR_SERVICES = [
   { name: "NABH Consultants In Ludhiana, Punjab", href: "/nabh-consultants" },
   { name: "Web Based Softwares", href: "/our-services/web-based-softwares" },
   { name: "IT Company In Ludhiana", href: "/it-company-in-ludhiana" },
+  { name: "Website Designing Chandigarh", href: "/website-designing-chandigarh" },
+  { name: "Google Adwords", href: "/google-adwords" },
+  { name: "Patient Appointments", href: "/patient-appointments" },
 ];
 
 export const MEGA_MENU_DATA = {
@@ -101,10 +104,10 @@ export const MEGA_MENU_DATA = {
       { name: "Logo Design", href: "/logo-design", icon: "/dropdown-icons/logo-design.webp" },
       { name: "SEO Packages", href: "/seo-packages", icon: "/dropdown-icons/SEO.webp" },
       { name: "Digital Marketing", href: "/social-media-optimization", icon: "/dropdown-icons/digital-consultancy-icon.webp" },
-      { name: "Web Design", href: "/website-designing-packages-india", icon: "/dropdown-icons/web-design-devep.webp" },
-      { name: "PPC Management", href: "/google-ads-ppc-packages-india", icon: "/dropdown-icons/Pay-per-click111.webp" },
-      { name: "Ecommerce Website Development", href: "/ecommerce-website-development-packages-india", icon: "/dropdown-icons/ecommerce.webp" },
-      { name: "Social Media Branding", href: "/social-media-branding-packages-india", icon: "/dropdown-icons/social-media-icon.webp" }
+      { name: "Web Design", href: "/web-design", icon: "/dropdown-icons/web-design-devep.webp" },
+      { name: "PPC Management", href: "/ppc-management-2", icon: "/dropdown-icons/Pay-per-click111.webp" },
+      { name: "Ecommerce Website Development", href: "/ecommerce-packages", icon: "/dropdown-icons/ecommerce.webp" },
+      { name: "Social Media Branding", href: "/social-media-branding", icon: "/dropdown-icons/social-media-icon.webp" }
     ]
   },
   "What We Do": {
@@ -118,7 +121,7 @@ export const MEGA_MENU_DATA = {
       { name: "Gastric Bypass Surgery", href: "/gastric-bypass-surgery-digital-marketing", icon: "/dropdown-icons/r02.webp" },
       { name: "Instagram Marketing", href: "/an-instagram-marketing-company-in-ludhiana", icon: "/dropdown-icons/social-media-icon.webp" },
       { name: "Plastic Surgery", href: "/plastic-surgery-digital-marketing", icon: "/dropdown-icons/r03.webp" },
-      { name: "IVF Clinic & Hospitals", href: "/ivf-clinic-digital-marketing-india", icon: "/dropdown-icons/r04.webp" },
+      { name: "IVF Clinic & Hospitals", href: "/fertility-marketing-strategy", icon: "/dropdown-icons/r04.webp" },
       { name: "CMS For Website", href: "/cms-for-website", icon: "/dropdown-icons/r05.webp" },
       { name: "Cosmetic Surgery", href: "/cosmetic-surgery-digital-marketing", icon: "/dropdown-icons/r07.webp" },
       { name: "Hair Transplant Clinics", href: "/hair-transplant-marketing-in-india", icon: "/dropdown-icons/r08.webp" },

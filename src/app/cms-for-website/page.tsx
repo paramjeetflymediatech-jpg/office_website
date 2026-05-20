@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import ContactFormSection from "@/components/ContactFormSection";
 
 export default function CMSForWebsite() {
   return (
@@ -345,6 +346,7 @@ export default function CMSForWebsite() {
           </div>
         </div>
       </section>
+      <ContactFormSection/>
     </div>
   );
 }

@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
+import ContactFormSection from "@/components/ContactFormSection";
 
 export default function IvfClinicDigitalMarketing() {
   return (
@@ -214,7 +215,7 @@ export default function IvfClinicDigitalMarketing() {
 
       {/* Final Section: Social Media Marketing & Final Thoughts */}
       <section className="py-20 bg-transparent relative overflow-hidden">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-6 relative z-10 bg-white p-10 md:p-14 rounded-3xl shadow-sm border border-gray-100">
             <h2 className="text-3xl md:text-4xl font-serif font-semibold text-black leading-tight text-center mb-8">
               Social Media Marketing:
@@ -237,6 +238,8 @@ export default function IvfClinicDigitalMarketing() {
           </div>
         </div>
       </section>
+
+      <ContactFormSection />
     </div>
   );
 }

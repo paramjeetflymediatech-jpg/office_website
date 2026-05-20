@@ -70,27 +70,24 @@ export default function DigitalMarketingRehabCenter() {
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#ff9900]/5 rounded-full blur-[150px] -z-10" />
       </section>
 
-      {/* Quick Stats / Features Section */}
-      {/* <section className="py-12 bg-transparent relative z-20 -mt-12 border-y border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {[
-              { label: "Targeted Reach", value: "SEO Focus", icon: Target },
-              { label: "Patient Trust", value: "100%", icon: HeartPulse },
-              { label: "Organic Growth", value: "300%", icon: TrendingUp },
-              { label: "Youth Outreach", value: "Maximized", icon: Users },
-            ].map((stat, i) => (
-              <div key={i} className="flex flex-col items-center text-center p-6 hover:bg-gray-50 rounded-[32px] transition-all duration-500">
-                <div className="w-12 h-12 rounded-2xl bg-[#ff9900]/10 flex items-center justify-center mb-4 text-[#ff9900]">
-                  <stat.icon size={24} />
-                </div>
-                <div className="text-2xl font-black text-black mb-1">{stat.value}</div>
-                <div className="text-[10px] font-black uppercase tracking-widest text-gray-400">{stat.label}</div>
-              </div>
-            ))}
-          </div>
+      {/* Parallax Content Section */}
+      <section
+        className="relative py-28 overflow-hidden bg-cover bg-center bg-fixed flex items-center justify-center mt-10"
+        style={{
+          backgroundImage: "linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('/IIMG01.png')",
+        }}
+      >
+        <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 text-center text-white relative z-10 space-y-8">
+          <p className="text-lg sm:text-xl md:text-2xl font-serif leading-relaxed max-w-5xl mx-auto">
+            For this, it calls the need for effective digital marketing services for the de-addiction hospital in India. SEO & Digital marketing for rehab centres in Ludhiana, Punjab becomes a necessity because, in the absence of a good rehab centre, the addicted patient would not be able to relive the life he used to live before he gets addicted to something.
+          </p>
+
+
+          <p className="text-lg sm:text-xl md:text-2xl font-serif leading-relaxed max-w-5xl mx-auto">
+            Following are some of the quintessential tips and techniques for building up an effective strategy for digital marketing of rehab centres:
+          </p>
         </div>
-      </section> */}
+      </section>
 
       {/* Alternating Content Sections */}
       <section className="py-24 bg-transparent relative overflow-hidden">

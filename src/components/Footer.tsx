@@ -130,14 +130,14 @@ export default function Footer() {
             <h4 className="text-xl font-bold uppercase tracking-tight mb-8 border-l-4 border-[#ff9900] pl-4 leading-none">Our Services</h4>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3.5 text-[12.4px] text-white font-medium">
               <div className="flex flex-col gap-3.5">
-                {OUR_SERVICES.slice(0, 5).map((link, i) => (
+                {OUR_SERVICES.slice(0, Math.ceil(OUR_SERVICES.length / 2)).map((link, i) => (
                   <Link key={i} href={link.href} className="transition-colors">
                     {link.name}
                   </Link>
                 ))}
               </div>
               <div className="flex flex-col gap-3.5">
-                {OUR_SERVICES.slice(5).map((link, i) => (
+                {OUR_SERVICES.slice(Math.ceil(OUR_SERVICES.length / 2)).map((link, i) => (
                   <Link key={i} href={link.href} className="transition-colors leading-tight">
                     {link.name}
                   </Link>

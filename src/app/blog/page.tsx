@@ -112,7 +112,7 @@ export default function BlogPage() {
                     {/* Thumbnail */}
                     {post.image && (
                       <div className="relative overflow-hidden bg-gray-50 aspect-video">
-                        <Link href={`/blog/${post.slug}`}>
+                        <Link href={`/${post.slug}`}>
                           <img 
                             src={post.image} 
                             alt={post.title} 
@@ -125,7 +125,7 @@ export default function BlogPage() {
                     {/* Content */}
                     <div className="p-6 flex flex-col flex-grow">
                       <h3 className="text-xl font-bold text-black mb-3 hover:text-[#FA7E09] transition-colors leading-tight line-clamp-2 min-h-[3.5rem]">
-                        <Link href={`/blog/${post.slug}`}>
+                        <Link href={`/${post.slug}`}>
                           {post.title}
                         </Link>
                       </h3>
@@ -136,7 +136,7 @@ export default function BlogPage() {
                       />
 
                       <div className="mt-auto">
-                        <Link href={`/blog/${post.slug}`} className="text-[#FA7E09] font-bold text-sm uppercase tracking-wide flex items-center gap-1 hover:text-black transition-colors mb-6">
+                        <Link href={`/${post.slug}`} className="text-[#FA7E09] font-bold text-sm uppercase tracking-wide flex items-center gap-1 hover:text-black transition-colors mb-6">
                           Read More <ChevronRight size={16} />
                         </Link>
 

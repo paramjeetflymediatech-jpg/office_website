@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import ContactFormSection from "@/components/ContactFormSection";
 
 export default function WebDesigningJalandhar() {
   return (
@@ -299,7 +300,7 @@ export default function WebDesigningJalandhar() {
           </div>
 
           {/* 4. CTA / Contact Card - Centered on Light Gray Background */}
-          <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-sm border border-gray-100 p-8 md:p-12 text-center space-y-6">
+          <div className="max-w-5xl mx-auto bg-white rounded-2xl shadow-sm border border-gray-100 p-8 md:p-12 text-center space-y-6">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-extrabold tracking-tight text-gray-900 leading-tight">
               Get in touch with the professionals
             </h2>
@@ -312,7 +313,7 @@ export default function WebDesigningJalandhar() {
 
         </div>
       </section>
-
+<ContactFormSection />
     </div>
   );
 }

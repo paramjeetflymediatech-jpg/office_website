@@ -82,83 +82,88 @@ export default function ENTHospitalDigitalMarketing() {
       </section>
 
       {/* SEO Section */}
-      <section className="py-20 relative overflow-hidden border-t border-gray-100">
+      <section 
+        className="py-24 relative overflow-hidden bg-cover bg-center bg-fixed flex items-center justify-center border-y border-gray-900"
+        style={{
+          backgroundImage: "linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('/bgimg.png')",
+        }}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="space-y-16">
 
             {/* Header Content */}
             <div className="max-w-4xl mx-auto text-center space-y-6">
-              <h2 className="text-3xl md:text-4xl font-serif font-semibold text-black leading-tight">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-semibold text-white leading-tight">
                 Improved and effective Search Engine Optimization (SEO) for attracting patients.
               </h2>
-              <p className="text-lg text-gray-600 leading-relaxed font-medium">
+              <p className="text-lg md:text-xl text-gray-200 leading-relaxed font-medium">
                 SEO is the basis of gaining user attention when they come to search for something online! Not using the SEO marketing tactics will detract you from the online race to gaining user attention or stay ahead of the competitors. To acquire new patients you need to make efforts and this is only possible through effective marketing. Our professionals provide you the given ENT marketing SEO tactics which include:
               </p>
             </div>
 
             {/* Icon Boxes Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 pt-8">
 
               {/* Box 1 */}
-              <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center text-center hover:shadow-md transition-shadow">
-                <div className="mb-6">
+              <div className="flex flex-col items-center text-center p-4 hover:scale-105 transition-transform duration-300">
+                <div className="mb-4">
                   <Image
                     src="/ent-hospital-digital-marketing/icn01.png"
                     alt="ENT Hospital Digital Marketing Agency in Ludhiana, Punjab, India"
-                    width={100}
-                    height={100}
-                    className="object-contain"
+                    width={80}
+                    height={80}
+                    className="object-contain filter brightness-0 invert"
                   />
                 </div>
-                <h3 className="text-xl font-bold text-black">
+                <h3 className="text-xl font-bold text-white">
                   On-page  off-page SEO
                 </h3>
               </div>
 
               {/* Box 2 */}
-              <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center text-center hover:shadow-md transition-shadow">
-                <div className="mb-6">
+              <div className="flex flex-col items-center text-center p-4 hover:scale-105 transition-transform duration-300">
+                <div className="mb-4">
                   <Image
                     src="/ent-hospital-digital-marketing/icn02.png"
                     alt="ENT Hospital Digital Marketing Agency (SEO & SMO) in India"
-                    width={100}
-                    height={100}
-                    className="object-contain"
+                    width={80}
+                    height={80}
+                    className="object-contain filter brightness-0 invert"
                   />
                 </div>
-                <h3 className="text-xl font-bold text-black">
+                <h3 className="text-xl font-bold text-white">
                   Content optimization
                 </h3>
               </div>
 
               {/* Box 3 */}
-              <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center text-center hover:shadow-md transition-shadow">
-                <div className="mb-6">
+              <div className="flex flex-col items-center text-center p-4 hover:scale-105 transition-transform duration-300">
+                <div className="mb-4">
                   <Image
                     src="/ent-hospital-digital-marketing/icn03.png"
                     alt="ENT Hospital Digital Marketing Agency (SEO & SMO) in Punjab"
-                    width={100}
-                    height={100}
-                    className="object-contain"
+                    width={80}
+                    height={80}
+                    className="object-contain filter brightness-0 invert"
                   />
                 </div>
-                <h3 className="text-xl font-bold text-black">
+                <h3 className="text-xl font-bold text-white">
                   Accurate keyword research
                 </h3>
               </div>
 
               {/* Box 4 */}
-              <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center text-center hover:shadow-md transition-shadow">
-                <div className="mb-6">
+              <div className="flex flex-col items-center text-center p-4 hover:scale-105 transition-transform duration-300">
+                <div className="mb-4">
                   <Image
                     src="/ent-hospital-digital-marketing/Untitled-3.png"
                     alt="ENT Hospital Digital Marketing Agency (SEO & SMO) in Ludhiana"
-                    width={100}
-                    height={100}
-                    className="object-contain"
+                    width={80}
+                    height={80}
+                    className="object-contain filter brightness-0 invert"
                   />
                 </div>
-                <h3 className="text-xl font-bold text-black">
+                <h3 className="text-xl font-bold text-white">
                   Local search marketing
                 </h3>
               </div>

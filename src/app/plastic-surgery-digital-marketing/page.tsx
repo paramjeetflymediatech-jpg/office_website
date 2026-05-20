@@ -110,6 +110,28 @@ export default function PlasticSurgeryDigitalMarketing() {
             </div>
           </div>
 
+ <section
+        className="relative py-10 overflow-hidden bg-cover bg-center bg-fixed flex items-center justify-center mt-10"
+        style={{
+          backgroundImage: "linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('/bgimg.png')",
+        }}
+      >
+        <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 text-center text-white relative z-10 space-y-8">
+          <h2 className="text-2xl md:text-3xl font-serif font-semibold text-white leading-tight">
+SEO tactics to gain user attention
+          </h2>
+          <p className="text-lg sm:text-xl md:text-xl font-serif leading-relaxed max-w-5xl mx-auto">
+Your target customers are those who need your service. Through Search engine optimization (SEO) you can reach the potential patients for the practice you are offering. With our team, your services will reach everyone who looks for the specific service.
+
+          </p>
+
+          <p className="text-lg sm:text-xl md:text-xl font-serif leading-relaxed max-w-5xl mx-auto">
+Our SEO campaign is executed and created to enhance the patient traffic on your website and help them to avail themselves the same. This is going to make your website rank higher in search engines and the website is optimized.
+          </p>
+        </div>
+      </section>
+
+
           {/* Block 2: Reputation Management (Text Left, Image Right) */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             {/* Text Left */}

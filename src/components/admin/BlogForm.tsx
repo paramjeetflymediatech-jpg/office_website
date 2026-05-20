@@ -190,7 +190,7 @@ export default function BlogForm({ initialData, onSubmitAction }: BlogFormProps)
             <div className="space-y-2">
               <label className="text-sm font-bold text-gray-700">Slug (URL Route) <span className="text-red-500">*</span></label>
               <div className="flex items-center">
-                <span className="bg-gray-100 border border-r-0 border-gray-200 px-3 py-3 rounded-l-xl text-sm font-semibold text-gray-400">/blog/</span>
+                <span className="bg-gray-100 border border-r-0 border-gray-200 px-3 py-3 rounded-l-xl text-sm font-semibold text-gray-400">/</span>
                 <input 
                   type="text"
                   value={slug}
@@ -519,7 +519,7 @@ export default function BlogForm({ initialData, onSubmitAction }: BlogFormProps)
                 <p className="text-blue-600 text-sm font-medium leading-tight truncate">
                   {metaTitle || title}
                 </p>
-                <p className="text-green-700 text-[11px]">/blog/{slug}</p>
+                <p className="text-green-700 text-[11px]">/{slug}</p>
                 <p className="text-gray-500 text-xs leading-relaxed line-clamp-2">
                   {metaDescription || excerpt || 'No description set.'}
                 </p>

@@ -18,9 +18,23 @@ const nextConfig: NextConfig = {
     serverActions: {
       bodySizeLimit: '50mb',
     },
-    middlewareClientMaxBodySize: 50 * 1024 * 1024, // 50MB in bytes
+    proxyClientMaxBodySize: 50 * 1024 * 1024, // 50MB in bytes
   },
   trailingSlash: true,
+  async redirects() {
+    return [
+      {
+        source: '/blog/:slug/',
+        destination: '/:slug/',
+        permanent: true,
+      },
+      {
+        source: '/blog/:slug',
+        destination: '/:slug/',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

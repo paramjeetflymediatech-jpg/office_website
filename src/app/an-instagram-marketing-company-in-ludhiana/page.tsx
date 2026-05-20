@@ -13,6 +13,8 @@ import {
   MessageCircle,
   Image as ImageIcon
 } from "lucide-react";
+import ContactFormSection from "@/components/ContactFormSection";
+
 
 const strategies = [
   {
@@ -245,6 +247,7 @@ export default function InstagramMarketingPage() {
           </h2>
         </div>
       </section>
+      <ContactFormSection />
     </main>
   );
 }

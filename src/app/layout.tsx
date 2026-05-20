@@ -114,21 +114,17 @@ export default async function RootLayout({
 
   // Blog SEO
   let blogSeo = null;
+  const lastSegment = pathname.split("/").filter(Boolean).pop();
 
-  if (
-    !pageSeo &&
-    (pathname.startsWith("/blog/") ||
-      pathname.includes("/blog/"))
-  ) {
-    const slug = pathname.split("/").pop();
-
-    if (slug) {
+  if (!pageSeo && lastSegment) {
+    try {
       const BlogModel = (await import("@/models")).Blog;
-
       blogSeo = await BlogModel.findOne({
-        where: { slug },
+        where: { slug: lastSegment },
         raw: true,
       });
+    } catch (e) {
+      // Safe fallback
     }
   }
 
@@ -139,6 +135,8 @@ export default async function RootLayout({
     pathname,
     businessName
   );
+
+  console.log(`[SSR Debug] pathname: ${pathname} | cleanTargetPath: ${cleanTargetPath} | pageSeo: ${JSON.stringify(pageSeo)} | blogSeo: ${JSON.stringify(blogSeo)}`);
 
   // Priority
   const finalTitle =

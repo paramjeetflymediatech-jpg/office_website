@@ -42,50 +42,50 @@ export default function BlogPage() {
 
       <div className="max-w-7xl mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-          
+
           {/* Sidebar Form - 4 columns on desktop (Appears LAST on mobile) */}
           <div className="lg:col-span-4 order-2 lg:order-1">
             <div className="bg-[#FA7E09] p-8 rounded-xl shadow-sm border border-gray-100 lg:sticky top-32">
               <h2 className="text-2xl font-bold text-white mb-6" style={{ fontFamily: '"Playfair Display", sans-serif' }}>Contact Us</h2>
-              
+
               <form className="space-y-4">
                 <div className="space-y-4">
                   <div>
-                    <input 
-                      type="text" 
-                      placeholder="Enter your name" 
+                    <input
+                      type="text"
+                      placeholder="Enter your name"
                       className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ff9900]/50 focus:border-[#ff9900] transition-all placeholder:text-black"
                       required
                     />
                   </div>
                   <div>
-                    <input 
-                      type="email" 
-                      placeholder="Enter your email" 
+                    <input
+                      type="email"
+                      placeholder="Enter your email"
                       className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ff9900]/50 focus:border-[#ff9900] transition-all placeholder:text-black"
                       required
                     />
                   </div>
                   <div>
-                    <input 
-                      type="tel" 
-                      placeholder="Enter your phone number" 
+                    <input
+                      type="tel"
+                      placeholder="Enter your phone number"
                       className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ff9900]/50 focus:border-[#ff9900] transition-all placeholder:text-black"
                       required
                     />
                   </div>
                   <div>
-                    <textarea 
-                      placeholder="Type your message here..." 
+                    <textarea
+                      placeholder="Type your message here..."
                       rows={5}
                       className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ff9900]/50 focus:border-[#ff9900] transition-all resize-none placeholder:text-black"
                       required
                     ></textarea>
                   </div>
                 </div>
-                
-                <button 
-                  type="submit" 
+
+                <button
+                  type="submit"
                   className="w-full bg-black text-white font-bold py-4 rounded-lg hover:bg-white hover:text-black transition-colors uppercase tracking-wide mt-2 cursor-pointer"
                 >
                   Submit
@@ -114,9 +114,9 @@ export default function BlogPage() {
                     {post.image && (
                       <div className="relative overflow-hidden bg-gray-50 aspect-video">
                         <Link href={`/australia/blog/${post.slug}`}>
-                          <img 
-                            src={post.image} 
-                            alt={post.title} 
+                          <img
+                            src={post.image}
+                            alt={post.title}
                             className="w-full h-full object-contain p-2 transition-transform duration-500"
                           />
                         </Link>
@@ -130,8 +130,8 @@ export default function BlogPage() {
                           {post.title}
                         </Link>
                       </h3>
-                      
-                      <div 
+
+                      <div
                         className="text-gray-600 text-sm leading-relaxed mb-4 line-clamp-3"
                         dangerouslySetInnerHTML={{ __html: post.excerpt }}
                       />
@@ -164,7 +164,7 @@ export default function BlogPage() {
               <nav className="flex flex-wrap items-center justify-center sm:justify-start gap-2 pt-8" aria-label="Pagination">
                 {Array.from({ length: totalPages }).map((_, index) => {
                   const pageNumber = index + 1;
-                  
+
                   // Show first, last, current, and adjacent pages
                   if (
                     pageNumber === 1 ||
@@ -178,11 +178,10 @@ export default function BlogPage() {
                           setCurrentPage(pageNumber);
                           window.scrollTo({ top: 0, behavior: 'smooth' });
                         }}
-                        className={`w-10 h-10 flex items-center justify-center rounded-lg font-bold shadow-sm transition-colors ${
-                          currentPage === pageNumber
+                        className={`w-10 h-10 flex items-center justify-center rounded-lg font-bold shadow-sm transition-colors ${currentPage === pageNumber
                             ? 'bg-[#ff9900] text-white'
                             : 'bg-white text-black hover:bg-[#ff9900] hover:text-white'
-                        }`}
+                          }`}
                       >
                         {pageNumber}
                       </button>

@@ -6,7 +6,7 @@ import TypewriterText from "@/components/TypewriterText";
 
 export default function MobileAppsSection() {
   return (
-    <div className="space-y-24 lg:space-y-32">
+    <div className="space-y-24 lg:space-y-32 py-12 bg-[#F1F1F1]">
       {/* Section 1: Mobile App Designing */}
       <section className="overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -53,7 +53,7 @@ export default function MobileAppsSection() {
       </section>
 
       {/* Section 2: All Platforms */}
-      <section className="overflow-hidden bg-gray-50/50 py-24">
+      <section className="overflow-hidden bg-[#F1F1F1] py-24 ">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row-reverse items-center gap-12 lg:gap-16">
             {/* Right Side: SEO/Platform Image (Static container) */}
@@ -102,7 +102,7 @@ export default function MobileAppsSection() {
       </section>
 
       {/* Section 3: We Are Flexible */}
-      <section className="py-24 bg-white overflow-hidden">
+      <section className="py-24  overflow-hidden bg-[#F1F1F1]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
             <h2 className="text-4xl md:text-5xl font-serif font-bold text-black mb-4">We Are Flexible</h2>

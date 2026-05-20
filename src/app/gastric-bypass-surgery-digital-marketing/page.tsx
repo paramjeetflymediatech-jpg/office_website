@@ -18,6 +18,7 @@ import {
 } from "lucide-react";
 import ServicePage from "@/components/ServicePage";
 import ContactSection from "@/components/ContactSection";
+import ContactFormSection from "@/components/ContactFormSection";
 
 // --- Components ---
 
@@ -296,7 +297,7 @@ export default function GastricBypassMarketing() {
       <GastricDifficultySection />
       <GastricVideoSection />
       <GastricStrategySection />
-      <ContactSection />
+      <ContactFormSection />
   </ServicePage>
   );
 }

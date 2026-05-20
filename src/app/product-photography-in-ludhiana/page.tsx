@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { ChevronsRight, Award, Sliders, Camera, Sparkles, IndianRupee } from "lucide-react";
+import ContactFormSection from "@/components/ContactFormSection";
 
 export default function ProductPhotographyInLudhiana() {
   return (
@@ -102,7 +103,7 @@ export default function ProductPhotographyInLudhiana() {
 
       {/* Importance Section */}
       <section className="py-20 relative overflow-hidden border-t border-gray-200">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="space-y-8 bg-white p-10 md:p-14 rounded-3xl shadow-sm border border-gray-100">
             <h2 className="text-3xl md:text-4xl font-serif font-semibold text-black leading-tight">
               Why is Product Photography Important?
@@ -238,6 +239,7 @@ export default function ProductPhotographyInLudhiana() {
           </div>
         </div>
       </section>
+      <ContactFormSection />
     </div>
   );
 }
