@@ -15,6 +15,7 @@ const sequelize = new Sequelize(
 // Define models in vanilla JS to synchronize schema directly with the DB
 const SEOConfig = sequelize.define('SEOConfig', {
   id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true },
+  region: { type: Sequelize.STRING, allowNull: true, defaultValue: 'global' },
   businessName: { type: Sequelize.STRING, allowNull: true },
   businessDescription: { type: Sequelize.TEXT, allowNull: true },
   logoUrl: { type: Sequelize.STRING, allowNull: true },

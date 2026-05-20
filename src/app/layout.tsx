@@ -136,8 +136,6 @@ export default async function RootLayout({
     businessName
   );
 
-  console.log(`[SSR Debug] pathname: ${pathname} | cleanTargetPath: ${cleanTargetPath} | pageSeo: ${JSON.stringify(pageSeo)} | blogSeo: ${JSON.stringify(blogSeo)}`);
-
   // Priority
   const finalTitle =
     pageSeo?.title ||
