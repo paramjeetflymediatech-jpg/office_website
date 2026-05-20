@@ -97,7 +97,7 @@ export default async function RootLayout({
 
   let pageSeo = null;
 
-  if (config) {
+  try {
     const allPageSeos = await PageSEO.findAll({
       raw: true,
     });
@@ -110,6 +110,8 @@ export default async function RootLayout({
 
         return cleanItemPath === cleanTargetPath;
       }) || null;
+  } catch (e) {
+    console.error("Error fetching PageSEO in layout:", e);
   }
 
   // Blog SEO
