@@ -118,7 +118,7 @@ export const MEGA_MENU_DATA = {
     },
     links: [
       { name: "Rehab Centre", href: "/digital-marketing-de-addiction-rehab-center", icon: "/dropdown-icons/r01.webp" },
-      { name: "Gastric Bypass Surgery", href: "/gastric-bypass-surgery-digital-marketing", icon: "/dropdown-icons/r02.webp" },
+      { name: "Gastric Bypass Surgery", href: "/bariatric-gastric-bypass-surgery-marketing-services", icon: "/dropdown-icons/r02.webp" },
       { name: "Instagram Marketing", href: "/an-instagram-marketing-company-in-ludhiana", icon: "/dropdown-icons/social-media-icon.webp" },
       { name: "Plastic Surgery", href: "/plastic-surgery-digital-marketing", icon: "/dropdown-icons/r03.webp" },
       { name: "IVF Clinic & Hospitals", href: "/fertility-marketing-strategy", icon: "/dropdown-icons/r04.webp" },
