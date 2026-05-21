@@ -1,5 +1,6 @@
 import ServicePage from "@/components/ServicePage";
 import SocialBrandingPricing from "@/components/SocialBrandingPricing";
+import ContactFormSection from "@/components/ContactFormSection";
 
 export default function SocialBrandingPackages() {
   const data = {
@@ -16,6 +17,8 @@ export default function SocialBrandingPackages() {
     <ServicePage {...data}>
       {/* Section 2: Luxury Pricing Matrix */}
       <SocialBrandingPricing />
+      {/* Section 4: Contact Form */}
+      <ContactFormSection />
     </ServicePage>
   );
 }

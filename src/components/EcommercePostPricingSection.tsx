@@ -5,7 +5,7 @@ import ContactFormSection from "./ContactFormSection";
 
 export default function EcommercePostPricingSection() {
   return (
-    <div className="pb-24">
+    <div className="">
       {/* Section 3: Setting up the product to sell */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
         <div className="flex flex-col lg:flex-row items-center gap-16">

@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
+
 export default function WebDesignPricingTable() {
   const plans = ["Budget", "Starter", "Advanced", "Pro"];
   
@@ -71,7 +72,7 @@ export default function WebDesignPricingTable() {
   ];
 
   return (
-    <div className="py-15 overflow-x-auto font-sans">
+    <div className="overflow-x-auto font-sans">
       <div className="max-w-[1400px] mx-auto px-4">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -143,5 +144,6 @@ export default function WebDesignPricingTable() {
         </motion.div>
       </div>
     </div>
+      
   );
 }

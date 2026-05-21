@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
+import ContactFormSection from "@/components/ContactFormSection";
 
 export default function PlasticSurgeryDigitalMarketing() {
   return (
@@ -215,6 +216,8 @@ Our SEO campaign is executed and created to enhance the patient traffic on your 
 
         </div>
       </section>
+
+      <ContactFormSection />
     </div>
   );
 }

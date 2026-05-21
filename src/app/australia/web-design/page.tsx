@@ -4,7 +4,6 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import SEOMonitor from "@/components/SEOMonitor";
-import ContactFormSection from "@/components/ContactFormSection";
 import {
   Laptop,
   Smartphone,
@@ -19,6 +18,7 @@ import {
   Sparkles
 } from "lucide-react";
 import AustraliaPortfolio from "@/components/AustraliaPortfolio";
+import ContactFormSection from "@/components/ContactFormSection";
 
 export default function WebDesignAustralia() {
   const designServices = [

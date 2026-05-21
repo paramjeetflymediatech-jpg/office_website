@@ -1,5 +1,6 @@
 import ServicePage from "@/components/ServicePage";
 import PPCPricingTable from "@/components/PPCPricingTable";
+import ContactFormSection from "@/components/ContactFormSection";
 
 export default function PPCManagementPackages() {
   const data = {
@@ -23,6 +24,7 @@ export default function PPCManagementPackages() {
       <div className="pb-24">
         <PPCPricingTable />
       </div>
+      <ContactFormSection />
     </ServicePage>
   );
 }
