@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import SEOMonitor from "@/components/SEOMonitor";
 import AustraliaPortfolio from "@/components/AustraliaPortfolio";
+import ContactFormSection from "@/components/ContactFormSection";
 
 export default function DigitalMarketingSevenHills() {
   return (
@@ -141,6 +142,7 @@ export default function DigitalMarketingSevenHills() {
         </div>
       </section>
 <AustraliaPortfolio />
+<ContactFormSection />
     </main>
   );
 }

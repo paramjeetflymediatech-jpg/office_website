@@ -16,6 +16,7 @@ import {
   Award,
   Users
 } from "lucide-react";
+import ContactFormSection from "@/components/ContactFormSection";
 
 export default function OffPageSeoSydney() {
   const pillars = [
@@ -52,7 +53,7 @@ export default function OffPageSeoSydney() {
   ];
 
   return (
-    <main className="min-h-screen bg-[#F1F1F1] font-sans pb-16">
+    <main className="min-h-screen bg-[#F1F1F1] font-sans ">
 
       {/* 1. Hero Section */}
       <section className="relative py-12 md:py-20 overflow-hidden bg-[#F1F1F1]">
@@ -282,6 +283,7 @@ export default function OffPageSeoSydney() {
           </div>
         </div>
       </section>
+      <ContactFormSection />
 
 
     </main>

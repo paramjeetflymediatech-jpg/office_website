@@ -4,10 +4,11 @@ import React from "react";
 import Image from "next/image";
 import SEOMonitor from "@/components/SEOMonitor";
 import AustraliaPortfolio from "@/components/AustraliaPortfolio";
+import ContactFormSection from "@/components/ContactFormSection";
 
 export default function DigitalMarketingQuakersHill() {
   return (
-    <main className="min-h-screen bg-[#F1F1F1] font-sans pb-16">
+    <main className="min-h-screen bg-[#F1F1F1] font-sans ">
       
       {/* 1. Hero Section (Split Grid, Image Left, Content Right) */}
       <section className="relative py-6 md:py-10 overflow-hidden bg-[#F1F1F1]">
@@ -141,6 +142,7 @@ export default function DigitalMarketingQuakersHill() {
         </div>
       </section>
 <AustraliaPortfolio />
+<ContactFormSection />
     </main>
   );
 }
