@@ -58,19 +58,19 @@ export default function TechnicalSeoSydney() {
 
   return (
     <main className="min-h-screen bg-[#F1F1F1] font-sans pb-16">
-      
+
       {/* Hero Section */}
       <section className="relative py-12 md:py-16 overflow-hidden bg-[#F1F1F1]">
         <div className="absolute inset-0 z-0 bg-[radial-gradient(#000000_1px,transparent_1px)] [background-size:24px_24px] opacity-[0.01]" />
-        
+
         <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            
+
             {/* Left Column: Image */}
             <div className="lg:col-span-5 flex justify-center">
               <div className="relative w-full aspect-[5/3] max-w-[500px]">
                 <Image
-                  src="https://flymediatech.com/australia/wp-content/uploads/2024/04/grow-1.png"
+                  src="/uploads/2024/04/grow-1.png"
                   alt="Grow illustration"
                   fill
                   className="object-contain"
@@ -88,7 +88,7 @@ export default function TechnicalSeoSydney() {
               >
                 Technical SEO Services Stanhope Gardens, Blacktown, Sydney
               </h1>
-              
+
               <h2
                 style={{ fontFamily: "'Playfair Display', serif" }}
                 className="text-lg md:text-xl font-bold text-[#EC7317] font-serif"
@@ -98,7 +98,7 @@ export default function TechnicalSeoSydney() {
 
               <p className="text-gray-700 text-[15px] sm:text-base leading-relaxed">
                 In today’s digital world, a robust online presence is non-negotiable for businesses looking to grow. However, it’s not just about having a website; it’s about ensuring that your website ranks well on search engines, attracting organic traffic and potential customers. This is where Technical SEO Services Stanhope Gardens, Blacktown comes into play, and in Sydney, Flymedia Technology is your go-to technical{" "}
-                <Link 
+                <Link
                   href="/australia/search-engine-optimization"
                   className="text-[#EC7317] underline hover:text-black font-semibold transition-colors"
                 >
@@ -115,7 +115,7 @@ export default function TechnicalSeoSydney() {
       <section className="py-12  border-t border-b border-gray-200/50">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            
+
             {/* Left Column: Text */}
             <div className="lg:col-span-7 space-y-6">
               <h2
@@ -133,7 +133,7 @@ export default function TechnicalSeoSydney() {
             <div className="lg:col-span-5 flex justify-center">
               <div className="relative w-full aspect-square max-w-[340px]">
                 <Image
-                  src="https://flymediatech.com/australia/wp-content/uploads/2024/03/wordpre01.png"
+                  src="/uploads/2024/03/wordpre01.png"
                   alt="WordPress logo"
                   fill
                   className="object-contain"
@@ -191,7 +191,7 @@ export default function TechnicalSeoSydney() {
           <div className="space-y-10 pt-4">
             {whyWeStandOut.map((item, idx) => (
               <div key={idx} className="space-y-2">
-                <h3 
+                <h3
                   style={{ fontFamily: "'Playfair Display', serif" }}
                   className="text-lg md:text-xl font-bold text-black font-serif"
                 >

@@ -21,39 +21,39 @@ interface PortfolioItem {
 
 // 1. Fallback Curated Data Matrix for initial load
 const AUSTRALIA_FALLBACKS: PortfolioItem[] = [
-  { id: "au-1", title: "Meat Mechanics", imageUrl: "https://flymediatech.com/australia/wp-content/uploads/2024/05/meat-mechanics.png", category: "Web Design", location: "australia" },
-  { id: "au-2", title: "Lakeview Dental", imageUrl: "https://flymediatech.com/australia/wp-content/uploads/2024/05/lakeview.png", category: "Web Development", location: "australia" },
-  { id: "au-3", title: "Grand Indian Cuisine", imageUrl: "https://flymediatech.com/australia/wp-content/uploads/2024/05/grand-indian-cuisine.png", category: "Web Design", location: "australia" },
-  { id: "au-4", title: "Grand Bukhara", imageUrl: "https://flymediatech.com/australia/wp-content/uploads/2024/05/grand-bukhara.png", category: "Web Development", location: "australia" },
-  { id: "au-5", title: "Cholas Restaurant", imageUrl: "https://flymediatech.com/australia/wp-content/uploads/2024/05/cholas-2.png", category: "Web Design", location: "australia" },
-  { id: "au-6", title: "Binge Café", imageUrl: "https://flymediatech.com/australia/wp-content/uploads/2024/05/binge.png", category: "Web Development", location: "australia" },
-  { id: "au-7", title: "Asees Indian Restaurant", imageUrl: "https://flymediatech.com/australia/wp-content/uploads/2024/05/asees-1.png", category: "Web Design", location: "australia" },
-  { id: "au-8", title: "TGP Portal", imageUrl: "https://flymediatech.com/australia/wp-content/uploads/2024/05/TGP-1.png", category: "SEO & SMO", location: "australia" },
-  { id: "au-9", title: "Sylvania Retailers", imageUrl: "https://flymediatech.com/australia/wp-content/uploads/2024/05/sylvania-1.png", category: "Web Design", location: "australia" },
-  { id: "au-10", title: "Pizza Shed", imageUrl: "https://flymediatech.com/australia/wp-content/uploads/2024/05/pizza-shed-2.png", category: "Web Development", location: "australia" },
-  { id: "au-11", title: "NTH Consulting", imageUrl: "https://flymediatech.com/australia/wp-content/uploads/2024/05/nth-1.png", category: "SEO & SMO", location: "australia" },
-  { id: "au-12", title: "Yes Nurse", imageUrl: "https://flymediatech.com/australia/wp-content/uploads/2024/05/yes-nurse.png", category: "Web Design", location: "australia" },
-  { id: "au-13", title: "Singh Finance", imageUrl: "https://flymediatech.com/australia/wp-content/uploads/2024/05/singh-finance.png", category: "Web Development", location: "australia" },
-  { id: "au-14", title: "NES Electrical", imageUrl: "https://flymediatech.com/australia/wp-content/uploads/2024/05/NES-electrical.png", category: "Web Design", location: "australia" },
-  { id: "au-15", title: "Mom & Dad Healthcare", imageUrl: "https://flymediatech.com/australia/wp-content/uploads/2024/05/mom-and-dad.png", category: "Web Development", location: "australia" },
-  { id: "au-16", title: "MIG Enterprises", imageUrl: "https://flymediatech.com/australia/wp-content/uploads/2024/05/MIG-enterprises.png", category: "SEO & SMO", location: "australia" },
-  { id: "au-17", title: "AB Logistics", imageUrl: "https://flymediatech.com/australia/wp-content/uploads/2024/05/AB-1.png", category: "Web Design", location: "australia" },
+  { id: "au-1", title: "Meat Mechanics", imageUrl: "/uploads/2024/05/meat-mechanics.png", category: "Web Design", location: "australia" },
+  { id: "au-2", title: "Lakeview Dental", imageUrl: "/uploads/2024/05/lakeview.png", category: "Web Development", location: "australia" },
+  { id: "au-3", title: "Grand Indian Cuisine", imageUrl: "/uploads/2024/05/grand-indian-cuisine.png", category: "Web Design", location: "australia" },
+  { id: "au-4", title: "Grand Bukhara", imageUrl: "/uploads/2024/05/grand-bukhara.png", category: "Web Development", location: "australia" },
+  { id: "au-5", title: "Cholas Restaurant", imageUrl: "/uploads/2024/05/cholas-2.png", category: "Web Design", location: "australia" },
+  { id: "au-6", title: "Binge Café", imageUrl: "/uploads/2024/05/binge.png", category: "Web Development", location: "australia" },
+  { id: "au-7", title: "Asees Indian Restaurant", imageUrl: "/uploads/2024/05/asees-1.png", category: "Web Design", location: "australia" },
+  { id: "au-8", title: "TGP Portal", imageUrl: "/uploads/2024/05/TGP-1.png", category: "SEO & SMO", location: "australia" },
+  { id: "au-9", title: "Sylvania Retailers", imageUrl: "/uploads/2024/05/sylvania-1.png", category: "Web Design", location: "australia" },
+  { id: "au-10", title: "Pizza Shed", imageUrl: "/uploads/2024/05/pizza-shed-2.png", category: "Web Development", location: "australia" },
+  { id: "au-11", title: "NTH Consulting", imageUrl: "/uploads/2024/05/nth-1.png", category: "SEO & SMO", location: "australia" },
+  { id: "au-12", title: "Yes Nurse", imageUrl: "/uploads/2024/05/yes-nurse.png", category: "Web Design", location: "australia" },
+  { id: "au-13", title: "Singh Finance", imageUrl: "/uploads/2024/05/singh-finance.png", category: "Web Development", location: "australia" },
+  { id: "au-14", title: "NES Electrical", imageUrl: "/uploads/2024/05/NES-electrical.png", category: "Web Design", location: "australia" },
+  { id: "au-15", title: "Mom & Dad Healthcare", imageUrl: "/uploads/2024/05/mom-and-dad.png", category: "Web Development", location: "australia" },
+  { id: "au-16", title: "MIG Enterprises", imageUrl: "/uploads/2024/05/MIG-enterprises.png", category: "SEO & SMO", location: "australia" },
+  { id: "au-17", title: "AB Logistics", imageUrl: "/uploads/2024/05/AB-1.png", category: "Web Design", location: "australia" },
 ];
 
 const INDIA_FALLBACKS: PortfolioItem[] = [
-  { id: "in-1", title: "TechCorp India", imageUrl: "https://flymediatech.com/australia/wp-content/uploads/2024/05/meat-mechanics.png", category: "Web Development", location: "india" },
-  { id: "in-2", title: "Royal Rajasthan Tourism", imageUrl: "https://flymediatech.com/australia/wp-content/uploads/2024/05/lakeview.png", category: "Web Design", location: "india" },
-  { id: "in-3", title: "Mumbai Bazaars", imageUrl: "https://flymediatech.com/australia/wp-content/uploads/2024/05/grand-indian-cuisine.png", category: "Web Development", location: "india" },
-  { id: "in-4", title: "Veda Wellness", imageUrl: "https://flymediatech.com/australia/wp-content/uploads/2024/05/grand-bukhara.png", category: "SEO & SMO", location: "india" },
-  { id: "in-5", title: "Delhi Foodies App", imageUrl: "https://flymediatech.com/australia/wp-content/uploads/2024/05/cholas-2.png", category: "Web Design", location: "india" },
+  { id: "in-1", title: "TechCorp India", imageUrl: "/uploads/2024/05/meat-mechanics.png", category: "Web Development", location: "india" },
+  { id: "in-2", title: "Royal Rajasthan Tourism", imageUrl: "/uploads/2024/05/lakeview.png", category: "Web Design", location: "india" },
+  { id: "in-3", title: "Mumbai Bazaars", imageUrl: "/uploads/2024/05/grand-indian-cuisine.png", category: "Web Development", location: "india" },
+  { id: "in-4", title: "Veda Wellness", imageUrl: "/uploads/2024/05/grand-bukhara.png", category: "SEO & SMO", location: "india" },
+  { id: "in-5", title: "Delhi Foodies App", imageUrl: "/uploads/2024/05/cholas-2.png", category: "Web Design", location: "india" },
 ];
 
 const CANADA_FALLBACKS: PortfolioItem[] = [
-  { id: "ca-1", title: "Maple Leaf Logistics", imageUrl: "https://flymediatech.com/australia/wp-content/uploads/2024/05/sylvania-1.png", category: "Web Development", location: "canada" },
-  { id: "ca-2", title: "Toronto Heights Real Estate", imageUrl: "https://flymediatech.com/australia/wp-content/uploads/2024/05/pizza-shed-2.png", category: "Web Design", location: "canada" },
-  { id: "ca-3", title: "Quebec Bistro Portal", imageUrl: "https://flymediatech.com/australia/wp-content/uploads/2024/05/nth-1.png", category: "Web Development", location: "canada" },
-  { id: "ca-4", title: "Rocky Mountain Adventures", imageUrl: "https://flymediatech.com/australia/wp-content/uploads/2024/05/yes-nurse.png", category: "SEO & SMO", location: "canada" },
-  { id: "ca-5", title: "Ontario FinTech", imageUrl: "https://flymediatech.com/australia/wp-content/uploads/2024/05/singh-finance.png", category: "Web Design", location: "canada" },
+  { id: "ca-1", title: "Maple Leaf Logistics", imageUrl: "/uploads/2024/05/sylvania-1.png", category: "Web Development", location: "canada" },
+  { id: "ca-2", title: "Toronto Heights Real Estate", imageUrl: "/uploads/2024/05/pizza-shed-2.png", category: "Web Design", location: "canada" },
+  { id: "ca-3", title: "Quebec Bistro Portal", imageUrl: "/uploads/2024/05/nth-1.png", category: "Web Development", location: "canada" },
+  { id: "ca-4", title: "Rocky Mountain Adventures", imageUrl: "/uploads/2024/05/yes-nurse.png", category: "SEO & SMO", location: "canada" },
+  { id: "ca-5", title: "Ontario FinTech", imageUrl: "/uploads/2024/05/singh-finance.png", category: "Web Design", location: "canada" },
 ];
 
 export default function LocationPortfolio({ location }: LocationPortfolioProps) {
@@ -140,7 +140,7 @@ export default function LocationPortfolio({ location }: LocationPortfolioProps) 
     async function load() {
       try {
         const dbData = await getPortfolioItems();
-        
+
         // Filter DB items for this specific location
         const targetedDbItems = dbData
           .filter((item: any) => (item.location || "australia").toLowerCase() === location.toLowerCase())
@@ -229,7 +229,8 @@ export default function LocationPortfolio({ location }: LocationPortfolioProps) 
 
   return (
     <div className="space-y-12 w-full">
-      <style dangerouslySetInnerHTML={{ __html: `
+      <style dangerouslySetInnerHTML={{
+        __html: `
         .scroll-img {
           width: 100%;
           height: 100%;
@@ -241,18 +242,17 @@ export default function LocationPortfolio({ location }: LocationPortfolioProps) 
           object-position: bottom;
         }
       `}} />
-      
+
       {/* Category Tabs */}
       <div className="flex flex-wrap justify-center gap-2.5">
         {categories.map((cat) => (
           <button
             key={cat}
             onClick={() => setActiveCategory(cat)}
-            className={`px-6 py-2.5 rounded-full text-xs sm:text-sm font-bold tracking-wide transition-all duration-300 border-2 ${
-              activeCategory === cat
+            className={`px-6 py-2.5 rounded-full text-xs sm:text-sm font-bold tracking-wide transition-all duration-300 border-2 ${activeCategory === cat
                 ? "bg-black border-black text-white shadow-lg scale-105"
                 : "bg-white border-gray-100 text-gray-500 hover:border-[#ff9900] hover:text-[#ff9900]"
-            }`}
+              }`}
           >
             {cat}
           </button>
@@ -322,144 +322,144 @@ export default function LocationPortfolio({ location }: LocationPortfolioProps) 
       {/* Lightbox Slideshow Modal */}
       {mounted && typeof document !== "undefined"
         ? createPortal(
-            <AnimatePresence>
-              {selectedImageIndex !== null && filteredItems[selectedImageIndex] && (
-                <motion.div
-                  ref={lightboxRef}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  className="fixed inset-0 z-[9999] bg-black/95 backdrop-blur-xl flex flex-col items-center justify-center p-4 sm:p-10 select-none"
-                  onClick={() => setSelectedImageIndex(null)}
+          <AnimatePresence>
+            {selectedImageIndex !== null && filteredItems[selectedImageIndex] && (
+              <motion.div
+                ref={lightboxRef}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="fixed inset-0 z-[9999] bg-black/95 backdrop-blur-xl flex flex-col items-center justify-center p-4 sm:p-10 select-none"
+                onClick={() => setSelectedImageIndex(null)}
+              >
+                {/* Premium Top Navigation Control Bar */}
+                <div
+                  className="absolute top-0 left-0 right-0 h-16 bg-black/60 backdrop-blur-md flex items-center justify-between px-6 z-50 border-b border-white/10"
+                  onClick={(e) => e.stopPropagation()}
                 >
-                  {/* Premium Top Navigation Control Bar */}
-                  <div 
-                    className="absolute top-0 left-0 right-0 h-16 bg-black/60 backdrop-blur-md flex items-center justify-between px-6 z-50 border-b border-white/10"
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    {/* Left Side: Counter */}
-                    <div className="text-white/90 font-mono text-sm tracking-wider font-semibold">
-                      {selectedImageIndex + 1} / {filteredItems.length}
-                    </div>
-
-                    {/* Right Side Controls */}
-                    <div className="flex items-center gap-1.5 sm:gap-3 text-white">
-                      {copied && (
-                        <span className="text-xs text-[#ff9900] font-bold animate-pulse mr-2">
-                          Link Copied!
-                        </span>
-                      )}
-                      
-                      {/* Reset Zoom & Rotate */}
-                      <button
-                        title="Reset"
-                        className="p-2 hover:bg-white/10 hover:text-[#ff9900] rounded-lg transition-colors duration-200"
-                        onClick={() => { setScale(1); setRotate(0); }}
-                      >
-                        <RotateCcw size={20} />
-                      </button>
-
-                      {/* Zoom Out */}
-                      <button
-                        title="Zoom Out"
-                        className="p-2 hover:bg-white/10 hover:text-[#ff9900] rounded-lg transition-colors duration-200"
-                        onClick={() => setScale(prev => Math.max(0.5, prev - 0.25))}
-                      >
-                        <ZoomOut size={20} />
-                      </button>
-
-                      {/* Zoom In */}
-                      <button
-                        title="Zoom In"
-                        className="p-2 hover:bg-white/10 hover:text-[#ff9900] rounded-lg transition-colors duration-200"
-                        onClick={() => setScale(prev => Math.min(3.0, prev + 0.25))}
-                      >
-                        <ZoomIn size={20} />
-                      </button>
-
-                      {/* Fullscreen Toggle */}
-                      <button
-                        title="Toggle Fullscreen"
-                        className="p-2 hover:bg-white/10 hover:text-[#ff9900] rounded-lg transition-colors duration-200"
-                        onClick={toggleFullscreen}
-                      >
-                        {isFullscreen ? <Minimize2 size={20} /> : <Maximize2 size={20} />}
-                      </button>
-
-                      {/* Share Link */}
-                      <button
-                        title="Copy Image URL"
-                        className="p-2 hover:bg-white/10 hover:text-[#ff9900] rounded-lg transition-colors duration-200"
-                        onClick={(e) => handleShare(e, filteredItems[selectedImageIndex].imageUrl)}
-                      >
-                        <Share2 size={20} />
-                      </button>
-
-                      {/* Close Button */}
-                      <button
-                        title="Close Gallery"
-                        className="p-2 hover:bg-[#ff9900] hover:text-white bg-white/10 rounded-lg transition-colors duration-200 ml-1.5"
-                        onClick={() => setSelectedImageIndex(null)}
-                      >
-                        <X size={20} />
-                      </button>
-                    </div>
+                  {/* Left Side: Counter */}
+                  <div className="text-white/90 font-mono text-sm tracking-wider font-semibold">
+                    {selectedImageIndex + 1} / {filteredItems.length}
                   </div>
 
-                  {/* Left Slider Arrow */}
-                  <button
-                    className="hidden md:block absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-[#ff9900] hover:scale-105 active:scale-95 text-white p-3.5 sm:p-4 rounded-full transition-all duration-300 z-10 focus:outline-none shadow-lg border border-white/5"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setSelectedImageIndex((prev) => 
-                        prev !== null ? (prev - 1 + filteredItems.length) % filteredItems.length : null
-                      );
-                    }}
-                  >
-                    <ChevronLeft size={36} />
-                  </button>
+                  {/* Right Side Controls */}
+                  <div className="flex items-center gap-1.5 sm:gap-3 text-white">
+                    {copied && (
+                      <span className="text-xs text-[#ff9900] font-bold animate-pulse mr-2">
+                        Link Copied!
+                      </span>
+                    )}
 
-                  {/* Right Slider Arrow */}
-                  <button
-                    className="hidden md:block absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-[#ff9900] hover:scale-105 active:scale-95 text-white p-3.5 sm:p-4 rounded-full transition-all duration-300 z-10 focus:outline-none shadow-lg border border-white/5"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setSelectedImageIndex((prev) => 
-                        prev !== null ? (prev + 1) % filteredItems.length : null
-                      );
-                    }}
-                  >
-                    <ChevronRight size={36} />
-                  </button>
-
-                  {/* Image Container with Dynamic Transition & Custom Zoom Scale/Rotate Transform */}
-                  <motion.div
-                    key={selectedImageIndex}
-                    initial={{ opacity: 0, x: 80, scale: 0.95 }}
-                    animate={{ scale: 1, opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -80, scale: 0.95 }}
-                    transition={{ type: "spring", stiffness: 350, damping: 32 }}
-                    className="relative w-full h-full flex items-center justify-center pointer-events-none mt-16"
-                  >
-                    <div 
-                      className="relative w-full max-w-5xl h-full max-h-[80vh] pointer-events-auto transition-transform duration-200 ease-out"
-                      style={{ transform: `scale(${scale}) rotate(${rotate}deg)` }}
+                    {/* Reset Zoom & Rotate */}
+                    <button
+                      title="Reset"
+                      className="p-2 hover:bg-white/10 hover:text-[#ff9900] rounded-lg transition-colors duration-200"
+                      onClick={() => { setScale(1); setRotate(0); }}
                     >
-                      <Image
-                        src={filteredItems[selectedImageIndex].imageUrl}
-                        alt={filteredItems[selectedImageIndex].title || "Enlarged Portfolio View"}
-                        fill
-                        className="object-contain"
-                        priority
-                        unoptimized
-                      />
-                    </div>
-                  </motion.div>
+                      <RotateCcw size={20} />
+                    </button>
+
+                    {/* Zoom Out */}
+                    <button
+                      title="Zoom Out"
+                      className="p-2 hover:bg-white/10 hover:text-[#ff9900] rounded-lg transition-colors duration-200"
+                      onClick={() => setScale(prev => Math.max(0.5, prev - 0.25))}
+                    >
+                      <ZoomOut size={20} />
+                    </button>
+
+                    {/* Zoom In */}
+                    <button
+                      title="Zoom In"
+                      className="p-2 hover:bg-white/10 hover:text-[#ff9900] rounded-lg transition-colors duration-200"
+                      onClick={() => setScale(prev => Math.min(3.0, prev + 0.25))}
+                    >
+                      <ZoomIn size={20} />
+                    </button>
+
+                    {/* Fullscreen Toggle */}
+                    <button
+                      title="Toggle Fullscreen"
+                      className="p-2 hover:bg-white/10 hover:text-[#ff9900] rounded-lg transition-colors duration-200"
+                      onClick={toggleFullscreen}
+                    >
+                      {isFullscreen ? <Minimize2 size={20} /> : <Maximize2 size={20} />}
+                    </button>
+
+                    {/* Share Link */}
+                    <button
+                      title="Copy Image URL"
+                      className="p-2 hover:bg-white/10 hover:text-[#ff9900] rounded-lg transition-colors duration-200"
+                      onClick={(e) => handleShare(e, filteredItems[selectedImageIndex].imageUrl)}
+                    >
+                      <Share2 size={20} />
+                    </button>
+
+                    {/* Close Button */}
+                    <button
+                      title="Close Gallery"
+                      className="p-2 hover:bg-[#ff9900] hover:text-white bg-white/10 rounded-lg transition-colors duration-200 ml-1.5"
+                      onClick={() => setSelectedImageIndex(null)}
+                    >
+                      <X size={20} />
+                    </button>
+                  </div>
+                </div>
+
+                {/* Left Slider Arrow */}
+                <button
+                  className="hidden md:block absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-[#ff9900] hover:scale-105 active:scale-95 text-white p-3.5 sm:p-4 rounded-full transition-all duration-300 z-10 focus:outline-none shadow-lg border border-white/5"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setSelectedImageIndex((prev) =>
+                      prev !== null ? (prev - 1 + filteredItems.length) % filteredItems.length : null
+                    );
+                  }}
+                >
+                  <ChevronLeft size={36} />
+                </button>
+
+                {/* Right Slider Arrow */}
+                <button
+                  className="hidden md:block absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-[#ff9900] hover:scale-105 active:scale-95 text-white p-3.5 sm:p-4 rounded-full transition-all duration-300 z-10 focus:outline-none shadow-lg border border-white/5"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setSelectedImageIndex((prev) =>
+                      prev !== null ? (prev + 1) % filteredItems.length : null
+                    );
+                  }}
+                >
+                  <ChevronRight size={36} />
+                </button>
+
+                {/* Image Container with Dynamic Transition & Custom Zoom Scale/Rotate Transform */}
+                <motion.div
+                  key={selectedImageIndex}
+                  initial={{ opacity: 0, x: 80, scale: 0.95 }}
+                  animate={{ scale: 1, opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -80, scale: 0.95 }}
+                  transition={{ type: "spring", stiffness: 350, damping: 32 }}
+                  className="relative w-full h-full flex items-center justify-center pointer-events-none mt-16"
+                >
+                  <div
+                    className="relative w-full max-w-5xl h-full max-h-[80vh] pointer-events-auto transition-transform duration-200 ease-out"
+                    style={{ transform: `scale(${scale}) rotate(${rotate}deg)` }}
+                  >
+                    <Image
+                      src={filteredItems[selectedImageIndex].imageUrl}
+                      alt={filteredItems[selectedImageIndex].title || "Enlarged Portfolio View"}
+                      fill
+                      className="object-contain"
+                      priority
+                      unoptimized
+                    />
+                  </div>
                 </motion.div>
-              )}
-            </AnimatePresence>,
-            document.body
-          )
+              </motion.div>
+            )}
+          </AnimatePresence>,
+          document.body
+        )
         : null}
     </div>
   );

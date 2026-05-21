@@ -54,3 +54,5 @@ blog_data/Egb5OL_postmeta*.json
 
 /blog_data/postmeta_india.json
 /blog_data/postmeta_australia.json
+
+/public/uploads

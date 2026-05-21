@@ -58,19 +58,19 @@ export default function LocalSeoSydney() {
 
   return (
     <main className="min-h-screen bg-[#F4F4F4] font-sans pb-24 text-[#333333]">
-      
+
       {/* Hero Section */}
       <section className="relative py-12 md:py-16 overflow-hidden bg-[#F4F4F4]">
         <div className="absolute inset-0 z-0 bg-[radial-gradient(#000000_1px,transparent_1px)] [background-size:24px_24px] opacity-[0.01]" />
-        
+
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            
+
             {/* Image Column (Left on Desktop, First on Mobile) */}
             <div className="lg:col-span-5 flex justify-center order-1 lg:order-1">
               <div className="relative w-full aspect-[4/3] max-w-[480px]">
                 <Image
-                  src="https://flymediatech.com/australia/wp-content/uploads/2024/04/seo.png"
+                  src="/uploads/2024/04/seo.png"
                   alt="Local SEO Services Sydney"
                   fill
                   className="object-contain"
@@ -88,7 +88,7 @@ export default function LocalSeoSydney() {
               >
                 Local SEO Services Sydney | Flymedia Technology
               </h1>
-              
+
               <h2
                 style={{ fontFamily: "'Playfair Display', serif" }}
                 className="text-xl md:text-2xl font-bold text-[#EC7317] font-serif"
@@ -114,13 +114,13 @@ export default function LocalSeoSydney() {
       <section className=" py-16 ">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-1 gap-12">
-            
+
             {/* Left Column */}
             <div className="space-y-6 text-gray-700 text-[15px] sm:text-base leading-relaxed">
               <p>
                 Local{" "}
-                <Link 
-                  href="/australia/search-engine-optimization" 
+                <Link
+                  href="/australia/search-engine-optimization"
                   className="text-[#EC7317] underline hover:text-black font-semibold transition-colors"
                 >
                   search engine optimization
@@ -149,7 +149,7 @@ export default function LocalSeoSydney() {
       {/* 3. Benefits of Choosing Our Local SEO Services (Alternating Gray Background, 3-Column Card Grid Layout) */}
       <section className="py-16 border-t border-gray-200/50 bg-[#F4F4F4]">
         <div className="max-w-7xl mx-auto px-6 space-y-12">
-          
+
           <div className="text-center">
             <h2
               style={{ fontFamily: "'Playfair Display', serif" }}

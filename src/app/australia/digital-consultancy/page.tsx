@@ -11,12 +11,12 @@ export default function DigitalConsultancy() {
       <section className="relative py-10 md:py-10 overflow-hidden bg-[#F1F1F1]">
         {/* Subtle grid pattern for premium visual styling */}
         <div className="absolute inset-0 z-0 bg-[radial-gradient(#000000_1px,transparent_1px)] [background-size:24px_24px] opacity-[0.015]" />
-        
+
         <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-          
+
           {/* Top section: Two-column grid, ordered to show the image first on mobile */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            
+
             {/* Left Column: Titles & First 2 Paragraphs (order-2 on mobile, order-1 on desktop) */}
             <div className="lg:col-span-7 space-y-8 order-2 lg:order-1">
               <div className="space-y-4">
@@ -28,7 +28,7 @@ export default function DigitalConsultancy() {
                 </h1>
               </div>
 
-              <h2 
+              <h2
                 style={{ fontFamily: "'Playfair Display', serif" }}
                 className="text-2xl md:text-3xl font-bold text-black font-serif"
               >
@@ -56,7 +56,7 @@ export default function DigitalConsultancy() {
             <div className="lg:col-span-5 flex justify-center order-1 lg:order-2">
               <div className="relative w-full aspect-[4/3] max-w-[540px]">
                 <Image
-                  src="https://flymediatech.com/australia/wp-content/uploads/2024/03/bestr-it.png"
+                  src="/uploads/2024/03/bestr-it.png"
                   alt="Digital Marketing Consultancy & SEO Consultants Sydney"
                   fill
                   className="object-contain"
@@ -78,8 +78,8 @@ export default function DigitalConsultancy() {
               widely used platform, is the ultimate goal.
             </p>
             <p>
-              <Link 
-                href="/social-media-optimization" 
+              <Link
+                href="/social-media-optimization"
                 className="text-[#e25c5c] underline hover:text-[#c23c3c] font-semibold transition-colors duration-200"
               >
                 Mobile marketing

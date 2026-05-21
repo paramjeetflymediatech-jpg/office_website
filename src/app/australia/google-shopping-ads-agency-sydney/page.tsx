@@ -97,19 +97,19 @@ export default function GoogleShoppingAdsAgency() {
 
   return (
     <main className="min-h-screen bg-[#F4F4F4] font-sans pb-24 text-[#333333]">
-      
+
       {/* 1. Hero Section (Left-aligned Image on Desktop, First on Mobile) */}
       <section className="relative py-12 md:py-10 overflow-hidden bg-[#F4F4F4]">
         <div className="absolute inset-0 z-0 bg-[radial-gradient(#000000_1px,transparent_1px)] [background-size:24px_24px] opacity-[0.01]" />
-        
+
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            
+
             {/* Image Column (Left on Desktop, First on Mobile) */}
             <div className="lg:col-span-5 flex justify-center order-1 lg:order-1">
               <div className="relative w-full aspect-square max-w-[480px]">
                 <Image
-                  src="https://flymediatech.com/australia/wp-content/uploads/2024/03/imgmenu025.png"
+                  src="/uploads/2024/03/imgmenu025.png"
                   alt="Google Shopping Ads Agency Sydney"
                   fill
                   className="object-contain"
@@ -127,7 +127,7 @@ export default function GoogleShoppingAdsAgency() {
               >
                 Google Shopping Ads Agency Sydney
               </h1>
-              
+
               <h2
                 style={{ fontFamily: "'Playfair Display', serif" }}
                 className="text-xl md:text-2xl font-bold font-serif text-black"
@@ -149,7 +149,7 @@ export default function GoogleShoppingAdsAgency() {
       {/* 2. Commerce Game Changer Section (Alternating White Background) */}
       <section className=" py-16 border-t border-gray-200/50">
         <div className="max-w-5xl mx-auto px-6 text-center space-y-8">
-          
+
           <h2
             style={{ fontFamily: "'Playfair Display', serif" }}
             className="text-2xl md:text-3xl lg:text-[32px] font-bold text-black font-serif leading-tight"
@@ -169,7 +169,7 @@ export default function GoogleShoppingAdsAgency() {
       {/* 3. Expertise Grid Section (Alternating Light Off-White Background) */}
       <section className="bg-[#F4F4F4] py-16 border-t border-gray-200/50">
         <div className="max-w-7xl mx-auto px-6">
-          
+
           {/* Section Header */}
           <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
             <h2
@@ -178,12 +178,12 @@ export default function GoogleShoppingAdsAgency() {
             >
               Our expertise in Google Shopping Ads
             </h2>
-+          </div>
+            +          </div>
 
           {/* Cards Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {expertises.map((item, idx) => (
-              <div 
+              <div
                 key={idx}
                 className="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col items-start text-left space-y-5 group"
               >
@@ -213,7 +213,7 @@ export default function GoogleShoppingAdsAgency() {
       {/* 4. Why Choose Section (Alternating White Background with Premium Top-Accent Cards) */}
       <section className=" py-16 border-t border-gray-200/50">
         <div className="max-w-7xl mx-auto px-6">
-          
+
           {/* Section Header */}
           <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
             <h2
@@ -227,7 +227,7 @@ export default function GoogleShoppingAdsAgency() {
           {/* Cards Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {whyChooses.map((item, idx) => (
-              <div 
+              <div
                 key={idx}
                 className="bg-[#F8F9FA] rounded-2xl p-8  shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col items-start text-left space-y-4"
               >

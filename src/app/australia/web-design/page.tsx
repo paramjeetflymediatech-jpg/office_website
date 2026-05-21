@@ -86,12 +86,12 @@ export default function WebDesignAustralia() {
 
         <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            
+
             {/* Left Column: Branding Image Illustration */}
             <div className="lg:col-span-5 flex justify-center order-2 lg:order-1">
               <div className="relative w-full aspect-square max-w-[460px] transform hover:scale-102 transition-transform duration-500 ease-out">
                 <Image
-                  src="https://flymediatech.com/australia/wp-content/uploads/2024/03/BRANDING.png"
+                  src="/uploads/2024/03/BRANDING.png"
                   alt="Branding and Website Designing Services Sydney"
                   fill
                   className="object-contain"
@@ -147,10 +147,10 @@ export default function WebDesignAustralia() {
       {/* 2. Open The Doors To Success */}
       <section className=" border-t border-b border-gray-200/40 relative overflow-hidden">
         <div className="absolute inset-0 z-0 bg-[radial-gradient(#000000_1px,transparent_1px)] [background-size:24px_24px] opacity-[0.015]" />
-        
+
         <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
-            
+
             {/* Left Column: Heading & Detailed Description */}
             <div className="lg:col-span-7 space-y-6 order-2 lg:order-1">
               <h2
@@ -159,13 +159,13 @@ export default function WebDesignAustralia() {
               >
                 Open The Doors To Success
               </h2>
-              
+
               <div className="space-y-4 text-gray-700 text-[15px] md:text-base leading-relaxed font-sans font-medium">
                 <p>
                   A website is a door that allows your customers to visit your business whenever they want and wherever they want. The finest <strong className="text-black font-bold">website designer in Sydney</strong> can create an appealing and user-friendly website that will make your business stand at the peak of success.
                 </p>
                 <p>
-                  A business is run by consumers. Therefore, a great user experience will only captivate more consumers, contributing to the growth and development of the business. Allow the world to know your business with your website and engage with your customers in the most exciting way. 
+                  A business is run by consumers. Therefore, a great user experience will only captivate more consumers, contributing to the growth and development of the business. Allow the world to know your business with your website and engage with your customers in the most exciting way.
                 </p>
                 <p>
                   With the help of the best <strong className="text-black font-bold">website designing company in Stanhope Gardens, Blacktown</strong>, create an exceptional user experience for the consumers and engage in a smooth and effective flow of communication that enhances the visibility of your business.
@@ -187,13 +187,13 @@ export default function WebDesignAustralia() {
       {/* 3. Award-Winning Web Design Firms */}
       <section className="py-20 bg-[#F1F1F1] border-b border-gray-200/40 relative">
         <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-          
+
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-16">
             {/* Left side image/branding illustration */}
             <div className="lg:col-span-4 flex justify-center">
               <div className="relative w-full aspect-square max-w-[320px] transform hover:scale-105 transition-transform duration-500 ease-out">
                 <Image
-                  src="https://flymediatech.com/australia/wp-content/uploads/2024/03/BRANDING.png"
+                  src="/uploads/2024/03/BRANDING.png"
                   alt="Award Winning Web Design Sydney"
                   fill
                   className="object-contain"
@@ -226,7 +226,7 @@ export default function WebDesignAustralia() {
 
           {/* Three Premium Feature Cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            
+
             {/* Card 1: Branding & Logo Design */}
             <div className=" rounded-3xl p-8 border border-gray-100 shadow-[0_15px_40px_rgba(0,0,0,0.02)] hover:border-[#EC7317]/50 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between">
               <div className="space-y-5">
@@ -289,7 +289,7 @@ export default function WebDesignAustralia() {
       {/* 4. Choose The Best Website Designing Company */}
       <section className="  relative">
         <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-          
+
           <div className="text-center max-w-7xl mx-auto mb-16 space-y-4">
             <h2
               style={{ fontFamily: "'Playfair Display', serif" }}
@@ -304,7 +304,7 @@ export default function WebDesignAustralia() {
 
           {/* 4 Features Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            
+
             {/* Feature 1: Navigation */}
             <div className="bg-white rounded-3xl p-8 border  border-transparent hover:border-[#EC7317]/30 hover:bg-white hover:shadow-[0_20px_50px_rgba(0,0,0,0.03)] transition-all duration-300 flex flex-col justify-between">
               <div className="space-y-4">

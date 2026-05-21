@@ -57,19 +57,19 @@ export default function PayPerClickSydney() {
 
   return (
     <main className="min-h-screen bg-[#F4F4F4] font-sans pb-24 text-[#333333]">
-      
+
       {/* 1. Hero / Main Intro Section */}
       <section className="relative py-12 md:py-16 overflow-hidden bg-[#F4F4F4]">
         <div className="absolute inset-0 z-0 bg-[radial-gradient(#000000_1px,transparent_1px)] [background-size:24px_24px] opacity-[0.01]" />
-        
+
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            
+
             {/* Image Column (Left on Desktop, First on Mobile) */}
             <div className="lg:col-span-5 flex justify-center order-1 lg:order-1">
               <div className="relative w-full aspect-square max-w-[480px]">
                 <Image
-                  src="https://flymediatech.com/australia/wp-content/uploads/2024/03/imgmenu025.png"
+                  src="/uploads/2024/03/imgmenu025.png"
                   alt="PPC Agency Sydney"
                   fill
                   className="object-contain"
@@ -87,7 +87,7 @@ export default function PayPerClickSydney() {
               >
                 PPC Agency Sydney | Google Partner Ads Company | Flymedia Technology
               </h1>
-              
+
               <h2
                 style={{ fontFamily: "'Playfair Display', serif" }}
                 className="text-xl md:text-2xl font-bold text-[#EC7317] font-serif"
@@ -97,7 +97,7 @@ export default function PayPerClickSydney() {
 
               <p className="text-gray-700 text-[15px] sm:text-base leading-relaxed">
                 Google AdWords or{" "}
-                <Link 
+                <Link
                   href="/australia/paid-search-agency-sydney"
                   className="text-[#EC7317] underline hover:text-black font-semibold transition-colors"
                 >
@@ -120,7 +120,7 @@ export default function PayPerClickSydney() {
           >
             GOOGLE PARTNER AGENCY
           </h2>
-          
+
           <p className="text-gray-700 text-[15px] md:text-base leading-relaxed text-justify md:text-center">
             <strong>PPC Advertising: An Impactful Paid Marketing Strategy to Win More Clicks</strong> PPC is a vital component of the digital marketing umbrella. Under this scenario, advertisers need to pay only when their ad gets a click. This marketing model actually works in composing the attention of visitors because it allows the advertiser to reserve the space where they want their paid ad to display. Pay-Per-Click is an effective advertising technique and a perfect strategy to quickly get a targeted audience on your website. The fascinating part about Pay-Per-Click (PPC) is that it boosts your chances to appear on the results page and helps you entice new customers. When it comes to implementing PPC strategies, it is not only about thorough keyword research but also about building the right bids. Our PPC experts at FlyMedia Technology create effective campaigns that attract and transform casual visitors into customers. We help you gain instant visibility, get targeted traffic, and yield better ROI. What are you waiting for? Have chats with FlyMedia Technology PPC experts and improve your position on the search engine.
           </p>
@@ -131,7 +131,7 @@ export default function PayPerClickSydney() {
       <section className=" border-t border-gray-200/50 bg-[#F4F4F4]">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            
+
             {/* Left Column: Text */}
             <div className="lg:col-span-7 space-y-6">
               <h2
@@ -149,7 +149,7 @@ export default function PayPerClickSydney() {
             <div className="lg:col-span-5 flex justify-center">
               <div className="relative w-full aspect-[4/3] max-w-[460px]">
                 <Image
-                  src="https://flymediatech.com/australia/wp-content/uploads/2024/03/salatuy-page.png"
+                  src="/uploads/2024/03/salatuy-page.png"
                   alt="FlyMedia Technology: A Proficient PPC Company"
                   fill
                   className="object-contain"
@@ -215,7 +215,7 @@ export default function PayPerClickSydney() {
       {/* 6. Card Grid Section (How we act under each section) */}
       <section className="py-16 border-t border-gray-200/50 bg-[#F4F4F4]">
         <div className="max-w-7xl mx-auto px-6 space-y-12">
-          
+
           <div className="text-center">
             <h2
               style={{ fontFamily: "'Playfair Display', serif" }}

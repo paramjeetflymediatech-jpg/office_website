@@ -3,18 +3,18 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { 
-  Award, 
-  Settings, 
-  MapPin, 
-  LineChart, 
-  ShieldCheck, 
-  ChevronRight, 
-  ArrowUpRight, 
-  Globe, 
-  MessageSquare, 
-  UserCheck, 
-  Search, 
+import {
+  Award,
+  Settings,
+  MapPin,
+  LineChart,
+  ShieldCheck,
+  ChevronRight,
+  ArrowUpRight,
+  Globe,
+  MessageSquare,
+  UserCheck,
+  Search,
   CheckCircle,
   HelpCircle,
   Activity,
@@ -110,14 +110,14 @@ export default function LinkBuildingSydney() {
 
   return (
     <main className="min-h-screen bg-[#F1F1F1] font-sans pb-16">
-      
+
       {/* 1. Hero Section */}
       <section className="relative py-12 md:py-20 overflow-hidden bg-[#F1F1F1]">
         <div className="absolute inset-0 z-0 bg-[radial-gradient(#000000_1px,transparent_1px)] [background-size:24px_24px] opacity-[0.015]" />
-        
+
         <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            
+
             {/* Left Column: Core Text */}
             <div className="lg:col-span-7 space-y-8 order-2 lg:order-1">
               <div className="space-y-4">
@@ -146,7 +146,7 @@ export default function LinkBuildingSydney() {
             <div className="lg:col-span-5 flex justify-center order-1 lg:order-2">
               <div className="relative w-full aspect-[4/3] max-w-[500px]">
                 <Image
-                  src="https://flymediatech.com/australia/wp-content/uploads/2024/03/mobi-1024x853.png"
+                  src="/uploads/2024/03/mobi-1024x853.png"
                   alt="Sydney Premium Link Building Services Illustration"
                   fill
                   className="object-contain hover:scale-105 transition-transform duration-500"
@@ -163,15 +163,15 @@ export default function LinkBuildingSydney() {
       {/* 2. The Power of Link Building in SEO */}
       <section className="py-10  border-t border-b border-gray-200/50">
         <div className="max-w-7xl mx-auto px-6 text-center space-y-8">
-          <h2 
+          <h2
             style={{ fontFamily: "'Playfair Display', serif" }}
             className="text-3xl md:text-4xl lg:text-[28px] font-bold text-black leading-tight font-serif"
           >
             The Power of Link Building in SEO
           </h2>
           <p className="text-gray-700 text-base md:text-lg leading-relaxed max-w-4xl mx-auto font-medium">
-            <Link 
-              href="/australia/search-engine-optimization" 
+            <Link
+              href="/australia/search-engine-optimization"
               className="text-[#EC7317] underline hover:text-black font-semibold transition-colors"
             >
               Search engine optimization
@@ -194,10 +194,10 @@ export default function LinkBuildingSydney() {
 
           {/* Row 1: 3 Centered Cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
-            
+
             {/* Card 1 */}
             <div className="bg-white rounded-3xl p-8 border border-gray-200/60 shadow-[0_10px_30px_rgba(0,0,0,0.01)] hover:shadow-[0_15px_40px_rgba(0,0,0,0.03)] hover:-translate-y-1 transition-all duration-300 text-center flex flex-col justify-center min-h-[220px]">
-              <h3 
+              <h3
                 style={{ fontFamily: "'Playfair Display', serif" }}
                 className="text-[#EC7317] text-2xl font-bold mb-4 font-serif"
               >
@@ -210,7 +210,7 @@ export default function LinkBuildingSydney() {
 
             {/* Card 2 */}
             <div className="bg-white rounded-3xl p-8 border border-gray-200/60 shadow-[0_10px_30px_rgba(0,0,0,0.01)] hover:shadow-[0_15px_40px_rgba(0,0,0,0.03)] hover:-translate-y-1 transition-all duration-300 text-center flex flex-col justify-center min-h-[220px]">
-              <h3 
+              <h3
                 style={{ fontFamily: "'Playfair Display', serif" }}
                 className="text-[#EC7317] text-2xl font-bold mb-4 font-serif"
               >
@@ -223,7 +223,7 @@ export default function LinkBuildingSydney() {
 
             {/* Card 3 */}
             <div className="bg-white rounded-3xl p-8 border border-gray-200/60 shadow-[0_10px_30px_rgba(0,0,0,0.01)] hover:shadow-[0_15px_40px_rgba(0,0,0,0.03)] hover:-translate-y-1 transition-all duration-300 text-center flex flex-col justify-center min-h-[220px]">
-              <h3 
+              <h3
                 style={{ fontFamily: "'Playfair Display', serif" }}
                 className="text-[#EC7317] text-2xl font-bold mb-4 font-serif"
               >
@@ -238,10 +238,10 @@ export default function LinkBuildingSydney() {
 
           {/* Row 2: 2 Centered Cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-[800px] mx-auto mt-8">
-            
+
             {/* Card 4 */}
             <div className="bg-white rounded-3xl p-8 border border-gray-200/60 shadow-[0_10px_30px_rgba(0,0,0,0.01)] hover:shadow-[0_15px_40px_rgba(0,0,0,0.03)] hover:-translate-y-1 transition-all duration-300 text-center flex flex-col justify-center min-h-[220px]">
-              <h3 
+              <h3
                 style={{ fontFamily: "'Playfair Display', serif" }}
                 className="text-[#EC7317] text-2xl font-bold mb-4 font-serif"
               >
@@ -254,7 +254,7 @@ export default function LinkBuildingSydney() {
 
             {/* Card 5 */}
             <div className="bg-white rounded-3xl p-8 border border-gray-200/60 shadow-[0_10px_30px_rgba(0,0,0,0.01)] hover:shadow-[0_15px_40px_rgba(0,0,0,0.03)] hover:-translate-y-1 transition-all duration-300 text-center flex flex-col justify-center min-h-[220px]">
-              <h3 
+              <h3
                 style={{ fontFamily: "'Playfair Display', serif" }}
                 className="text-[#EC7317] text-2xl font-bold mb-4 font-serif"
               >
@@ -283,13 +283,13 @@ export default function LinkBuildingSydney() {
 
           {/* Row 1: 3 cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-16 justify-center">
-            
+
             {/* Card 1 */}
             <div className="relative bg-[#333333] rounded-2xl pt-12 pb-8 px-6 text-center text-white flex flex-col justify-center min-h-[220px] shadow-lg">
               <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 bg-[#EC7317] rounded-full border-4 border-[#F1F1F1] flex items-center justify-center text-white font-bold text-2xl shadow-md">
                 1
               </div>
-              <h3 
+              <h3
                 style={{ fontFamily: "'Playfair Display', serif" }}
                 className="text-xl font-bold mb-4 font-serif text-white"
               >
@@ -305,7 +305,7 @@ export default function LinkBuildingSydney() {
               <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 bg-[#EC7317] rounded-full border-4 border-[#F1F1F1] flex items-center justify-center text-white font-bold text-2xl shadow-md">
                 2
               </div>
-              <h3 
+              <h3
                 style={{ fontFamily: "'Playfair Display', serif" }}
                 className="text-xl font-bold mb-4 font-serif text-white"
               >
@@ -321,7 +321,7 @@ export default function LinkBuildingSydney() {
               <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 bg-[#EC7317] rounded-full border-4 border-[#F1F1F1] flex items-center justify-center text-white font-bold text-2xl shadow-md">
                 3
               </div>
-              <h3 
+              <h3
                 style={{ fontFamily: "'Playfair Display', serif" }}
                 className="text-xl font-bold mb-4 font-serif text-white"
               >
@@ -336,13 +336,13 @@ export default function LinkBuildingSydney() {
 
           {/* Row 2: 2 centered cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-x-12 gap-y-16 max-w-[800px] mx-auto mt-16">
-            
+
             {/* Card 4 */}
             <div className="relative bg-[#333333] rounded-2xl pt-12 pb-8 px-6 text-center text-white flex flex-col justify-center min-h-[220px] shadow-lg">
               <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 bg-[#EC7317] rounded-full border-4 border-[#F1F1F1] flex items-center justify-center text-white font-bold text-2xl shadow-md">
                 4
               </div>
-              <h3 
+              <h3
                 style={{ fontFamily: "'Playfair Display', serif" }}
                 className="text-xl font-bold mb-4 font-serif text-white"
               >
@@ -358,7 +358,7 @@ export default function LinkBuildingSydney() {
               <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 bg-[#EC7317] rounded-full border-4 border-[#F1F1F1] flex items-center justify-center text-white font-bold text-2xl shadow-md">
                 5
               </div>
-              <h3 
+              <h3
                 style={{ fontFamily: "'Playfair Display', serif" }}
                 className="text-xl font-bold mb-4 font-serif text-white"
               >
@@ -366,8 +366,8 @@ export default function LinkBuildingSydney() {
               </h3>
               <p className="text-[#cccccc] text-[14px] leading-relaxed">
                 For businesses targeting local audiences, Flymedia Technology’s{" "}
-                <Link 
-                  href="/australia/local-seo" 
+                <Link
+                  href="/australia/local-seo"
                   className="text-[#EC7317] underline hover:text-white font-semibold transition-colors"
                 >
                   local SEO
@@ -393,7 +393,7 @@ export default function LinkBuildingSydney() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            
+
             {/* Card 1 */}
             <div className=" rounded-3xl p-8 text-center flex flex-col items-center space-y-6 border border-gray-300 shadow-[0_10px_30px_rgba(0,0,0,0.01)] hover:shadow-md hover:-translate-y-1 transition-all duration-300">
               <div className="text-[#EC7317] flex justify-center items-center">
@@ -402,7 +402,7 @@ export default function LinkBuildingSydney() {
                   <path d="m52 22a6.948 6.948 0 0 0 -6.92 8h-10.08v-5a1 1 0 0 0 -1-1h-28a1 1 0 0 0 -1 1v24a1 1 0 0 0 1 1h21v5a1 1 0 0 0 1 1h26a1 1 0 0 0 1-1v-19.685a6.994 6.994 0 0 0 -3-13.315zm-19 4v4h-5a1 1 0 0 0 -1 1v1h-20v-6zm-26 22v-14h20v14zm22 6v-14h24v14zm24-16h-24v-6h16.685a6.907 6.907 0 0 0 7.315 3.92zm-1-4a5 5 0 1 1 5-5 5.006 5.006 0 0 1 -5 5z" fill="#EC7317"></path>
                 </svg>
               </div>
-              <h3 
+              <h3
                 style={{ fontFamily: "'Playfair Display', serif" }}
                 className="text-xl font-bold text-black font-serif"
               >
@@ -418,7 +418,7 @@ export default function LinkBuildingSydney() {
               <div className="text-[#EC7317] flex justify-center items-center h-12">
                 <span className="text-5xl font-black tracking-tighter leading-none">G</span>
               </div>
-              <h3 
+              <h3
                 style={{ fontFamily: "'Playfair Display', serif" }}
                 className="text-xl font-bold text-black font-serif"
               >
@@ -436,7 +436,7 @@ export default function LinkBuildingSydney() {
                   <path d="M488 192H336v56c0 39.7-32.3 72-72 72s-72-32.3-72-72V126.4l-64.9 39C107.8 176.9 96 197.8 96 220.2v47.3l-80 46.2C.7 322.5-4.6 342.1 4.3 357.4l80 138.6c8.8 15.3 28.4 20.5 43.7 11.7L231.4 448H368c35.3 0 64-28.7 64-64h16c17.7 0 32-14.3 32-32v-64h8c13.3 0 24-10.7 24-24v-48c0-13.3-10.7-24-24-24zm147.7-37.4L555.7 16C546.9.7 527.3-4.5 512 4.3L408.6 64H306.4c-12 0-23.7 3.4-33.9 9.7L239 94.6c-9.4 5.8-15 16.1-15 27.1V248c0 22.1 17.9 40 40 40s40-17.9 40-40v-88h184c30.9 0 56 25.1 56 56v28.5l80-46.2c15.3-8.9 20.5-28.4 11.7-43.7z" fill="#EC7317" />
                 </svg>
               </div>
-              <h3 
+              <h3
                 style={{ fontFamily: "'Playfair Display', serif" }}
                 className="text-xl font-bold text-black font-serif"
               >

@@ -38,7 +38,7 @@ export default function AustraliaAboutUs() {
     async function load() {
       try {
         const dbData = await getPortfolioItems();
-        
+
         // Filter DB items for Australia About Us
         const targetedDbItems = dbData
           .filter((item: any) => (item.location || "").toLowerCase() === "australia-about")
@@ -54,23 +54,23 @@ export default function AustraliaAboutUs() {
         // If DB has no items uploaded for Australia, use the beautiful default fallback images
         if (finalItems.length === 0) {
           finalItems = [
-            { id: "au-1", title: "Meat Mechanics", imageUrl: "https://flymediatech.com/australia/wp-content/uploads/2024/05/meat-mechanics.png", category: "Restaurent" },
-            { id: "au-2", title: "Lakeview Dental", imageUrl: "https://flymediatech.com/australia/wp-content/uploads/2024/05/lakeview.png", category: "Technology" },
-            { id: "au-3", title: "Grand Indian Cuisine", imageUrl: "https://flymediatech.com/australia/wp-content/uploads/2024/05/grand-indian-cuisine.png", category: "Restaurent" },
-            { id: "au-4", title: "Grand Bukhara", imageUrl: "https://flymediatech.com/australia/wp-content/uploads/2024/05/grand-bukhara.png", category: "Restaurent" },
-            { id: "au-5", title: "Cholas Restaurant", imageUrl: "https://flymediatech.com/australia/wp-content/uploads/2024/05/cholas-2.png", category: "Restaurent" },
-            { id: "au-6", title: "Binge Café", imageUrl: "https://flymediatech.com/australia/wp-content/uploads/2024/05/binge.png", category: "Restaurent" },
-            { id: "au-7", title: "Asees Indian Restaurant", imageUrl: "https://flymediatech.com/australia/wp-content/uploads/2024/05/asees-1.png", category: "Restaurent" },
-            { id: "au-8", title: "TGP Portal", imageUrl: "https://flymediatech.com/australia/wp-content/uploads/2024/05/TGP-1.png", category: "Car Rental" },
-            { id: "au-9", title: "Sylvania Retailers", imageUrl: "https://flymediatech.com/australia/wp-content/uploads/2024/05/sylvania-1.png", category: "Real Estate" },
-            { id: "au-10", title: "Pizza Shed", imageUrl: "https://flymediatech.com/australia/wp-content/uploads/2024/05/pizza-shed-2.png", category: "Restaurent" },
-            { id: "au-11", title: "NTH Consulting", imageUrl: "https://flymediatech.com/australia/wp-content/uploads/2024/05/nth-1.png", category: "Car Detailing" },
-            { id: "au-12", title: "Yes Nurse", imageUrl: "https://flymediatech.com/australia/wp-content/uploads/2024/05/yes-nurse.png", category: "Technology" },
-            { id: "au-13", title: "Singh Finance", imageUrl: "https://flymediatech.com/australia/wp-content/uploads/2024/05/singh-finance.png", category: "Finance" },
-            { id: "au-14", title: "NES Electrical", imageUrl: "https://flymediatech.com/australia/wp-content/uploads/2024/05/NES-electrical.png", category: "Industries" },
-            { id: "au-15", title: "Mom & Dad Healthcare", imageUrl: "https://flymediatech.com/australia/wp-content/uploads/2024/05/mom-and-dad.png", category: "E-Commerce" },
-            { id: "au-16", title: "MIG Enterprises", imageUrl: "https://flymediatech.com/australia/wp-content/uploads/2024/05/MIG-enterprises.png", category: "Industries" },
-            { id: "au-17", title: "AB Logistics", imageUrl: "https://flymediatech.com/australia/wp-content/uploads/2024/05/AB-1.png", category: "E-Commerce" },
+            { id: "au-1", title: "Meat Mechanics", imageUrl: "/uploads/2024/05/meat-mechanics.png", category: "Restaurent" },
+            { id: "au-2", title: "Lakeview Dental", imageUrl: "/uploads/2024/05/lakeview.png", category: "Technology" },
+            { id: "au-3", title: "Grand Indian Cuisine", imageUrl: "/uploads/2024/05/grand-indian-cuisine.png", category: "Restaurent" },
+            { id: "au-4", title: "Grand Bukhara", imageUrl: "/uploads/2024/05/grand-bukhara.png", category: "Restaurent" },
+            { id: "au-5", title: "Cholas Restaurant", imageUrl: "/uploads/2024/05/cholas-2.png", category: "Restaurent" },
+            { id: "au-6", title: "Binge Café", imageUrl: "/uploads/2024/05/binge.png", category: "Restaurent" },
+            { id: "au-7", title: "Asees Indian Restaurant", imageUrl: "/uploads/2024/05/asees-1.png", category: "Restaurent" },
+            { id: "au-8", title: "TGP Portal", imageUrl: "/uploads/2024/05/TGP-1.png", category: "Car Rental" },
+            { id: "au-9", title: "Sylvania Retailers", imageUrl: "/uploads/2024/05/sylvania-1.png", category: "Real Estate" },
+            { id: "au-10", title: "Pizza Shed", imageUrl: "/uploads/2024/05/pizza-shed-2.png", category: "Restaurent" },
+            { id: "au-11", title: "NTH Consulting", imageUrl: "/uploads/2024/05/nth-1.png", category: "Car Detailing" },
+            { id: "au-12", title: "Yes Nurse", imageUrl: "/uploads/2024/05/yes-nurse.png", category: "Technology" },
+            { id: "au-13", title: "Singh Finance", imageUrl: "/uploads/2024/05/singh-finance.png", category: "Finance" },
+            { id: "au-14", title: "NES Electrical", imageUrl: "/uploads/2024/05/NES-electrical.png", category: "Industries" },
+            { id: "au-15", title: "Mom & Dad Healthcare", imageUrl: "/uploads/2024/05/mom-and-dad.png", category: "E-Commerce" },
+            { id: "au-16", title: "MIG Enterprises", imageUrl: "/uploads/2024/05/MIG-enterprises.png", category: "Industries" },
+            { id: "au-17", title: "AB Logistics", imageUrl: "/uploads/2024/05/AB-1.png", category: "E-Commerce" },
           ];
         }
 
@@ -98,7 +98,7 @@ export default function AustraliaAboutUs() {
   const filteredCurrentItems = portfolioItems.filter((item) => {
     const itemCat = item.category.toLowerCase();
     const tabCat = activeTab.toLowerCase();
-    
+
     // Support spelling variation: Restaurent / Restaurant
     if (tabCat === "restaurent" || tabCat === "restaurant") {
       return itemCat === "restaurent" || itemCat === "restaurant";
@@ -112,42 +112,42 @@ export default function AustraliaAboutUs() {
     {
       title: "Digital Consultancy",
       desc: "Fly Media offers digital consultancy to clients. We first understand your requirements and formulate strategic plans to accomplish these objectives using digital marketing components. These include web designing and development, branding, reputation management, amplifying business presence, content marketing, social media marketing and many more.",
-      image: "https://flymediatech.com/australia/wp-content/uploads/2024/04/i01.jpg",
+      image: "/uploads/2024/04/i01.jpg",
       icon: <UserCheck size={24} />,
       link: "/australia/digital-consultancy"
     },
     {
       title: "Pay Per Click (PPC) Advertising",
       desc: "We help use Pay-Per-Click campaigns to ensure your ads reach the target audience at the right time. In addition, we also help in maximising your ROI through our data-driven PPC campaigns.",
-      image: "https://flymediatech.com/australia/wp-content/uploads/2024/04/img02.jpg",
+      image: "/uploads/2024/04/img02.jpg",
       icon: <Monitor size={24} />,
       link: "/australia/ppc"
     },
     {
       title: "Content Marketing",
       desc: "In the current era, content is the key and when used correctly, it can significantly elevate your digital presence. We help curate compelling and captivating content that resonates with your audience and use content marketing strategies to help it reach the target audience.",
-      image: "https://flymediatech.com/australia/wp-content/uploads/2024/04/img04.jpg",
+      image: "/uploads/2024/04/img04.jpg",
       icon: <FileText size={24} />,
       link: "/australia/content-marketing-strategy"
     },
     {
       title: "Social Media Marketing",
       desc: "This includes improving your presence on social media by using social media platforms for brand awareness generating leads and conversions by engaging and connecting with the audience. As the best digital marketing agency, we will help formulate effective social media marketing strategies to attain your objectives.",
-      image: "https://flymediatech.com/australia/wp-content/uploads/2024/04/img06.jpg",
+      image: "/uploads/2024/04/img06.jpg",
       icon: <Share2 size={24} />,
       link: "/australia/social-media-marketing"
     },
     {
       title: "Mobile App Marketing",
       desc: "Most people spend their time on their smartphones; you can leverage benefits from this using our effective mobile app marketing services. We offer SMS marketing, Mobile advertising, Mobile SEO, Push notifications, social media marketing and more.",
-      image: "https://flymediatech.com/australia/wp-content/uploads/2024/03/IIMG01.jpg",
+      image: "/uploads/2024/03/IIMG01.jpg",
       icon: <Smartphone size={24} />,
       link: "/australia/mobile-marketing"
     },
     {
       title: "Search Engine Optimisation (SEO)",
       desc: "SEO helps businesses increase their visibility and drive organic traffic. With the help of our strategic SEO services, improve the ranking of your business on search engines and help get more clients to your website.",
-      image: "https://flymediatech.com/australia/wp-content/uploads/2024/04/im08.jpg",
+      image: "/uploads/2024/04/im08.jpg",
       icon: <Search size={24} />,
       link: "/australia/search-engine-optimization"
     }
@@ -157,37 +157,37 @@ export default function AustraliaAboutUs() {
     {
       title: "Proven Track Record",
       desc: "Fly media has helped many startups and professionals elevate their online presence in the digital landscape. Our work speaks for itself. We have a proven track record of delivering digital success to multiple businesses across the globe. Our strong portfolio is a testament to our dedication and enthusiasm to help other companies create their online presence. So, join the best digital marketing agency in Sydney and embark on your journey to digital success.",
-      image: "https://flymediatech.com/australia/wp-content/uploads/2024/04/i01.jpg",
+      image: "/uploads/2024/04/i01.jpg",
       icon: <Target size={24} className="text-white" />
     },
     {
       title: "Customised Solutions and Packages",
       desc: "We understand that every person and business has different requirements, needs and goals. What works for one company may or may not work for you. Hence, we offer customised solutions and packages to cater to all your digital marketing needs. Let us know about your specific goals and objectives, and we will curate a bespoke solution tailored to your unique needs.",
-      image: "https://flymediatech.com/australia/wp-content/uploads/2024/04/img02.jpg",
+      image: "/uploads/2024/04/img02.jpg",
       icon: <Monitor size={24} className="text-white" />
     },
     {
       title: "Experience and Expertise",
       desc: "Fly Media Technology has over 12 years of experience in the industry. We understand the know-how of the digital marketing field and the qualities required to stand out from the rest. Elevate your digital presence with Fly Media, the best digital marketing company.",
-      image: "https://flymediatech.com/australia/wp-content/uploads/2024/04/img04.jpg",
+      image: "/uploads/2024/04/img04.jpg",
       icon: <Award size={24} className="text-white" />
     },
     {
       title: "Dedicated Team",
       desc: "Another reason to choose Fly Media Technology is our dedicated team. Our team is our asset. We have professional team members who are experts and skilled in their respective fields. With their experience and ability to think out of the box, we help our clients achieve their digital marketing goals.",
-      image: "https://flymediatech.com/australia/wp-content/uploads/2024/04/img06.jpg",
+      image: "/uploads/2024/04/img06.jpg",
       icon: <Users size={24} className="text-white" />
     },
     {
       title: "Continuous Improvement",
       desc: "As change is the only constant and there is always a scope for improvement, we regularly evolve, learn and elevate our skills to stay in the forefront of the digital marketing realm. It helps us tackle and withstand the challenges of the fast-paced digital marketing world.",
-      image: "https://flymediatech.com/australia/wp-content/uploads/2024/03/IIMG01.jpg",
+      image: "/uploads/2024/03/IIMG01.jpg",
       icon: <BarChart3 size={24} className="text-white" />
     },
     {
       title: "Prioritise Client Satisfaction",
       desc: "We aim to deliver optimum client satisfaction and ensure that we consider your goals, objectives, requirements, opinions and feedback. We understand the importance of communication and provide complete transparency in every project step. This sets us apart from others and is one of the reasons which help satisfy our clients.",
-      image: "https://flymediatech.com/australia/wp-content/uploads/2024/04/im08.jpg",
+      image: "/uploads/2024/04/im08.jpg",
       icon: <UserCheck size={24} className="text-white" />
     }
   ];
@@ -262,7 +262,7 @@ export default function AustraliaAboutUs() {
             <div className="absolute inset-0 -z-10" />
             <div className="relative p-4 overflow-hidden aspect-square ">
               <Image
-                src="https://flymediatech.com/australia/wp-content/uploads/2024/03/Anujgupta.png"
+                src="/uploads/2024/03/Anujgupta.png"
                 alt="Dr. Anuj Gupta"
                 fill
                 className="object-cover duration-700"
@@ -444,7 +444,8 @@ export default function AustraliaAboutUs() {
       {/* 5. Same-To-Same Elementor / ElementsKit Simple Tab Portfolio Section */}
       <section className="py-24 px-4 overflow-hidden bg-[#FA7E09] elementor-element elementor-element-cf08276 e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-parent e-lazyloaded" data-id="cf08276" data-element_type="container">
         {/* ElementsKit Custom Style Block */}
-        <style dangerouslySetInnerHTML={{ __html: `
+        <style dangerouslySetInnerHTML={{
+          __html: `
           .elementkit-tab-nav {
             display: flex;
             flex-wrap: wrap;
@@ -501,7 +502,7 @@ export default function AustraliaAboutUs() {
 
         <div className="max-w-7xl mx-auto text-center e-con-inner bg-white rounded-[2.5rem] p-8 sm:p-12 md:p-16 shadow-2xl">
           <div className="elementor-element elementor-element-5090cac e-con-full e-flex wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-child" data-id="5090cac" data-element_type="container">
-            
+
             {/* Elementor Heading Widget */}
             <div className="elementor-element elementor-element-21f4937 elementor-widget elementor-widget-heading" data-id="21f4937" data-element_type="widget" data-widget_type="heading.default">
               <div className="elementor-widget-container">
@@ -514,16 +515,15 @@ export default function AustraliaAboutUs() {
               <div className="elementor-widget-container">
                 <div className="ekit-wid-con">
                   <div className="elementkit-tab-wraper elementskit-fitcontent-tab">
-                    
+
                     {/* ElementsKit Simple Tab Navigation List */}
                     <ul className="nav nav-tabs elementkit-tab-nav">
                       {portfolioTabs.map((tab, idx) => (
                         <li key={tab} className={`elementkit-nav-item elementor-repeater-item-${idx}`}>
                           <a
                             onClick={() => setActiveTab(tab)}
-                            className={`elementkit-nav-link left-pos ${
-                              activeTab === tab ? "active-tab" : ""
-                            }`}
+                            className={`elementkit-nav-link left-pos ${activeTab === tab ? "active-tab" : ""
+                              }`}
                           >
                             <span className="elementskit-tab-title"> {tab}</span>
                           </a>
@@ -557,7 +557,7 @@ export default function AustraliaAboutUs() {
                                     unoptimized
                                   />
                                 </div>
-                                
+
                                 {/* Hover Glass Overlay Gradient */}
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 pointer-events-none" />
                               </div>

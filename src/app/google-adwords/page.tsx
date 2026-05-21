@@ -16,7 +16,7 @@ const HiringHero = () => {
           <div className="lg:col-span-5 flex justify-center">
             <div className="relative w-full aspect-square max-w-[460px]">
               <Image
-                src="https://flymediatech.com/australia/wp-content/uploads/2024/03/imgmenu025.png"
+                src="/uploads/2024/03/imgmenu025.png"
                 alt="We Are Hiring Illustration"
                 fill
                 className="object-contain"
@@ -81,7 +81,7 @@ const SalaryAmbienceSection = () => {
                 Depending upon your skills and calibre, we are ready to pay a great salary package. But we demand your loyalty, passion and dedication to complete the projects with the ultimate precision, creativity and relevancy.
               </p>
             </div>
-            
+
             <div className="space-y-4 pt-6 border-t border-gray-200/50">
               <h2 className="text-2xl md:text-3xl lg:text-[34px] font-serif font-bold text-black leading-tight">
                 The Great Ambience
@@ -96,7 +96,7 @@ const SalaryAmbienceSection = () => {
           <div className="lg:col-span-5 flex justify-center">
             <div className="relative w-full aspect-square max-w-[460px]">
               <Image
-                src="https://flymediatech.com/australia/wp-content/uploads/2024/03/salatuy-page.png"
+                src="/uploads/2024/03/salatuy-page.png"
                 alt="Salary and Ambience Illustration"
                 fill
                 className="object-contain"
@@ -153,7 +153,7 @@ const AccordionSection = () => {
           <div className="lg:col-span-5 flex justify-center order-2 lg:order-1">
             <div className="relative w-full aspect-square max-w-[460px]">
               <Image
-                src="https://flymediatech.com/australia/wp-content/uploads/2024/03/FAQS.png"
+                src="/uploads/2024/03/FAQS.png"
                 alt="FAQs Illustration"
                 fill
                 className="object-contain"
@@ -168,8 +168,8 @@ const AccordionSection = () => {
               {faqItems.map((item, idx) => {
                 const isOpen = activeIndex === idx;
                 return (
-                  <div 
-                    key={idx} 
+                  <div
+                    key={idx}
                     className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden"
                   >
                     <button

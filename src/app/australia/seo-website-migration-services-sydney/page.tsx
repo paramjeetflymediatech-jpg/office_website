@@ -49,14 +49,14 @@ export default function WebsiteMigrationSydney() {
 
   return (
     <main className="min-h-screen bg-[#F1F1F1] font-sans pb-16">
-      
+
       {/* Hero Section */}
       <section className="relative py-12 md:py-16 overflow-hidden bg-[#F1F1F1]">
         <div className="absolute inset-0 z-0 bg-[radial-gradient(#000000_1px,transparent_1px)] [background-size:24px_24px] opacity-[0.01]" />
-        
+
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            
+
             {/* Left Column: Text Content */}
             <div className="lg:col-span-7 space-y-6 order-2 lg:order-1">
               <h1
@@ -65,7 +65,7 @@ export default function WebsiteMigrationSydney() {
               >
                 SEO Website Migration Services Sydney
               </h1>
-              
+
               <h2
                 style={{ fontFamily: "'Playfair Display', serif" }}
                 className="text-lg md:text-xl font-bold text-black font-serif"
@@ -82,7 +82,7 @@ export default function WebsiteMigrationSydney() {
             <div className="lg:col-span-5 flex justify-center order-1 lg:order-2">
               <div className="relative w-full aspect-[4/3] max-w-[460px]">
                 <Image
-                  src="https://flymediatech.com/australia/wp-content/uploads/2024/03/web-des.png"
+                  src="/uploads/2024/03/web-des.png"
                   alt="SEO Website Migration Services illustration"
                   fill
                   className="object-contain"
@@ -100,12 +100,12 @@ export default function WebsiteMigrationSydney() {
       <section className="py-12 border-t border-b border-gray-200/50">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            
+
             {/* Left Column: Mobile Illustration */}
             <div className="lg:col-span-5 flex justify-center">
               <div className="relative w-full aspect-[4/3] max-w-[460px]">
                 <Image
-                  src="https://flymediatech.com/australia/wp-content/uploads/2024/03/mobi-1024x853.png"
+                  src="/uploads/2024/03/mobi-1024x853.png"
                   alt="Mobile phone illustration"
                   fill
                   className="object-contain"
@@ -122,7 +122,7 @@ export default function WebsiteMigrationSydney() {
               >
                 The Significance of Website Migration
               </h2>
-              
+
               <p className="text-gray-700 text-[15px] sm:text-base leading-relaxed">
                 Website migration, a process of transferring a website from one host, domain, or platform to another. A well executed migration is essential for maintaining or even improving your search engine rankings, user experience, and overall online presence.
               </p>
@@ -136,7 +136,7 @@ export default function WebsiteMigrationSydney() {
       <section className="py-12">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-12">
-            
+
             {/* Left Column: Text */}
             <div className="lg:col-span-7 space-y-6">
               <h2
@@ -155,7 +155,7 @@ export default function WebsiteMigrationSydney() {
 
               <p className="text-gray-700 text-[15px] sm:text-base leading-relaxed">
                 At Flymedia Technology, we understand that your website visibility on search engines is paramount, our seasoned SEO experts ensure that your website migration is carried out with meticulous attention to SEO best practices. Our goal is not just to prevent traffic loss but to enhance your{" "}
-                <Link 
+                <Link
                   href="/australia/search-engine-optimization"
                   className="text-[#EC7317] underline hover:text-black font-semibold transition-colors"
                 >
@@ -169,7 +169,7 @@ export default function WebsiteMigrationSydney() {
             <div className="lg:col-span-5 flex justify-center">
               <div className="relative w-full aspect-[4/3] max-w-[460px]">
                 <Image
-                  src="https://flymediatech.com/australia/wp-content/uploads/2024/03/bestr-it-1024x853.png"
+                  src="/uploads/2024/03/bestr-it-1024x853.png"
                   alt="Best IT illustration"
                   fill
                   className="object-contain"
@@ -219,7 +219,7 @@ export default function WebsiteMigrationSydney() {
           <div className="space-y-8 mt-12 max-w-7xl">
             {migrationProcess.map((item, idx) => (
               <div key={idx} className="space-y-3">
-                <h3 
+                <h3
                   style={{ fontFamily: "'Playfair Display', serif" }}
                   className="text-xl md:text-2xl font-bold text-black font-serif"
                 >

@@ -7,19 +7,19 @@ import Link from "next/link";
 export default function ReputationManagement() {
   return (
     <main className="min-h-screen bg-[#F4F4F4] font-sans pb-24 text-[#333333]">
-      
+
       {/* 1. Hero Section (Left-aligned Image on Desktop, First on Mobile) */}
       <section className="relative py-12 md:py-10 overflow-hidden bg-[#F4F4F4]">
         <div className="absolute inset-0 z-0 bg-[radial-gradient(#000000_1px,transparent_1px)] [background-size:24px_24px] opacity-[0.01]" />
-        
+
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            
+
             {/* Image Column */}
             <div className="lg:col-span-5 flex justify-center order-1 lg:order-1">
               <div className="relative w-full aspect-square max-w-[480px]">
                 <Image
-                  src="https://flymediatech.com/australia/wp-content/uploads/2024/03/insta-1.png"
+                  src="/uploads/2024/03/insta-1.png"
                   alt="Online Reputation Management Services Sydney"
                   fill
                   className="object-contain"
@@ -37,7 +37,7 @@ export default function ReputationManagement() {
               >
                 Online Reputation Management Services Sydney, Australia | Flymedia Technology
               </h1>
-              
+
               <h2
                 style={{ fontFamily: "'Playfair Display', serif" }}
                 className="text-xl md:text-2xl font-bold font-serif text-black"
@@ -83,7 +83,7 @@ export default function ReputationManagement() {
       <section className="bg-[#F4F4F4] pb-16">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            
+
             {/* Card 1: Online PR Management */}
             <div className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col items-center text-center space-y-6">
               <div className="w-full aspect-[4/3] relative flex items-center justify-center bg-transparent">

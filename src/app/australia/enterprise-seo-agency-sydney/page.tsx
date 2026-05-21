@@ -82,19 +82,19 @@ export default function EnterpriseSeoSydney() {
 
   return (
     <main className="min-h-screen bg-[#F1F1F1] font-sans pb-16">
-      
+
       {/* Hero Section */}
       <section className="relative py-12 md:py-10 overflow-hidden bg-[#F1F1F1]">
         <div className="absolute inset-0 z-0 bg-[radial-gradient(#000000_1px,transparent_1px)] [background-size:24px_24px] opacity-[0.01]" />
-        
+
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            
+
             {/* Image Column (Right on Desktop, First on Mobile) */}
             <div className="lg:col-span-5 flex justify-center order-1 lg:order-2">
               <div className="relative w-full aspect-[6/5] max-w-[480px]">
                 <Image
-                  src="https://flymediatech.com/australia/wp-content/uploads/2024/03/bestr-it.png"
+                  src="/uploads/2024/03/bestr-it.png"
                   alt="Enterprise SEO Agency Sydney"
                   fill
                   className="object-contain"
@@ -112,7 +112,7 @@ export default function EnterpriseSeoSydney() {
               >
                 Enterprise SEO Agency Sydney
               </h1>
-              
+
               <h2
                 style={{ fontFamily: "'Playfair Display', serif" }}
                 className="text-lg md:text-2xl font-bold text-black font-serif"
@@ -141,7 +141,7 @@ export default function EnterpriseSeoSydney() {
             </h2>
             <p className="text-gray-700 text-[15px] sm:text-base leading-relaxed ">
               Enterprise SEO goes beyond the basics of{" "}
-              <Link 
+              <Link
                 href="/australia/search-engine-optimization"
                 className="text-[#EC7317] underline hover:text-black font-semibold transition-colors"
               >
@@ -167,7 +167,7 @@ export default function EnterpriseSeoSydney() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {criticalFactors.map((item, idx) => (
-              <div 
+              <div
                 key={idx}
                 className="bg-white rounded-2xl p-8 border border-gray-100 shadow-[0_10px_30px_rgba(0,0,0,0.03)] hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col space-y-5 items-start text-start"
               >
@@ -212,7 +212,7 @@ export default function EnterpriseSeoSydney() {
           {/* Grid of Strengths Cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {flymediaStrengths.map((item, idx) => (
-              <div 
+              <div
                 key={idx}
                 className="bg-white rounded-2xl p-8 border border-gray-100 shadow-[0_10px_30px_rgba(0,0,0,0.03)] hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col space-y-4 items-start text-start"
               >
@@ -235,12 +235,12 @@ export default function EnterpriseSeoSydney() {
       <section className=" border-t border-gray-200/50">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            
+
             {/* Image Column (Left on Desktop, First on Mobile) */}
             <div className="lg:col-span-5 flex justify-center">
               <div className="relative w-full aspect-square max-w-[420px]">
                 <Image
-                  src="https://flymediatech.com/australia/wp-content/uploads/2024/03/IIMG02.png"
+                  src="/uploads/2024/03/IIMG02.png"
                   alt="digital marketing company"
                   fill
                   className="object-contain"
@@ -257,7 +257,7 @@ export default function EnterpriseSeoSydney() {
               >
                 The Flymedia Technology Difference
               </h2>
-              
+
               <p className="text-gray-700 text-[15px] sm:text-base leading-relaxed">
                 With Flymedia Technology as your trusted enterprise SEO agency, you are not just a client; you are a partner in your success. Our unwavering commitment to delivering results, our dedication to ethical practices, and our passion for staying at the forefront of SEO innovation set us apart. Elevate your enterprise’s online presence and drive unparalleled growth with Flymedia Technology. Contact us today to schedule a consultation and discover how our <strong>Enterprise SEO Services Australia</strong> can transform your digital landscape.
               </p>

@@ -7,7 +7,7 @@ export default function ComputerJobsPage() {
   const possibleOptions = [
     {
       title: "Computer Programmers",
-      img: "https://flymediatech.com/australia/wp-content/uploads/2024/05/Computer-Programmers.png",
+      img: "/uploads/2024/05/Computer-Programmers.png",
       desc: "Computer programmers can write programs in different languages like C++, Java, and many other advanced programming languages. They can:",
       bullets: [
         "Improve and expand the existing program",
@@ -18,7 +18,7 @@ export default function ComputerJobsPage() {
     },
     {
       title: "Software Developers",
-      img: "https://flymediatech.com/australia/wp-content/uploads/2024/05/developewr.png",
+      img: "/uploads/2024/05/developewr.png",
       desc: "Software developers take into account the software development process facets which includes:",
       bullets: [
         "Coding",
@@ -29,13 +29,13 @@ export default function ComputerJobsPage() {
     },
     {
       title: "Web Designer",
-      img: "https://flymediatech.com/australia/wp-content/uploads/2024/05/Web-Designer.png",
+      img: "/uploads/2024/05/Web-Designer.png",
       desc: "Website designers have the responsibility to develop and create websites. As per the client’s needs, they create the required product.",
       bullets: []
     },
     {
       title: "Database Administrator",
-      img: "https://flymediatech.com/australia/wp-content/uploads/2024/05/data.png",
+      img: "/uploads/2024/05/data.png",
       desc: "DBA has the responsibility to carry out:",
       bullets: [
         "Designing",
@@ -47,7 +47,7 @@ export default function ComputerJobsPage() {
     },
     {
       title: "Web/Multimedia Programmer",
-      img: "https://flymediatech.com/australia/wp-content/uploads/2024/05/Web-Multimedia-Programmer.png",
+      img: "/uploads/2024/05/Web-Multimedia-Programmer.png",
       desc: "They have the responsibility to carry out different features like:",
       bullets: [
         "Sound",
@@ -61,7 +61,7 @@ export default function ComputerJobsPage() {
     },
     {
       title: "Technical Writer",
-      img: "https://flymediatech.com/australia/wp-content/uploads/2024/05/System-Analyst-1.png",
+      img: "/uploads/2024/05/System-Analyst-1.png",
       desc: "The technical writer has an understanding of technology and writing skills. They should understand how to write:",
       bullets: [
         "Product description",
@@ -73,13 +73,13 @@ export default function ComputerJobsPage() {
     },
     {
       title: "Software Consultant",
-      img: "https://flymediatech.com/australia/wp-content/uploads/2024/05/Software-Consultant.png",
+      img: "/uploads/2024/05/Software-Consultant.png",
       desc: "They have the eye to check the client business and what software solution will make their business escalate.",
       bullets: []
     },
     {
       title: "System Analyst",
-      img: "https://flymediatech.com/australia/wp-content/uploads/2024/05/3rd.png",
+      img: "/uploads/2024/05/3rd.png",
       desc: "Being a system analyst they have the responsibility to check the problem and then plan the solution for the system.",
       bullets: []
     }
@@ -102,7 +102,7 @@ export default function ComputerJobsPage() {
             </div>
 
             <p className="text-gray-600 text-base sm:text-lg leading-relaxed font-medium">
-              Do you want to give your career an instant start and make it future secure? Hands down, the Computer application 
+              Do you want to give your career an instant start and make it future secure? Hands down, the Computer application
               is the favorable choice for those who wish to be a part of the <Link href="/it-company-in-ludhiana/" className="text-[#ff9900] underline font-bold hover:text-black transition-colors">IT world</Link>. If you have a sharp mind, the ability to analyze the situation, and apply the best possible solutions, then you tick all the boxes to become the next IT professional.
             </p>
 
@@ -156,7 +156,7 @@ export default function ComputerJobsPage() {
               <tbody className="divide-y divide-gray-800">
                 {possibleOptions.map((option, idx) => (
                   <tr key={idx} className="border-b border-gray-800 hover:bg-[#232323] transition-colors duration-200">
-                    
+
                     {/* Left cell - image & bold name */}
                     <td className="py-8 px-6 text-center border-r border-gray-800 align-middle">
                       <div className="flex flex-col items-center justify-center space-y-4">
@@ -178,7 +178,7 @@ export default function ComputerJobsPage() {
                       <p className="font-semibold text-gray-100 mb-3">
                         {option.desc}
                       </p>
-                      
+
                       {option.bullets.length > 0 && (
                         <ul className="list-disc pl-5 space-y-2 text-gray-300 marker:text-[#ff9900]">
                           {option.bullets.map((bullet, bulletIdx) => (
@@ -276,7 +276,7 @@ export default function ComputerJobsPage() {
           <ul className="list-disc pl-6 space-y-0.5 text-gray-800 text-sm sm:text-base font-semibold leading-relaxed">
             <li>
               <Link href="/our-services/web-designing/" className="text-[#ff9900] hover:underline font-bold">Design </Link>
-              and 
+              and
               <Link href="/our-services/web-development/" className="text-[#ff9900] hover:underline font-bold"> development </Link>
               of websites along with mobile applications.
             </li>

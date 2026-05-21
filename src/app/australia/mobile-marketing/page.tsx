@@ -11,17 +11,17 @@ export default function MobileMarketing() {
       <section className="relative py-12 md:py-16 overflow-hidden bg-[#F1F1F1]">
         {/* Subtle radial grid pattern for premium visual consistency */}
         <div className="absolute inset-0 z-0 bg-[radial-gradient(#000000_1px,transparent_1px)] [background-size:24px_24px] opacity-[0.015]" />
-        
+
         <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-          
+
           {/* Top section: Two-column grid, ordered to show the image first on desktop & mobile */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            
+
             {/* Left Column: Mobile App Marketing Illustration (appears first/left in both desktop & mobile) */}
             <div className="lg:col-span-5 flex justify-center order-1 lg:order-1">
               <div className="relative w-full aspect-[4/3.3] max-w-[540px]">
                 <Image
-                  src="https://flymediatech.com/australia/wp-content/uploads/2024/03/mobi.png"
+                  src="/uploads/2024/03/mobi.png"
                   alt="Mobile App Marketing Agency Sydney"
                   fill
                   className="object-contain"
@@ -42,7 +42,7 @@ export default function MobileMarketing() {
                 </h1>
               </div>
 
-              <h2 
+              <h2
                 style={{ fontFamily: "'Playfair Display', serif" }}
                 className="text-2xl md:text-3xl font-bold text-[#EC7317] font-serif"
               >
@@ -52,8 +52,8 @@ export default function MobileMarketing() {
               <div className="space-y-6 text-[#333333] text-[15px] md:text-base leading-relaxed font-sans">
                 <p>
                   We are experienced in the field of{" "}
-                  <Link 
-                    href="/australia/web-development" 
+                  <Link
+                    href="/australia/web-development"
                     className="text-[#e25c5c] underline hover:text-[#c23c3c] font-semibold transition-colors duration-200"
                   >
                     web development services
@@ -61,10 +61,10 @@ export default function MobileMarketing() {
                   and assist your client to touch their highest potentials by enrolling their businesses on the web and generating sales.
                 </p>
                 <p>
-                  Marketing over the desktops of our audience has now been an old-fashioned technique. 
-                  The focus now has restrained to mobile phones. These mobile phones are owned by almost 
-                  all of the people on this globe because it forms the basics of communication these days. 
-                  Thus, focusing on mobile App marketing in Stanhope Gardens, Blacktown is the need of the 
+                  Marketing over the desktops of our audience has now been an old-fashioned technique.
+                  The focus now has restrained to mobile phones. These mobile phones are owned by almost
+                  all of the people on this globe because it forms the basics of communication these days.
+                  Thus, focusing on mobile App marketing in Stanhope Gardens, Blacktown is the need of the
                   hour. It reaches beyond any standard banner advertisement.
                 </p>
               </div>
@@ -75,16 +75,16 @@ export default function MobileMarketing() {
           {/* Bottom Section: Full-width Paragraphs 3, 4 & 5 */}
           <div className="mt-12 lg:mt-16 space-y-6 text-[#333333] text-[15px] md:text-base leading-relaxed font-sans w-full max-w-full">
             <p>
-              Making a personal connection with your audience is the objective of mobile marketing. 
-              The best mobile marketing campaigns aim at getting to know the interests of people on 
-              their personal cell phones according to their browsing history and aiming to sell products 
-              to them. This survey does not need to understand the age, gender, location and other 
+              Making a personal connection with your audience is the objective of mobile marketing.
+              The best mobile marketing campaigns aim at getting to know the interests of people on
+              their personal cell phones according to their browsing history and aiming to sell products
+              to them. This survey does not need to understand the age, gender, location and other
               sort of points to identity search results.
             </p>
             <p>
-              An app marketing company tries to push their advertisements to blink more on their target 
-              audiences’ mobile phones. We strategize your profile, reach your target audience, campaign 
-              and promote your products and services and route the customers to the payments and delivery 
+              An app marketing company tries to push their advertisements to blink more on their target
+              audiences’ mobile phones. We strategize your profile, reach your target audience, campaign
+              and promote your products and services and route the customers to the payments and delivery
               portals. This comes under the mobile app marketing strategies.
             </p>
             <p className="font-semibold text-black">
@@ -108,7 +108,7 @@ export default function MobileMarketing() {
 
             {/* 3-Card Services Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
-              
+
               {/* Card 1: Mobile First Design */}
               <div className="bg-white rounded-2xl p-8 lg:p-10 shadow-[0_15px_40px_rgba(0,0,0,0.03)] hover:-translate-y-1.5 hover:shadow-[0_20px_50px_rgba(0,0,0,0.06)] transition-all duration-300 border border-gray-100/60 flex flex-col justify-between">
                 <div className="space-y-6">
@@ -119,7 +119,7 @@ export default function MobileMarketing() {
                     </svg>
                   </div>
                   <div className="space-y-3">
-                    <h3 
+                    <h3
                       style={{ fontFamily: "'Playfair Display', serif" }}
                       className="text-xl lg:text-2xl font-bold text-[#EC7317] font-serif"
                     >
@@ -142,7 +142,7 @@ export default function MobileMarketing() {
                     </svg>
                   </div>
                   <div className="space-y-3">
-                    <h3 
+                    <h3
                       style={{ fontFamily: "'Playfair Display', serif" }}
                       className="text-xl lg:text-2xl font-bold text-[#EC7317] font-serif"
                     >
@@ -165,7 +165,7 @@ export default function MobileMarketing() {
                     </svg>
                   </div>
                   <div className="space-y-3">
-                    <h3 
+                    <h3
                       style={{ fontFamily: "'Playfair Display', serif" }}
                       className="text-xl lg:text-2xl font-bold text-[#EC7317] font-serif"
                     >

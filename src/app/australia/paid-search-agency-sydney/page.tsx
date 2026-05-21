@@ -102,14 +102,14 @@ const searchHacks = [
 export default function PaidSearchAgency() {
   return (
     <main className="min-h-screen bg-[#F4F4F4] font-sans pb-24 text-[#333333]">
-      
+
       {/* 1. Hero Section (Left-aligned Image on Desktop, First on Mobile) */}
       <section className="relative py-12 md:py-10 overflow-hidden bg-[#F4F4F4]">
         <div className="absolute inset-0 z-0 bg-[radial-gradient(#000000_1px,transparent_1px)] [background-size:24px_24px] opacity-[0.01]" />
-        
+
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            
+
             {/* Image Column */}
             <div className="lg:col-span-5 flex justify-center order-1 lg:order-1">
               <div className="relative w-full aspect-square max-w-[480px]">
@@ -132,7 +132,7 @@ export default function PaidSearchAgency() {
               >
                 Paid Search Agency Stanhope Gardens, Blacktown, Sydney
               </h1>
-              
+
               <h2
                 style={{ fontFamily: "'Playfair Display', serif" }}
                 className="text-xl md:text-2xl font-bold font-serif text-black"
@@ -154,7 +154,7 @@ export default function PaidSearchAgency() {
       {/* 2. Hacks Flat Grid Section (Pure White Background) */}
       <section className="bg-white py-16 border-t border-gray-200/50">
         <div className="max-w-7xl mx-auto px-6 space-y-12">
-          
+
           {/* Header block */}
           <div className="max-w-3xl space-y-4">
             <h2
@@ -168,8 +168,8 @@ export default function PaidSearchAgency() {
           {/* Cards Grid with Premium Hover States */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pt-8">
             {searchHacks.map((item, idx) => (
-              <div 
-                key={idx} 
+              <div
+                key={idx}
                 className="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm hover:shadow-md hover:-translate-y-1 hover:border-orange-200/50 transition-all duration-300 flex flex-col justify-between space-y-4 text-left"
               >
                 <div className="space-y-4">
@@ -197,7 +197,7 @@ export default function PaidSearchAgency() {
       <section className=" border-t border-gray-200/50">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            
+
             {/* Text Column (Left on Desktop, Second on Mobile) */}
             <div className="lg:col-span-7 space-y-6 order-2 lg:order-1 text-left">
               <h2
@@ -206,7 +206,7 @@ export default function PaidSearchAgency() {
               >
                 Summary
               </h2>
-              
+
               <div className="text-gray-700 text-[15px] sm:text-base leading-relaxed">
                 <p>
                   search advertisements are a powerful tool for online businesses to connect with their audience. This helps them achieve targeted audience conversion precisely with instant results. Search engines are also a very affordable way to enhance your business presence online with a target audience. It enhances their chances to become loyal customers if your strategy is powerful enough. This strategy only drives a relevant audience towards you, which is beneficial for your conversion rates for a more successful and trustworthy business. You can help your business thrive with effective ad campaigns and be the best in your competition with this strategy.
@@ -218,7 +218,7 @@ export default function PaidSearchAgency() {
             <div className="lg:col-span-5 flex justify-center order-1 lg:order-2">
               <div className="relative w-full aspect-square max-w-[480px]">
                 <Image
-                  src="https://flymediatech.com/australia/wp-content/uploads/2024/03/insta02.png"
+                  src="/uploads/2024/03/insta02.png"
                   alt="Search Advertising Summary"
                   fill
                   className="object-contain"

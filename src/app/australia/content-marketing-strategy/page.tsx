@@ -11,12 +11,12 @@ export default function ContentMarketingStrategy() {
       <section className="relative py-10 md:py-10 overflow-hidden bg-[#F1F1F1]">
         {/* Subtle grid pattern for premium visual styling */}
         <div className="absolute inset-0 z-0 bg-[radial-gradient(#000000_1px,transparent_1px)] [background-size:24px_24px] opacity-[0.015]" />
-        
+
         <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-          
+
           {/* Top section: Two-column grid, ordered to show the image first on mobile */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            
+
             {/* Left Column: Titles & First 2 Paragraphs (order-2 on mobile, order-1 on desktop) */}
             <div className="lg:col-span-7 space-y-8 order-2 lg:order-1">
               <div className="space-y-4">
@@ -28,7 +28,7 @@ export default function ContentMarketingStrategy() {
                 </h1>
               </div>
 
-              <h2 
+              <h2
                 style={{ fontFamily: "'Playfair Display', serif" }}
                 className="text-2xl md:text-3xl font-bold text-black font-serif"
               >
@@ -39,8 +39,8 @@ export default function ContentMarketingStrategy() {
                 <p>
                   Content Marketing Agency Stanhope Gardens, Blacktown, Great content is the
                   best way to attract your target audience. That’s how{" "}
-                  <Link 
-                    href="/australia/digital-consultancy" 
+                  <Link
+                    href="/australia/digital-consultancy"
                     className="text-[#e25c5c] underline hover:text-[#c23c3c] font-semibold transition-colors duration-200"
                   >
                     digital marketing
@@ -62,7 +62,7 @@ export default function ContentMarketingStrategy() {
             <div className="lg:col-span-5 flex justify-center order-1 lg:order-2">
               <div className="relative w-full aspect-[4/3] max-w-[540px]">
                 <Image
-                  src="https://flymediatech.com/australia/wp-content/uploads/2024/04/BANE03.png"
+                  src="/uploads/2024/04/BANE03.png"
                   alt="Content Marketing Agency Sydney & Best Content Writers Sydney"
                   fill
                   className="object-contain"
@@ -96,11 +96,11 @@ export default function ContentMarketingStrategy() {
           {/* Cards Grid Section: Replicated Verbatim from User Screenshot */}
           <div className="mt-20 lg:mt-24">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              
+
               {/* Card 1: Industry News */}
               <div className="bg-white rounded-2xl p-8 lg:p-10 shadow-[0_15px_40px_rgba(0,0,0,0.04)] hover:-translate-y-1.5 hover:shadow-[0_20px_50px_rgba(0,0,0,0.08)] transition-all duration-300 border border-gray-100 flex flex-col justify-between">
                 <div className="space-y-4">
-                  <h3 
+                  <h3
                     style={{ fontFamily: "'Playfair Display', serif" }}
                     className="text-2xl lg:text-[26px] font-bold text-[#EC7317] font-serif leading-snug"
                   >
@@ -117,7 +117,7 @@ export default function ContentMarketingStrategy() {
               {/* Card 2: Case Studies */}
               <div className="bg-white rounded-2xl p-8 lg:p-10 shadow-[0_15px_40px_rgba(0,0,0,0.04)] hover:-translate-y-1.5 hover:shadow-[0_20px_50px_rgba(0,0,0,0.08)] transition-all duration-300 border border-gray-100 flex flex-col justify-between">
                 <div className="space-y-4">
-                  <h3 
+                  <h3
                     style={{ fontFamily: "'Playfair Display', serif" }}
                     className="text-2xl lg:text-[26px] font-bold text-[#EC7317] font-serif leading-snug"
                   >
@@ -134,7 +134,7 @@ export default function ContentMarketingStrategy() {
               {/* Card 3: Strategic Marketing Content Sydney */}
               <div className="bg-white rounded-2xl p-8 lg:p-10 shadow-[0_15px_40px_rgba(0,0,0,0.04)] hover:-translate-y-1.5 hover:shadow-[0_20px_50px_rgba(0,0,0,0.08)] transition-all duration-300 border border-gray-100 flex flex-col justify-between">
                 <div className="space-y-4">
-                  <h3 
+                  <h3
                     style={{ fontFamily: "'Playfair Display', serif" }}
                     className="text-2xl lg:text-[26px] font-bold text-[#EC7317] font-serif leading-snug"
                   >
@@ -152,7 +152,7 @@ export default function ContentMarketingStrategy() {
               {/* Card 4: Interviews Writing */}
               <div className="bg-white rounded-2xl p-8 lg:p-10 shadow-[0_15px_40px_rgba(0,0,0,0.04)] hover:-translate-y-1.5 hover:shadow-[0_20px_50px_rgba(0,0,0,0.08)] transition-all duration-300 border border-gray-100 flex flex-col justify-between">
                 <div className="space-y-4">
-                  <h3 
+                  <h3
                     style={{ fontFamily: "'Playfair Display', serif" }}
                     className="text-2xl lg:text-[26px] font-bold text-[#EC7317] font-serif leading-snug"
                   >
@@ -168,7 +168,7 @@ export default function ContentMarketingStrategy() {
               {/* Card 5: Press Releases */}
               <div className="bg-white rounded-2xl p-8 lg:p-10 shadow-[0_15px_40px_rgba(0,0,0,0.04)] hover:-translate-y-1.5 hover:shadow-[0_20px_50px_rgba(0,0,0,0.08)] transition-all duration-300 border border-gray-100 flex flex-col justify-between">
                 <div className="space-y-4">
-                  <h3 
+                  <h3
                     style={{ fontFamily: "'Playfair Display', serif" }}
                     className="text-2xl lg:text-[26px] font-bold text-[#EC7317] font-serif leading-snug"
                   >
@@ -183,7 +183,7 @@ export default function ContentMarketingStrategy() {
               {/* Card 6: White Papers */}
               <div className="bg-white rounded-2xl p-8 lg:p-10 shadow-[0_15px_40px_rgba(0,0,0,0.04)] hover:-translate-y-1.5 hover:shadow-[0_20px_50px_rgba(0,0,0,0.08)] transition-all duration-300 border border-gray-100 flex flex-col justify-between">
                 <div className="space-y-4">
-                  <h3 
+                  <h3
                     style={{ fontFamily: "'Playfair Display', serif" }}
                     className="text-2xl lg:text-[26px] font-bold text-[#EC7317] font-serif leading-snug"
                   >

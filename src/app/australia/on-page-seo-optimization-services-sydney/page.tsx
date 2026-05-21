@@ -107,19 +107,19 @@ export default function OnPageSeoSydney() {
 
   return (
     <main className="min-h-screen bg-[#F1F1F1] font-sans pb-16">
-      
+
       {/* Hero Section */}
       <section className="relative py-12 md:py-16 overflow-hidden bg-[#F1F1F1]">
         <div className="absolute inset-0 z-0 bg-[radial-gradient(#000000_1px,transparent_1px)] [background-size:24px_24px] opacity-[0.01]" />
-        
+
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            
+
             {/* Left Column: Image */}
             <div className="lg:col-span-5 flex justify-center">
               <div className="relative w-full aspect-square max-w-[460px]">
                 <Image
-                  src="https://flymediatech.com/australia/wp-content/uploads/2024/03/rocket.png"
+                  src="/uploads/2024/03/rocket.png"
                   alt="On-Page SEO Rocket"
                   fill
                   className="object-contain"
@@ -137,7 +137,7 @@ export default function OnPageSeoSydney() {
               >
                 How On-Page SEO Enhances The Visibility of Your Website
               </h1>
-              
+
               <h2
                 style={{ fontFamily: "'Playfair Display', serif" }}
                 className="text-lg md:text-xl font-bold  font-serif"
@@ -168,14 +168,14 @@ export default function OnPageSeoSydney() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {strategyPoints.map((item, idx) => (
-              <div 
+              <div
                 key={idx}
                 className=" rounded-2xl p-8 border border-gray-300 shadow-[0_10px_30px_rgba(0,0,0,0.01)] hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col space-y-6"
               >
                 <div className="p-4 bg-[#F1F1F1] rounded-full w-fit">
                   {item.icon}
                 </div>
-                <h3 
+                <h3
                   style={{ fontFamily: "'Playfair Display', serif" }}
                   className="text-lg md:text-xl font-bold text-black font-serif"
                 >
@@ -196,7 +196,7 @@ export default function OnPageSeoSydney() {
           <div className=" p-8 md:p-10  space-y-6">
             <p className="text-gray-700 text-[15px] sm:text-base leading-relaxed">
               Hence, these are the best On-page{" "}
-              <Link 
+              <Link
                 href="/australia/search-engine-optimization"
                 className="text-[#EC7317] underline hover:text-black font-semibold transition-colors"
               >
