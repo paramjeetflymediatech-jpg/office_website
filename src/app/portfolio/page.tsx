@@ -88,9 +88,10 @@ export default function PortfolioPage() {
     async function load() {
       const data = await getPortfolioItems();
       
-      const nonAustraliaData = data.filter((item: any) => (item.location || 'australia').toLowerCase() !== 'australia');
+      // Filter explicitly for 'india' location to prevent canada images from showing
+      const indiaData = data.filter((item: any) => (item.location || 'australia').toLowerCase() === 'india');
 
-      const normalizedData = nonAustraliaData.map((item: any) => ({
+      const normalizedData = indiaData.map((item: any) => ({
         ...item,
         category: (item.category || 'General').toLowerCase() === 'general' ? 'General' : item.category
       }));
