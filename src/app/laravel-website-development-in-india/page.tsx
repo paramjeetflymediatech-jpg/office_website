@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import { ShoppingCart, Zap, Smartphone } from "lucide-react";
 import ServicePage from "@/components/ServicePage";
+import ContactFormSection from "@/components/ContactFormSection";
 
 // --- Components ---
 
@@ -147,12 +148,12 @@ const LaravelServicesGridSection = () => {
 
 const LaravelPartnershipSection = () => (
   <div className=" bg-[#F1F1F1]">
-    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="bg-white rounded-lg shadow-sm border border-gray-200/60 p-8 md:p-14 space-y-8">
         <h2 className="text-3xl md:text-[38px] font-serif font-bold text-black leading-tight text-center">
           Advantages of partnering with Flymedia Technology to grow your business
         </h2>
-        <div className="text-gray-600 text-center space-y-6 text-sm md:text-[15px] leading-relaxed max-w-4xl mx-auto font-medium">
+        <div className="text-gray-600 text-center space-y-6 text-sm md:text-[15px] leading-relaxed max-w-7xl mx-auto font-medium">
           <p>
             Our highly intellectual team ensures that your business can witness rapid growth by comprehensively opting for a PHP-based framework for website development. Our process of developing websites for your business’s purposes includes a CMS Content Management System) that allows your business to achieve effective and precise results in terms of maximum visibility and better user experience.
           </p>
@@ -195,6 +196,7 @@ export default function LaravelDevelopment() {
         <LaravelServicesGridSection />
         <LaravelPartnershipSection />
       </div>
+      <ContactFormSection />
     </ServicePage>
   );
 }

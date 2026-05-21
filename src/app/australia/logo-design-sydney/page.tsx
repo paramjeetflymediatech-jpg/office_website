@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Check, X, Shield, Star, Zap, Award, CheckCircle, HelpCircle } from "lucide-react";
+import ContactFormSection from "@/components/ContactFormSection";
 
 export default function LogoDesignSydney() {
   const plans = ["Basic", "Startup", "Professional"];
@@ -20,7 +21,7 @@ export default function LogoDesignSydney() {
   ];
 
   return (
-    <main className="min-h-screen bg-[#F5F5F7] font-sans pb-16">
+    <main className="min-h-screen bg-[#F5F5F7] font-sans ">
       {/* 2. Headline & Pricing Table */}
       <section id="pricing-table" className="py-20 bg-[#F1F1F1]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-12">
@@ -100,7 +101,7 @@ export default function LogoDesignSydney() {
           </div>
         </div>
       </section>
-
+<ContactFormSection />
 
     </main>
   );

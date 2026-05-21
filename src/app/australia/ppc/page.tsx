@@ -4,6 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowLeft, Sparkles, Trophy, HelpCircle, PhoneCall } from "lucide-react";
+import ContactFormSection from "@/components/ContactFormSection";
 
 export default function AustraliaPPCAndSEOPackages() {
   const plans = ["Starter", "Bronze", "Silver", "Gold"];
@@ -349,6 +350,8 @@ export default function AustraliaPPCAndSEOPackages() {
           </div>
         </div>
       </section> */}
+      <ContactFormSection />
+
     </main>
   );
 }

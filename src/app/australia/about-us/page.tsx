@@ -274,7 +274,7 @@ export default function AustraliaAboutUs() {
       </section>
 
       {/* 3. Global Leadership section (Mr. Bala) */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8">
+      {/* <section className="py-24 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className="relative order-2 lg:order-1">
             <div className="absolute bg-[#ff9900] -z-10" />
@@ -304,7 +304,7 @@ export default function AustraliaAboutUs() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* 4. Brand Success & Services Section */}
       <section className="py-24 px-4 overflow-hidden bg-[#F3F3F3]">
