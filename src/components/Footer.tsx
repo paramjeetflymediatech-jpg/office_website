@@ -184,7 +184,7 @@ export default function Footer() {
           {/* Quick Links */}
           <div className="lg:col-span-3">
             <h4 className="text-xl font-bold uppercase tracking-tight mb-8 border-l-4 border-[#ff9900] pl-4 leading-none">Quick Links</h4>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3.5 text-[12.4px] text-white font-medium">
+            <div className={`grid grid-cols-1 ${isAustralia || isCanada ? '' : 'md:grid-cols-2'} gap-x-8 gap-y-3.5 text-[12.4px] text-white font-medium`}>
               {quickLinks.map((link, i) => (
                 <Link key={i} href={link.href} className="transition-colors hover:text-[#ff9900]">
                   {link.name}

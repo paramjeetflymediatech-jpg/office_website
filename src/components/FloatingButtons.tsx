@@ -10,12 +10,23 @@ export default function FloatingButtons() {
 
   if (isAdminOrLogin) return null;
 
+  let callNumber = "+919888484310";
+  // let whatsappNumber = "919888484310";
+
+  if (pathname?.startsWith("/canada")) {
+    callNumber = "+12368855725";
+    // whatsappNumber = "12368855725";
+  } else if (pathname?.startsWith("/australia")) {
+    callNumber = "+61434500077";
+    // whatsappNumber = "61434500077";
+  }
+
   return (
     <>
       {/* Floating Call Button */}
       <div className="fixed bottom-10 right-10 z-50">
         <Link
-          href="tel:+919888484310"
+          href={`tel:${callNumber}`}
           className="w-16 h-16 bg-[#ffcc33] rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform animate-bounce"
         >
           <svg viewBox="0 0 24 24" className="w-8 h-8 text-white fill-current">
