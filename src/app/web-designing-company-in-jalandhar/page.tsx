@@ -2,6 +2,8 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import ContactFormSection from "@/components/ContactFormSection";
+
 
 export default function WebDesigningJalandhar() {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
@@ -144,16 +146,16 @@ export default function WebDesigningJalandhar() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#EFEFEF] text-black overflow-hidden font-sans pb-16">
-      
+    <div className="min-h-screen bg-[#EFEFEF] text-black overflow-hidden font-sans ">
+
       {/* 1. Hero Section */}
       <section className="relative py-12 md:py-16 bg-[#EFEFEF]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            
+
             {/* Left Column (Text & Verbatim Content) - Order last on mobile, first on desktop */}
             <div className="lg:col-span-7 space-y-6 order-last lg:order-first">
-              
+
               <div className="space-y-4">
                 <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif font-extrabold tracking-tight text-gray-900 leading-[1.15]">
                   Best Web Designing Company <br className="hidden md:inline" /> in Jalandhar
@@ -228,7 +230,7 @@ export default function WebDesigningJalandhar() {
             {/* Right Column (Hero Graphic) - Order first on mobile, last on desktop */}
             <div className="lg:col-span-5 relative order-first lg:order-last flex justify-center">
               <img
-                src="https://flymediatech.com/wp-content/uploads/2024/03/mobi-1024x853.png"
+                src="/uploads/2024/03/mobi-1024x853.png"
                 alt="Mobile Apps Development Company In Ludhiana, Punjab"
                 width={800}
                 height={666}
@@ -258,7 +260,7 @@ export default function WebDesigningJalandhar() {
           <h2 className="text-2xl sm:text-3xl font-serif font-extrabold text-gray-900 leading-tight">
             Fully Optimized Website Design: Helps your business shine away
           </h2>
-          
+
           <div className="text-gray-800 text-sm sm:text-base leading-relaxed space-y-4">
             <p>
               For every business, it’s about being on the top of search engines. And for that, the linchpin needs to be stalwart so that your other competitors don’t surpass you easily. With the expertise of Flymedia Technology <strong>Website Designing in Jalandhar,</strong> the focus is not just on creating a simple design, but it requires several steps like:
@@ -287,7 +289,7 @@ export default function WebDesigningJalandhar() {
           <h2 className="text-2xl sm:text-3xl font-serif font-extrabold text-gray-900 leading-tight">
             Online Business Website: Gateway to increase business presence
           </h2>
-          
+
           <div className="space-y-4 text-gray-800 text-sm sm:text-base leading-relaxed">
             <p>
               The highly competitive world allows each one of us to be on our toes all the time. For a layman to understand and practice the online marketing world is not like a five-finger exercise (routine task).
@@ -302,7 +304,7 @@ export default function WebDesigningJalandhar() {
       {/* 5. Workflow / Create an Outstanding Design Process Section */}
       <section className="relative py-12 md:py-16 bg-[#EFEFEF]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-          
+
           <div className="space-y-3">
             <h2 className="text-2xl sm:text-3xl font-serif font-extrabold text-gray-900 leading-tight">
               Flymedia Technology: Workflow of Website designing team in Jalandhar
@@ -311,7 +313,7 @@ export default function WebDesigningJalandhar() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 ">
             {workflowSteps.map((step, idx) => (
-              <div 
+              <div
                 key={idx}
                 className="bg-[#414141] p-6 rounded-2xl relative pt-12 space-y-3 shadow-sm border-b-2 border-[#ff9900] "
               >
@@ -319,7 +321,7 @@ export default function WebDesigningJalandhar() {
                 <div className="absolute top-0 left-6 -translate-y-1/2 w-12 h-12 rounded-full bg-[#F06C1E] text-white font-extrabold flex items-center justify-center text-lg shadow-md">
                   {step.num}
                 </div>
-                
+
                 <h3 className="text-lg font-extrabold font-sans text-gray-200">
                   {step.title}
                 </h3>
@@ -336,7 +338,7 @@ export default function WebDesigningJalandhar() {
       {/* 6. Why Choose Us Section */}
       <section className="relative py-12 md:py-16 bg-[#EFEFEF] ">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-          
+
           <div className="space-y-4">
             <h2 className="text-2xl sm:text-3xl font-serif font-extrabold text-gray-900 leading-tight">
               Choose our Website Designing Company: Time To Turn Dreams Into Reality
@@ -348,7 +350,7 @@ export default function WebDesigningJalandhar() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {whyChooseUs.map((reason, idx) => (
-              <div 
+              <div
                 key={idx}
                 className="bg-[#EFEFEF]/60 p-6 rounded-2xl space-y-4 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col items-center"
               >
@@ -372,11 +374,11 @@ export default function WebDesigningJalandhar() {
       <section className="relative py-12 md:py-16 bg-[#EFEFEF]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            
+
             {/* Left Column (Grow Image) - Natural top ordering on mobile */}
             <div className="lg:col-span-5 flex justify-center order-first lg:order-first">
               <img
-                src="/bgimg.png"
+                src="/growcopy.png"
                 alt="Best Website Design & Development Company in Jalandhar"
                 width={1000}
                 height={600}
@@ -408,7 +410,7 @@ export default function WebDesigningJalandhar() {
       {/* 8. FAQs Section */}
       <section className="relative py-12 md:py-16 bg-[#EFEFEF]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
-          
+
           <div className="text-center">
             <h2 className="text-3xl md:text-4xl font-serif text-gray-900 tracking-wide">
               FAQs
@@ -445,6 +447,7 @@ export default function WebDesigningJalandhar() {
           </div>
         </div>
       </section>
+      <ContactFormSection />
 
       {/* Dynamic FAQ Schema */}
       <script

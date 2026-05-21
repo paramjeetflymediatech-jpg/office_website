@@ -17,50 +17,50 @@ export default function Top10MovingCompaniesCalgaryPage() {
 
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-          
+
           {/* Sidebar Form - 4 columns on desktop (Left Side) */}
           <div className="lg:col-span-4 order-1">
             <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 lg:sticky top-32">
               <h2 className="text-2xl font-bold text-black mb-6">Contact Us</h2>
-              
+
               <form className="space-y-4">
                 <div className="space-y-4">
                   <div>
-                    <input 
-                      type="text" 
-                      placeholder="Enter your name" 
+                    <input
+                      type="text"
+                      placeholder="Enter your name"
                       className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ff9900]/50 focus:border-[#ff9900] transition-all"
                       required
                     />
                   </div>
                   <div>
-                    <input 
-                      type="email" 
-                      placeholder="Enter your email" 
+                    <input
+                      type="email"
+                      placeholder="Enter your email"
                       className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ff9900]/50 focus:border-[#ff9900] transition-all"
                       required
                     />
                   </div>
                   <div>
-                    <input 
-                      type="tel" 
-                      placeholder="Enter your phone number" 
+                    <input
+                      type="tel"
+                      placeholder="Enter your phone number"
                       className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ff9900]/50 focus:border-[#ff9900] transition-all"
                       required
                     />
                   </div>
                   <div>
-                    <textarea 
-                      placeholder="Type your message here..." 
+                    <textarea
+                      placeholder="Type your message here..."
                       rows={5}
                       className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ff9900]/50 focus:border-[#ff9900] transition-all resize-none"
                       required
                     ></textarea>
                   </div>
                 </div>
-                
-                <button 
-                  type="submit" 
+
+                <button
+                  type="submit"
                   className="w-full bg-[#ff9900] text-black font-bold py-4 rounded-lg hover:bg-black hover:text-white transition-colors uppercase tracking-wide mt-2"
                 >
                   Submit
@@ -74,14 +74,14 @@ export default function Top10MovingCompaniesCalgaryPage() {
             <article className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
               {/* Featured Image */}
               <div className="w-full h-auto">
-                <img 
-                  loading="lazy" 
-                  width="1500" 
-                  height="1000" 
-                  src="https://flymediatech.com/wp-content/uploads/2026/05/2293.jpg" 
-                  className="w-full h-auto object-cover" 
+                <img
+                  loading="lazy"
+                  width="1500"
+                  height="1000"
+                  src="/uploads/2026/05/2293.jpg"
+                  className="w-full h-auto object-cover"
                   alt="Movers packing boxes for a move in Calgary, showcasing professional packing services."
-                  srcSet="https://flymediatech.com/wp-content/uploads/2026/05/2293.jpg 1500w, https://flymediatech.com/wp-content/uploads/2026/05/2293-300x200.jpg 300w, https://flymediatech.com/wp-content/uploads/2026/05/2293-1024x683.jpg 1024w, https://flymediatech.com/wp-content/uploads/2026/05/2293-768x512.jpg 768w"
+                  srcSet="/uploads/2026/05/2293.jpg 1500w, /uploads/2026/05/2293-300x200.jpg 300w, /uploads/2026/05/2293-1024x683.jpg 1024w, /uploads/2026/05/2293-768x512.jpg 768w"
                   sizes="(max-width: 1500px) 100vw, 1500px"
                 />
               </div>

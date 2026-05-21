@@ -128,7 +128,7 @@ export const MEGA_MENU_DATA = {
       { name: "NABH Consultants", href: "/nabh-consultants", icon: "/dropdown-icons/r10.webp" },
       { name: "Orthopedic Hospital", href: "/orthopedic-online-marketing", icon: "/dropdown-icons/r11-1.webp" },
       { name: "Facelift Surgeons", href: "/digital-marketing-for-facelift-surgeons", icon: "/dropdown-icons/r02.webp" },
-      { name: "ENT Hospital", href: "/ent-hospital-digital-marketing", icon: "/dropdown-icons/r01.webp" }
+      { name: "ENT Hospital", href: "/ent-online-marketing", icon: "/dropdown-icons/r01.webp" }
     ]
   }
 };

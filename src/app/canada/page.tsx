@@ -270,7 +270,7 @@ export default function CanadaLandingPage() {
             <div className="elementor-element elementor-element-b993a0e anujimg elementor-widget elementor-widget-image relative w-full aspect-square overflow-hidden  group " data-id="b993a0e" data-widget_type="image.default">
               <div className="elementor-widget-container w-full h-full">
                 <Image
-                  src="https://flymediatech.com/wp-content/uploads/2024/09/Anujgupta.webp"
+                  src="/uploads/2024/09/Anujgupta.webp"
                   alt="Website owner at Flymedia Technology, digital marketing expert, SEO strategist, technology professional Dr Anuj Gupta."
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
@@ -311,7 +311,7 @@ export default function CanadaLandingPage() {
             >
               <div className="elementor-widget-container w-full h-full">
                 <Image
-                  src="https://flymediatech.com/wp-content/uploads/2024/09/newimg.png"
+                  src="/uploads/2024/09/newimg.png"
                   alt="Innovative digital marketing consultant at Flymedia Technology, Parth Katyal."
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
@@ -398,35 +398,35 @@ export default function CanadaLandingPage() {
             {[
               {
                 id: "a5c0997",
-                bg: "https://flymediatech.com/wp-content/uploads/2024/09/i01.jpg",
+                bg: "/uploads/2024/09/i01.jpg",
                 icon: <UserCheck size={32} className="text-[#ff9900]" />,
                 title: "Digital Consultancy",
                 desc: "At FlyMedia Technology, we work in collaboration with the client. We know and understand that digital marketing terminology can be difficult to understand. However, we provide our consultations so the client thoroughly understands the various marketing strategies employed in the space."
               },
               {
                 id: "166a7dc",
-                bg: "https://flymediatech.com/wp-content/uploads/2024/09/img02.jpg",
+                bg: "/uploads/2024/09/img02.jpg",
                 icon: <Monitor size={32} className="text-[#ff9900]" />,
                 title: "Pay Per Click Advertising",
                 desc: "In order to make certain that your advertisements are seen and viewed by as many people as possible, we employ Pay Per Click Advertising. This helps to increase your ROI by explicitly targeting customers who are aligned with the products or services offered by your business."
               },
               {
                 id: "5a48305",
-                bg: "https://flymediatech.com/wp-content/uploads/2024/09/img04.jpg",
+                bg: "/uploads/2024/09/img04.jpg",
                 icon: <FileCode size={32} className="text-[#ff9900]" />,
                 title: "Content Marketing",
                 desc: "It is important to have a coherent and unified content marketing strategy. Our experts at FlyMedia Technology can help you navigate through the various plans that will work in your favour."
               },
               {
                 id: "719e718",
-                bg: "https://flymediatech.com/wp-content/uploads/2024/09/img06.jpg",
+                bg: "/uploads/2024/09/img06.jpg",
                 icon: <Share2 size={32} className="text-[#ff9900]" />,
                 title: "Social Media Marketing",
                 desc: "The exponential rise of the Internet and social media has led to the expansion of digital marketing space. With FlyMedia Technology, you are assured of receiving the best possible Social Media Marketing strategies."
               },
               {
                 id: "d108ac7",
-                bg: "https://flymediatech.com/wp-content/uploads/2024/09/IIMG01.jpg",
+                bg: "/uploads/2024/09/IIMG01.jpg",
                 icon: <Boxes size={32} className="text-[#ff9900]" />,
                 title: "Mobile App Marketing",
                 desc: "It is perhaps one of the most vital ways FlyMedia Technology ensures that your website is reachable and visible to your target audience. Search Engine Optimization expands the scope of your website to reach the consumers who are already in need of your products and services."
@@ -532,7 +532,7 @@ export default function CanadaLandingPage() {
             >
               <div className="elementor-widget-container w-full h-full">
                 <Image
-                  src="https://flymediatech.com/wp-content/uploads/2024/05/fodsjfosd.jpg"
+                  src="/uploads/2024/05/fodsjfosd.jpg"
                   alt="Beautiful Canada Flag illustration highlighting Flymedia digital marketing Surrey presence."
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
@@ -577,42 +577,42 @@ export default function CanadaLandingPage() {
             {[
               {
                 id: "cf049c4",
-                bg: "https://flymediatech.com/wp-content/uploads/2024/09/i01.jpg",
+                bg: "/uploads/2024/09/i01.jpg",
                 icon: <Target size={28} className="text-[#ff9900]" />,
                 title: "Experience",
                 desc: "With our 13 years of operational experience, you will receive quality content strategies and the best pragmatic strategies in the digital marketing space."
               },
               {
                 id: "e1538f6",
-                bg: "https://flymediatech.com/wp-content/uploads/2024/09/img02.jpg",
+                bg: "/uploads/2024/09/img02.jpg",
                 icon: <Monitor size={28} className="text-[#ff9900]" />,
                 title: "Customized Plans",
                 desc: "We know that every client and every business has their unique needs and requirements. Therefore, we make certain to provide customized plans that are specifically tailored to address and meet your digital marketing goals."
               },
               {
                 id: "246215a",
-                bg: "https://flymediatech.com/wp-content/uploads/2024/09/img04.jpg",
+                bg: "/uploads/2024/09/img04.jpg",
                 icon: <PenTool size={28} className="text-[#ff9900]" />,
                 title: "Expertise",
                 desc: "At FlyMedia Technology, we have experts who can provide solutions for all your digital marketing needs and demands. From Canva experts to certified website developers – we are a one-stop shop for all your requirements."
               },
               {
                 id: "1cca92d",
-                bg: "https://flymediatech.com/wp-content/uploads/2024/09/img06.jpg",
+                bg: "/uploads/2024/09/img06.jpg",
                 icon: <Briefcase size={28} className="text-[#ff9900]" />,
                 title: "Dedicated Team",
                 desc: "Our team is comprised of dedicated employees who work to realize your visions into a tangible, viewable product. Our employees are at the top of their field and can provide solutions to any and all issues."
               },
               {
                 id: "5f1333f",
-                bg: "https://flymediatech.com/wp-content/uploads/2024/09/IIMG01.jpg",
+                bg: "/uploads/2024/09/IIMG01.jpg",
                 icon: <TrendingUp size={28} className="text-[#ff9900]" />,
                 title: "Continuous Improvement",
                 desc: "At FlyMedia Technology, we truly understand how quickly the digital marketing space moves ahead. We always strive to upgrade ourselves with the latest advances made in the digital marketing space."
               },
               {
                 id: "0f70ca5",
-                bg: "https://flymediatech.com/wp-content/uploads/2024/09/im08.jpg",
+                bg: "/uploads/2024/09/im08.jpg",
                 icon: <Users size={28} className="text-[#ff9900]" />,
                 title: "Client Satisfaction",
                 desc: "Your satisfaction is the key ethos to our functioning as a company. We always strive to make certain that your visions for your website and the digital marketing strategy are realized."
@@ -691,7 +691,7 @@ export default function CanadaLandingPage() {
               >
                 <div className="elementor-widget-container w-full h-full">
                   <Image
-                    src="https://flymediatech.com/wp-content/uploads/2024/05/fdlsknfdksl.jpg"
+                    src="/uploads/2024/05/fdlsknfdksl.jpg"
                     alt="Scenic Canada City skyline representing Flymedia digital agency presence."
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
@@ -793,7 +793,7 @@ export default function CanadaLandingPage() {
               >
                 <div className="elementor-widget-container w-full h-full">
                   <Image
-                    src="https://flymediatech.com/wp-content/uploads/2024/05/fkjsdhfsd.png"
+                    src="/uploads/2024/05/fkjsdhfsd.png"
                     alt="Corporate illustrations showing business empire growth under Flymedia guidance."
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"

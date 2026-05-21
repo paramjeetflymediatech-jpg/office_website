@@ -49,9 +49,9 @@ async function syncAll() {
                                 if (mediaRes.ok) {
                                     const mediaData = await mediaRes.json();
                                     const sourceUrl = mediaData?.media_details?.sizes?.full?.source_url || mediaData?.source_url;
-                                    
+
                                     if (sourceUrl) {
-                                        const localUrl = sourceUrl.replace('https://flymediatech.com/wp-content/uploads/', '/uploads/');
+                                        const localUrl = sourceUrl.replace('/uploads/', '/uploads/');
                                         await blog.update({ image: localUrl });
                                         totalUpdated++;
                                         console.log(`Updated: ${wpPost.slug}`);
@@ -76,7 +76,7 @@ async function syncAll() {
         }
 
         console.log(`Sync completed. Total updated: ${totalUpdated}`);
-        
+
         // Final step: Create a merged JSON file for future use
         const allBlogs = await Blog.findAll();
         const fs = require('fs');
@@ -89,7 +89,7 @@ async function syncAll() {
         }));
         fs.writeFileSync(path.join(__dirname, 'blog_data', 'blog_with_images.json'), JSON.stringify(mergedData, null, 2));
         console.log('Saved updated blog data to blog_data/blog_with_images.json');
-        
+
         process.exit(0);
     } catch (error) {
         console.error('Sync error:', error);

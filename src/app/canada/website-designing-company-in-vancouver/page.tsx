@@ -127,7 +127,7 @@ export default function WebDesignVancouverPage() {
             <div className="lg:col-span-6 flex justify-center order-1 lg:order-2">
               <div className="relative w-full aspect-[5/3] max-w-[560px] transform hover:scale-102 transition-transform duration-500 ease-out overflow-hidden ">
                 <Image
-                  src="https://flymediatech.com/wp-content/uploads/2026/05/webs-dei-6.png"
+                  src="/uploads/2026/05/webs-dei-6.png"
                   alt="Modern web design and development services in Vancouver by Flymedia Technology."
                   fill
                   className="object-cover"
@@ -225,7 +225,7 @@ export default function WebDesignVancouverPage() {
       <section className="py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-6 space-y-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            
+
             {/* Left Header Info */}
             <div className="lg:col-span-7 space-y-4 text-left order-2 lg:order-1">
               <h2
@@ -243,7 +243,7 @@ export default function WebDesignVancouverPage() {
             <div className="lg:col-span-5 flex justify-center order-1 lg:order-2">
               <div className="relative w-full aspect-[5/3] max-w-[480px] transform hover:scale-102 transition-transform duration-500 ease-out overflow-hidden ">
                 <Image
-                  src="https://flymediatech.com/wp-content/uploads/2024/04/grow.png"
+                  src="/uploads/2024/04/grow.png"
                   alt="Best Website Design & Development Company in Jalandhar"
                   fill
                   className="object-cover"
@@ -313,7 +313,7 @@ export default function WebDesignVancouverPage() {
             <div className="lg:col-span-6 flex justify-center order-1 lg:order-2">
               <div className="relative w-full aspect-[5/3] max-w-[560px] transform hover:scale-102 transition-transform duration-500 ease-out overflow-hidden">
                 <Image
-                  src="https://flymediatech.com/wp-content/uploads/2026/05/webs-dei-7.png"
+                  src="/uploads/2026/05/webs-dei-7.png"
                   alt="Illustration of mobile app development with rocket, coins, and tech icons in Vancouver."
                   fill
                   className="object-cover"

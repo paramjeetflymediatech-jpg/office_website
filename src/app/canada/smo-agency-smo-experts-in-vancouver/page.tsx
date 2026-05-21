@@ -101,7 +101,7 @@ export default function SMOVancouverPage() {
             <div className="lg:col-span-6 flex justify-center order-1 lg:order-2">
               <div className="relative w-full aspect-[5/3] max-w-[560px] transform hover:scale-102 transition-transform duration-500 ease-out overflow-hidden">
                 <Image
-                  src="https://flymediatech.com/wp-content/uploads/2026/05/webs-dei-4.png"
+                  src="/uploads/2026/05/webs-dei-4.png"
                   alt="SMO Agency in Vancouver offering expert social media optimization services to boost your online presence."
                   fill
                   className="object-cover"
@@ -206,7 +206,7 @@ export default function SMOVancouverPage() {
             <div className="lg:col-span-6 flex justify-center order-1 lg:order-1">
               <div className="relative w-full aspect-[5/3] max-w-[560px] transform hover:scale-102 transition-transform duration-500 ease-out overflow-hidden ">
                 <Image
-                  src="https://flymediatech.com/wp-content/uploads/2026/05/webs-dei-5.png"
+                  src="/uploads/2026/05/webs-dei-5.png"
                   alt="Digital marketing team managing social media optimization in Vancouver."
                   fill
                   className="object-cover"

@@ -13,7 +13,7 @@ async function syncByLocalList() {
     }, { timestamps: false });
 
     console.log("Starting targeted sync for missing images...");
-    
+
     // Find all blogs that still have the default image
     const blogsToUpdate = await Blog.findAll({
         where: {
@@ -28,13 +28,13 @@ async function syncByLocalList() {
 
     for (let i = 0; i < blogsToUpdate.length; i += CONCURRENCY) {
         const batch = blogsToUpdate.slice(i, i + CONCURRENCY);
-        
+
         await Promise.all(batch.map(async (blog) => {
             try {
                 // Search for this post by slug on WordPress
                 const res = await fetch(`https://flymediatech.com/wp-json/wp/v2/posts?slug=${blog.slug}`);
                 if (!res.ok) return;
-                
+
                 const posts = await res.json();
                 if (posts.length === 0) {
                     console.log(`[-] NOT FOUND on WordPress: ${blog.slug}`);
@@ -55,7 +55,7 @@ async function syncByLocalList() {
                 const sourceUrl = mediaData?.media_details?.sizes?.full?.source_url || mediaData?.source_url;
 
                 if (sourceUrl) {
-                    const localUrl = sourceUrl.replace('https://flymediatech.com/wp-content/uploads/', '/uploads/');
+                    const localUrl = sourceUrl.replace('/uploads/', '/uploads/');
                     await blog.update({ image: localUrl });
                     updated++;
                     console.log(`SUCCESS: [${updated}] Updated ${blog.slug}`);

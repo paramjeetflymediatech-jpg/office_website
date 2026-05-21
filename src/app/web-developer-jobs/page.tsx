@@ -130,7 +130,7 @@ export default function WebDeveloperJobsPage() {
             <div className="absolute inset-0 bg-[#ff9900]/5 rounded-3xl blur-2xl"></div>
             <div className="relative rounded-3xl p-4 overflow-hidden">
               <img
-                src="https://flymediatech.com/wp-content/uploads/2024/04/webs-dei.png"
+                src="/uploads/2024/04/webs-dei.png"
                 alt="Best Website Design & Development Company"
                 width={1000}
                 height={600}
@@ -151,7 +151,7 @@ export default function WebDeveloperJobsPage() {
             <div className="absolute inset-0 bg-[#ff9900]/5 rounded-3xl blur-2xl"></div>
             <div className="relative rounded-3xl overflow-hidden p-2">
               <img
-                src="/bgimg.png"
+                src="/growcopy.png"
                 alt="Best Website Design & Development Company in Jalandhar"
                 width={1000}
                 height={600}
@@ -201,7 +201,7 @@ export default function WebDeveloperJobsPage() {
       </section>
 
       {/* 3. Duties Section */}
-      <section 
+      <section
         className="relative w-full py-20 md:py-24 overflow-hidden bg-cover bg-center bg-no-repeat bg-fixed"
         style={{ backgroundImage: "url('/bgimg.png')" }}
       >
@@ -211,7 +211,7 @@ export default function WebDeveloperJobsPage() {
         {/* Content Container */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto space-y-10">
-            
+
             {/* Header */}
             <div className="space-y-4 text-center">
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-extrabold tracking-tight text-white leading-tight">
@@ -290,7 +290,7 @@ export default function WebDeveloperJobsPage() {
                     </h4>
                   </div>
                   <p className="text-gray-700 text-sm sm:text-base leading-relaxed pl-4 font-medium">
-                     {quality.desc}
+                    {quality.desc}
                   </p>
                 </li>
               ))}
@@ -343,7 +343,7 @@ export default function WebDeveloperJobsPage() {
               <div className="absolute inset-0 bg-[#ff9900]/5 rounded-2xl blur-2xl"></div>
               <div className="relative rounded-2xl overflow-hidden">
                 <img
-                  src="https://flymediatech.com/wp-content/uploads/2024/03/entr.jpg"
+                  src="/uploads/2024/03/entr.jpg"
                   alt="ENT Hospital Digital Marketing Agency in Ludhiana, Punjab, India"
                   width={800}
                   height={500}

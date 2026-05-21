@@ -131,7 +131,7 @@ export default function AISeoVancouverPage() {
             <div className="lg:col-span-6 flex justify-center order-1 lg:order-2">
               <div className="relative w-full aspect-[5/3] max-w-[560px] transform hover:scale-102 transition-transform duration-500 ease-out overflow-hidden ">
                 <Image
-                  src="https://flymediatech.com/wp-content/uploads/2026/05/webs-dei-11.png"
+                  src="/uploads/2026/05/webs-dei-11.png"
                   alt="AI SEO Agency in Vancouver for digital marketing success. Boost your online presence with expert SEO."
                   fill
                   className="object-cover"
@@ -234,7 +234,7 @@ export default function AISeoVancouverPage() {
             <div className="lg:col-span-6 flex justify-center order-1 lg:order-1">
               <div className="relative w-full aspect-[3/2] max-w-[560px] transform hover:scale-102 transition-transform duration-500 ease-out overflow-hidden">
                 <Image
-                  src="https://flymediatech.com/wp-content/uploads/2026/05/online-digital-marketing-illustration-concept.png"
+                  src="/uploads/2026/05/online-digital-marketing-illustration-concept.png"
                   alt="AI SEO Agency Vancouver for innovative digital marketing solutions."
                   fill
                   className="object-cover"

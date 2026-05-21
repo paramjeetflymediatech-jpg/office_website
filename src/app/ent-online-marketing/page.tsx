@@ -33,7 +33,7 @@ export default function ENTHospitalDigitalMarketing() {
             {/* Right: Image */}
             <div className="relative order-1 lg:order-2">
               <Image
-                src="/ent-hospital-digital-marketing/01.png"
+                src="/ent-online-marketing/01.png"
                 alt="ENT Hospital Digital Marketing Agency (SEO & SMO) in Ludhiana, Punjab, India"
                 width={1000}
                 height={1000}
@@ -54,7 +54,7 @@ export default function ENTHospitalDigitalMarketing() {
             {/* Left: Image */}
             <div className="relative order-1 lg:order-1">
               <Image
-                src="/ent-hospital-digital-marketing/02.png"
+                src="/ent-online-marketing/02.png"
                 alt="ENT Hospital Digital Marketing Agency (SEO & SMO) in Ludhiana, Punjab, India"
                 width={1000}
                 height={1000}
@@ -82,7 +82,7 @@ export default function ENTHospitalDigitalMarketing() {
       </section>
 
       {/* SEO Section */}
-      <section 
+      <section
         className="py-24 relative overflow-hidden bg-cover bg-center bg-fixed flex items-center justify-center border-y border-gray-900"
         style={{
           backgroundImage: "linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('/bgimg.png')",
@@ -108,7 +108,7 @@ export default function ENTHospitalDigitalMarketing() {
               <div className="flex flex-col items-center text-center p-4 hover:scale-105 transition-transform duration-300">
                 <div className="mb-4">
                   <Image
-                    src="/ent-hospital-digital-marketing/icn01.png"
+                    src="/ent-online-marketing/icn01.png"
                     alt="ENT Hospital Digital Marketing Agency in Ludhiana, Punjab, India"
                     width={80}
                     height={80}
@@ -124,7 +124,7 @@ export default function ENTHospitalDigitalMarketing() {
               <div className="flex flex-col items-center text-center p-4 hover:scale-105 transition-transform duration-300">
                 <div className="mb-4">
                   <Image
-                    src="/ent-hospital-digital-marketing/icn02.png"
+                    src="/ent-online-marketing/icn02.png"
                     alt="ENT Hospital Digital Marketing Agency (SEO & SMO) in India"
                     width={80}
                     height={80}
@@ -140,7 +140,7 @@ export default function ENTHospitalDigitalMarketing() {
               <div className="flex flex-col items-center text-center p-4 hover:scale-105 transition-transform duration-300">
                 <div className="mb-4">
                   <Image
-                    src="/ent-hospital-digital-marketing/icn03.png"
+                    src="/ent-online-marketing/icn03.png"
                     alt="ENT Hospital Digital Marketing Agency (SEO & SMO) in Punjab"
                     width={80}
                     height={80}
@@ -156,7 +156,7 @@ export default function ENTHospitalDigitalMarketing() {
               <div className="flex flex-col items-center text-center p-4 hover:scale-105 transition-transform duration-300">
                 <div className="mb-4">
                   <Image
-                    src="/ent-hospital-digital-marketing/Untitled-3.png"
+                    src="/ent-online-marketing/Untitled-3.png"
                     alt="ENT Hospital Digital Marketing Agency (SEO & SMO) in Ludhiana"
                     width={80}
                     height={80}
@@ -181,7 +181,7 @@ export default function ENTHospitalDigitalMarketing() {
             {/* Left: Image */}
             <div className="relative order-1 lg:order-1">
               <Image
-                src="/ent-hospital-digital-marketing/webs-dei.png"
+                src="/ent-online-marketing/webs-dei.png"
                 alt="Best Website Design & Development Company in Chandigarh"
                 width={1000}
                 height={600}
@@ -240,7 +240,7 @@ export default function ENTHospitalDigitalMarketing() {
             {/* Right: Image */}
             <div className="relative order-1 lg:order-2">
               <Image
-                src="/ent-hospital-digital-marketing/content-1.png"
+                src="/ent-online-marketing/content-1.png"
                 alt="ENT Hospital Digital Marketing Agency in Ludhiana, Punjab, India"
                 width={1024}
                 height={800}

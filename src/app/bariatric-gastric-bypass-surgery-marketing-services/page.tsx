@@ -3,10 +3,10 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { 
-  Activity, 
-  Users, 
-  TrendingUp, 
+import {
+  Activity,
+  Users,
+  TrendingUp,
   ShieldCheck,
   PhoneCall,
   ArrowRight,
@@ -30,17 +30,17 @@ const GastricHeroSection = () => (
 
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <div className="flex flex-col lg:flex-row items-center gap-16">
-        
+
         {/* Image Column: Loaded FIRST in mobile stack for "image first after that content" */}
         <div className="w-full lg:w-1/2 order-1 lg:order-2">
           {/* Main dimensional visual container */}
           <div className="relative w-full aspect-square max-w-md mx-auto">
             {/* Base Layer Image (Main Doctor/Analytics Illustration) */}
             <div className="relative w-full h-full overflow-hidden z-20">
-              <Image 
-                src="/Untitled-1.png" 
-                alt="Bariatric Bypass Surgery Marketing Services" 
-                fill 
+              <Image
+                src="/Untitled-1.png"
+                alt="Bariatric Bypass Surgery Marketing Services"
+                fill
                 className="object-cover"
                 priority
               />
@@ -79,17 +79,17 @@ const GastricDifficultySection = () => (
   <div className="bg-[#F1F1F1] py-16 lg:py-24 relative overflow-hidden border-t border-gray-100">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <div className="flex flex-col lg:flex-row items-center gap-16">
-        
+
         {/* Left Column (Image Stack): Loaded FIRST in mobile stack for "image first after that content" */}
         <div className="w-full lg:w-1/2 order-1 lg:order-1">
           {/* Main dimensional visual container */}
           <div className="relative w-full aspect-square max-w-md mx-auto">
             {/* Base Image: main-man.png */}
             <div className="relative w-full h-full overflow-hidden z-20">
-              <Image 
-                src="/main-man.png" 
-                alt="Bariatric Surgery Strategy Difficulty" 
-                fill 
+              <Image
+                src="/main-man.png"
+                alt="Bariatric Surgery Strategy Difficulty"
+                fill
                 className="object-cover"
               />
             </div>
@@ -133,13 +133,13 @@ const GastricVideoSection = () => (
   <div className="relative py-20 overflow-hidden bg-black text-white">
     {/* Background Video Element */}
     <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
-      <video 
-        className="w-full h-full object-cover opacity-40 pointer-events-none" 
-        autoPlay 
-        muted 
-        playsInline 
-        loop 
-        src="https://flymediatech.com/wp-content/uploads/2024/03/4785844_Shape_Blast_Explosion_1280x7201.mp4"
+      <video
+        className="w-full h-full object-cover opacity-40 pointer-events-none"
+        autoPlay
+        muted
+        playsInline
+        loop
+        src="/uploads/2024/03/4785844_Shape_Blast_Explosion_1280x7201.mp4"
       />
       {/* Dark overlay to ensure incredible contrast for text */}
       <div className="absolute inset-0 bg-black/60" />
@@ -180,19 +180,19 @@ const GastricVideoSection = () => (
 const GastricStrategySection = () => (
   <div className="bg-[#F1F1F1] py-16 lg:py-24 relative overflow-hidden border-t border-gray-100">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-16">
-      
+
       {/* Upper part: Flex layout for Image and Active/Passive Strategy */}
       <div className="flex flex-col lg:flex-row items-center gap-16">
-        
+
         {/* Left Column (Image Column): Loaded FIRST in mobile stack for "image first after that content" */}
         <div className="w-full lg:w-1/2 order-1 lg:order-1">
           <div className="relative w-full aspect-square max-w-md mx-auto">
             {/* Base Image: imgmenu025.png */}
             <div className="relative w-full h-full rounded-2xl overflow-hidden z-20">
-              <Image 
-                src="/imgmenu025.png" 
-                alt="Bariatric Marketing Strategy" 
-                fill 
+              <Image
+                src="/imgmenu025.png"
+                alt="Bariatric Marketing Strategy"
+                fill
                 className="object-cover"
               />
             </div>

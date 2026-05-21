@@ -25,7 +25,7 @@ async function syncByTitle() {
             const searchTitle = encodeURIComponent(blog.title);
             const res = await fetch(`https://flymediatech.com/wp-json/wp/v2/posts?search=${searchTitle}&per_page=1`);
             if (!res.ok) continue;
-            
+
             const posts = await res.json();
             if (posts.length === 0) continue;
 
@@ -36,7 +36,7 @@ async function syncByTitle() {
                     const mediaData = await mediaRes.json();
                     const sourceUrl = mediaData?.media_details?.sizes?.full?.source_url || mediaData?.source_url;
                     if (sourceUrl) {
-                        const localUrl = sourceUrl.replace('https://flymediatech.com/wp-content/uploads/', '/uploads/');
+                        const localUrl = sourceUrl.replace('/uploads/', '/uploads/');
                         await blog.update({ image: localUrl });
                         updated++;
                         console.log(`FOUND BY SEARCH: ${blog.slug} -> ${localUrl}`);

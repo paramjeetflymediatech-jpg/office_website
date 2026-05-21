@@ -7,32 +7,32 @@ import ContactFormSection from "@/components/ContactFormSection";
 export default function WebDesigningJalandhar() {
   return (
     <div className="min-h-screen bg-white text-black overflow-hidden font-sans">
-      
+
       {/* 1. Hero / Distinction Section */}
       <section className="relative py-10 md:py-10 bg-[#EFEFEF]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            
+
             {/* Left Column (Text & Bullets) - Order last on mobile, first on desktop */}
             <div className="lg:col-span-7 space-y-6 order-last lg:order-first">
-              
+
               <div className="space-y-4">
                 <h1 className="text-4xl sm:text-5xl md:text-4xl font-serif font-extrabold tracking-tight text-gray-900 leading-[1.1] ">
                   Best Web Designing Company <br className="hidden md:inline" /> in India
                 </h1>
-                
+
                 <p className="text-md sm:text-xl md:text-xl font-bold text-gray-900 leading-snug font-sans ">
                   How should I distinguish between freelancer and web development company?
                 </p>
               </div>
 
               <p className="text-gray-800 text-sm sm:text-base leading-relaxed font-medium">
-                Best Web Designing Company in India, When a new idea clicks to your mind, we aim to take it in the right direction. 
-                For the best-looking website which grabs user attention, you must have different ideas. But as you try to work on 
-                those ideas you will get to know how much effort it needs to make them come into existence. Be it the idea is grand 
-                or concise, the right way to implement the ideas takes efforts which are done through the developer. People often get 
-                confused about whether to get the services of the <strong>Best web design company in India</strong> or hire an independent 
-                software developer. Also, no matter how unique the concept is, it needs to be executed correctly. So, where does the 
+                Best Web Designing Company in India, When a new idea clicks to your mind, we aim to take it in the right direction.
+                For the best-looking website which grabs user attention, you must have different ideas. But as you try to work on
+                those ideas you will get to know how much effort it needs to make them come into existence. Be it the idea is grand
+                or concise, the right way to implement the ideas takes efforts which are done through the developer. People often get
+                confused about whether to get the services of the <strong>Best web design company in India</strong> or hire an independent
+                software developer. Also, no matter how unique the concept is, it needs to be executed correctly. So, where does the
                 problem begin?
               </p>
 
@@ -48,7 +48,7 @@ export default function WebDesigningJalandhar() {
             {/* Right Column (Image Column) - Order first on mobile, last on desktop */}
             <div className="lg:col-span-5 relative order-first lg:order-last flex justify-center">
               <img
-                src="https://flymediatech.com/wp-content/uploads/2024/03/web-des.png"
+                src="/uploads/2024/03/web-des.png"
                 alt="Best Web Designing Company in India"
                 width={800}
                 height={625}
@@ -64,11 +64,11 @@ export default function WebDesigningJalandhar() {
       <section className="relative py-10 md:py-10 bg-[#EFEFEF] border-b border-gray-200/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            
+
             {/* Left Column (Image) - Naturally orders first on mobile */}
             <div className="lg:col-span-5 flex justify-center">
               <img
-                src="https://flymediatech.com/wp-content/uploads/2024/03/mobi-1024x853.png"
+                src="/uploads/2024/03/mobi-1024x853.png"
                 alt="Mobile Apps Development Company In Ludhiana, Punjab"
                 width={800}
                 height={666}
@@ -105,7 +105,7 @@ export default function WebDesigningJalandhar() {
       {/* 3. Freelancer vs Company Section */}
       <section className="relative py-10 md:py-10 bg-[#EFEFEF]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
-          
+
           {/* Main Header / Intro */}
           <div className="max-w-5xl space-y-4 pl-2">
             <h2 className="text-3xl sm:text-4xl md:text-2xl font-serif font-extrabold tracking-tight text-gray-900 leading-tight text-center">
@@ -125,7 +125,7 @@ export default function WebDesigningJalandhar() {
             {/* Right Image - Order first on mobile, last on desktop */}
             <div className="lg:col-span-5 flex justify-center order-first lg:order-last">
               <img
-                src="https://flymediatech.com/wp-content/uploads/2024/03/bestr-it-1024x853.png"
+                src="/uploads/2024/03/bestr-it-1024x853.png"
                 alt="IT Company In Ludhiana"
                 width={800}
                 height={666}
@@ -262,7 +262,7 @@ export default function WebDesigningJalandhar() {
             <h2 className="text-xl sm:text-2xl font-extrabold text-center text-gray-900 leading-tight font-sans">
               Comparison Between Website Company and Freelancing
             </h2>
-            
+
             <div className="overflow-x-auto rounded-xl border border-gray-800 shadow-lg">
               <table className="w-full text-center border-collapse bg-[#1A1A1A] text-white">
                 <thead>
@@ -285,8 +285,8 @@ export default function WebDesigningJalandhar() {
                     { aspect: "End product", company: "World-class product", freelancer: "Not that viable" },
                     { aspect: "Process Control", company: "On the scheduled timeline", freelancer: "Delayed" }
                   ].map((row, index) => (
-                    <tr 
-                      key={index} 
+                    <tr
+                      key={index}
                       className="hover:bg-gray-800/40 transition-colors duration-200"
                     >
                       <td className="px-6 py-4 text-xs sm:text-sm text-gray-100 font-extrabold text-center border border-gray-800">{row.aspect}</td>
@@ -305,15 +305,15 @@ export default function WebDesigningJalandhar() {
               Get in touch with the professionals
             </h2>
             <p className="text-gray-750 text-sm sm:text-base leading-relaxed font-semibold max-w-3xl mx-auto">
-              If you are looking for web development professionals then we are here for you to get everything done with ease. 
-              Our team is well-aware of the edge-cutting technologies which help your business to stay on the top. A qualified 
+              If you are looking for web development professionals then we are here for you to get everything done with ease.
+              Our team is well-aware of the edge-cutting technologies which help your business to stay on the top. A qualified
               team will give you the right assistance and implement the strategies which make your website proper.
             </p>
           </div>
 
         </div>
       </section>
-<ContactFormSection />
+      <ContactFormSection />
     </div>
   );
 }

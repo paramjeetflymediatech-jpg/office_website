@@ -46,11 +46,11 @@ export default function Header() {
 
   const locationMenuData = {
     "Brisbane": [
-      { name: "Website Design in Brisbane", href: "/australia/website-design-in-brisbane" },
+      { name: "Website Design in Brisbane", href: "/australia/website-designing-in-brisbane" },
       { name: "Digital Marketing Agency in Brisbane", href: "/australia/digital-marketing-agency-in-brisbane" }
     ],
     "Melbourne": [
-      { name: "Website Design Company in Melbourne", href: "/australia/website-design-company-in-melbourne" },
+      { name: "Website Design Company in Melbourne", href: "/australia/website-designing-company-in-melbourne" },
       { name: "Digital Marketing Agency in Melbourne", href: "/australia/digital-marketing-agency-in-melbourne" }
     ],
     "Sydney": [

@@ -17,7 +17,7 @@ const MAPPINGS = [
   { path: '/gastric-bypass-surgery-digital-marketing', postId: 139 }, // Gastric bypass marketing
   { path: '/cms-for-website', postId: 157 }, // CMS for Website
   { path: '/cosmetic-surgery-digital-marketing', postId: 143 }, // Cosmetic surgery marketing
-  { path: '/ent-hospital-digital-marketing', postId: 151 }, // ENT hospital marketing
+  { path: '/ent-online-marketing', postId: 151 }, // ENT hospital marketing
   { path: '/facelift-surgeons-digital-marketing', postId: 153 }, // Facelift surgeons marketing
   { path: '/hair-transplant-clinic-digital-marketing', postId: 149 }, // Hair transplant clinic marketing
   { path: '/orthopedic-hospital-digital-marketing', postId: 145 }, // Orthopedic hospital marketing

@@ -11,7 +11,7 @@ const HairHeroSection = () => (
   <div className="bg-[#F1F1F1] py-16 lg:py-10 relative overflow-hidden">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-        
+
         {/* Left: Text Details */}
         <div className="lg:col-span-7 space-y-6">
           <h1 className="text-4xl md:text-5xl lg:text-[46px] font-serif font-bold text-black leading-tight">
@@ -31,9 +31,9 @@ const HairHeroSection = () => (
         {/* Right: Graphic */}
         <div className="lg:col-span-5 flex justify-center">
           <div className="relative w-full max-w-[420px] aspect-square">
-            <Image 
-              src="https://flymediatech.com/wp-content/uploads/2024/04/NEW.png" 
-              alt="Digital Marketing For Hair Transplant Clinics in India" 
+            <Image
+              src="/uploads/2024/04/NEW.png"
+              alt="Digital Marketing For Hair Transplant Clinics in India"
               fill
               className="object-contain"
               priority
@@ -65,13 +65,13 @@ const HairExemplarySection = () => (
   <div className="bg-[#F1F1F1] py-16">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-        
+
         {/* Left: Graphic */}
         <div className="lg:col-span-5 flex justify-center order-2 lg:order-1">
           <div className="relative w-full max-w-[420px] aspect-square">
-            <Image 
-              src="https://flymediatech.com/wp-content/uploads/2024/03/IIMG02.png" 
-              alt="Best Digital Marketing Company in Punjab" 
+            <Image
+              src="/uploads/2024/03/IIMG02.png"
+              alt="Best Digital Marketing Company in Punjab"
               fill
               className="object-contain"
             />
@@ -99,7 +99,7 @@ const HairExemplarySection = () => (
             </p>
           </div>
           <div className="pt-2">
-            <Link 
+            <Link
               href="/contact-us"
               className="inline-block bg-[#ff9900] hover:bg-[#FA7E09] text-white px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-colors duration-150"
             >
@@ -118,7 +118,7 @@ const HairOutperformSection = () => (
   <div className="bg-[#F1F1F1] py-16 border-t border-gray-200/50">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-        
+
         {/* Left: Content */}
         <div className="lg:col-span-7 space-y-6">
           <h2 className="text-3xl md:text-[40px] font-serif font-bold text-black leading-tight">
@@ -140,9 +140,9 @@ const HairOutperformSection = () => (
         {/* Right: Graphic */}
         <div className="lg:col-span-5 flex justify-center">
           <div className="relative w-full max-w-[420px] aspect-square">
-            <Image 
-              src="https://flymediatech.com/wp-content/uploads/2024/03/imga-haior.png" 
-              alt="Digital Marketing For Hair Transplant Clinics in India" 
+            <Image
+              src="/uploads/2024/03/imga-haior.png"
+              alt="Digital Marketing For Hair Transplant Clinics in India"
               fill
               className="object-contain"
             />
@@ -159,13 +159,13 @@ const HairOrangeBannerSection = () => (
   <div className="bg-[#FA7E09] py-16">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-        
+
         {/* Left: Graphic */}
         <div className="lg:col-span-5 flex justify-center">
           <div className="relative w-full max-w-[420px] aspect-square bg-[#FA7E09]">
-            <Image 
-              src="https://flymediatech.com/wp-content/uploads/2024/04/hair01.png" 
-              alt="Digital Marketing For Hair Transplant Clinics in India" 
+            <Image
+              src="/uploads/2024/04/hair01.png"
+              alt="Digital Marketing For Hair Transplant Clinics in India"
               fill
               className="object-contain"
             />

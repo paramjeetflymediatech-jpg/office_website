@@ -154,7 +154,7 @@ export default function AboutUs() {
               <div className="relative  p-3 rounded-2xl   overflow-hidden">
                 <img
                   loading="lazy"
-                  src="https://flymediatech.com/wp-content/uploads/2024/03/Anujgupta.png"
+                  src="/uploads/2024/03/Anujgupta.png"
                   alt="Anuj Gupta - best digital marketer in India"
                   className="w-full h-auto l object-cover hover:scale-102 transition-transform duration-500"
                 />
@@ -175,7 +175,7 @@ export default function AboutUs() {
             <div className="relative p-3 rounded-2xl overflow-hidden">
               <img
                 loading="lazy"
-                src="https://flymediatech.com/wp-content/uploads/2024/03/IIMG02.png"
+                src="/uploads/2024/03/IIMG02.png"
                 alt="Best Digital Marketing Company in Punjab"
                 className="w-full h-auto rounded-xl object-cover hover:scale-102 transition-transform duration-500"
               />
@@ -244,7 +244,7 @@ export default function AboutUs() {
             <div className="relative p-3 rounded-2xl overflow-hidden">
               <img
                 loading="lazy"
-                src="https://flymediatech.com/wp-content/uploads/2024/03/imagwe-01.png"
+                src="/uploads/2024/03/imagwe-01.png"
                 alt="Best Digital Marketing Company in Ludhiana"
                 className="w-full h-auto rounded-xl object-cover hover:scale-102 transition-transform duration-500"
               />
@@ -265,7 +265,7 @@ export default function AboutUs() {
             playsInline
             className="w-full h-full object-cover"
           >
-            <source src="https://flymediatech.com/wp-content/uploads/2024/03/4785844_Shape_Blast_Explosion_1280x7201.mp4" type="video/mp4" />
+            <source src="/uploads/2024/03/4785844_Shape_Blast_Explosion_1280x7201.mp4" type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-black/60 backdrop-blur-[1px]" />
         </div>
@@ -298,7 +298,7 @@ export default function AboutUs() {
             <div className="relative p-3 rounded-2xl overflow-hidden">
               <img
                 loading="lazy"
-                src="https://flymediatech.com/wp-content/uploads/2024/04/MAIN.png"
+                src="/uploads/2024/04/MAIN.png"
                 alt="Best CMS For Website Designing"
                 className="w-full h-auto rounded-xl object-cover hover:scale-102 transition-transform duration-500"
               />
@@ -346,7 +346,7 @@ export default function AboutUs() {
             <div className="relative p-3 rounded-2xl overflow-hidden">
               <img
                 loading="lazy"
-                src="https://flymediatech.com/wp-content/uploads/2024/04/seo01.png"
+                src="/uploads/2024/04/seo01.png"
                 alt="Digital Marketing: Internship"
                 className="w-full h-auto rounded-xl object-cover hover:scale-102 transition-transform duration-500"
               />

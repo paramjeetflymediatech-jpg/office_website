@@ -70,19 +70,19 @@ export default function InstagramMarketingPage() {
       {/* Hero Section */}
       <section className="pt-16 pb-10 px-4 bg-[#EFEFEF]">
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
-          
+
           {/* Left Column: Image */}
           <div className="w-full lg:w-1/2 flex justify-center">
             <div className="w-full max-w-[600px] lg:max-w-[440px] overflow-hidden">
-              <img 
-                loading="lazy" 
-                decoding="async" 
-                width="1200" 
-                height="1000" 
-                src="https://flymediatech.com/wp-content/uploads/2024/03/insta-1.png" 
-                className="w-full h-auto object-cover" 
-                alt="Best Influencer Marketing Company in India" 
-                srcSet="https://flymediatech.com/wp-content/uploads/2024/03/insta-1.png 1200w, https://flymediatech.com/wp-content/uploads/2024/03/insta-1-300x250.png 300w, https://flymediatech.com/wp-content/uploads/2024/03/insta-1-1024x853.png 1024w, https://flymediatech.com/wp-content/uploads/2024/03/insta-1-768x640.png 768w"
+              <img
+                loading="lazy"
+                decoding="async"
+                width="1200"
+                height="1000"
+                src="/uploads/2024/03/insta-1.png"
+                className="w-full h-auto object-cover"
+                alt="Best Influencer Marketing Company in India"
+                srcSet="/uploads/2024/03/insta-1.png 1200w, /uploads/2024/03/insta-1-300x250.png 300w, /uploads/2024/03/insta-1-1024x853.png 1024w, /uploads/2024/03/insta-1-768x640.png 768w"
                 sizes="(max-width: 1200px) 100vw, 1200px"
               />
             </div>
@@ -91,13 +91,13 @@ export default function InstagramMarketingPage() {
           {/* Right Column: Text Content */}
           <div className="w-full lg:w-1/2 space-y-6">
 
-            <h1 
+            <h1
               style={{ fontFamily: "'Playfair Display', sans-serif" }}
               className="text-4xl md:text-5xl font-bold text-black leading-tight"
             >
               An Instagram Marketing Company in Ludhiana
             </h1>
-            
+
             <div className="text-gray-600 text-[15px] sm:text-base leading-relaxed space-y-4">
               <p>
                 Instagram has gained significant popularity after Facebook. Since the last decade, it has emerged as the best platform for marketing opportunities. It has been found out that the business who are taking the help of the Instagram marketing company in Ludhiana to maintain the online presence. Online presence is quintessentially important as far as the marketing aspect is concerned. You should choose the best Instagram marketing company because of the following reasons:
@@ -111,21 +111,21 @@ export default function InstagramMarketingPage() {
       {/* Optimization of the account Section */}
       <section className="py-16 px-4 bg-[#EFEFEF]">
         <div className="max-w-7xl mx-auto flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-20">
-          
+
           {/* Left Column: Text Content */}
           <div className="w-full lg:w-1/2 space-y-2">
-            <h2 
+            <h2
               style={{ fontFamily: "'Playfair Display', sans-serif" }}
               className="text-3xl md:text-4xl font-bold text-black leading-tight"
             >
               Optimization of the account
             </h2>
-            
+
             <p className="text-gray-600 text-[15px] sm:text-base leading-relaxed">
               The best Instagram accounts always have the following peculiarly maintained things that make their profile unique from the others:
             </p>
 
-            <h2 
+            <h2
               style={{ fontFamily: "'Playfair Display', sans-serif" }}
               className="text-3xl md:text-4xl font-bold text-black leading-tight pt-4"
             >
@@ -135,7 +135,7 @@ export default function InstagramMarketingPage() {
               Bio is of utmost significance for the profile on Instagram. Because from the bio itself the user can envision what the account is all about and what nature he would be getting to experience. A good bio is always accompanied by relevant emojis.
             </p>
 
-            <h2 
+            <h2
               style={{ fontFamily: "'Playfair Display', sans-serif" }}
               className="text-3xl md:text-4xl font-bold text-black leading-tight pt-4"
             >
@@ -149,15 +149,15 @@ export default function InstagramMarketingPage() {
           {/* Right Column: Image */}
           <div className="w-full lg:w-1/2 flex justify-center">
             <div className="w-full max-w-[600px] overflow-hidden">
-              <img 
-                loading="lazy" 
-                decoding="async" 
-                width="1200" 
-                height="1000" 
-                src="https://flymediatech.com/wp-content/uploads/2024/03/insta02.png" 
-                className="w-full h-auto object-cover" 
-                alt="Best Influencer Marketing Company in Punjab, India" 
-                srcSet="https://flymediatech.com/wp-content/uploads/2024/03/insta02.png 1200w, https://flymediatech.com/wp-content/uploads/2024/03/insta02-300x250.png 300w, https://flymediatech.com/wp-content/uploads/2024/03/insta02-1024x853.png 1024w, https://flymediatech.com/wp-content/uploads/2024/03/insta02-768x640.png 768w"
+              <img
+                loading="lazy"
+                decoding="async"
+                width="1200"
+                height="1000"
+                src="/uploads/2024/03/insta02.png"
+                className="w-full h-auto object-cover"
+                alt="Best Influencer Marketing Company in Punjab, India"
+                srcSet="/uploads/2024/03/insta02.png 1200w, /uploads/2024/03/insta02-300x250.png 300w, /uploads/2024/03/insta02-1024x853.png 1024w, /uploads/2024/03/insta02-768x640.png 768w"
                 sizes="(max-width: 1200px) 100vw, 1200px"
               />
             </div>
@@ -169,19 +169,19 @@ export default function InstagramMarketingPage() {
       {/* Follow relevant accounts Section */}
       <section className="py-16 px-4 bg-[#EFEFEF]">
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
-          
+
           {/* Left Column: Image */}
           <div className="w-full lg:w-1/2 flex justify-center">
             <div className="w-full max-w-[600px] overflow-hidden">
-              <img 
-                loading="lazy" 
-                decoding="async" 
-                width="1200" 
-                height="1000" 
-                src="https://flymediatech.com/wp-content/uploads/2024/03/relvtfol.png" 
-                className="w-full h-auto object-cover" 
-                alt="Best Influencer Marketing Company in Punjab" 
-                srcSet="https://flymediatech.com/wp-content/uploads/2024/03/relvtfol.png 1200w, https://flymediatech.com/wp-content/uploads/2024/03/relvtfol-300x250.png 300w, https://flymediatech.com/wp-content/uploads/2024/03/relvtfol-1024x853.png 1024w, https://flymediatech.com/wp-content/uploads/2024/03/relvtfol-768x640.png 768w"
+              <img
+                loading="lazy"
+                decoding="async"
+                width="1200"
+                height="1000"
+                src="/uploads/2024/03/relvtfol.png"
+                className="w-full h-auto object-cover"
+                alt="Best Influencer Marketing Company in Punjab"
+                srcSet="/uploads/2024/03/relvtfol.png 1200w, /uploads/2024/03/relvtfol-300x250.png 300w, /uploads/2024/03/relvtfol-1024x853.png 1024w, /uploads/2024/03/relvtfol-768x640.png 768w"
                 sizes="(max-width: 1200px) 100vw, 1200px"
               />
             </div>
@@ -189,19 +189,19 @@ export default function InstagramMarketingPage() {
 
           {/* Right Column: Text Content */}
           <div className="w-full lg:w-1/2 space-y-6">
-            <h2 
+            <h2
               style={{ fontFamily: "'Playfair Display', sans-serif" }}
               className="text-3xl md:text-4xl font-bold text-black leading-tight"
             >
               Follow relevant accounts
             </h2>
-            
+
             <div className="text-gray-600 text-[15px] sm:text-base leading-relaxed space-y-4">
               <p>
                 Relevancy is something that the user notices the most. So you should take care of this aspect that your account should follow the people who are relevant to your industry.
               </p>
               <p>
-                <b>For example</b>, Your company is recognized for making environment-friendly products but in your following list, you are found following the owners of plastic bag manufacturing units.<br/>The users consider this as a hypocrite behaviour which they do not want to see and ultimately they end up unfollowing and even blocking the user.
+                <b>For example</b>, Your company is recognized for making environment-friendly products but in your following list, you are found following the owners of plastic bag manufacturing units.<br />The users consider this as a hypocrite behaviour which they do not want to see and ultimately they end up unfollowing and even blocking the user.
               </p>
             </div>
           </div>
@@ -221,7 +221,7 @@ export default function InstagramMarketingPage() {
                 <div className="mb-6 bg-orange-50 w-14 h-14 rounded-full flex items-center justify-center">
                   {strategy.icon}
                 </div>
-                <h3 
+                <h3
                   style={{ fontFamily: "'Playfair Display', sans-serif" }}
                   className="text-xl font-bold text-black mb-4"
                 >
@@ -239,7 +239,7 @@ export default function InstagramMarketingPage() {
       {/* Final CTA Text Section */}
       <section className="py-10 px-4 bg-[#EFEFEF]">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 
+          <h2
             style={{ fontFamily: "'Playfair Display', sans-serif" }}
             className="text-2xl md:text-xl font-bold text-black leading-relaxed"
           >

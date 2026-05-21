@@ -11,13 +11,13 @@ const OrthoHeroSection = () => (
   <div className="bg-[#F1F1F1] py-16 lg:py-24 relative overflow-hidden">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-        
+
         {/* Left: Graphic */}
         <div className="lg:col-span-5 flex justify-center order-2 lg:order-1">
           <div className="relative w-full max-w-[420px] aspect-square">
-            <Image 
-              src="https://flymediatech.com/wp-content/uploads/2024/03/ORTHO.png" 
-              alt="Orthopedic Digital Marketing Services" 
+            <Image
+              src="/uploads/2024/03/ORTHO.png"
+              alt="Orthopedic Digital Marketing Services"
               fill
               className="object-contain"
               priority
@@ -46,7 +46,7 @@ const OrthoTacticsSection = () => (
   <section className="py-20 bg-white">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
-        
+
         {/* Left Column: Focus on Visibility */}
         <div className="space-y-6">
           <h2 className="text-2xl md:text-3xl font-serif font-bold text-black border-b border-gray-100 pb-3">

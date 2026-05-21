@@ -66,7 +66,7 @@ export default function CanadaWebDesignPage() {
             <div className="lg:col-span-6 flex justify-center order-2 lg:order-1">
               <div className="relative w-full aspect-[5/3] max-w-[560px] transform hover:scale-102 transition-transform duration-500 ease-out overflow-hidden">
                 <Image
-                  src="https://flymediatech.com/wp-content/uploads/2024/05/lifdshiofhdns.jpg"
+                  src="/uploads/2024/05/lifdshiofhdns.jpg"
                   alt="Web Designing"
                   fill
                   className="object-cover"
@@ -133,7 +133,7 @@ export default function CanadaWebDesignPage() {
             <div className="lg:col-span-6 flex justify-center">
               <div className="relative w-full aspect-[4/5] max-w-[460px] transform hover:scale-102 transition-transform duration-500 ease-out overflow-hidden">
                 <Image
-                  src="https://flymediatech.com/wp-content/uploads/2024/05/gdfgdfgs.png"
+                  src="/uploads/2024/05/gdfgdfgs.png"
                   alt="Creating An Excellent Experience - Web Designing"
                   fill
                   className="object-contain"
@@ -164,7 +164,7 @@ export default function CanadaWebDesignPage() {
             <div className="lg:col-span-6 flex justify-center order-2 lg:order-1">
               <div className="relative w-full aspect-[1/1] max-w-[460px] transform hover:scale-102 transition-transform duration-500 ease-out overflow-hidden">
                 <Image
-                  src="https://flymediatech.com/wp-content/uploads/2024/05/fsdfasdfsda.png"
+                  src="/uploads/2024/05/fsdfasdfsda.png"
                   alt="Craft An Invincible Online Presence - Web Designing"
                   fill
                   className="object-contain"

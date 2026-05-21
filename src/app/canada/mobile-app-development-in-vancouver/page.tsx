@@ -110,7 +110,7 @@ export default function MobileAppVancouverPage() {
             <div className="lg:col-span-6 flex justify-center order-1 lg:order-2">
               <div className="relative w-full aspect-[5/3] max-w-[560px] transform hover:scale-102 transition-transform duration-500 ease-out overflow-hidden">
                 <Image
-                  src="https://flymediatech.com/wp-content/uploads/2026/05/webs-dei-8.png"
+                  src="/uploads/2026/05/webs-dei-8.png"
                   alt="Mobile app development process with coding and design tools in Vancouver."
                   fill
                   className="object-cover"
@@ -224,7 +224,7 @@ export default function MobileAppVancouverPage() {
             <div className="lg:col-span-6 flex justify-center order-1 lg:order-1">
               <div className="relative w-full aspect-[5/3] max-w-[560px] transform hover:scale-102 transition-transform duration-500 ease-out overflow-hidden">
                 <Image
-                  src="https://flymediatech.com/wp-content/uploads/2026/05/webs-dei-9.png"
+                  src="/uploads/2026/05/webs-dei-9.png"
                   alt="Team developing mobile app on large smartphone with app icons, in Vancouver."
                   fill
                   className="object-cover"

@@ -293,13 +293,13 @@ export default async function RootLayout({
 
         <link
           rel="icon"
-          href="https://flymediatech.com/wp-content/uploads/2024/04/flyfav.png"
+          href="/uploads/2024/04/flyfav.png"
           sizes="32x32"
         />
 
         <link
           rel="apple-touch-icon"
-          href="https://flymediatech.com/wp-content/uploads/2024/04/flyfav.png"
+          href="/uploads/2024/04/flyfav.png"
         />
 
         {/* IMPORTANT */}

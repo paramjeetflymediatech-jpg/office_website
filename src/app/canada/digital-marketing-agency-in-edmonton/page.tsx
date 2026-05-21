@@ -125,7 +125,7 @@ export default function EdmontonDigitalMarketingPage() {
             <div className="lg:col-span-6 flex justify-center order-2 lg:order-1">
               <div className="relative w-full aspect-[5/3] max-w-[560px] transform hover:scale-102 transition-transform duration-500 ease-out overflow-hidden ">
                 <Image
-                  src="https://flymediatech.com/wp-content/uploads/2024/06/digitalmarkkgg.jpg"
+                  src="/uploads/2024/06/digitalmarkkgg.jpg"
                   alt="Smartphone with digital marketing and technology icons, representing mobile app development and digital solutions."
                   fill
                   className="object-cover"
@@ -186,7 +186,7 @@ export default function EdmontonDigitalMarketingPage() {
             <div className="lg:col-span-6 flex justify-center">
               <div className="relative w-full aspect-[5/3] max-w-[560px] transform hover:scale-102 transition-transform duration-500 ease-out overflow-hidden   ">
                 <Image
-                  src="https://flymediatech.com/wp-content/uploads/2024/06/digitalmarkgg.jpg"
+                  src="/uploads/2024/06/digitalmarkgg.jpg"
                   alt="Social media icons floating around smartphone on workspace with coffee and stationery; digital marketing concept."
                   fill
                   className="object-cover"

@@ -24,7 +24,7 @@ function downloadFile(url, destPath) {
         resolve();
       });
     }).on('error', (err) => {
-      fs.unlink(destPath, () => {}); // Delete partial file
+      fs.unlink(destPath, () => { }); // Delete partial file
       reject(err);
     });
   });
@@ -67,13 +67,13 @@ async function startDownload() {
 
       // File does not exist locally. We need to download it from live WP
       const relativePart = imagePath.replace('/uploads/', '');
-      
+
       // Determine the correct live WP remote URL based on region
       let remoteUrl = '';
       if (row.region === 'australia') {
         remoteUrl = `https://flymediatech.com/australia/wp-content/uploads/${relativePart}`;
       } else {
-        remoteUrl = `https://flymediatech.com/wp-content/uploads/${relativePart}`;
+        remoteUrl = `/uploads/${relativePart}`;
       }
 
       console.log(`[Media Sync] Missing: ${imagePath}`);

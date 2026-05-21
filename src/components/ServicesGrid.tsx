@@ -21,56 +21,56 @@ const SERVICES = [
     title: "Social Media Marketing",
     description: "Engage your customers with the most engaging platforms.",
     icon: <UserCheck className="w-12 h-12" />,
-    image: "https://flymediatech.com/wp-content/uploads/2024/04/i01.jpg",
+    image: "/uploads/2024/04/i01.jpg",
     href: "/social-media-optimization"
   },
   {
     title: "Search Engine Marketing",
     description: "Stay at the top of the game with every search.",
     icon: <Monitor className="w-12 h-12" />,
-    image: "https://flymediatech.com/wp-content/uploads/2024/04/img02.jpg",
+    image: "/uploads/2024/04/img02.jpg",
     href: "/our-services/seo-marketing-services/"
   },
   {
     title: "Google Adwords",
     description: "Speak your business to customers with creativity at its best.",
     icon: <FileCode2 className="w-12 h-12" />,
-    image: "https://flymediatech.com/wp-content/uploads/2024/04/img04.jpg",
+    image: "/uploads/2024/04/img04.jpg",
     href: "/pay-per-click-ppc/"
   },
   {
     title: "Meta Ads",
     description: "Innovate, captivate and walk on the path of digital dominance.",
     icon: <Code2 className="w-12 h-12" />,
-    image: "https://flymediatech.com/wp-content/uploads/2024/04/img05.jpg",
+    image: "/uploads/2024/04/img05.jpg",
     href: "/an-instagram-marketing-company-in-ludhiana/"
   },
   {
     title: "Marketing Strategy",
     description: "Stay ahead of the market curve with phenomenal strategies.",
     icon: <GitBranch className="w-12 h-12" />,
-    image: "https://flymediatech.com/wp-content/uploads/2024/04/img06.jpg",
+    image: "/uploads/2024/04/img06.jpg",
     href: "/how-we-work/"
   },
   {
     title: "Website Design And Development",
     description: "Be the one-stop shop with mind-blowing website designs.",
     icon: <Box className="w-12 h-12" />,
-    image: "https://flymediatech.com/wp-content/uploads/2024/03/IIMG01.jpg",
+    image: "/uploads/2024/03/IIMG01.jpg",
     href: "/our-services/web-designing/"
   },
   {
     title: "Logos & Brand Design",
     description: "Shape your dreams and turn them into a magnificent reality.",
     icon: <Database className="w-12 h-12" />,
-    image: "https://flymediatech.com/wp-content/uploads/2024/04/im08.jpg",
+    image: "/uploads/2024/04/im08.jpg",
     href: "/logo-design/"
   },
   {
     title: "Content Marketing",
     description: "Build your brand's credibility and integrity with compelling content.",
     icon: <Headphones className="w-12 h-12" />,
-    image: "https://flymediatech.com/wp-content/uploads/2024/04/imgh08.jpg",
+    image: "/uploads/2024/04/imgh08.jpg",
     href: "/content-writing/"
   }
 ];

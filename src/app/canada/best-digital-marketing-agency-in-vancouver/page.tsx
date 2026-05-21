@@ -98,7 +98,7 @@ export default function BestDigitalMarketingVancouverPage() {
             <div className="lg:col-span-6 flex justify-center order-2">
               <div className="relative w-full aspect-[5/3] max-w-[560px] transform hover:scale-102 transition-transform duration-500 ease-out overflow-hidden">
                 <Image
-                  src="https://flymediatech.com/wp-content/uploads/2026/05/webs-dei-1.png"
+                  src="/uploads/2026/05/webs-dei-1.png"
                   alt="Digital marketing and SEO solutions by Flymedia Technology in Vancouver."
                   fill
                   className="object-cover"
@@ -201,7 +201,7 @@ export default function BestDigitalMarketingVancouverPage() {
             <div className="lg:col-span-6 flex justify-center order-2 lg:order-1">
               <div className="relative w-full aspect-[5/3] max-w-[560px] transform hover:scale-102 transition-transform duration-500 ease-out overflow-hidden">
                 <Image
-                  src="https://flymediatech.com/wp-content/uploads/2026/05/webs-dei-3.png"
+                  src="/uploads/2026/05/webs-dei-3.png"
                   alt="Digital marketing and SEO services by Flymedia Technology in Vancouver."
                   fill
                   className="object-cover"

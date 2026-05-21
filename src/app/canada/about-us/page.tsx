@@ -66,7 +66,7 @@ export default function CanadaAboutUsPage() {
             <div className="lg:col-span-6 flex justify-center order-2 lg:order-1">
               <div className="relative w-full aspect-[5/3] max-w-[560px] transform hover:scale-102 transition-transform duration-500 ease-out overflow-hidden border border-gray-100">
                 <Image
-                  src="https://flymediatech.com/wp-content/uploads/2024/05/digital-canada.jpg"
+                  src="/uploads/2024/05/digital-canada.jpg"
                   alt="Social media marketing and digital advertising strategy illustration."
                   fill
                   className="object-cover"
@@ -124,7 +124,7 @@ export default function CanadaAboutUsPage() {
             <div className="lg:col-span-6 flex justify-center">
               <div className="relative w-full aspect-[4/5] max-w-[460px] transform hover:scale-102 transition-transform duration-500 ease-out overflow-hidden">
                 <Image
-                  src="https://flymediatech.com/wp-content/uploads/2024/05/gsfkg.png"
+                  src="/uploads/2024/05/gsfkg.png"
                   alt="Entrust Our Result-Oriented Digital Marketing Services"
                   fill
                   className="object-contain"
@@ -161,7 +161,7 @@ export default function CanadaAboutUsPage() {
             <div className="lg:col-span-6 flex justify-center order-2 lg:order-1">
               <div className="relative w-full aspect-[1/1] max-w-[460px] transform hover:scale-102 transition-transform duration-500 ease-out overflow-hidden">
                 <Image
-                  src="https://flymediatech.com/wp-content/uploads/2024/05/fgjipsdfgjs.png"
+                  src="/uploads/2024/05/fgjipsdfgjs.png"
                   alt="Elevate Your Business & Ensure Its Growth"
                   fill
                   className="object-contain"

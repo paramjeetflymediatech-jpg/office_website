@@ -42,7 +42,7 @@ export default function EdmontonWebDesigningPage() {
             <div className="lg:col-span-5 flex justify-center">
               <div className="relative w-full aspect-square max-w-[460px]  overflow-hidden">
                 <Image
-                  src="https://flymediatech.com/wp-content/uploads/2024/06/website-designing2.jpg"
+                  src="/uploads/2024/06/website-designing2.jpg"
                   alt="Create a Stunning and Compelling Website For Your Business"
                   fill
                   className="object-contain hover:scale-102 transition-transform duration-500"
@@ -246,7 +246,7 @@ export default function EdmontonWebDesigningPage() {
             <div className="bg-white rounded-xl p-8 border border-gray-100 shadow-md text-center flex flex-col items-center space-y-4 hover:-translate-y-1 transition-transform duration-300">
               <div className="relative w-16 h-16 flex items-center justify-center">
                 <Image
-                  src="https://flymediatech.com/wp-content/uploads/2024/03/icn01-1.png"
+                  src="/uploads/2024/03/icn01-1.png"
                   alt="Our Aim and Vision"
                   width={80}
                   height={80}
@@ -269,7 +269,7 @@ export default function EdmontonWebDesigningPage() {
             <div className="bg-white rounded-xl p-8 border border-gray-100 shadow-md text-center flex flex-col items-center space-y-4 hover:-translate-y-1 transition-transform duration-300">
               <div className="relative w-16 h-16 flex items-center justify-center">
                 <Image
-                  src="https://flymediatech.com/wp-content/uploads/2024/03/setting.png"
+                  src="/uploads/2024/03/setting.png"
                   alt="Comprehensive Services"
                   width={80}
                   height={80}
@@ -292,7 +292,7 @@ export default function EdmontonWebDesigningPage() {
             <div className="bg-white rounded-xl p-8 border border-gray-100 shadow-md text-center flex flex-col items-center space-y-4 hover:-translate-y-1 transition-transform duration-300">
               <div className="relative w-16 h-16 flex items-center justify-center">
                 <Image
-                  src="https://flymediatech.com/wp-content/uploads/2024/03/chat.png"
+                  src="/uploads/2024/03/chat.png"
                   alt="Expertise and Experience"
                   width={80}
                   height={80}
@@ -315,7 +315,7 @@ export default function EdmontonWebDesigningPage() {
             <div className="bg-white rounded-xl p-8 border border-gray-100 shadow-md text-center flex flex-col items-center space-y-4 hover:-translate-y-1 transition-transform duration-300">
               <div className="relative w-16 h-16 flex items-center justify-center">
                 <Image
-                  src="https://flymediatech.com/wp-content/uploads/2024/03/globe.png"
+                  src="/uploads/2024/03/globe.png"
                   alt="Customer-Oriented"
                   width={80}
                   height={80}
@@ -338,7 +338,7 @@ export default function EdmontonWebDesigningPage() {
             <div className="bg-white rounded-xl p-8 border border-gray-100 shadow-md text-center flex flex-col items-center space-y-4 hover:-translate-y-1 transition-transform duration-300">
               <div className="relative w-16 h-16 flex items-center justify-center">
                 <Image
-                  src="https://flymediatech.com/wp-content/uploads/2024/03/flash.png"
+                  src="/uploads/2024/03/flash.png"
                   alt="Transparency"
                   width={80}
                   height={80}
@@ -361,7 +361,7 @@ export default function EdmontonWebDesigningPage() {
             <div className="bg-white rounded-xl p-8 border border-gray-100 shadow-md text-center flex flex-col items-center space-y-4 hover:-translate-y-1 transition-transform duration-300">
               <div className="relative w-16 h-16 flex items-center justify-center">
                 <Image
-                  src="https://flymediatech.com/wp-content/uploads/2024/06/cahdoish.png"
+                  src="/uploads/2024/06/cahdoish.png"
                   alt="Fair Pricing"
                   width={80}
                   height={80}

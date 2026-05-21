@@ -117,7 +117,7 @@ export default function ComputerJobsPage() {
             <div className="absolute inset-0 bg-[#ff9900]/5 rounded-3xl blur-2xl"></div>
             <div className="relative rounded-3xl p-4 overflow-hidden">
               <img
-                src="https://flymediatech.com/wp-content/uploads/2024/05/main-ne.png"
+                src="/uploads/2024/05/main-ne.png"
                 alt="Fresher Computer Jobs in Ludhiana"
                 width={1000}
                 height={600}

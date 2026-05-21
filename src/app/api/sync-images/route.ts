@@ -26,9 +26,9 @@ export async function GET() {
         const sourceUrl = mediaData?.media_details?.sizes?.full?.source_url || mediaData?.source_url;
 
         if (sourceUrl) {
-          // Transform https://flymediatech.com/wp-content/uploads/2026/05/new-web-14.jpg to /uploads/2026/05/new-web-14.jpg
-          const localUrl = sourceUrl.replace('https://flymediatech.com/wp-content/uploads/', '/uploads/');
-          
+          // Transform /uploads/2026/05/new-web-14.jpg to /uploads/2026/05/new-web-14.jpg
+          const localUrl = sourceUrl.replace('/uploads/', '/uploads/');
+
           // Find the blog in our database
           const slug = post.slug;
           const blog = await Blog.findOne({ where: { slug } });

@@ -136,7 +136,7 @@ export default function EcommerceSeoVancouverPage() {
             <div className="lg:col-span-6 flex justify-center order-1 lg:order-2">
               <div className="relative w-full aspect-[5/3] max-w-[560px] transform hover:scale-102 transition-transform duration-500 ease-out overflow-hidden">
                 <Image
-                  src="https://flymediatech.com/wp-content/uploads/2026/05/webs-dei-12.png"
+                  src="/uploads/2026/05/webs-dei-12.png"
                   alt="Digital marketing and SEO strategies for e-commerce success by Flymedia Technology."
                   fill
                   className="object-cover"
@@ -230,7 +230,7 @@ export default function EcommerceSeoVancouverPage() {
         </div>
       </section>
 
-      
+
       {/* 6. FAQs Accordion */}
       <section className="py-16 md:py-10 ">
         <div className="max-w-4xl mx-auto px-6 space-y-10">
