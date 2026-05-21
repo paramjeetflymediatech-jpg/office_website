@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import LocationPortfolio from "@/components/LocationPortfolio";
 import { Search, BarChart3, Phone, MousePointerClick, RefreshCw, Target } from "lucide-react";
+import ContactFormSection from "@/components/ContactFormSection";
 
 export default function GoogleAdwordsVancouverPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -70,7 +71,7 @@ export default function GoogleAdwordsVancouverPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-[#F1F1F1] font-sans pb-16 text-black">
+    <main className="min-h-screen bg-[#F1F1F1] font-sans  text-black">
 
       {/* 2. Core Content Section (Vancouver Tech and Digital Agency) */}
       <section className="py-16 md:py-10">
@@ -270,6 +271,8 @@ export default function GoogleAdwordsVancouverPage() {
           </div>
         </div>
       </section>
+
+      <ContactFormSection/>
 
       {/* Dynamic FAQ Schema */}
       <script

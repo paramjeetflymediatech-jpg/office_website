@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import LocationPortfolio from "@/components/LocationPortfolio";
+import ContactFormSection from "@/components/ContactFormSection";
 import { ShoppingCart, Tag, Search, BarChart3, Phone, Laptop, Key, Users } from "lucide-react";
 
 export default function EcommerceSeoVancouverPage() {
@@ -106,7 +107,7 @@ export default function EcommerceSeoVancouverPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-[#F1F1F1] font-sans pb-16 text-black">
+    <main className="min-h-screen bg-[#F1F1F1] font-sans  text-black">
 
       {/* 2. Core Content Section (Best Digital Marketing Agency in Vancouver) */}
       <section className="py-16 md:py-10 ">
@@ -278,6 +279,7 @@ export default function EcommerceSeoVancouverPage() {
           </div>
         </div>
       </section>
+      <ContactFormSection />
 
       {/* Dynamic FAQ Schema */}
       <script

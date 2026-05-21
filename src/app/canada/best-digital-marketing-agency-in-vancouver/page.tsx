@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import LocationPortfolio from "@/components/LocationPortfolio";
+import ContactFormSection from "@/components/ContactFormSection";
 import { TrendingUp, Target, PenTool, Share2, Phone, FileText, ShieldAlert, CheckCircle2 } from "lucide-react";
 
 export default function BestDigitalMarketingVancouverPage() {
@@ -67,7 +68,7 @@ export default function BestDigitalMarketingVancouverPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-[#F1F1F1] font-sans pb-16 text-black">
+    <main className="min-h-screen bg-[#F1F1F1] font-sans text-black">
 
 
       {/* 2. Core Content Section (SEO Marketing Services- Masters Of Every Channel) */}
@@ -232,7 +233,7 @@ export default function BestDigitalMarketingVancouverPage() {
           </div>
         </div>
       </section>
-
+<ContactFormSection/>
     </main>
   );
 }

@@ -3,6 +3,7 @@
 import React from "react";
 import SEOPricingTable from "@/components/SEOPricingTable";
 
+
 export default function SEOPackagesAustralia() {
   return (
     <main className="min-h-screen bg-[#F1F1F1] font-sans pb-24">

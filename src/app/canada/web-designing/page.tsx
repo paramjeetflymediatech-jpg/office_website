@@ -5,6 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import LocationPortfolio from "@/components/LocationPortfolio";
 import { Laptop, Smartphone, Palette, Zap, Phone } from "lucide-react";
+import ContactFormSection from "@/components/ContactFormSection";
+
 
 export default function CanadaWebDesignPage() {
   const designPillars = [
@@ -31,7 +33,7 @@ export default function CanadaWebDesignPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-[#F1F1F1] font-sans pb-16 text-black">
+    <main className="min-h-screen bg-[#F1F1F1] font-sans  text-black">
 
       {/* 1. Hero Title Banner */}
       <section className="relative w-full h-[220px] sm:h-[280px] bg-cover bg-center bg-fixed bg-no-repeat flex items-center justify-center overflow-hidden"
@@ -210,6 +212,7 @@ export default function CanadaWebDesignPage() {
           </div>
         </div>
       </section>
+      <ContactFormSection />
 
     </main>
   );

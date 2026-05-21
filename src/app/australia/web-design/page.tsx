@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import SEOMonitor from "@/components/SEOMonitor";
+import ContactFormSection from "@/components/ContactFormSection";
 import {
   Laptop,
   Smartphone,
@@ -77,7 +78,7 @@ export default function WebDesignAustralia() {
   ];
 
   return (
-    <main className="min-h-screen bg-[#F1F1F1] font-sans pb-16">
+    <main className="min-h-screen bg-[#F1F1F1] font-sans">
 
       {/* 1. Hero Section (Sydney Website Designer & Branding) */}
       <section className="relative py-16 md:py-10 overflow-hidden bg-[#F1F1F1]">
@@ -374,7 +375,9 @@ export default function WebDesignAustralia() {
         </div>
       </section>
 
+
       <AustraliaPortfolio />
+      <ContactFormSection />
 
     </main>
   );

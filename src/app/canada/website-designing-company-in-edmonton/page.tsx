@@ -2,10 +2,11 @@
 
 import React from "react";
 import Image from "next/image";
+import ContactFormSection from "@/components/ContactFormSection";
 
 export default function EdmontonWebDesigningPage() {
   return (
-    <main className="min-h-screen bg-[#F1F1F1] font-sans pb-12 text-black">
+    <main className="min-h-screen bg-[#F1F1F1] font-sans text-black">
 
       {/* 1. Hero Workspace Banner with Fixed Parallax Scroll */}
       <section className="relative w-full h-[220px] sm:h-[280px] bg-cover bg-center bg-fixed bg-no-repeat flex items-center justify-center overflow-hidden"
@@ -402,7 +403,7 @@ export default function EdmontonWebDesigningPage() {
           </div>
         </div>
       </section>
-
+<ContactFormSection/>
     </main>
   );
 }

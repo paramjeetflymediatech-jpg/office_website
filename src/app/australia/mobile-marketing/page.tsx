@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import ContactFormSection from "@/components/ContactFormSection";
 
 export default function MobileMarketing() {
   return (
@@ -183,6 +184,7 @@ export default function MobileMarketing() {
 
         </div>
       </section>
+      <ContactFormSection />
     </main>
   );
 }

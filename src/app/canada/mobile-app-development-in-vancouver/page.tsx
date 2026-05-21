@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import LocationPortfolio from "@/components/LocationPortfolio";
+import ContactFormSection from "@/components/ContactFormSection";
 import { Smartphone, Code2, Palette, Cpu, Compass, PenTool, CheckCircle2, Rocket, Phone } from "lucide-react";
 
 export default function MobileAppVancouverPage() {
@@ -80,7 +81,7 @@ export default function MobileAppVancouverPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-[#F1F1F1] font-sans pb-16 text-black">
+    <main className="min-h-screen bg-[#F1F1F1] font-sans text-black">
 
       {/* 2. Core Content Section */}
       <section className="py-16 md:py-20">
@@ -303,6 +304,7 @@ export default function MobileAppVancouverPage() {
           </div>
         </div>
       </section>
+      <ContactFormSection/>
 
       {/* Dynamic FAQ Schema */}
       <script

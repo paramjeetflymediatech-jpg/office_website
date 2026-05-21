@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import LocationPortfolio from "@/components/LocationPortfolio";
+import ContactFormSection from "@/components/ContactFormSection";
 import { Share2, Users, MessageSquareText, Video, Image as ImageIcon, HeartHandshake, Sparkles, Phone } from "lucide-react";
 
 export default function SMOVancouverPage() {
@@ -74,7 +75,7 @@ export default function SMOVancouverPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-[#F1F1F1] font-sans pb-16 text-black">
+    <main className="min-h-screen bg-[#F1F1F1] font-sans text-black">
 
       {/* 2. Core Content Section */}
       <section className="py-16 md:py-10">
@@ -285,6 +286,7 @@ export default function SMOVancouverPage() {
           </div>
         </div>
       </section>
+      <ContactFormSection/>
 
       {/* Dynamic FAQ Schema */}
       <script

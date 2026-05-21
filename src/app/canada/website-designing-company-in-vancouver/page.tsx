@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import LocationPortfolio from "@/components/LocationPortfolio";
+import ContactFormSection from "@/components/ContactFormSection";
 import { Laptop, ShoppingCart, MessageSquare, Globe2, Gauge, Bot, Sparkles, Smartphone, Phone } from "lucide-react";
 
 export default function WebDesignVancouverPage() {
@@ -97,7 +98,7 @@ export default function WebDesignVancouverPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-[#F1F1F1] font-sans pb-16 text-black">
+    <main className="min-h-screen bg-[#F1F1F1] font-sans  text-black">
 
       {/* 2. Core Content Section */}
       <section className="py-16 md:py-10">
@@ -373,6 +374,8 @@ export default function WebDesignVancouverPage() {
           </div>
         </div>
       </section>
+
+      <ContactFormSection/>
 
       {/* Dynamic FAQ Schema */}
       <script

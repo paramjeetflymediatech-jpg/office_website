@@ -4,10 +4,11 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Phone } from "lucide-react";
+import ContactFormSection from "@/components/ContactFormSection";
 
 export default function VancouverSEOPage() {
   return (
-    <main className="min-h-screen bg-[#F1F1F1] font-sans pb-16 text-black">
+    <main className="min-h-screen bg-[#F1F1F1] font-sans  text-black">
       {/* 1. Core Content Section (SEO Marketing Services - Masters Of Every Channel) */}
       <section className="py-16 md:py-10">
         <div className="max-w-7xl mx-auto px-6">
@@ -285,6 +286,9 @@ export default function VancouverSEOPage() {
           </div>
         </div>
       </section>
+
+
+      <ContactFormSection/>
     </main>
   );
 }

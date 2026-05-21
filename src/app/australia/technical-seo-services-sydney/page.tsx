@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronRight, Shield, RefreshCw, Cpu, CheckCircle } from "lucide-react";
+import ContactFormSection from "@/components/ContactFormSection";
 
 export default function TechnicalSeoSydney() {
   const whySeoMatters = [
@@ -57,7 +58,7 @@ export default function TechnicalSeoSydney() {
   ];
 
   return (
-    <main className="min-h-screen bg-[#F1F1F1] font-sans pb-16">
+    <main className="min-h-screen bg-[#F1F1F1] font-sans ">
 
       {/* Hero Section */}
       <section className="relative py-12 md:py-16 overflow-hidden bg-[#F1F1F1]">
@@ -230,6 +231,7 @@ export default function TechnicalSeoSydney() {
           </div>
         </div>
       </section>
+      <ContactFormSection />
 
     </main>
   );

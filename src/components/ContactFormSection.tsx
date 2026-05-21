@@ -1,8 +1,41 @@
 "use client";
 
-import React, { useState } from "react";
-
+import React, { useState,useEffect } from "react";
+import { usePathname } from "next/navigation";
+const data=[{
+  country:"India",
+  location:"Flymedia Technology, Plot no, 20, Vishal Nagar Ext, opposite Kashish Cafe, Vishal Nagar, Jawaddi Taksal, Ludhiana, Punjab 141001",
+  phone:"+91-98884-84310", 
+},
+{
+  country:"Canada",
+  location:"7664 126a St, Surrey, BC V3W 4A9, Canada",
+  phone:"+1 236-885-5725", 
+},
+{
+  country:"Australia",
+  location:"35 Edgewood Dr, Stanhope Gardens NSW 2768, Australia",
+  phone:"+61-434981208", 
+},]
 export default function ContactFormSection() {
+  const pathname = usePathname();
+  const [page, setPage] = useState("");
+  useEffect(() => {
+    console.log(pathname,'dfsdddddddsdffsd')
+    setPage(pathname);
+  }, [pathname]);
+  console.log(page,'dfssdffsd')
+  const getContactInfo = () => {
+  if (page.includes("/canada")) {
+    return data[1]; // Canada info
+  }
+  if (pathname.includes("/australia")) {
+    return data[2]; // Australia info
+  }
+  return data[0]; // India info
+};
+const contact=getContactInfo(); 
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -65,8 +98,7 @@ export default function ContactFormSection() {
                       <path d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z"></path>
                     </svg>
                   </span>
-                  <p className="text-gray-700 font-medium text-sm sm:text-base leading-relaxed">
-                    Flymedia Technology, Plot no, 20, Vishal Nagar Ext, opposite Kashish Cafe, Vishal Nagar, Jawaddi Taksal, Ludhiana, Punjab 141001
+                  <p className="text-gray-700 font-medium text-sm sm:text-base leading-relaxed"> {contact.location}
                   </p>
                 </div>
               </div>
@@ -82,8 +114,8 @@ export default function ContactFormSection() {
                       <path d="M497.39 361.8l-112-48a24 24 0 0 0-28 6.9l-49.6 60.6A370.66 370.66 0 0 1 130.6 204.11l60.6-49.6a23.94 23.94 0 0 0 6.9-28l-48-112A24.16 24.16 0 0 0 122.6.61l-104 24A24 24 0 0 0 0 48c0 256.5 207.9 464 464 464a24 24 0 0 0 23.4-18.6l24-104a24.29 24.29 0 0 0-14.01-27.6z"></path>
                     </svg>
                   </span>
-                  <a href="tel:+91-98884-84310" className="text-gray-700 font-medium text-sm sm:text-base hover:text-[#FA7E09] transition-colors leading-relaxed">
-                    +91-98884-84310
+                  <a href={`tel:${contact.phone}`} className="text-gray-700 font-medium text-sm sm:text-base hover:text-[#FA7E09] transition-colors leading-relaxed">
+                    {contact.phone}
                   </a>
                 </div>
               </div>

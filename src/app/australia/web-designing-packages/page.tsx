@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-
+import ContactFormSection from "@/components/ContactFormSection";
 export default function WebDesigningPackages() {
   const plans = [
     { name: "BUDGET" },
@@ -74,7 +74,7 @@ export default function WebDesigningPackages() {
   ];
 
   return (
-    <main className="min-h-screen bg-[#F1F1F1] font-sans pb-24">
+    <main className="min-h-screen bg-[#F1F1F1] font-sans ">
       
       {/* 1. Page Header */}
       <section className="pt-16 pb-12 text-center max-w-7xl mx-auto px-6 space-y-4">
@@ -181,6 +181,7 @@ export default function WebDesigningPackages() {
           </div>
         </div>
       </section>
+      <ContactFormSection />
 
     </main>
   );

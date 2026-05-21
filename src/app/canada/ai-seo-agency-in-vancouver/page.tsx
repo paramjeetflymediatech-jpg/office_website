@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import LocationPortfolio from "@/components/LocationPortfolio";
+import ContactFormSection from "@/components/ContactFormSection";
 import { Cpu, Zap, Search, BarChart3, Phone, MessageSquare, Sparkles, CloudLightning } from "lucide-react";
 
 export default function AISeoVancouverPage() {
@@ -96,7 +97,7 @@ export default function AISeoVancouverPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-[#F1F1F1] font-sans pb-16 text-black">
+    <main className="min-h-screen bg-[#F1F1F1] font-sans text-black">
 
 
 
@@ -316,6 +317,7 @@ export default function AISeoVancouverPage() {
           </div>
         </div>
       </section>
+<ContactFormSection />
 
       {/* Dynamic FAQ Schema */}
       <script

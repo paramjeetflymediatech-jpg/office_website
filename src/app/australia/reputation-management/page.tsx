@@ -3,10 +3,11 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import ContactFormSection from "@/components/ContactFormSection";
 
 export default function ReputationManagement() {
   return (
-    <main className="min-h-screen bg-[#F4F4F4] font-sans pb-24 text-[#333333]">
+    <main className="min-h-screen bg-[#F4F4F4] font-sans text-[#333333]">
 
       {/* 1. Hero Section (Left-aligned Image on Desktop, First on Mobile) */}
       <section className="relative py-12 md:py-10 overflow-hidden bg-[#F4F4F4]">
@@ -135,6 +136,9 @@ export default function ReputationManagement() {
           </div>
         </div>
       </section>
+
+      {/* Contact Form */}
+      <ContactFormSection />
 
     </main>
   );

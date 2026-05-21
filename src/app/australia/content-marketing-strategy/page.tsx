@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import ContactFormSection from "@/components/ContactFormSection";
 
 export default function ContentMarketingStrategy() {
   return (
@@ -201,6 +202,8 @@ export default function ContentMarketingStrategy() {
 
         </div>
       </section>
+      {/* Contact Form */}
+      <ContactFormSection />
     </main>
   );
 }

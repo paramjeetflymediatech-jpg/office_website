@@ -18,9 +18,10 @@ export async function submitContactForm(formData: FormData) {
   const email = formData.get('email') as string;
   const phone = formData.get('phone') as string;
   const message = formData.get('message') as string;
+  const subject = formData.get('subject') as string;
 
   try {
-    await ContactQuery.create({ name, email, phone, message });
+    await ContactQuery.create({ name, email, phone, subject, message });
     revalidatePath('/admin/contact');
     return { success: true };
   } catch (error) {
