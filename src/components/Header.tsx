@@ -288,16 +288,16 @@ export default function Header() {
                     {/* Mega Menu Dropdown */}
                     {hasMegaMenu && megaMenuData && (
                       <div
-                        className={`fixed left-0 w-full bg-[#000000] text-white shadow-2xl transition-all duration-300 origin-top z-[100] py-0 top-[110px] ${activeMenu === link.name
+                        className={`fixed left-0 w-full bg-[#000000] text-white shadow-2xl transition-all duration-300 origin-top z-[100] py-0 top-[102px] ${activeMenu === link.name
                           ? "opacity-100 visible translate-y-0 pointer-events-auto"
                           : "opacity-0 invisible -translate-y-2 pointer-events-none"
                           }`}
                       >
                         {/* Triangular Pointer pointing to the selected nav item */}
-                        <div className={`absolute -top-2 h-4 w-4 bg-black rotate-45 z-[110] hidden lg:block border-t border-l border-white/5 ${link.name === "Services" ? "left-[36%] xl:left-[36.5%]" :
+                        {/* <div className={`absolute -top-2 h-4 w-4 bg-black rotate-45 z-[110] hidden lg:block border-t border-l border-white/5 ${link.name === "Services" ? "left-[36%] xl:left-[36.5%]" :
                           link.name === "Packages" ? "left-[43%] xl:left-[43.5%]" :
                             "left-[51%] xl:left-[51.5%]"
-                          }`} />
+                          }`} /> */}
                         <div className="max-w-7xl mx-auto flex h-full min-h-[450px]">
                           {/* Left Sidebar Content */}
                           <div className="w-[30%] py-5 pr-8  border-r border-white/5 flex flex-col justify-between relative overflow-hidden">

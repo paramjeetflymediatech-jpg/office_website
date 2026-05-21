@@ -25,12 +25,13 @@ export async function GET(
       return new NextResponse('Bad Request', { status: 400 });
     }
 
-    // Resolve the clean physical path inside public/uploads
-    const relativePath = path.join(...filePathArray);
-    const absolutePath = path.join(process.cwd(), 'public/uploads', relativePath);
+    // Bypass Webpack and Turbopack static analysis by using string concatenation instead of path.join
+    const cwd = process.cwd();
+    const relativePath = filePathArray.join('/');
+    const absolutePath = `${cwd}/public/uploads/${relativePath}`;
+    const uploadsRoot = `${cwd}/public/uploads`;
 
     // Security check: Prevent directory traversal out of public/uploads
-    const uploadsRoot = path.join(process.cwd(), 'public/uploads');
     if (!absolutePath.startsWith(uploadsRoot)) {
       return new NextResponse('Forbidden', { status: 403 });
     }
