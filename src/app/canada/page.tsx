@@ -224,7 +224,7 @@ export default function CanadaLandingPage() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="elementor-element elementor-element-496acef e-con-full e-flex e-con-child space-y-8"
+            className="elementor-element elementor-element-496acef e-con-full e-flex e-con-child space-y-8 order-2 lg:order-1"
             data-id="496acef"
           >
             <div className="elementor-element elementor-element-d91e602 e-con-full e-flex e-con-child space-y-6" data-id="d91e602">
@@ -264,7 +264,7 @@ export default function CanadaLandingPage() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="elementor-element elementor-element-9316398 e-con-full e-flex e-con-child flex justify-center"
+            className="elementor-element elementor-element-9316398 e-con-full e-flex e-con-child flex justify-center order-1 lg:order-2"
             data-id="9316398"
           >
             <div className="elementor-element elementor-element-b993a0e anujimg elementor-widget elementor-widget-image relative w-full aspect-square overflow-hidden  group " data-id="b993a0e" data-widget_type="image.default">
@@ -741,7 +741,7 @@ export default function CanadaLandingPage() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7 }}
-              className="elementor-element elementor-element-9f9415d e-con-full e-flex e-con-child space-y-8"
+              className="elementor-element elementor-element-9f9415d e-con-full e-flex e-con-child space-y-8 order-2 lg:order-1"
               data-id="9f9415d"
             >
               <div className="elementor-element elementor-element-f5104e0 elementor-widget elementor-widget-heading" data-id="f5104e0">
@@ -782,7 +782,7 @@ export default function CanadaLandingPage() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7 }}
-              className="elementor-element elementor-element-d552a33 e-con-full e-flex e-con-child flex justify-center"
+              className="elementor-element elementor-element-d552a33 e-con-full e-flex e-con-child flex justify-center order-1 lg:order-2"
               data-id="d552a33"
             >
               <div
