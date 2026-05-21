@@ -76,7 +76,7 @@ export async function createBlog(formData: FormData) {
 
     // Handle image file upload if provided
     if (imageFile && imageFile.size > 0) {
-      const uploadDir = path.join(process.cwd(), 'public/uploads/blog');
+      const uploadDir = path.join(/*turbopackIgnore: true*/ process.cwd(), 'public/uploads/blog');
       await fs.mkdir(uploadDir, { recursive: true });
 
       const buffer = Buffer.from(await imageFile.arrayBuffer());
@@ -156,7 +156,7 @@ export async function updateBlog(id: number, formData: FormData) {
 
     // Handle new image file upload if provided
     if (imageFile && imageFile.size > 0) {
-      const uploadDir = path.join(process.cwd(), 'public/uploads/blog');
+      const uploadDir = path.join(/*turbopackIgnore: true*/ process.cwd(), 'public/uploads/blog');
       await fs.mkdir(uploadDir, { recursive: true });
 
       const buffer = Buffer.from(await imageFile.arrayBuffer());
@@ -168,7 +168,7 @@ export async function updateBlog(id: number, formData: FormData) {
       // Attempt to clean up old uploaded file if it was custom
       if (blog.image.startsWith('/uploads/blog/')) {
         try {
-          const oldPath = path.join(process.cwd(), 'public', blog.image);
+          const oldPath = path.join(/*turbopackIgnore: true*/ process.cwd(), 'public', blog.image);
           await fs.unlink(oldPath);
         } catch (e) {
           console.warn('[BlogAction] Could not delete old file:', e);
@@ -220,7 +220,7 @@ export async function deleteBlog(id: number) {
     // Clean up uploaded file if applicable
     if (blog.image.startsWith('/uploads/blog/')) {
       try {
-        const filePath = path.join(process.cwd(), 'public', blog.image);
+        const filePath = path.join(/*turbopackIgnore: true*/ process.cwd(), 'public', blog.image);
         await fs.unlink(filePath);
       } catch (e) {
         console.warn('[BlogAction] Could not delete file from disk:', e);
@@ -362,7 +362,7 @@ export async function getLegacyBlogData(slug: string) {
   try {
     const fs = require('fs/promises');
     const path = require('path');
-    const blogFilePath = path.join(process.cwd(), 'blog_data', 'blog.json');
+    const blogFilePath = path.join(/*turbopackIgnore: true*/ process.cwd(), 'blog_data', 'blog.json');
     
     if (await fs.access(blogFilePath).then(() => true).catch(() => false)) {
       const blogs = JSON.parse(await fs.readFile(blogFilePath, 'utf8'));

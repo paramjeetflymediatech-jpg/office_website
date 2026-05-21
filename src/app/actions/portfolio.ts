@@ -33,7 +33,7 @@ export async function uploadPortfolio(formData: FormData) {
     
     // If not general, create subfolder. If general, use root portfolio folder.
     const safeCategory = isGeneral ? '' : categoryName.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
-    const uploadDir = path.join(process.cwd(), 'public/uploads/portfolio', safeCategory);
+    const uploadDir = path.join(/*turbopackIgnore: true*/ process.cwd(), 'public/uploads/portfolio', safeCategory);
     
     console.log(`[Portfolio] Target directory: ${uploadDir}`);
     await fs.mkdir(uploadDir, { recursive: true });
@@ -88,7 +88,7 @@ export async function deletePortfolioItem(id: number) {
     }
 
     // Delete file from disk
-    const filePath = path.join(process.cwd(), 'public', item.imageUrl);
+    const filePath = path.join(/*turbopackIgnore: true*/ process.cwd(), 'public', item.imageUrl);
     console.log(`[Portfolio] Removing file: ${filePath}`);
     
     try {
@@ -133,7 +133,7 @@ export async function deleteAllPortfolioItems() {
     const items = await Portfolio.findAll();
     
     for (const item of items) {
-      const filePath = path.join(process.cwd(), 'public', item.imageUrl);
+      const filePath = path.join(/*turbopackIgnore: true*/ process.cwd(), 'public', item.imageUrl);
       try {
         await fs.unlink(filePath);
       } catch (e) {
@@ -143,7 +143,7 @@ export async function deleteAllPortfolioItems() {
     }
 
     // Also clean up any empty category folders
-    const rootDir = path.join(process.cwd(), 'public/uploads/portfolio');
+    const rootDir = path.join(/*turbopackIgnore: true*/ process.cwd(), 'public/uploads/portfolio');
     try {
       const dirs = await fs.readdir(rootDir);
       for (const dir of dirs) {

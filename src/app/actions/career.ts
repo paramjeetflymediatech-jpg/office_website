@@ -73,7 +73,7 @@ export async function applyToJob(formData: FormData) {
       return { success: false, error: 'Resume file is required' };
     }
 
-    const uploadDir = path.join(process.cwd(), 'public/uploads/resumes');
+    const uploadDir = path.join(/*turbopackIgnore: true*/ process.cwd(), 'public/uploads/resumes');
     await fs.mkdir(uploadDir, { recursive: true });
 
     const buffer = Buffer.from(await resumeFile.arrayBuffer());
@@ -117,7 +117,7 @@ export async function deleteApplication(id: number) {
 
     // Delete uploaded resume file if exists
     try {
-      const filePath = path.join(process.cwd(), 'public', app.resumeUrl);
+      const filePath = path.join(/*turbopackIgnore: true*/ process.cwd(), 'public', app.resumeUrl);
       await fs.unlink(filePath);
     } catch (e) {
       console.warn('Could not delete resume from disk:', e);
