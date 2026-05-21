@@ -229,6 +229,18 @@ export default function LocationPortfolio({ location }: LocationPortfolioProps) 
 
   return (
     <div className="space-y-12 w-full">
+      <style dangerouslySetInnerHTML={{ __html: `
+        .scroll-img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: top;
+          transition: object-position 5s ease-in-out;
+        }
+        .scroll-container:hover .scroll-img {
+          object-position: bottom;
+        }
+      `}} />
       
       {/* Category Tabs */}
       <div className="flex flex-wrap justify-center gap-2.5">
@@ -249,7 +261,7 @@ export default function LocationPortfolio({ location }: LocationPortfolioProps) 
 
       {/* Grid Portfolio Showcase */}
       {filteredItems.length > 0 ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
           <AnimatePresence mode="popLayout">
             {currentVisibleItems.map((item, index) => (
               <motion.div
@@ -260,24 +272,25 @@ export default function LocationPortfolio({ location }: LocationPortfolioProps) 
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.4, delay: (index % 12) * 0.04 }}
                 viewport={{ once: true }}
-                className="group relative bg-white  overflow-hidden  aspect-[3/2] cursor-pointer transition-all duration-300"
+                className="scroll-container group relative bg-white overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 border border-gray-100 aspect-[3/4] cursor-pointer"
                 onClick={() => {
                   const idx = filteredItems.findIndex(x => x.id === item.id);
                   setSelectedImageIndex(idx !== -1 ? idx : null);
                 }}
               >
-                <div className="relative w-full h-full p-3 bg-[#FCFCFC] flex items-center justify-center">
+                <div className="relative w-full h-full overflow-hidden bg-[#FBFBFB]">
                   <Image
                     src={item.imageUrl}
                     alt={item.title}
                     fill
-                    className="object-contain transition-transform duration-700 "
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                    className="scroll-img"
+                    sizes="(max-width: 768px) 100vw, 33vw"
                     unoptimized
                   />
                 </div>
 
-
+                {/* Hover Glass Overlay Gradient */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 pointer-events-none" />
               </motion.div>
             ))}
           </AnimatePresence>
