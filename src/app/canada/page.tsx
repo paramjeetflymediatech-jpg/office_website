@@ -447,7 +447,7 @@ export default function CanadaLandingPage() {
                     src={card.bg}
                     alt={card.title}
                     fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-1000 ease-out brightness-[0.35] group-hover:brightness-[0.25]"
+                    className="object-cover lg:group-hover:scale-110 transition-transform duration-1000 ease-out brightness-[0.25] lg:brightness-[0.35] lg:group-hover:brightness-[0.25]"
                     unoptimized
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent z-10" />
@@ -455,15 +455,15 @@ export default function CanadaLandingPage() {
 
                 {/* Content Box */}
                 <div className="absolute inset-0 z-20 p-8 flex flex-col justify-end space-y-4">
-                  <div className="w-14 h-14 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 shadow-lg transform -translate-y-2 group-hover:translate-y-0 opacity-90 group-hover:opacity-100 transition-all duration-500">
+                  <div className="w-14 h-14 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 shadow-lg transform translate-y-0 lg:-translate-y-2 lg:group-hover:translate-y-0 opacity-100 lg:opacity-90 lg:group-hover:opacity-100 transition-all duration-500">
                     {card.icon}
                   </div>
 
-                  <h3 className="text-2xl font-bold text-white tracking-wide group-hover:text-[#ff9900] transition-colors duration-300">
+                  <h3 className="text-2xl font-bold text-white tracking-wide lg:group-hover:text-[#ff9900] transition-colors duration-300">
                     {card.title}
                   </h3>
 
-                  <p className="text-sm text-gray-300/90 leading-relaxed font-medium line-clamp-4 transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
+                  <p className="text-sm text-gray-300/90 leading-relaxed font-medium line-clamp-4 transform translate-y-0 lg:translate-y-4 lg:group-hover:translate-y-0 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-all duration-500">
                     {card.desc}
                   </p>
                 </div>
@@ -634,7 +634,7 @@ export default function CanadaLandingPage() {
                     src={card.bg}
                     alt={card.title}
                     fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-1000 ease-out brightness-[0.4] group-hover:brightness-[0.25]"
+                    className="object-cover lg:group-hover:scale-110 transition-transform duration-1000 ease-out brightness-[0.25] lg:brightness-[0.4] lg:group-hover:brightness-[0.25]"
                     unoptimized
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent z-10" />
@@ -642,15 +642,15 @@ export default function CanadaLandingPage() {
 
                 {/* Content Box */}
                 <div className="absolute inset-0 z-20 p-8 flex flex-col justify-end space-y-4">
-                  <div className="w-12 h-12 rounded-xl bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/25 shadow-lg transform -translate-y-2 group-hover:translate-y-0 opacity-90 group-hover:opacity-100 transition-all duration-500">
+                  <div className="w-12 h-12 rounded-xl bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/25 shadow-lg transform translate-y-0 lg:-translate-y-2 lg:group-hover:translate-y-0 opacity-100 lg:opacity-90 lg:group-hover:opacity-100 transition-all duration-500">
                     {card.icon}
                   </div>
 
-                  <h3 className="text-xl font-bold text-white tracking-wide group-hover:text-[#ff9900] transition-colors duration-300">
+                  <h3 className="text-xl font-bold text-white tracking-wide lg:group-hover:text-[#ff9900] transition-colors duration-300">
                     {card.title}
                   </h3>
 
-                  <p className="text-sm text-gray-200/90 leading-relaxed font-medium line-clamp-4 transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
+                  <p className="text-sm text-gray-200/90 leading-relaxed font-medium line-clamp-4 transform translate-y-0 lg:translate-y-4 lg:group-hover:translate-y-0 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-all duration-500">
                     {card.desc}
                   </p>
                 </div>

@@ -198,7 +198,7 @@ export default function Header() {
 
           {/* Mobile & Tablet Call Icon Removed */}
 
-          <div className={`xl:static z-50 ${isEdmonton ? "w-full flex justify-center" : "flex-grow xl:flex-grow-0 flex justify-center xl:justify-start"}`}>
+          <div className={`xl:static z-50 ${isEdmonton ? "w-full flex justify-center" : "flex-grow xl:flex-grow-0 flex justify-start"}`}>
             <Link href={logoHref} className="flex items-center">
               <div className="relative h-10 w-40 sm:h-14 sm:w-56">
                 <Image

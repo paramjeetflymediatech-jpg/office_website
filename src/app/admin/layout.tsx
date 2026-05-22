@@ -92,6 +92,7 @@ export default function AdminLayout({
           <NavLink href="/admin/contact" icon={<Mail size={20} />} label="Contact Queries" active={pathname === '/admin/contact'} onClick={() => setIsMobileMenuOpen(false)} />
           <NavLink href="/admin/portfolio" icon={<ImageIcon size={20} />} label="Portfolio" active={pathname === '/admin/portfolio'} onClick={() => setIsMobileMenuOpen(false)} />
           <NavLink href="/admin/career" icon={<Briefcase size={20} />} label="Career" active={pathname === '/admin/career'} onClick={() => setIsMobileMenuOpen(false)} />
+          <NavLink href="/admin/summer-training" icon={<Sparkles size={20} />} label="Summer Training" active={pathname === '/admin/summer-training'} onClick={() => setIsMobileMenuOpen(false)} />
 
           <div className="pt-6 pb-2 px-4 text-[11px] font-black text-gray-400 uppercase tracking-wider flex items-center gap-2">
             <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />

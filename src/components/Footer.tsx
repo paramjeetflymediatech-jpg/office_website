@@ -255,16 +255,7 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Summer Training Banner/Button */}
-        <div className="mt-12 flex justify-center">
-          <Link 
-            href="/summer-training" 
-            className="bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-500 hover:to-purple-500 text-white font-extrabold text-lg px-10 py-4 rounded-full shadow-xl transition-all hover:shadow-[0_0_20px_rgba(216,27,96,0.5)] hover:-translate-y-1 flex items-center gap-3 border border-pink-400/30"
-          >
-            {/* <span className="text-xl">🚀</span> */}
-            <span>Join Summer Training 2026</span>
-          </Link>
-        </div>
+
 
         {/* Copyright Bar */}
         <div className="mt-10 pt-5 border-t border-white/10 text-center max-w-7xl mx-auto">

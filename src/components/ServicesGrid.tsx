@@ -86,13 +86,20 @@ export default function ServicesGrid() {
           Committed to providing remarkable service to clients, the best digital marketing company in India is here to bring your vision to life and shape your digital destiny. With years of experience and expertise in digital marketing, we have helped countless clients realise the full potential of their business and attain the summit of success.
         </p>
 
-        <div className="flex justify-center">
+        <div className="flex flex-wrap justify-center gap-4">
           <Link
             href="/contact-us"
-            className="bg-[#ff9900] text-white font-bold px-8 py-3 rounded-full flex items-center gap-3 hover:bg-black transition-all shadow-lg"
+            className="bg-[#ff9900] text-white font-bold px-8 py-3.5 rounded-full flex items-center justify-center gap-3 hover:bg-black transition-all shadow-lg"
           >
             Contact Us
             <ChevronsRight className="w-5 h-5" />
+          </Link>
+          
+          <Link 
+            href="/summer-training" 
+            className="bg-gradient-to-r from-orange-600 to-yellow-600 hover:from-orange-500 hover:to-yellow-500 text-white font-bold px-8 py-3.5 rounded-full shadow-lg transition-all hover:shadow-[0_0_20px_rgba(216,27,96,0.3)] hover:-translate-y-0.5 flex items-center justify-center gap-2 border border-pink-400/30"
+          >
+            Join Summer Training 2026
           </Link>
         </div>
 

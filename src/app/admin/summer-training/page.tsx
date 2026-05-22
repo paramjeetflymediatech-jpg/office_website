@@ -2,9 +2,9 @@
 
 import React, { useState, useEffect } from 'react';
 import { getContactQueries, updateQueryStatus, deleteQuery } from '@/app/actions/contact';
-import { Mail, Trash2, Eye, X, RefreshCw } from 'lucide-react';
+import { Trash2, Eye, X, RefreshCw, GraduationCap } from 'lucide-react';
 
-export default function ContactAdminPage() {
+export default function SummerTrainingAdminPage() {
   const [queries, setQueries] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
@@ -12,7 +12,6 @@ export default function ContactAdminPage() {
 
   useEffect(() => {
     loadQueries();
-    // Auto-refresh when user comes back to this tab
     const onFocus = () => loadQueries();
     window.addEventListener('focus', onFocus);
     return () => window.removeEventListener('focus', onFocus);
@@ -22,8 +21,8 @@ export default function ContactAdminPage() {
     if (isManual) setRefreshing(true);
     else setLoading(true);
     const data = await getContactQueries();
-    // Exclude summer training applications since they have their own dedicated page
-    const filtered = data.filter((q: any) => !(q.subject && q.subject.includes('Summer Training Application')));
+    // Filter out only summer training applications
+    const filtered = data.filter((q: any) => q.subject && q.subject.includes('Summer Training Application'));
     setQueries(filtered);
     setLoading(false);
     setRefreshing(false);
@@ -35,21 +34,24 @@ export default function ContactAdminPage() {
   };
 
   const handleDelete = async (id: number) => {
-    if (confirm('Delete this query?')) {
+    if (confirm('Delete this application?')) {
       const result = await deleteQuery(id);
       if (result.success) loadQueries(true);
     }
   };
 
-  if (loading) return <div className="p-8 text-center text-gray-500">Loading contact queries...</div>;
+  if (loading) return <div className="p-8 text-center text-gray-500">Loading applications...</div>;
 
   return (
     <div className="space-y-8">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Contact Queries</h1>
+          <h1 className="text-3xl font-bold text-gray-900 flex items-center gap-3">
+            <GraduationCap className="text-[#ff9900]" size={32} />
+            Summer Training Applications
+          </h1>
           <p className="text-gray-500 mt-1">
-            {queries.length} {queries.length === 1 ? 'inquiry' : 'inquiries'} from your website visitors.
+            {queries.length} {queries.length === 1 ? 'candidate has' : 'candidates have'} applied for Summer Training.
           </p>
         </div>
         <button
@@ -69,9 +71,8 @@ export default function ContactAdminPage() {
             <thead>
               <tr className="bg-gray-50 border-b border-gray-100">
                 <th className="px-6 py-4 text-xs font-bold text-gray-400 uppercase tracking-wider">Date</th>
-                <th className="px-6 py-4 text-xs font-bold text-gray-400 uppercase tracking-wider">Contact</th>
-                <th className="px-6 py-4 text-xs font-bold text-gray-400 uppercase tracking-wider">Subject</th>
-                <th className="px-6 py-4 text-xs font-bold text-gray-400 uppercase tracking-wider">Message Snippet</th>
+                <th className="px-6 py-4 text-xs font-bold text-gray-400 uppercase tracking-wider">Candidate</th>
+                <th className="px-6 py-4 text-xs font-bold text-gray-400 uppercase tracking-wider">Course</th>
                 <th className="px-6 py-4 text-xs font-bold text-gray-400 uppercase tracking-wider">Status</th>
                 <th className="px-6 py-4 text-xs font-bold text-gray-400 uppercase tracking-wider text-right">Actions</th>
               </tr>
@@ -85,12 +86,10 @@ export default function ContactAdminPage() {
                   <td className="px-6 py-4">
                     <div className="text-sm font-bold text-gray-900">{query.name}</div>
                     <div className="text-xs text-gray-500">{query.email}</div>
+                    <div className="text-xs text-gray-400 mt-0.5">{query.phone}</div>
                   </td>
-                  <td className="px-6 py-4 text-sm text-gray-600">
-                    {query.subject || 'N/A'}
-                  </td>
-                  <td className="px-6 py-4 text-sm text-gray-600 max-w-xs truncate">
-                    {query.message}
+                  <td className="px-6 py-4 text-sm font-bold text-[#ff9900]">
+                    {query.subject ? query.subject.replace('Summer Training Application - ', '') : 'N/A'}
                   </td>
                   <td className="px-6 py-4">
                     <select 
@@ -136,7 +135,9 @@ export default function ContactAdminPage() {
                 <div>
                   <div className="font-bold text-gray-900">{query.name}</div>
                   <div className="text-xs text-gray-500">{query.email}</div>
-                  <div className="text-xs font-bold text-[#ff9900] mt-1">{query.subject}</div>
+                  <div className="text-xs font-bold text-[#ff9900] mt-1">
+                    {query.subject ? query.subject.replace('Summer Training Application - ', '') : 'N/A'}
+                  </div>
                   <div className="text-[10px] text-gray-400 mt-1">
                     {new Date(query.createdAt).toLocaleString()}
                   </div>
@@ -177,7 +178,7 @@ export default function ContactAdminPage() {
 
         {queries.length === 0 && (
           <div className="text-center py-20 text-gray-500">
-            No queries found.
+            No applications found.
           </div>
         )}
       </div>
@@ -186,10 +187,13 @@ export default function ContactAdminPage() {
       {selectedQuery && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-[100] p-4">
           <div className="bg-white rounded-2xl w-full max-w-lg overflow-hidden shadow-2xl">
-            <div className="p-6 border-b border-gray-100 flex justify-between items-center">
-              <h2 className="text-xl font-bold text-gray-900">Query Details</h2>
-              <button onClick={() => setSelectedQuery(null)} className="text-gray-400 hover:text-gray-600">
-                <X size={24} />
+            <div className="p-6 border-b border-gray-100 flex justify-between items-center bg-gray-50">
+              <h2 className="text-xl font-bold text-gray-900 flex items-center gap-2">
+                <GraduationCap className="text-[#ff9900]" />
+                Application Details
+              </h2>
+              <button onClick={() => setSelectedQuery(null)} className="text-gray-400 hover:text-gray-600 bg-white p-1 rounded-full shadow-sm">
+                <X size={20} />
               </button>
             </div>
             <div className="p-6 space-y-6">
@@ -216,13 +220,15 @@ export default function ContactAdminPage() {
               </div>
 
               <div>
-                <label className="text-xs font-bold text-gray-400 uppercase">Subject</label>
-                <div className="text-lg font-bold text-[#ff9900]">{selectedQuery.subject || 'N/A'}</div>
+                <label className="text-xs font-bold text-gray-400 uppercase">Course Applied</label>
+                <div className="text-lg font-bold text-[#ff9900]">
+                  {selectedQuery.subject ? selectedQuery.subject.replace('Summer Training Application - ', '') : 'N/A'}
+                </div>
               </div>
 
               <div>
-                <label className="text-xs font-bold text-gray-400 uppercase">Message</label>
-                <div className="mt-2 p-4 bg-gray-50 rounded-lg text-gray-700 whitespace-pre-wrap">
+                <label className="text-xs font-bold text-gray-400 uppercase">Application Data</label>
+                <div className="mt-2 p-4 bg-gray-50 rounded-lg text-gray-700 whitespace-pre-wrap font-mono text-sm shadow-inner border border-gray-100">
                   {selectedQuery.message}
                 </div>
               </div>
