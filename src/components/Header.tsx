@@ -196,22 +196,7 @@ export default function Header() {
       <header className="w-full bg-[#f1f1f1] py-3 lg:py-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
 
-          {/* Mobile & Tablet Call Icon */}
-          {!isEdmonton && (
-            <Link
-              href={phoneHref}
-              className="xl:hidden w-11 h-11 bg-black rounded-full flex items-center justify-center text-white transition-all hover:bg-[#ff9900] hover:scale-105 active:scale-95 shadow-md flex-shrink-0 relative z-50"
-              aria-label="Call Us"
-            >
-              <svg
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className="w-5 h-5 text-white"
-              >
-                <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-2.2 2.2a15.045 15.045 0 0 1-6.59-6.59l2.2-2.21a.96.96 0 0 0 .25-1A11.56 11.56 0 0 1 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.62c0-.55-.45-1-1-1z" />
-              </svg>
-            </Link>
-          )}
+          {/* Mobile & Tablet Call Icon Removed */}
 
           <div className={`xl:static z-50 ${isEdmonton ? "w-full flex justify-center" : "flex-grow xl:flex-grow-0 flex justify-center xl:justify-start"}`}>
             <Link href={logoHref} className="flex items-center">
@@ -576,16 +561,7 @@ export default function Header() {
               })}
             </nav>
 
-            {/* Mobile Call CTA */}
-            <div className="mt-auto pt-10 pb-10">
-              <Link
-                href={phoneHref}
-                className="flex items-center justify-center gap-3 w-full bg-[#ff9900] py-5 rounded-xl text-white font-normal tracking-normal shadow-xl"
-              >
-                <Phone size={20} fill="white" />
-                Call {phoneLabel}
-              </Link>
-            </div>
+          {/* Mobile Call CTA Removed */}
           </div>
         </div>
       )}

@@ -24,7 +24,7 @@ export default function FloatingButtons() {
   return (
     <>
       {/* Floating Call Button */}
-      <div className="fixed bottom-24 lg:bottom-10 right-4 lg:right-10 z-[9999]" style={{ zIndex: 9999 }}>
+      <div className="fixed bottom-28 lg:bottom-10 right-4 lg:right-10 z-[9999]" style={{ zIndex: 9999 }}>
         <Link
           href={`tel:${callNumber}`}
           className="w-16 h-16 bg-[#ffcc33] rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform animate-bounce"
@@ -36,7 +36,7 @@ export default function FloatingButtons() {
       </div>
 
       {/* WhatsApp Button */}
-      <div className="fixed bottom-24 lg:bottom-10 left-4 lg:left-10 z-[9999]" style={{ zIndex: 9999 }}>
+      <div className="fixed bottom-8 lg:bottom-10 right-4 lg:right-auto lg:left-10 z-[9999]" style={{ zIndex: 9999 }}>
         <Link
           href="https://api.whatsapp.com/send?phone=919888484310&text=Hi Anuj"
           target="_blank"
