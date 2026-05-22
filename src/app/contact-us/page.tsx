@@ -73,14 +73,14 @@ export default function ContactUs() {
         </div>
       </section>
       {/* text section */}
-      <section className="py-15 bg-gray-100  text-center  mx-auto  ">
+      <section className="py-15 px-4 md:px-8 bg-gray-100 text-center mx-auto">
         <p className="text-gray-600 text-lg leading-relaxed mb-10 max-w-7xl mx-auto">Feel free to talk to our online representative at any time you please using our Live Chat system on our website or one of the below instant messaging programs. Please be patient while waiting for response. (24/7 Support!) Phone General Inquiries:</p>
       </section>
 
      <ContactSection />
 
       {/* Office Locations Section */}
-      <section className="py-20 border-t border-gray-200 bg-gray-100">
+      <section className="py-20 px-4 md:px-8 border-t border-gray-200 bg-gray-100">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             {OFFICES.map((office, idx) => (

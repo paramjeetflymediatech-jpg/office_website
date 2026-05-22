@@ -24,7 +24,7 @@ export default function FloatingButtons() {
   return (
     <>
       {/* Floating Call Button */}
-      <div className="fixed bottom-10 right-10 z-50">
+      <div className="fixed bottom-24 lg:bottom-10 right-4 lg:right-10 z-[9999]" style={{ zIndex: 9999 }}>
         <Link
           href={`tel:${callNumber}`}
           className="w-16 h-16 bg-[#ffcc33] rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform animate-bounce"
@@ -36,13 +36,13 @@ export default function FloatingButtons() {
       </div>
 
       {/* WhatsApp Button */}
-      <div className="fixed bottom-10 left-10 z-50 hidden lg:block">
+      <div className="fixed bottom-24 lg:bottom-10 left-4 lg:left-10 z-[9999]" style={{ zIndex: 9999 }}>
         <Link
           href="https://api.whatsapp.com/send?phone=919888484310&text=Hi Anuj"
           target="_blank"
-          className="flex items-center gap-3 rounded-full bg-[#2db742] px-6 py-3 text-white shadow-2xl hover:scale-105 transition-transform"
+          className="flex items-center justify-center lg:justify-start gap-0 lg:gap-3 rounded-full bg-[#2db742] w-16 h-16 lg:w-auto lg:h-auto lg:px-6 lg:py-3 text-white shadow-2xl hover:scale-105 transition-transform"
         >
-          <div className="h-10 w-10 relative">
+          <div className="h-10 w-10 relative flex-shrink-0">
             <Image
               src="/dropdown-icons/whatsapp_logo.svg"
               alt="WhatsApp"
@@ -50,7 +50,7 @@ export default function FloatingButtons() {
               sizes="40px"
             />
           </div>
-          <div className="flex flex-col text-left leading-none">
+          <div className="hidden lg:flex flex-col text-left leading-none">
             <span className="text-[10px] text-[#d5f0d9] font-medium">
               Anuj Gupta | Online
             </span>

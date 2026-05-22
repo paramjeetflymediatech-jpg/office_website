@@ -193,7 +193,7 @@ export default function AustraliaAboutUs() {
   ];
 
   return (
-    <main className="min-h-screen bg-[#D0D0D0]">
+    <main className="min-h-screen bg-[#F1F1F1]">
       {/* 1. Hero Section */}
       <section className="relative overflow-hidden">
         <div className="pt-12 pb-20 px-4">

@@ -115,7 +115,7 @@ export default function Header() {
   // Close mobile menu when resizing to desktop
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth >= 1024) {
+      if (window.innerWidth >= 1280) {
         setIsMobileMenuOpen(false);
         setIsMobileLocOpen(false);
         setIsLocDropdownOpen(false);
@@ -140,14 +140,14 @@ export default function Header() {
           onMouseLeave={() => setIsLocDropdownOpen(false)}
         >
           <div
-            className="flex items-center gap-1 lg:pointer-events-auto"
+            className="flex items-center gap-1 xl:pointer-events-auto"
             onClick={(e) => {
               e.stopPropagation();
               setIsLocDropdownOpen(!isLocDropdownOpen);
             }}
           >
-            <span className="text-[10px] sm:text-xs font-medium tracking-wide">Location</span>
-            <IoMdArrowDropdown size={18} className="text-white" />
+            <span className="text-sm sm:text-base font-bold tracking-wide">Location</span>
+            <IoMdArrowDropdown size={20} className="text-white" />
           </div>
 
           {/* Dropdown Menu (Desktop Hover & Mobile/Tablet Click-to-Toggle) */}
@@ -196,11 +196,11 @@ export default function Header() {
       <header className="w-full bg-[#f1f1f1] py-3 lg:py-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
 
-          {/* Mobile & Tablet Call Icon (Visible on < lg, hidden on lg, elevated to relative z-50 to float above menu overlay) */}
+          {/* Mobile & Tablet Call Icon */}
           {!isEdmonton && (
             <Link
               href={phoneHref}
-              className="lg:hidden w-11 h-11 bg-black rounded-full flex items-center justify-center text-white transition-all hover:bg-[#ff9900] hover:scale-105 active:scale-95 shadow-md flex-shrink-0 relative z-50"
+              className="xl:hidden w-11 h-11 bg-black rounded-full flex items-center justify-center text-white transition-all hover:bg-[#ff9900] hover:scale-105 active:scale-95 shadow-md flex-shrink-0 relative z-50"
               aria-label="Call Us"
             >
               <svg
@@ -213,7 +213,7 @@ export default function Header() {
             </Link>
           )}
 
-          <div className={`lg:static z-50 ${isEdmonton ? "w-full flex justify-center" : "flex-grow lg:flex-grow-0 flex justify-center lg:justify-start"}`}>
+          <div className={`xl:static z-50 ${isEdmonton ? "w-full flex justify-center" : "flex-grow xl:flex-grow-0 flex justify-center xl:justify-start"}`}>
             <Link href={logoHref} className="flex items-center">
               <div className="relative h-10 w-40 sm:h-14 sm:w-56">
                 <Image
@@ -231,7 +231,7 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           {!isEdmonton && (
-            <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8">
+            <nav className="hidden xl:flex items-center space-x-6">
               {navLinks.map((link) => {
                 const isActive = pathname === link.href;
                 const hasMegaMenu = link.name === "Services" || link.name === "Packages" || link.name === "What We Do";
@@ -414,7 +414,7 @@ export default function Header() {
 
           {/* Desktop Call Action */}
           {!isEdmonton && (
-            <div className="hidden lg:flex items-center">
+            <div className="hidden xl:flex items-center">
               <Link
                 href={phoneHref}
                 className="rounded-full bg-black px-10 py-3.5 text-sm font-normal text-white tracking-normal transition-all hover:bg-[#ff9900] active:scale-95 shadow-lg"
@@ -424,10 +424,10 @@ export default function Header() {
             </div>
           )}
 
-          {/* Mobile Menu Toggle (Visible on < lg, hidden on lg) */}
+          {/* Mobile Menu Toggle */}
           {!isEdmonton && (
             <button
-              className="lg:hidden w-11 h-11 flex items-center justify-center bg-white border-2 border-[#ff9900] rounded-xl text-black hover:bg-gray-50 transition-colors z-50 flex-shrink-0"
+              className="xl:hidden w-11 h-11 flex items-center justify-center bg-white border-2 border-[#ff9900] rounded-xl text-black hover:bg-gray-50 transition-colors z-50 flex-shrink-0"
               onClick={() => {
                 setIsMobileMenuOpen(!isMobileMenuOpen);
                 setIsMobileLocOpen(false);
@@ -442,7 +442,7 @@ export default function Header() {
 
       {/* Mobile Menu */}
       {!isEdmonton && isMobileMenuOpen && (
-        <div className="fixed inset-0 z-40 bg-white lg:hidden">
+        <div className="fixed inset-0 z-40 bg-white xl:hidden">
           <div className="flex flex-col h-full pt-24 px-6 overflow-y-auto">
 
             {/* Mobile Location Selector */}
@@ -539,7 +539,7 @@ export default function Header() {
                                 src={sublink.icon}
                                 alt={sublink.name}
                                 fill
-                                className="object-contain"
+                                className="object-contain brightness-0 opacity-80"
                                 sizes="24px"
                               />
                             </div>

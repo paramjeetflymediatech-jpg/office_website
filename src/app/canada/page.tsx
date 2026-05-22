@@ -212,7 +212,7 @@ export default function CanadaLandingPage() {
 
       {/* 2.5 Founder Spotlight: Dr. Anuj Gupta */}
       <section
-        className="py-24 px-4 bg-[#D0D0D0] elementor-element elementor-element-82a5da1 e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-parent e-lazyloaded border-t border-gray-100"
+        className="py-24 px-4 bg-[#F1F1F1] elementor-element elementor-element-82a5da1 e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-parent e-lazyloaded border-t border-gray-100"
         data-id="82a5da1"
         data-element_type="container"
       >
@@ -287,7 +287,7 @@ export default function CanadaLandingPage() {
 
       {/* 2. Parth Katyal Leadership Spotlight */}
       <section
-        className="py-24 px-4 bg-[#D0D0D0] elementor-element elementor-element-c4c8c2e e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-parent e-lazyloaded"
+        className="py-24 px-4 bg-[#F1F1F1] elementor-element elementor-element-c4c8c2e e-flex e-con-boxed wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no e-con e-parent e-lazyloaded"
         data-id="c4c8c2e"
         data-element_type="container"
       >
