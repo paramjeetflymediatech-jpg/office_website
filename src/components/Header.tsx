@@ -85,7 +85,7 @@ export default function Header() {
       { name: "How We Work", href: "/how-we-work" },
       { name: "Services", href: "/#", hasDropdown: true },
       { name: "Packages", href: "/#", hasDropdown: true },
-      { name: "What We Do", href: "/#", hasDropdown: true },
+      { name: "Industries We Serve", href: "/#", hasDropdown: true },
       { name: "Location", href: "/#", hasDropdown: true },
       { name: "Blog", href: "/australia/blog" },
       { name: "Contact Us", href: "/australia/contact-us" },
@@ -219,7 +219,7 @@ export default function Header() {
             <nav className="hidden xl:flex items-center space-x-6">
               {navLinks.map((link) => {
                 const isActive = pathname === link.href;
-                const hasMegaMenu = link.name === "Services" || link.name === "Packages" || link.name === "What We Do";
+                const hasMegaMenu = link.name === "Services" || link.name === "Packages" || link.name === "Industries We Serve";
                 const megaMenuData = hasMegaMenu
                   ? (isCanada
                     ? CANADA_MEGA_MENU_DATA[link.name as keyof typeof CANADA_MEGA_MENU_DATA] || MEGA_MENU_DATA[link.name as keyof typeof MEGA_MENU_DATA]
@@ -475,8 +475,8 @@ export default function Header() {
             <nav className="flex flex-col gap-2">
               {navLinks.map((link) => {
                 const isActive = pathname === link.href;
-                const hasMegaMenu = link.name === "Services" || link.name === "Packages" || link.name === "What We Do" || link.name === "Location";
-                const megaMenuData = (link.name === "Services" || link.name === "Packages" || link.name === "What We Do")
+                const hasMegaMenu = link.name === "Services" || link.name === "Packages" || link.name === "Industries We Serve" || link.name === "Location";
+                const megaMenuData = (link.name === "Services" || link.name === "Packages" || link.name === "Industries We Serve")
                   ? (isCanada
                     ? CANADA_MEGA_MENU_DATA[link.name as keyof typeof CANADA_MEGA_MENU_DATA] || MEGA_MENU_DATA[link.name as keyof typeof MEGA_MENU_DATA]
                     : isAustraliaAboutUs
@@ -561,7 +561,7 @@ export default function Header() {
               })}
             </nav>
 
-          {/* Mobile Call CTA Removed */}
+            {/* Mobile Call CTA Removed */}
           </div>
         </div>
       )}

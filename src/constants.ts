@@ -3,7 +3,7 @@ export const NAV_LINKS = [
   { name: "How We Work", href: "/how-we-work" },
   { name: "Services", href: "/#", hasDropdown: true },
   { name: "Packages", href: "/#", hasDropdown: true },
-  { name: "What We Do", href: "/#", hasDropdown: true },
+  { name: "Industries We Serve", href: "/#", hasDropdown: true },
   { name: "Portfolio", href: "/portfolio" },
   { name: "Blog", href: "/blog" },
   { name: "Contact Us", href: "/contact-us" },
@@ -110,7 +110,7 @@ export const MEGA_MENU_DATA = {
       { name: "Social Media Branding", href: "/social-media-branding", icon: "/dropdown-icons/social-media-icon.webp" }
     ]
   },
-  "What We Do": {
+  "Industries We Serve": {
     sidebar: {
       title: "Digital Marketing",
       description: "Make your business reach new heights of digital success through our comprehensive range of digital marketing solutions. From Social Media Marketing, SEO, and Content Writing to Website Design, Graphic design and a lot more, we cover all your digital marketing needs.",
@@ -170,7 +170,7 @@ export const AUSTRALIA_MEGA_MENU_DATA = {
       { name: "Social Media Branding", href: "/australia/social-media-branding", icon: "/dropdown-icons/social-media-icon.webp" }
     ]
   },
-  "What We Do": {
+  "Industries We Serve": {
     sidebar: {
       title: "Local Services",
       description: "We serve multiple locations across Australia, providing top-notch web design, development, and digital marketing services customized to local business needs in Brisbane, Melbourne, Sydney, and surrounding areas.",
