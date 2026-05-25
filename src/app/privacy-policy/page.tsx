@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { Shield, Lock, Eye, FileText, Mail, MapPin, Phone, HelpCircle } from "lucide-react";
+import { Shield, Lock, Eye, FileText, Mail, MapPin, Phone, CheckCircle } from "lucide-react";
 
 export default function PrivacyPolicy() {
   const lastUpdated = "May 2026";
@@ -10,65 +10,37 @@ export default function PrivacyPolicy() {
   const policySections = [
     {
       icon: <Eye className="w-6 h-6 text-[#ff9900]" />,
-      title: "1. Information We Collect",
+      title: "1. Information Collection & Usage",
       content: (
-        <div className="space-y-3">
-          <p>
-            We collect personal information that you voluntarily provide to us when you fill out forms, request quotes, apply for jobs, or communicate with us. This information may include:
-          </p>
-          <ul className="list-disc pl-5 space-y-1 text-gray-600">
-            <li>Name, email address, phone number, and physical address.</li>
-            <li>Business details, website URL, and digital marketing requirements.</li>
-            <li>Resumes, employment history, and portfolios when applying for career opportunities.</li>
-          </ul>
-          <p>
-            We also automatically collect certain technical data when you visit our website, including your IP address, browser type, operating system, and details about your browsing patterns via cookies and analytics tools.
-          </p>
-        </div>
+        <p>
+          At Flymedia Technology, we respect your privacy and are committed to protecting your personal and business information. Any details shared with us, including name, phone number, email address, business information, website details, login credentials, or project-related data, are used only for communication, project development, support, and service delivery.
+        </p>
       )
     },
     {
       icon: <FileText className="w-6 h-6 text-[#ff9900]" />,
-      title: "2. How We Use Your Information",
+      title: "2. Information Sharing & Disclosure",
       content: (
-        <div className="space-y-3">
-          <p>
-            Fly Media Technology utilizes the collected data for various professional and operational purposes:
-          </p>
-          <ul className="list-disc pl-5 space-y-1 text-gray-600">
-            <li>To formulate customized SEO, web design, development, and PPC packages.</li>
-            <li>To deliver, monitor, and optimize our digital marketing services.</li>
-            <li>To manage client accounts, process inquiries, and provide responsive 24/7 customer support.</li>
-            <li>To analyze site performance, detect issues, and enhance the overall user experience of our website.</li>
-            <li>To send periodic updates, newsletters, and marketing materials that align with your business growth.</li>
-          </ul>
-        </div>
+        <p>
+          We do not sell, rent, or share your personal information with any third party for marketing purposes. However, certain information may be shared with trusted service providers only when required to complete a project or provide a requested service.
+        </p>
       )
     },
     {
       icon: <Lock className="w-6 h-6 text-[#ff9900]" />,
-      title: "3. Data Protection and Security",
+      title: "3. Data Security",
       content: (
         <p>
-          We employ robust administrative, technical, and physical security measures to safeguard your personal data from unauthorized access, alteration, disclosure, or destruction. However, please note that no method of transmission over the Internet or computer storage is 100% secure, and we cannot guarantee absolute data security.
+          We take reasonable security measures to protect your data from unauthorized access, misuse, or disclosure. However, no online method of data transmission or storage is completely secure, so we cannot guarantee absolute security.
         </p>
       )
     },
     {
-      icon: <Shield className="w-6 h-6 text-[#ff9900]" />,
-      title: "4. Third-Party Sharing and Disclosures",
+      icon: <CheckCircle className="w-6 h-6 text-[#ff9900]" />,
+      title: "4. Consent and Agreement",
       content: (
         <p>
-          We do not sell, trade, or rent your personal identification information to third parties. We may share general compiled demographic information not linked to any personal identification regarding visitors and users with our trusted business partners, affiliate agencies, and advertisers for the purposes outlined above. We may also engage third-party service providers to help us run our operations (e.g. website analytics, payment gateway integrations) under strict confidentiality agreements.
-        </p>
-      )
-    },
-    {
-      icon: <HelpCircle className="w-6 h-6 text-[#ff9900]" />,
-      title: "5. Cookies and Tracking Technologies",
-      content: (
-        <p>
-          Our website uses cookies to enhance user convenience and track traffic trends. Cookies are small data files placed on your device. You can choose to set your web browser to refuse cookies or to alert you when cookies are being sent. If you do so, note that some parts of the website may not function properly.
+          By using our website or services, you agree to the collection and use of information as described in this Privacy Policy.
         </p>
       )
     }
@@ -83,12 +55,12 @@ export default function PrivacyPolicy() {
           <div className="inline-flex p-3 bg-orange-50 rounded-2xl text-[#ff9900] mb-2">
             <Shield className="w-10 h-10" />
           </div>
-          <h1 className="text-4xl md:text-6xl font-serif font-extrabold text-black tracking-tight leading-tight">
+          <h1 id="privacy-policy-heading" className="text-4xl md:text-6xl font-serif font-extrabold text-black tracking-tight leading-tight">
             Privacy Policy
           </h1>
           <div className="w-20 h-1.5 bg-[#ff9900] mx-auto rounded-full"></div>
           <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto mt-4 font-medium">
-            Your privacy is our priority. Read below to understand how we collect, protect, and handle your data at Fly Media Technology.
+            Your privacy is our priority. Read below to understand how we collect, protect, and handle your data at Flymedia Technology.
           </p>
           <p className="text-sm text-gray-400 font-semibold uppercase tracking-wider">
             Last Updated: {lastUpdated}
@@ -98,7 +70,7 @@ export default function PrivacyPolicy() {
         {/* Legal Notice Box */}
         <section className="bg-white rounded-3xl p-6 md:p-8 border border-gray-100 shadow-sm leading-relaxed">
           <p className="text-base md:text-lg font-medium text-gray-700">
-            Fly Media Technology ("us", "we", or "our") operates the website{" "}
+            Flymedia Technology ("us", "we", or "our") operates the website{" "}
             <Link href="/" className="text-[#ff9900] font-bold hover:underline">
               flymediatech.com
             </Link>{" "}
@@ -129,9 +101,9 @@ export default function PrivacyPolicy() {
         {/* Contact/Support Info Section */}
         <section className="bg-gradient-to-br from-black to-gray-900 text-white rounded-3xl p-8 md:p-12 shadow-xl border border-white/5 space-y-8">
           <div className="space-y-4 text-center md:text-left">
-            <h2 className="text-3xl font-serif font-bold text-[#ff9900]">6. Contact Our Privacy Officer</h2>
+            <h2 className="text-3xl font-serif font-bold text-[#ff9900]">5. Contact Our Privacy Officer</h2>
             <p className="text-gray-300 max-w-3xl leading-relaxed text-sm md:text-base font-medium">
-              If you have any questions about this Privacy Policy, the practices of this site, or your dealings with Fly Media Technology, please contact our support team. We will review your request and get back to you promptly.
+              If you have any questions about this Privacy Policy, the practices of this site, or your dealings with Flymedia Technology, please contact our support team. We will review your request and get back to you promptly.
             </p>
           </div>
 

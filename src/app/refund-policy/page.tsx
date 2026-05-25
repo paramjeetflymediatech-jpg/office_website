@@ -2,54 +2,36 @@
 
 import React from "react";
 import Link from "next/link";
-import { Scale, FileCheck, Landmark, ShieldAlert, AlertOctagon, HelpCircle, Mail, Phone, MapPin } from "lucide-react";
+import { AlertCircle, HelpCircle, Eye, Layers, Mail, Phone, MapPin } from "lucide-react";
 
-export default function TermsConditions() {
+export default function RefundPolicyPage() {
   const lastUpdated = "May 2026";
 
-  const termsSections = [
+  const refundSections = [
     {
-      icon: <FileCheck className="w-6 h-6 text-[#ff9900]" />,
-      title: "1. Acceptance of Terms & Scope of Work",
+      icon: <AlertCircle className="w-6 h-6 text-[#ff9900]" />,
+      title: "1. No-Refund Policy",
       content: (
         <p>
-          By using the services of Flymedia Technology, you agree to follow our terms and conditions. All services provided by us are based on the project scope, timeline, and deliverables discussed and agreed upon before starting the work.
+          Flymedia Technology does not provide any refund once the payment is made. All payments made to us are final.
         </p>
       )
     },
     {
-      icon: <ShieldAlert className="w-6 h-6 text-[#ff9900]" />,
-      title: "2. Client Responsibilities & Materials",
+      icon: <Layers className="w-6 h-6 text-[#ff9900]" />,
+      title: "2. Covered Services",
       content: (
         <p>
-          Clients are responsible for providing accurate information, content, images, login details, approvals, and any other required material on time. Any delay in sharing the required information may affect the project delivery timeline.
+          All payments made for services, packages, consultations, development work, marketing campaigns, designing, or any other digital service are non-refundable.
         </p>
       )
     },
     {
-      icon: <Scale className="w-6 h-6 text-[#ff9900]" />,
-      title: "3. Revisions & Policy Modifications",
+      icon: <Eye className="w-6 h-6 text-[#ff9900]" />,
+      title: "3. Service Review Recommendation",
       content: (
         <p>
-          Flymedia Technology reserves the right to make changes to service packages, pricing, timelines, or policies at any time without prior notice. Any additional work outside the agreed project scope may be charged separately.
-        </p>
-      )
-    },
-    {
-      icon: <Landmark className="w-6 h-6 text-[#ff9900]" />,
-      title: "4. Intellectual Property & Ownership Control",
-      content: (
-        <p>
-          All website designs, marketing campaigns, graphics, content, and digital assets created by Flymedia Technology remain under our working control until full payment is received. Once the full payment is completed, the final approved deliverables will be handed over to the client as per the agreed terms.
-        </p>
-      )
-    },
-    {
-      icon: <AlertOctagon className="w-6 h-6 text-[#ff9900]" />,
-      title: "5. Third-Party Dependencies",
-      content: (
-        <p>
-          We are not responsible for delays caused by third-party platforms, hosting companies, domain providers, payment gateways, search engines, social media platforms, or any external technical issue beyond our control.
+          Clients are requested to review all service details, package scopes, and project terms carefully before making payment. If you have questions about what is included, please clarify them with our team beforehand.
         </p>
       )
     }
@@ -58,38 +40,34 @@ export default function TermsConditions() {
   return (
     <main className="min-h-screen bg-[#F3F4F6] px-4 py-12 md:py-20 font-sans text-gray-850">
       <div className="max-w-5xl mx-auto space-y-12">
-
+        
         {/* Hero Section */}
         <section className="text-center space-y-4">
           <div className="inline-flex p-3 bg-orange-50 rounded-2xl text-[#ff9900] mb-2">
-            <Scale className="w-10 h-10" />
+            <AlertCircle className="w-10 h-10" />
           </div>
-          <h1 id="terms-conditions-heading" className="text-4xl md:text-6xl font-serif font-extrabold text-black tracking-tight leading-tight">
-            Terms & Conditions
+          <h1 id="refund-policy-page-heading" className="text-4xl md:text-6xl font-serif font-extrabold text-black tracking-tight leading-tight">
+            Refund Policy
           </h1>
           <div className="w-20 h-1.5 bg-[#ff9900] mx-auto rounded-full"></div>
           <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto mt-4 font-medium">
-            Please read these terms and conditions carefully before utilizing any digital solutions, campaigns, or services from Flymedia Technology.
+            Please read our refund policies carefully before initiating any payments for Flymedia Technology services.
           </p>
           <p className="text-sm text-gray-400 font-semibold uppercase tracking-wider">
             Last Updated: {lastUpdated}
           </p>
         </section>
 
-        {/* Legal Preamble */}
+        {/* Policy Notice Box */}
         <section className="bg-white rounded-3xl p-6 md:p-8 border border-gray-100 shadow-sm leading-relaxed">
           <p className="text-base md:text-lg font-medium text-gray-700">
-            Welcome to Flymedia Technology ("us", "we", or "our"). These Terms & Conditions constitute a legally binding agreement made between you, whether personally or on behalf of an entity ("client", "you"), and Flymedia Technology, concerning your access to and use of our website (
-            <Link href="/" className="text-[#ff9900] font-bold hover:underline">
-              flymediatech.com
-            </Link>
-            ) as well as any other media form, media channel, mobile website, or services related, linked, or otherwise connected thereto.
+            This Refund Policy governs all payments processed for customized website designing, search engine optimization (SEO), digital marketing, and software development provided by Flymedia Technology.
           </p>
         </section>
 
-        {/* Terms Sections */}
+        {/* Refund Policy Sections */}
         <section className="space-y-6">
-          {termsSections.map((sec, idx) => (
+          {refundSections.map((sec, idx) => (
             <div
               key={idx}
               className="bg-white rounded-3xl p-6 md:p-8 border border-gray-100 shadow-sm flex flex-col md:flex-row gap-6 items-start hover:border-orange-200 transition-all duration-300"
@@ -107,12 +85,12 @@ export default function TermsConditions() {
           ))}
         </section>
 
-        {/* Support Section */}
+        {/* Contact/Support Info Section */}
         <section className="bg-gradient-to-br from-black to-gray-900 text-white rounded-3xl p-8 md:p-12 shadow-xl border border-white/5 space-y-8">
           <div className="space-y-4 text-center md:text-left">
-            <h2 className="text-3xl font-serif font-bold text-[#ff9900]">6. Questions & Contact Information</h2>
+            <h2 className="text-3xl font-serif font-bold text-[#ff9900]">Need Clarification Before Payment?</h2>
             <p className="text-gray-300 max-w-3xl leading-relaxed text-sm md:text-base font-medium">
-              We reserve the right, in our sole discretion, to make changes or modifications to these Terms and Conditions at any time and for any reason. If you have questions about these terms, please connect with us via the contact channels listed below.
+              If you have any questions or concerns regarding our Refund Policy, package definitions, or scopes of work, please connect with us before proceeding.
             </p>
           </div>
 

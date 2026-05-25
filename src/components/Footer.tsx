@@ -262,7 +262,15 @@ export default function Footer() {
           <p className="text-[13px] font-semibold text-white ">
             Copyright © 2011 - 2026 Flymediatech.com. All Rights Reserved.
           </p>
-          <div className="flex gap-4 text-[13px] font-semibold text-white/70">
+          <div className="flex flex-wrap justify-center gap-4 text-[13px] font-semibold text-white/70">
+            <Link href="/pricing/" className="hover:text-[#ff9900] transition-colors">
+              Pricing
+            </Link>
+            <span>|</span>
+            <Link href="/refund-policy/" className="hover:text-[#ff9900] transition-colors">
+              Refund Policy
+            </Link>
+            <span>|</span>
             <Link href="/privacy-policy/" className="hover:text-[#ff9900] transition-colors">
               Privacy Policy
             </Link>
