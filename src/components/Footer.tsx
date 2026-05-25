@@ -258,10 +258,19 @@ export default function Footer() {
 
 
         {/* Copyright Bar */}
-        <div className="mt-10 pt-5 border-t border-white/10 text-center max-w-7xl mx-auto">
+        <div className="mt-10 pt-5 border-t border-white/10 text-center max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-[13px] font-semibold text-white ">
             Copyright © 2011 - 2026 Flymediatech.com. All Rights Reserved.
           </p>
+          <div className="flex gap-4 text-[13px] font-semibold text-white/70">
+            <Link href="/privacy-policy/" className="hover:text-[#ff9900] transition-colors">
+              Privacy Policy
+            </Link>
+            <span>|</span>
+            <Link href="/terms-conditions/" className="hover:text-[#ff9900] transition-colors">
+              Terms & Conditions
+            </Link>
+          </div>
         </div>
       </div>
 
