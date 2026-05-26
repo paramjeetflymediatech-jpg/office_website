@@ -13,19 +13,19 @@ export default function PricingPage() {
       title: "Flexible & Result-Driven Pricing",
       content: (
         <p>
-          At Flymedia Technology, our pricing is designed to offer flexible and result-driven solutions for businesses of different sizes. Our packages start from <strong>₹10,000</strong>, depending on the type of service, project requirements, features, design complexity, and overall scope of work.
+          Our pricing plans are designed to provide flexible, scalable, and result-oriented solutions for startups, small businesses, and enterprises. Our service packages typically range from <strong>₹10,000</strong> up to <strong>₹1,00,000+</strong>, depending on the type of service, project requirements, functionality, timeline, and level of customization involved.
         </p>
       )
     },
     {
       icon: <Layers className="w-6 h-6 text-[#ff9900]" />,
-      title: "Customized Solutions for Every Need",
+      title: "Customized Solutions for Every Business",
       content: (
-        <div className="space-y-3">
+        <div className="space-y-4">
           <p>
-            We provide customized pricing for services such as website development, digital marketing, SEO, social media marketing, graphic designing, app development, branding, and other IT solutions. Final pricing may vary after understanding the client’s requirements in detail.
+            We offer customized pricing for a wide range of services, including:
           </p>
-          <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 gap-2">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
             {[
               "Website Development",
               "Digital Marketing",
@@ -41,6 +41,9 @@ export default function PricingPage() {
               </span>
             ))}
           </div>
+          <p className="pt-2 text-sm text-gray-500 italic">
+            Final project pricing may vary after a detailed discussion and understanding of the client’s exact business requirements and goals.
+          </p>
         </div>
       )
     },
@@ -49,7 +52,7 @@ export default function PricingPage() {
       title: "Get an Accurate Quotation",
       content: (
         <p>
-          For an accurate quotation, clients are encouraged to contact our team and discuss their project needs. We will sit down with you to understand your goals, timeline, and exact scope to offer you the best rates.
+          For a precise quotation, clients are encouraged to connect with our team and discuss their project requirements. We take the time to understand your vision, timeline, technical needs, and expected outcomes to provide the most suitable and cost-effective pricing solution.
         </p>
       )
     }
@@ -69,7 +72,7 @@ export default function PricingPage() {
           </h1>
           <div className="w-20 h-1.5 bg-[#ff9900] mx-auto rounded-full"></div>
           <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto mt-4 font-medium">
-            Transparent, flexible, and value-driven packages starting from ₹10,000 at Flymedia Technology.
+          Transparent, flexible, and value-driven packages ranging from ₹10,000 up to ₹1,00,000+ at Flymedia Technology
           </p>
           <p className="text-sm text-gray-400 font-semibold uppercase tracking-wider">
             Last Updated: {lastUpdated}
@@ -79,7 +82,7 @@ export default function PricingPage() {
         {/* Introduction Box */}
         <section className="bg-white rounded-3xl p-6 md:p-8 border border-gray-100 shadow-sm leading-relaxed">
           <p className="text-base md:text-lg font-medium text-gray-700">
-            Flymedia Technology believes in tailoring pricing models based on the project scale, features, design complexity, and specific demands. This ensures that you only pay for what your business actually needs to succeed in the digital sphere.
+            At Flymedia Technology, we believe in creating customized pricing models based on the project scope, required features, design complexity, business goals, and overall development requirements. This approach ensures you receive the right solution that matches your budget and business objectives.
           </p>
         </section>
 
