@@ -1,40 +1,52 @@
 "use client";
 
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
-const data=[{
-  country:"India",
-  location:"Flymedia Technology, Plot no, 20, Vishal Nagar Ext, opposite Kashish Cafe, Vishal Nagar, Jawaddi Taksal, Ludhiana, Punjab 141001",
-  phone:"+91-98884-84310", 
+
+const data = [{
+  country: "India",
+  location: "Flymedia Technology, Plot no, 20, Vishal Nagar Ext, opposite Kashish Cafe, Vishal Nagar, Jawaddi Taksal, Ludhiana, Punjab 141001",
+  phone: "+91-98884-84310",
+  title: "Flymedia Technology Hub",
+  src: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3067.5618995019536!2d75.81763421067748!3d30.879522724407515!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391a82306683bac1%3A0x95d00d8c3568391d!2sFlymedia%20Technology%20-%20Best%20Website%20Designing%20and%20Digital%20Marketing%20Company%20Ludhiana!5e1!3m2!1sen!2sin!4v1779792702983!5m2!1sen!2sin"
+  , link: "https://www.google.com/maps/place/Flymedia+Technology+-+Best+Website+Designing+and+Digital+Marketing+Company+Ludhiana/@30.879522,75.820214,1409m/data=!3m1!1e3!4m6!3m5!1s0x391a82306683bac1:0x95d00d8c3568391d!8m2!3d30.8795221!4d75.820214!16s%2Fg%2F11clsnyzp0?hl=en&entry=ttu&g_ep=EgoyMDI2MDUyMC4wIKXMDSoASAFQAw%3D%3D"
 },
 {
-  country:"Canada",
-  location:"7664 126a St, Surrey, BC V3W 4A9, Canada",
-  phone:"+1 236-885-5725", 
+  country: "Canada",
+  location: "7664 126a St, Surrey, BC V3W 4A9, Canada",
+  phone: "+1 236-885-5725",
+  src: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2338.1958223871497!2d-122.87443388831107!3d49.14212337125261!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5485d97bf9bde821%3A0xc31496d8c799e0a2!2s7664%20126a%20St%2C%20Surrey%2C%20BC%20V3W%204A9%2C%20Canada!5e1!3m2!1sen!2sin!4v1779792649830!5m2!1sen!2sin"
+  ,
+  title: "Flymedia Technology Hub",
+  link: "https://www.google.com/maps/place/7664+126a+St,+Surrey,+BC+V3W+4A9,+Canada/@49.1421234,-122.8744339,537m/data=!3m2!1e3!4b1!4m6!3m5!1s0x5485d97bf9bde821:0xc31496d8c799e0a2!8m2!3d49.1421234!4d-122.8718536!16s%2Fg%2F11c1gl79k1?authuser=0&entry=ttu&g_ep=EgoyMDI2MDUyMC4wIKXMDSoASAFQAw%3D%3D"
 },
 {
-  country:"Australia",
-  location:"35 Edgewood Dr, Stanhope Gardens NSW 2768, Australia",
-  phone:"+61-434981208", 
+  country: "Australia",
+  location: "35 Edgewood Dr, Stanhope Gardens NSW 2768, Australia",
+  phone: "+61-434981208",
+  src: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2973.066725352938!2d150.92008631080859!3d-33.71484407317447!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b129f3d979af5d7%3A0x8b57e92128748ccf!2s5%20Edgewood%20Dr%2C%20Stanhope%20Gardens%20NSW%202768%2C%20Australia!5e1!3m2!1sen!2sin!4v1779792753900!5m2!1sen!2sin"
+  ,
+  title: "Flymedia Technology Hub",
+  link: "https://www.google.com/maps/place/5+Edgewood+Dr,+Stanhope+Gardens+NSW+2768,+Australia/@-33.7148441,150.9200863,683m/data=!3m2!1e3!4b1!4m6!3m5!1s0x6b129f3d979af5d7:0x8b57e92128748ccf!8m2!3d-33.7148441!4d150.9226666!16s%2Fg%2F11c4srr5w9?authuser=0&entry=ttu&g_ep=EgoyMDI2MDUyMC4wIKXMDSoASAFQAw%3D%3D"
 },]
 export default function ContactFormSection() {
   const pathname = usePathname();
   const [page, setPage] = useState("");
   useEffect(() => {
-    console.log(pathname,'dfsdddddddsdffsd')
+    console.log(pathname, 'dfsdddddddsdffsd')
     setPage(pathname);
   }, [pathname]);
-  console.log(page,'dfssdffsd')
+  console.log(page, 'dfssdffsd')
   const getContactInfo = () => {
-  if (page.includes("/canada")) {
-    return data[1]; // Canada info
-  }
-  if (pathname.includes("/australia")) {
-    return data[2]; // Australia info
-  }
-  return data[0]; // India info
-};
-const contact=getContactInfo(); 
+    if (page.includes("/canada")) {
+      return data[1]; // Canada info
+    }
+    if (pathname.includes("/australia")) {
+      return data[2]; // Australia info
+    }
+    return data[0]; // India info
+  };
+  const contact = getContactInfo();
 
   const [formData, setFormData] = useState({
     name: "",
@@ -92,59 +104,73 @@ const contact=getContactInfo();
                 <h2 className="text-xl font-bold text-black font-sans leading-tight">
                   Location
                 </h2>
+                {/* Google Maps Embed */}
+                <div className="relative rounded-lg overflow-hidden border border-luxury-gold/20 shadow-[0_0_30px_rgba(212,175,55,0.08)]" style={{ height: "320px" }}>
+                  <iframe
+                    title={contact.title}
+                    src={contact.src}
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0, filter: "" }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  />
+                </div>
+                {/* add google map */}
                 <div className="flex items-start gap-3 mt-1">
                   <span className="text-[#FA7E09] w-5 h-5 shrink-0 mt-0.5">
                     <svg aria-hidden="true" className="fill-[#FA7E09] w-5 h-5" viewBox="0 0 384 512" xmlns="http://www.w3.org/2000/svg">
                       <path d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z"></path>
                     </svg>
                   </span>
-                  <p className="text-gray-700 font-medium text-sm sm:text-base leading-relaxed"> {contact.location}
-                  </p>
-                </div>
-              </div>
-
-              {/* Phone Number */}
-              <div className="space-y-2">
-                <h2 className="text-xl font-bold text-black font-sans leading-tight">
-                  Phone Number
-                </h2>
-                <div className="flex items-center gap-3 mt-1">
-                  <span className="text-[#FA7E09] w-5 h-5 shrink-0">
-                    <svg aria-hidden="true" className="fill-[#FA7E09] w-5 h-5" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M497.39 361.8l-112-48a24 24 0 0 0-28 6.9l-49.6 60.6A370.66 370.66 0 0 1 130.6 204.11l60.6-49.6a23.94 23.94 0 0 0 6.9-28l-48-112A24.16 24.16 0 0 0 122.6.61l-104 24A24 24 0 0 0 0 48c0 256.5 207.9 464 464 464a24 24 0 0 0 23.4-18.6l24-104a24.29 24.29 0 0 0-14.01-27.6z"></path>
-                    </svg>
-                  </span>
-                  <a href={`tel:${contact.phone}`} className="text-gray-700 font-medium text-sm sm:text-base hover:text-[#FA7E09] transition-colors leading-relaxed">
-                    {contact.phone}
+                  <a href={contact.link} target="_blank" className="text-gray-700 font-medium text-sm sm:text-base leading-relaxed"> {contact.location}
                   </a>
                 </div>
-              </div>
 
-              {/* Email */}
-              <div className="space-y-2">
-                <h2 className="text-xl font-bold text-black font-sans leading-tight">
-                  Email
-                </h2>
-                <div className="space-y-3 mt-1">
-                  <div className="flex items-center gap-3">
+                {/* Phone Number */}
+                <div className="space-y-2">
+                  <h2 className="text-xl font-bold text-black font-sans leading-tight">
+                    Phone Number
+                  </h2>
+                  <div className="flex items-center gap-3 mt-1">
                     <span className="text-[#FA7E09] w-5 h-5 shrink-0">
                       <svg aria-hidden="true" className="fill-[#FA7E09] w-5 h-5" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"></path>
+                        <path d="M497.39 361.8l-112-48a24 24 0 0 0-28 6.9l-49.6 60.6A370.66 370.66 0 0 1 130.6 204.11l60.6-49.6a23.94 23.94 0 0 0 6.9-28l-48-112A24.16 24.16 0 0 0 122.6.61l-104 24A24 24 0 0 0 0 48c0 256.5 207.9 464 464 464a24 24 0 0 0 23.4-18.6l24-104a24.29 24.29 0 0 0-14.01-27.6z"></path>
                       </svg>
                     </span>
-                    <a href="mailto:anujguptaflymedia@gmail.com" className="text-gray-700 font-medium text-sm sm:text-base hover:text-[#FA7E09] transition-colors leading-relaxed">
-                      anujguptaflymedia@gmail.com
+                    <a href={`tel:${contact.phone}`} className="text-gray-700 font-medium text-sm sm:text-base hover:text-[#FA7E09] transition-colors leading-relaxed">
+                      {contact.phone}
                     </a>
                   </div>
-                  <div className="flex items-center gap-3">
-                    <span className="text-[#FA7E09] w-5 h-5 shrink-0">
-                      <svg aria-hidden="true" className="fill-[#FA7E09] w-5 h-5" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"></path>
-                      </svg>
-                    </span>
-                    <a href="mailto:anujgupta@flymediatech.com" className="text-gray-700 font-medium text-sm sm:text-base hover:text-[#FA7E09] transition-colors leading-relaxed">
-                      anujgupta@flymediatech.com
-                    </a>
+                </div>
+
+                {/* Email */}
+                <div className="space-y-2">
+                  <h2 className="text-xl font-bold text-black font-sans leading-tight">
+                    Email
+                  </h2>
+                  <div className="space-y-3 mt-1">
+                    <div className="flex items-center gap-3">
+                      <span className="text-[#FA7E09] w-5 h-5 shrink-0">
+                        <svg aria-hidden="true" className="fill-[#FA7E09] w-5 h-5" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"></path>
+                        </svg>
+                      </span>
+                      <a href="mailto:anujguptaflymedia@gmail.com" className="text-gray-700 font-medium text-sm sm:text-base hover:text-[#FA7E09] transition-colors leading-relaxed">
+                        anujguptaflymedia@gmail.com
+                      </a>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <span className="text-[#FA7E09] w-5 h-5 shrink-0">
+                        <svg aria-hidden="true" className="fill-[#FA7E09] w-5 h-5" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"></path>
+                        </svg>
+                      </span>
+                      <a href="mailto:anujgupta@flymediatech.com" className="text-gray-700 font-medium text-sm sm:text-base hover:text-[#FA7E09] transition-colors leading-relaxed">
+                        anujgupta@flymediatech.com
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -159,15 +185,14 @@ const contact=getContactInfo();
 
             {/* Success / Error toast */}
             {toast && (
-              <div className={`mb-6 flex items-start gap-3 px-4 py-3 text-sm font-medium border ${
-                toast.type === "success"
-                  ? "bg-green-50 border-green-300 text-green-800"
-                  : "bg-red-50 border-red-300 text-red-800"
-              }`}>
+              <div className={`mb-6 flex items-start gap-3 px-4 py-3 text-sm font-medium border ${toast.type === "success"
+                ? "bg-green-50 border-green-300 text-green-800"
+                : "bg-red-50 border-red-300 text-red-800"
+                }`}>
                 {toast.type === "success" ? (
-                  <svg className="w-5 h-5 shrink-0 mt-0.5 fill-green-600" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/></svg>
+                  <svg className="w-5 h-5 shrink-0 mt-0.5 fill-green-600" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>
                 ) : (
-                  <svg className="w-5 h-5 shrink-0 mt-0.5 fill-red-600" viewBox="0 0 20 20"><path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd"/></svg>
+                  <svg className="w-5 h-5 shrink-0 mt-0.5 fill-red-600" viewBox="0 0 20 20"><path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" /></svg>
                 )}
                 <span>{toast.text}</span>
               </div>
@@ -249,8 +274,8 @@ const contact=getContactInfo();
                 >
                   {loading && (
                     <svg className="animate-spin w-4 h-4" viewBox="0 0 24 24" fill="none">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/>
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"/>
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z" />
                     </svg>
                   )}
                   {loading ? "Sending..." : "Submit"}
