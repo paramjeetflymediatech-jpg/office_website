@@ -18,7 +18,7 @@ const data = [{
   src: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d38308988.65914126!2d159.08125790000003!3d49.142138499999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5485d93a34dcb225%3A0x687f45e3ffc61bbd!2sFlymedia%20Technology!5e1!3m2!1sen!2sin!4v1779797522009!5m2!1sen!2sin"
   ,
   title: "Flymedia Technology Hub",
-  link: "google.com/maps/place/Flymedia+Technology/@33.8581188,21.3902454,11167200m/data=!3m1!1e3!4m10!1m2!2m1!1s✅+Flymedia+Technology+VANCOUVER!3m6!1s0x5485d93a34dcb225:0x687f45e3ffc61bbd!8m2!3d49.1421385!4d-122.8718671!15sCiHinIUgRmx5bWVkaWEgVGVjaG5vbG9neSBWQU5DT1VWRVKSARB3ZWJzaXRlX2Rlc2lnbmVy4AEA!16s%2Fg%2F11k43lsxx2?hl=en-GB&entry=ttu&g_ep=EgoyMDI2MDUyMC4wIKXMDSoASAFQAw%3D%3D"
+  link: "https://www.google.com/maps/place/Flymedia+Technology/@49.1421385,-122.8718671,537m/data=!3m2!1e3!4b1!4m6!3m5!1s0x5485d93a34dcb225:0x687f45e3ffc61bbd!8m2!3d49.1421385!4d-122.8718671!16s%2Fg%2F11k43lsxx2?hl=en&entry=ttu&g_ep=EgoyMDI2MDUyMC4wIKXMDSoASAFQAw%3D%3D"
 },
 {
   country: "Canada",
