@@ -13,12 +13,21 @@ const data = [{
 },
 {
   country: "Canada",
-  location: "7664 126a St, Surrey, BC V3W 4A9, Canada",
+  location: "Flymedia Technology Vancouver-best website designing & digital marketing company in Vancouver",
   phone: "+1 236-885-5725",
-  src: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2338.1958223871497!2d-122.87443388831107!3d49.14212337125261!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5485d97bf9bde821%3A0xc31496d8c799e0a2!2s7664%20126a%20St%2C%20Surrey%2C%20BC%20V3W%204A9%2C%20Canada!5e1!3m2!1sen!2sin!4v1779792649830!5m2!1sen!2sin"
+  src: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d38308988.65914126!2d159.08125790000003!3d49.142138499999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5485d93a34dcb225%3A0x687f45e3ffc61bbd!2sFlymedia%20Technology!5e1!3m2!1sen!2sin!4v1779797522009!5m2!1sen!2sin"
   ,
   title: "Flymedia Technology Hub",
-  link: "https://www.google.com/maps/place/7664+126a+St,+Surrey,+BC+V3W+4A9,+Canada/@49.1421234,-122.8744339,537m/data=!3m2!1e3!4b1!4m6!3m5!1s0x5485d97bf9bde821:0xc31496d8c799e0a2!8m2!3d49.1421234!4d-122.8718536!16s%2Fg%2F11c1gl79k1?authuser=0&entry=ttu&g_ep=EgoyMDI2MDUyMC4wIKXMDSoASAFQAw%3D%3D"
+  link: "google.com/maps/place/Flymedia+Technology/@33.8581188,21.3902454,11167200m/data=!3m1!1e3!4m10!1m2!2m1!1s✅+Flymedia+Technology+VANCOUVER!3m6!1s0x5485d93a34dcb225:0x687f45e3ffc61bbd!8m2!3d49.1421385!4d-122.8718671!15sCiHinIUgRmx5bWVkaWEgVGVjaG5vbG9neSBWQU5DT1VWRVKSARB3ZWJzaXRlX2Rlc2lnbmVy4AEA!16s%2Fg%2F11k43lsxx2?hl=en-GB&entry=ttu&g_ep=EgoyMDI2MDUyMC4wIKXMDSoASAFQAw%3D%3D"
+},
+{
+  country: "Canada",
+  location: "Flymedia Technology Edmonton - Best Website Designing & Digital Marketing Company in Edmonton",
+  phone: "+18259627548",
+  src: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2130.8225901935875!2d-113.4700264!3d53.4042262!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x53a01dd6dcc7164f%3A0x8093173ece885a53!2s%E2%9C%85%20Flymedia%20Technology%20Edmonton%20-%20Best%20Website%20Designing%20%26%20Digital%20Marketing%20Company%20in%20Edmonton!5e1!3m2!1sen!2sin!4v1779797354104!5m2!1sen!2sin"
+  ,
+  title: "Flymedia Technology Hub",
+  link: "https://www.google.com/maps/place/%E2%9C%85+Flymedia+Technology+Edmonton+-+Best+Website+Designing+%26+Digital+Marketing+Company+in+Edmonton/@53.4042262,-113.4700264,489m/data=!3m2!1e3!4b1!4m6!3m5!1s0x53a01dd6dcc7164f:0x8093173ece885a53!8m2!3d53.4042262!4d-113.4700264!16s%2Fg%2F11w3gz0bh9?hl=en-GB&entry=ttu&g_ep=EgoyMDI2MDUyMC4wIKXMDSoASAFQAw%3D%3D"
 },
 {
   country: "Australia",
@@ -28,7 +37,9 @@ const data = [{
   ,
   title: "Flymedia Technology Hub",
   link: "https://www.google.com/maps/place/5+Edgewood+Dr,+Stanhope+Gardens+NSW+2768,+Australia/@-33.7148441,150.9200863,683m/data=!3m2!1e3!4b1!4m6!3m5!1s0x6b129f3d979af5d7:0x8b57e92128748ccf!8m2!3d-33.7148441!4d150.9226666!16s%2Fg%2F11c4srr5w9?authuser=0&entry=ttu&g_ep=EgoyMDI2MDUyMC4wIKXMDSoASAFQAw%3D%3D"
-},]
+},
+
+]
 export default function ContactFormSection() {
   const pathname = usePathname();
   const [page, setPage] = useState("");
@@ -38,11 +49,14 @@ export default function ContactFormSection() {
   }, [pathname]);
   console.log(page, 'dfssdffsd')
   const getContactInfo = () => {
-    if (page.includes("/canada")) {
+    if (page.includes("-vancouver")) {
       return data[1]; // Canada info
     }
+    if (pathname.includes("-edmonton")) {
+      return data[2]; // Canada info
+    }
     if (pathname.includes("/australia")) {
-      return data[2]; // Australia info
+      return data[3]; // Australia info
     }
     return data[0]; // India info
   };
