@@ -33,10 +33,10 @@ const data = [{
   country: "Australia",
   location: "35 Edgewood Dr, Stanhope Gardens NSW 2768, Australia",
   phone: "+61-434981208",
-  src: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2973.066725352938!2d150.92008631080859!3d-33.71484407317447!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b129f3d979af5d7%3A0x8b57e92128748ccf!2s5%20Edgewood%20Dr%2C%20Stanhope%20Gardens%20NSW%202768%2C%20Australia!5e1!3m2!1sen!2sin!4v1779792753900!5m2!1sen!2sin"
+  src: "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5946.148829505313!2d150.926344!3d-33.714622000000006!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b129fb448ec1d89%3A0x3083b3846d4adb9b!2sFlymedia%20Technology%20Australia!5e1!3m2!1sen!2sus!4v1779854932915!5m2!1sen!2sus"
   ,
   title: "Flymedia Technology Hub",
-  link: "https://www.google.com/maps/place/5+Edgewood+Dr,+Stanhope+Gardens+NSW+2768,+Australia/@-33.7148441,150.9200863,683m/data=!3m2!1e3!4b1!4m6!3m5!1s0x6b129f3d979af5d7:0x8b57e92128748ccf!8m2!3d-33.7148441!4d150.9226666!16s%2Fg%2F11c4srr5w9?authuser=0&entry=ttu&g_ep=EgoyMDI2MDUyMC4wIKXMDSoASAFQAw%3D%3D"
+  link: "https://www.google.com/maps/place/Flymedia+Technology+Australia/@-33.714622,150.926344,1365m/data=!3m1!1e3!4m6!3m5!1s0x6b129fb448ec1d89:0x3083b3846d4adb9b!8m2!3d-33.7146224!4d150.926344!16s%2Fg%2F11l2q1t97l?hl=en-US&entry=ttu&g_ep=EgoyMDI2MDUyMC4wIKXMDSoASAFQAw%3D%3D"
 },
 
 ]
