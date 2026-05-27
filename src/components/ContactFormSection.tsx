@@ -15,10 +15,10 @@ const data = [{
   country: "Canada",
   location: "Flymedia Technology Vancouver-best website designing & digital marketing company in Vancouver",
   phone: "+1 236-885-5725",
-  src: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d38308988.65914126!2d159.08125790000003!3d49.142138499999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5485d93a34dcb225%3A0x687f45e3ffc61bbd!2sFlymedia%20Technology!5e1!3m2!1sen!2sin!4v1779797522009!5m2!1sen!2sin"
+  src: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2332.4491551703877!2d-123.13593198830314!3d49.263810871270614!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x548673e3e29e85b3%3A0xfaf424aa579c7ccd!2sFlymedia%20Technology%20%7C%20Google%20Ads%2C%20Website%20Design%2C%20Digital%20Marketing%20%26%20Local%20SEO%20Company%20Vancouver!5e1!3m2!1sen!2sin!4v1779854510642!5m2!1sen!2sin"
   ,
   title: "Flymedia Technology Hub",
-  link: "https://www.google.com/maps/place/Flymedia+Technology/@49.1421385,-122.8718671,537m/data=!3m2!1e3!4b1!4m6!3m5!1s0x5485d93a34dcb225:0x687f45e3ffc61bbd!8m2!3d49.1421385!4d-122.8718671!16s%2Fg%2F11k43lsxx2?hl=en&entry=ttu&g_ep=EgoyMDI2MDUyMC4wIKXMDSoASAFQAw%3D%3D"
+  link: "https://www.google.com/maps/place/Flymedia+Technology+%7C+Google+Ads,+Website+Design,+Digital+Marketing+%26+Local+SEO+Company+Vancouver/@49.2638109,-123.135932,536m/data=!3m2!1e3!4b1!4m6!3m5!1s0x548673e3e29e85b3:0xfaf424aa579c7ccd!8m2!3d49.2638109!4d-123.1333517!16s%2Fg%2F11z4qs6qmx?entry=ttu&g_ep=EgoyMDI2MDUyMC4wIKXMDSoASAFQAw%3D%3D"
 },
 {
   country: "Canada",
