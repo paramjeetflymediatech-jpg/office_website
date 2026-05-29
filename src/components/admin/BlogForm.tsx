@@ -6,6 +6,19 @@ import { useNotification } from '@/components/NotificationContext';
 import { getLegacyBlogData } from '@/app/actions/blog';
 import { ChevronLeft, Save, Upload, RefreshCw, X, Zap, Globe, Share2 } from 'lucide-react';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
+
+const CKEditor = dynamic(
+  () => import('./CKEditorWrapper'),
+  { 
+    ssr: false,
+    loading: () => (
+      <div className="w-full h-[300px] border border-gray-200 rounded-xl bg-gray-50 flex items-center justify-center">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#ff9900]"></div>
+      </div>
+    )
+  }
+);
 
 interface BlogFormProps {
   initialData?: any;
@@ -217,16 +230,13 @@ export default function BlogForm({ initialData, onSubmitAction }: BlogFormProps)
             <div className="space-y-2">
               <div className="flex justify-between items-center">
                 <label className="text-sm font-bold text-gray-700">Full Content <span className="text-red-500">*</span></label>
-                <span className="text-xs text-gray-400 font-medium">Accepts HTML or raw text</span>
+                <span className="text-xs text-gray-400 font-medium">Rich Text Editor</span>
               </div>
-              <textarea 
+              <CKEditor 
                 value={content}
-                onChange={(e) => setContent(e.target.value)}
-                rows={12}
-                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:border-[#ff9900] outline-none transition-all focus:ring-2 focus:ring-[#ff9900]/20 font-mono text-[14px] leading-relaxed resize-y"
+                onChange={setContent}
                 placeholder="Type or paste the complete post content here..."
-                required
-              ></textarea>
+              />
             </div>
           </div>
 
