@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 import { revalidatePath } from 'next/cache';
 import ContactQuery from '@/models/ContactQuery';
+import axios from 'axios';
 
 export async function POST(request: Request) {
   try {
@@ -26,6 +27,21 @@ export async function POST(request: Request) {
         message,
         status: 'NEW'
       });
+
+      await axios.post(process.env.CRM_API_URL, {
+        name,
+        email,
+        phone,
+        subject,
+        message,
+        status: 'NEW'
+      },{
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${process.env.CRM_API_KEY}`,
+        },
+      });
+
       // Invalidate admin contact cache so new submission appears immediately
       revalidatePath('/admin/contact');
     } catch (dbError) {
