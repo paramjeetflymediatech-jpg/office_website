@@ -202,6 +202,9 @@ export const CANADA_MEGA_MENU_DATA = {
     links: [
       { name: "Web Designing", href: "/canada/web-designing", icon: "/dropdown-icons/web-design-devep.webp" },
       { name: "Digital Marketing", href: "/canada/digital-marketing-agency-in-edmonton", icon: "/dropdown-icons/digital-consultancy-icon.webp" },
+      { name: "Digital Marketing Toronto", href: "/canada/best-digital-marketing-agency-in-toronto", icon: "/dropdown-icons/digital-consultancy-icon.webp" },
+      { name: "Digital Marketing Vancouver", href: "/canada/best-digital-marketing-agency-in-vancouver", icon: "/dropdown-icons/digital-consultancy-icon.webp" },
+      { name: "Digital Marketing Montreal", href: "/canada/best-digital-marketing-agency-in-montreal", icon: "/dropdown-icons/digital-consultancy-icon.webp" },
       // { name: "Mobile Marketing", href: "/canada/mobile-marketing", icon: "/dropdown-icons/mobile-marketing-1.webp" },
       // { name: "Youtube Advertising Agency", href: "/canada/youtube-advertising-agency-sydney", icon: "/Services/youtube-logo.png" },
       // { name: "Reputation Management", href: "/canada/reputation-management", icon: "/Services/web-develop-1.png" },

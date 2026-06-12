@@ -64,6 +64,12 @@ export default function Header() {
     "Edmonton": [
       { name: "Website Designing in Edmonton", href: "/canada/website-designing-company-in-edmonton" }
     ],
+    "Montreal": [
+      { name: "Best Digital Marketing Agency in Montreal", href: "/canada/best-digital-marketing-agency-in-montreal" }
+    ],
+    "Toronto": [
+      { name: "Best Digital Marketing Agency in Toronto", href: "/canada/best-digital-marketing-agency-in-toronto" }
+    ],
     "Vancouver": [
       { name: "Website Designing in Vancouver", href: "/canada/website-designing-company-in-vancouver" },
       { name: "Google Adwords Company in Vancouver", href: "/canada/google-adwords-company-in-vancouver" },
