@@ -301,8 +301,7 @@ export function parseHtmlToElements(
 
     const blockedTags = [
       "title",
-      "meta",
-      "link",
+      
       "base",
     ];
 
@@ -317,6 +316,8 @@ export function parseHtmlToElements(
     const allowedTags = [
       "script",
       "style",
+      "meta",
+      "link",
       "noscript",
     ];
 
