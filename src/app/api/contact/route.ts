@@ -28,19 +28,23 @@ export async function POST(request: Request) {
         status: 'NEW'
       });
 
-      await axios.post(process.env.CRM_API_URL, {
-        name,
-        email,
-        phone,
-        subject,
-        message,
-        status: 'NEW'
-      },{
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${process.env.CRM_API_KEY}`,
-        },
-      });
+      if (process.env.CRM_API_URL) {
+        await axios.post(process.env.CRM_API_URL, {
+          name,
+          email,
+          phone,
+          subject,
+          message,
+          status: 'NEW'
+        },{
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${process.env.CRM_API_KEY}`,
+          },
+        });
+      } else {
+        console.warn('CRM_API_URL is not configured — CRM post skipped.');
+      }
 
       // Invalidate admin contact cache so new submission appears immediately
       revalidatePath('/admin/contact');
