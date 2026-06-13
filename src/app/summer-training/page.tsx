@@ -4,7 +4,8 @@ import Link from 'next/link';
 import { 
   Megaphone, Code, Video, PenTool, MonitorPlay, 
   MapPin, Clock, Layout, MousePointerClick, 
-  Users, Award, Phone, Star, Download 
+  Users, Award, Phone, Star, Download,
+  Smartphone, Palette, CheckCircle2, GraduationCap, Briefcase
 } from 'lucide-react';
 
 export default function SummerTrainingLandingPage() {
@@ -35,15 +36,32 @@ export default function SummerTrainingLandingPage() {
               </span>
             </h1>
             <p className="text-xl text-gray-700 font-medium max-w-2xl leading-relaxed mt-4">
-              Kickstart your career with practical industry training from a leading digital marketing agency!
+              Kickstart your career with practical industry training from a leading digital marketing and IT company in Ludhiana!
             </p>
           </div>
 
-          {/* Banner Tag */}
-          <div className="inline-block bg-pink-600 text-white px-8 py-3.5 rounded-lg font-bold text-xl md:text-2xl shadow-xl transform -skew-x-6 hover:-translate-y-1 transition-transform">
-            <div className="transform skew-x-6 flex items-center gap-3">
-              <Clock size={28} />
-              30 Days Summer Training Program
+          {/* Training Programs Available */}
+          <div className="space-y-6">
+            <div className="flex items-center gap-6">
+              <div className="h-px bg-purple-200 flex-1"></div>
+              <h2 className="text-2xl font-extrabold text-purple-900 uppercase tracking-widest text-center">Training Programs Available</h2>
+              <div className="h-px bg-purple-200 flex-1"></div>
+            </div>
+            
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {[
+                '30 Days Training',
+                '2 Months Training',
+                '3 Months Industrial Training',
+                '6 Months Industrial Training'
+              ].map((program, idx) => (
+                <div key={idx} className="bg-white border-2 border-purple-50 rounded-2xl p-5 flex flex-col items-center justify-center text-center gap-3 shadow-sm hover:border-purple-600 hover:shadow-md transition-all">
+                  <div className="bg-green-50 text-green-600 p-2.5 rounded-full">
+                    <CheckCircle2 size={24} />
+                  </div>
+                  <span className="font-extrabold text-gray-800 text-sm md:text-base leading-tight">{program}</span>
+                </div>
+              ))}
             </div>
           </div>
 
@@ -55,18 +73,23 @@ export default function SummerTrainingLandingPage() {
               <div className="h-px bg-purple-200 flex-1"></div>
             </div>
             
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
               {[
-                { icon: Megaphone, label: 'Digital Marketing' },
-                { icon: Code, label: 'Web Development' },
-                { icon: Video, label: 'Video Editing' },
-                { icon: PenTool, label: 'Graphic Designing' },
+                { icon: Megaphone, label: 'Digital Marketing', mode: 'Online & Offline' },
+                { icon: Code, label: 'Web Development', mode: 'Online & Offline' },
+                { icon: Smartphone, label: 'Social Media Marketing', mode: 'Online & Offline' },
+                { icon: PenTool, label: 'Content Writing', mode: 'Offline Only' },
+                { icon: Palette, label: 'Graphic Designing', mode: 'Offline Only' },
+                { icon: Video, label: 'Video Editing', mode: 'Offline Only' },
               ].map((course, idx) => (
-                <div key={idx} className="bg-white border-2 border-purple-100 rounded-2xl p-6 flex flex-col items-center justify-center text-center gap-4 hover:border-purple-600 transition-all shadow-sm hover:shadow-xl cursor-pointer group">
+                <div key={idx} className="bg-white border-2 border-purple-100 rounded-2xl p-6 flex flex-col items-center justify-between text-center gap-4 hover:border-purple-600 transition-all shadow-sm hover:shadow-xl cursor-pointer group">
                   <div className="bg-purple-50 p-4 rounded-xl group-hover:bg-purple-600 transition-colors">
                     <course.icon size={36} className="text-purple-600 group-hover:text-white transition-colors" />
                   </div>
-                  <span className="font-bold text-gray-800 text-lg leading-tight">{course.label}</span>
+                  <div className="space-y-2">
+                    <span className="font-bold text-gray-800 text-lg leading-tight block">{course.label}</span>
+                    <span className="inline-block text-xs font-semibold bg-purple-50 text-purple-600 px-2.5 py-1 rounded-full">{course.mode}</span>
+                  </div>
                 </div>
               ))}
             </div>
@@ -117,14 +140,16 @@ export default function SummerTrainingLandingPage() {
               <div className="h-px bg-purple-200 flex-1"></div>
             </div>
             
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
               {[
                 { icon: Layout, label: 'Live Projects' },
-                { icon: MousePointerClick, label: 'Hands-on Experience' },
+                { icon: MousePointerClick, label: 'Hands-on Practical Experience' },
                 { icon: Users, label: 'Industry Exposure' },
+                { icon: GraduationCap, label: 'Expert Guidance' },
                 { icon: Award, label: 'Certificate After Completion' },
+                { icon: Briefcase, label: 'Internship & Career Guidance' },
               ].map((benefit, idx) => (
-                <div key={idx} className="flex flex-col items-center justify-start text-center gap-4 group">
+                <div key={idx} className="flex flex-col items-center justify-start text-center gap-4 group bg-white border border-purple-50 p-6 rounded-2xl hover:shadow-md transition-shadow">
                   <div className="text-pink-600 bg-pink-50 p-5 rounded-2xl group-hover:scale-110 transition-transform">
                     <benefit.icon size={48} strokeWidth={1.5} />
                   </div>
@@ -159,7 +184,7 @@ export default function SummerTrainingLandingPage() {
                 </span>
               </h3>
               <p className="font-medium text-gray-200 text-lg drop-shadow-sm leading-relaxed max-w-sm">
-                Join our comprehensive program and get job-ready in 30 days.
+                Join our comprehensive program and get job-ready.
               </p>
             </div>
           </div>
@@ -170,7 +195,7 @@ export default function SummerTrainingLandingPage() {
               <Star size={18} className="fill-current" />
             </div>
             <p className="text-gray-700 font-medium text-lg leading-relaxed mb-4 mt-2">
-              Learn from industry experts and gain real-time practical experience to boost your career.
+              Enroll now and gain real industry experience with Flymedia Technology.
             </p>
             <p className="text-2xl font-black text-pink-600">
               Limited Seats Available!
