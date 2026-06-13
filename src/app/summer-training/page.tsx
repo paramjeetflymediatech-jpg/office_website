@@ -197,7 +197,7 @@ export default function SummerTrainingLandingPage() {
               </div>
             </div>
             
-            <Link href="/summer-training-apply" className="w-full flex items-center justify-center gap-3 bg-pink-600 text-white py-5 rounded-2xl font-black text-2xl hover:bg-pink-700 transition-all shadow-[0_8px_30px_rgba(216,27,96,0.4)] hover:shadow-[0_12px_40px_rgba(216,27,96,0.6)] transform hover:-translate-y-1">
+            <Link href="https://course.flymediatech.com/packages" target="_blank" rel="noopener noreferrer" className="w-full flex items-center justify-center gap-3 bg-pink-600 text-white py-5 rounded-2xl font-black text-2xl hover:bg-pink-700 transition-all shadow-[0_8px_30px_rgba(216,27,96,0.4)] hover:shadow-[0_12px_40px_rgba(216,27,96,0.6)] transform hover:-translate-y-1">
               <PenTool size={28} className="fill-current" />
               Apply Now
             </Link>
