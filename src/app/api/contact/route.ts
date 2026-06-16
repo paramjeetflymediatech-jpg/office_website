@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import nodemailer from 'nodemailer';
+import { sendEmail, getAdminContactEmailHtml, getContactAutoReplyHtml } from '@/lib/email';
 import { revalidatePath } from 'next/cache';
 import ContactQuery from '@/models/ContactQuery';
 import axios from 'axios';
@@ -52,66 +52,35 @@ export async function POST(request: Request) {
       console.error('Database Error:', dbError);
     }
 
-    // 2. Build transporter & mail payloads
-    const transporter = nodemailer.createTransport({
-      host: process.env.EMAIL_HOST || 'smtp.gmail.com',
-      port: parseInt(process.env.EMAIL_PORT || '587'),
-      secure: process.env.EMAIL_PORT === '465',
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-      },
-    });
+    // 2. Build mail payloads using templates from email utility
+    const adminMailHtml = getAdminContactEmailHtml({ name, email, phone, subject, message });
+    const autoReplyHtml = getContactAutoReplyHtml({ name, subject, message });
 
-    const adminMail = {
-      from: `"Contact Form" <${process.env.EMAIL_USER}>`,
-      to: process.env.ADMIN_EMAIL || 'anujguptaflymedia@gmail.com',
-      replyTo: email,
-      subject: `New Contact Form Submission: ${subject || 'General Inquiry'}`,
-      text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone || 'N/A'}\nSubject: ${subject || 'N/A'}\n\nMessage:\n${message}`,
-      html: `
-        <h3>New Contact Form Submission</h3>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Phone:</strong> ${phone || 'N/A'}</p>
-        <p><strong>Subject:</strong> ${subject || 'N/A'}</p>
-        <br/>
-        <p><strong>Message:</strong></p>
-        <p>${message.replace(/\n/g, '<br/>')}</p>
-      `,
-    };
+    const adminSubject = `New Contact Form Submission: ${subject || 'General Inquiry'}`;
+    const adminText = `Name: ${name}\nEmail: ${email}\nPhone: ${phone || 'N/A'}\nSubject: ${subject || 'N/A'}\n\nMessage:\n${message}`;
 
-    const autoReply = {
-      from: `"Flymedia Technology" <${process.env.EMAIL_USER}>`,
-      to: email,
-      subject: 'Enquiry Received - Flymedia Technology',
-      text: `Hi ${name}, we have received your enquiry and our team will contact you shortly.`,
-      html: `
-        <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #eee; border-radius: 10px;">
-          <h2 style="color: #ff9900;">Inquiry Received</h2>
-          <p>Hi <strong>${name}</strong>,</p>
-          <p>Thank you for reaching out to <strong>Flymedia Technology</strong>.</p>
-          <p>We have received your enquiry regarding <strong>${subject || 'our services'}</strong> and our team will contact you shortly.</p>
-          <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee;">
-            <p style="margin: 0; color: #666;">Best Regards,</p>
-            <p style="margin: 5px 0 0 0; font-weight: bold; color: #000;">Flymedia Technology Team</p>
-            <p style="margin: 5px 0 0 0; font-size: 12px; color: #999;">Plot no, 20, Vishal Nagar Ext, Ludhiana, Punjab 141001</p>
-          </div>
-        </div>
-      `,
-    };
+    const replySubject = 'Enquiry Received - Flymedia Technology';
+    const replyText = `Hi ${name}, we have received your enquiry and our team will contact you shortly.`;
 
     // 3. Fire emails in the background — no await, respond instantly
-    if (process.env.EMAIL_USER && process.env.EMAIL_PASS) {
-      transporter.sendMail(adminMail).catch((err) =>
-        console.error('Admin email error:', err)
-      );
-      transporter.sendMail(autoReply).catch((err) =>
-        console.error('Auto-reply email error:', err)
-      );
-    } else {
-      console.warn('Email credentials not configured — emails skipped.');
-    }
+    const adminEmailTo = process.env.ADMIN_EMAIL || 'anujguptaflymedia@gmail.com';
+
+    sendEmail({
+      to: adminEmailTo,
+      subject: adminSubject,
+      text: adminText,
+      html: adminMailHtml,
+      from: `"Contact Form" <${process.env.EMAIL_USER}>`,
+      replyTo: email,
+    }).catch((err) => console.error('Admin email error:', err));
+
+    sendEmail({
+      to: email,
+      subject: replySubject,
+      text: replyText,
+      html: autoReplyHtml,
+      from: `"Flymedia Technology" <${process.env.EMAIL_USER}>`,
+    }).catch((err) => console.error('Auto-reply email error:', err));
 
     // Respond immediately without waiting for SMTP
     return NextResponse.json(
