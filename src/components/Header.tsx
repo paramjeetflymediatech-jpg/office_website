@@ -64,8 +64,17 @@ export default function Header() {
     "Edmonton": [
       { name: "Website Designing in Edmonton", href: "/canada/website-designing-company-in-edmonton" }
     ],
+    "Calgary": [
+      { name: "Best Digital Marketing Agency in Calgary", href: "/canada/best-digital-marketing-agency-in-calgary" }
+    ],
     "Montreal": [
       { name: "Best Digital Marketing Agency in Montreal", href: "/canada/best-digital-marketing-agency-in-montreal" }
+    ],
+    "Ottawa": [
+      { name: "Best Digital Marketing Agency in Ottawa", href: "/canada/best-digital-marketing-agency-in-ottawa" }
+    ],
+    "Quebec City": [
+      { name: "Best Digital Marketing Agency in Quebec City", href: "/canada/best-digital-marketing-agency-in-quebec-city" }
     ],
     "Toronto": [
       { name: "Best Digital Marketing Agency in Toronto", href: "/canada/best-digital-marketing-agency-in-toronto" }
@@ -80,6 +89,9 @@ export default function Header() {
       { name: "Best Digital Marketing Agency in Vancouver", href: "/canada/best-digital-marketing-agency-in-vancouver" },
       { name: "AI SEO Agency in Vancouver", href: "/canada/ai-seo-agency-in-vancouver" },
       { name: "E-Commerce SEO Agency in Vancouver", href: "/canada/e-commerce-seo-agency-in-vancouver" }
+    ],
+    "Winnipeg": [
+      { name: "Best Digital Marketing Agency in Winnipeg", href: "/canada/best-digital-marketing-agency-in-winnipeg" }
     ]
   };
 
@@ -158,7 +170,7 @@ export default function Header() {
 
           {/* Dropdown Menu (Desktop Hover & Mobile/Tablet Click-to-Toggle) */}
           <div
-            className={`absolute top-full left-1/2 -translate-x-1/2 w-56 bg-white text-black shadow-2xl transition-all duration-300 origin-top border border-gray-100 z-50 ${isLocDropdownOpen
+            className={`absolute top-full left-1/2 -translate-x-1/2 w-56 bg-white text-black shadow-2xl transition-all duration-300 origin-top border border-gray-100 z-50 max-h-[200px] overflow-y-auto custom-scrollbar ${isLocDropdownOpen
               ? "opacity-100 visible"
               : "opacity-0 invisible group-hover/loc:opacity-100 group-hover/loc:visible"
               }`}
@@ -178,7 +190,7 @@ export default function Header() {
 
                   {/* Submenu */}
                   {loc.subLocations && (
-                    <div className="absolute top-0 left-full w-48 bg-white text-black shadow-2xl opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-300 border border-gray-100">
+                    <div className="absolute top-0 left-full w-48 bg-white text-black shadow-2xl opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-300 border border-gray-100 max-h-[200px] overflow-y-auto custom-scrollbar">
                       {loc.subLocations.map((sub) => (
                         <Link
                           key={sub.name}
@@ -372,7 +384,7 @@ export default function Header() {
                               </div>
 
                               {/* Submenu on Hover */}
-                              <div className="absolute top-0 left-full ml-2 w-72 bg-white text-black shadow-2xl opacity-0 invisible group-hover/city:opacity-100 group-hover/city:visible transition-all duration-300 border border-white/10 rounded-2xl p-2 space-y-1">
+                              <div className="absolute top-0 left-full ml-2 w-72 bg-white text-black shadow-2xl opacity-0 invisible group-hover/city:opacity-100 group-hover/city:visible transition-all duration-300 border border-white/10 rounded-2xl p-2 space-y-1 max-h-[250px] overflow-y-auto custom-scrollbar">
 
                                 {/* Invisible Hover Bridge */}
                                 <div className="absolute top-0 -left-4 bottom-0 w-4 bg-transparent" />
