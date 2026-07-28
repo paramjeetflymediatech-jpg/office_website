@@ -68,7 +68,7 @@ export default function CanadaWebDesignPage() {
             <div className="lg:col-span-6 flex justify-center order-2 lg:order-1">
               <div className="relative w-full aspect-[5/3] max-w-[560px] transform hover:scale-102 transition-transform duration-500 ease-out overflow-hidden">
                 <Image
-                  src="/uploads/2024/05/lifdshiofhdns.jpg"
+                  src="/uploads/2024/05/canadadesign.png"
                   alt="Web Designing"
                   fill
                   className="object-cover"
