@@ -18,6 +18,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     (blog.excerpt ? blog.excerpt.replace(/<[^>]*>?/gm, '').trim() : '');
 
   return {
+    metadataBase: new URL("https://flymediatech.com"),
     title: blog.metaTitle || blog.title,
     description: cleanDescription.slice(0, 155),
     keywords: blog.keywords || blog.category,

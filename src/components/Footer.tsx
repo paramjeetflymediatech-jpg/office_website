@@ -82,6 +82,12 @@ export default function Footer() {
           { name: "Best Digital Marketing Agency", href: "/canada/best-digital-marketing-agency-in-vancouver" },
           { name: "AI SEO Agency Vancouver", href: "/canada/ai-seo-agency-in-vancouver" },
           { name: "E-Commerce SEO Vancouver", href: "/canada/e-commerce-seo-agency-in-vancouver" },
+          { name: "Best Digital Marketing Agency Toronto", href: "/canada/best-digital-marketing-agency-in-toronto" },
+          { name: "Best Digital Marketing Agency Montreal", href: "/canada/best-digital-marketing-agency-in-montreal" },
+          { name: "Best Digital Marketing Agency Winnipeg", href: "/canada/best-digital-marketing-agency-in-winnipeg" },
+          { name: "Best Digital Marketing Agency Calgary", href: "/canada/best-digital-marketing-agency-in-calgary" },
+          { name: "Best Digital Marketing Agency Ottawa", href: "/canada/best-digital-marketing-agency-in-ottawa" },
+          { name: "Best Digital Marketing Agency Quebec City", href: "/canada/best-digital-marketing-agency-in-quebec-city" },
         ]
       : OUR_SERVICES;
 
