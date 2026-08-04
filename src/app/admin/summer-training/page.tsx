@@ -275,62 +275,66 @@ export default function SummerTrainingAdminPage() {
 
       {/* Query Detail Modal */}
       {selectedQuery && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-[100] p-4">
-          <div className="bg-white rounded-2xl w-full max-w-lg overflow-hidden shadow-2xl">
-            <div className="p-6 border-b border-gray-100 flex justify-between items-center bg-gray-50">
-              <h2 className="text-xl font-bold text-gray-900 flex items-center gap-2">
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-xs flex items-center justify-center z-[100] p-4 sm:p-6">
+          <div className="bg-white rounded-3xl w-full max-w-lg overflow-hidden shadow-2xl max-h-[90vh] flex flex-col animate-in zoom-in-95 duration-200">
+            <div className="p-5 sm:p-6 border-b border-gray-100 flex justify-between items-center bg-gray-50/50">
+              <h2 className="text-lg sm:text-xl font-bold text-gray-900 flex items-center gap-2">
                 <GraduationCap className="text-[#ff9900]" />
                 Application Details
               </h2>
-              <button onClick={() => setSelectedQuery(null)} className="text-gray-400 hover:text-gray-600 bg-white p-1 rounded-full shadow-sm">
+              <button 
+                onClick={() => setSelectedQuery(null)} 
+                className="p-1.5 text-gray-400 hover:text-gray-600 hover:bg-gray-200/50 rounded-full transition-colors"
+              >
                 <X size={20} />
               </button>
             </div>
-            <div className="p-6 space-y-6">
-              <div className="grid grid-cols-2 gap-6">
-                <div>
-                  <label className="text-xs font-bold text-gray-400 uppercase">From</label>
-                  <div className="text-lg font-bold text-gray-900">{selectedQuery.name}</div>
+
+            <div className="p-5 sm:p-6 space-y-5 overflow-y-auto min-w-0">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="bg-gray-50/80 p-3.5 rounded-2xl border border-gray-100 min-w-0">
+                  <label className="text-[11px] font-extrabold text-gray-400 uppercase tracking-wider block mb-1">From</label>
+                  <div className="text-base font-bold text-gray-900 break-words">{selectedQuery.name}</div>
                 </div>
-                <div>
-                  <label className="text-xs font-bold text-gray-400 uppercase">Date</label>
-                  <div className="text-gray-700">{new Date(selectedQuery.createdAt).toLocaleString()}</div>
+                <div className="bg-gray-50/80 p-3.5 rounded-2xl border border-gray-100 min-w-0">
+                  <label className="text-[11px] font-extrabold text-gray-400 uppercase tracking-wider block mb-1">Date</label>
+                  <div className="text-sm font-medium text-gray-700 break-words">{new Date(selectedQuery.createdAt).toLocaleString()}</div>
                 </div>
               </div>
               
-              <div className="grid grid-cols-2 gap-6">
-                <div>
-                  <label className="text-xs font-bold text-gray-400 uppercase">Email</label>
-                  <div className="text-gray-700">{selectedQuery.email}</div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="bg-gray-50/80 p-3.5 rounded-2xl border border-gray-100 min-w-0">
+                  <label className="text-[11px] font-extrabold text-gray-400 uppercase tracking-wider block mb-1">Email</label>
+                  <div className="text-sm font-semibold text-gray-800 break-all">{selectedQuery.email}</div>
                 </div>
-                <div>
-                  <label className="text-xs font-bold text-gray-400 uppercase">Phone</label>
-                  <div className="text-gray-700">{selectedQuery.phone || 'N/A'}</div>
+                <div className="bg-gray-50/80 p-3.5 rounded-2xl border border-gray-100 min-w-0">
+                  <label className="text-[11px] font-extrabold text-gray-400 uppercase tracking-wider block mb-1">Phone</label>
+                  <div className="text-sm font-semibold text-gray-800 break-words">{selectedQuery.phone || 'N/A'}</div>
                 </div>
               </div>
 
-              <div>
-                <label className="text-xs font-bold text-gray-400 uppercase">Course Applied</label>
-                <div className="text-lg font-bold text-[#ff9900]">
+              <div className="bg-orange-50/40 p-3.5 rounded-2xl border border-orange-100/60 min-w-0">
+                <label className="text-[11px] font-extrabold text-orange-600/70 uppercase tracking-wider block mb-1">Course Applied</label>
+                <div className="text-base font-bold text-[#ff9900] break-words">
                   {selectedQuery.subject ? selectedQuery.subject.replace('Summer Training Application - ', '') : 'N/A'}
                 </div>
               </div>
 
-              <div>
-                <label className="text-xs font-bold text-gray-400 uppercase">Application Data</label>
-                <div className="mt-2 p-4 bg-gray-50 rounded-lg text-gray-700 whitespace-pre-wrap font-mono text-sm shadow-inner border border-gray-100">
+              <div className="min-w-0">
+                <label className="text-[11px] font-extrabold text-gray-400 uppercase tracking-wider block mb-1.5">Application Data</label>
+                <div className="p-4 bg-gray-50 rounded-2xl border border-gray-100 text-sm text-gray-700 leading-relaxed whitespace-pre-wrap font-mono break-words max-h-60 overflow-y-auto">
                   {selectedQuery.message}
                 </div>
               </div>
+            </div>
 
-              <div className="flex justify-end pt-4">
-                <button 
-                  onClick={() => setSelectedQuery(null)}
-                  className="bg-[#ff9900] text-white px-8 py-2.5 rounded-lg font-bold hover:bg-black transition-all"
-                >
-                  Close
-                </button>
-              </div>
+            <div className="p-4 sm:p-5 border-t border-gray-100 flex justify-end bg-gray-50/30">
+              <button 
+                onClick={() => setSelectedQuery(null)}
+                className="bg-[#ff9900] text-white px-8 py-2.5 rounded-xl font-bold text-sm hover:bg-black transition-all shadow-md shadow-orange-500/10"
+              >
+                Close
+              </button>
             </div>
           </div>
         </div>
