@@ -23,8 +23,9 @@ export default function CareerPage() {
   
   // Pagination State
   const [currentOpeningsPage, setCurrentOpeningsPage] = useState(1);
+  const [openingsPerPage, setOpeningsPerPage] = useState(10);
   const [currentAppsPage, setCurrentAppsPage] = useState(1);
-  const itemsPerPage = 10;
+  const [appsPerPage, setAppsPerPage] = useState(10);
 
   useEffect(() => {
     loadData();
@@ -40,16 +41,26 @@ export default function CareerPage() {
   }
 
   // Pagination Logic for Openings
-  const indexOfLastOpening = currentOpeningsPage * itemsPerPage;
-  const indexOfFirstOpening = indexOfLastOpening - itemsPerPage;
-  const currentOpenings = careers.slice(indexOfFirstOpening, indexOfLastOpening);
-  const totalOpeningsPages = Math.ceil(careers.length / itemsPerPage);
+  const totalOpeningsPages = Math.ceil(careers.length / openingsPerPage);
+  const indexOfFirstOpening = (currentOpeningsPage - 1) * openingsPerPage;
+  const currentOpenings = careers.slice(indexOfFirstOpening, indexOfFirstOpening + openingsPerPage);
 
   // Pagination Logic for Applications
-  const indexOfLastApp = currentAppsPage * itemsPerPage;
-  const indexOfFirstApp = indexOfLastApp - itemsPerPage;
-  const currentApps = applications.slice(indexOfFirstApp, indexOfLastApp);
-  const totalAppsPages = Math.ceil(applications.length / itemsPerPage);
+  const totalAppsPages = Math.ceil(applications.length / appsPerPage);
+  const indexOfFirstApp = (currentAppsPage - 1) * appsPerPage;
+  const currentApps = applications.slice(indexOfFirstApp, indexOfFirstApp + appsPerPage);
+
+  useEffect(() => {
+    if (currentOpeningsPage > totalOpeningsPages && totalOpeningsPages > 0) {
+      setCurrentOpeningsPage(totalOpeningsPages);
+    }
+  }, [careers.length, totalOpeningsPages, currentOpeningsPage]);
+
+  useEffect(() => {
+    if (currentAppsPage > totalAppsPages && totalAppsPages > 0) {
+      setCurrentAppsPage(totalAppsPages);
+    }
+  }, [applications.length, totalAppsPages, currentAppsPage]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -199,42 +210,85 @@ export default function CareerPage() {
           ))}
 
           {/* Openings Pagination */}
-          {totalOpeningsPages > 1 && (
-            <div className="flex justify-center items-center gap-2 mt-8">
-              <button
-                onClick={() => setCurrentOpeningsPage(prev => Math.max(prev - 1, 1))}
-                disabled={currentOpeningsPage === 1}
-                className="p-2.5 rounded-xl border border-gray-200 text-gray-400 hover:text-[#ff9900] disabled:opacity-30 disabled:cursor-not-allowed transition-all hover:bg-white bg-gray-50"
-              >
-                <ChevronLeft size={20} />
-              </button>
-              <div className="flex items-center gap-1.5">
-                {Array.from({ length: totalOpeningsPages }).map((_, i) => (
-                  <button
-                    key={i}
-                    onClick={() => setCurrentOpeningsPage(i + 1)}
-                    className={`w-10 h-10 rounded-xl font-bold transition-all ${
-                      currentOpeningsPage === i + 1
-                        ? 'bg-[#ff9900] text-white shadow-lg shadow-orange-100'
-                        : 'text-gray-400 hover:text-black hover:bg-white bg-gray-50 border border-transparent'
-                    }`}
+          {careers.length > 0 && (
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-white p-4 rounded-xl border border-gray-100 shadow-sm mt-4">
+              <div className="flex items-center gap-4 text-sm text-gray-500 font-medium">
+                <p>
+                  Showing <span className="text-gray-900 font-bold">{indexOfFirstOpening + 1}</span> to{' '}
+                  <span className="text-gray-900 font-bold">{Math.min(indexOfFirstOpening + openingsPerPage, careers.length)}</span> of{' '}
+                  <span className="text-gray-900 font-bold">{careers.length}</span> job openings
+                </p>
+                <div className="flex items-center gap-1.5 text-xs">
+                  <span className="text-gray-400 font-normal">Per page:</span>
+                  <select
+                    value={openingsPerPage}
+                    onChange={(e) => {
+                      setOpeningsPerPage(Number(e.target.value));
+                      setCurrentOpeningsPage(1);
+                    }}
+                    className="bg-gray-50 border border-gray-200 rounded-lg px-2 py-1 text-xs font-bold text-gray-700 outline-none focus:border-[#ff9900]"
                   >
-                    {i + 1}
-                  </button>
-                ))}
+                    <option value={5}>5</option>
+                    <option value={10}>10</option>
+                    <option value={20}>20</option>
+                    <option value={50}>50</option>
+                  </select>
+                </div>
               </div>
-              <button
-                onClick={() => setCurrentOpeningsPage(prev => Math.min(prev + 1, totalOpeningsPages))}
-                disabled={currentOpeningsPage === totalOpeningsPages}
-                className="p-2.5 rounded-xl border border-gray-200 text-gray-400 hover:text-[#ff9900] disabled:opacity-30 disabled:cursor-not-allowed transition-all hover:bg-white bg-gray-50"
-              >
-                <ChevronRight size={20} />
-              </button>
+
+              {totalOpeningsPages > 1 && (
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={() => setCurrentOpeningsPage((prev) => Math.max(prev - 1, 1))}
+                    disabled={currentOpeningsPage === 1}
+                    className="p-2 rounded-lg border border-gray-200 text-gray-600 hover:text-[#ff9900] hover:border-[#ff9900] disabled:opacity-40 disabled:cursor-not-allowed transition-all bg-white hover:bg-gray-50"
+                  >
+                    <ChevronLeft size={18} />
+                  </button>
+
+                  <div className="flex items-center gap-1">
+                    {Array.from({ length: Math.min(totalOpeningsPages, 7) }).map((_, i) => {
+                      let pageNum: number;
+                      if (totalOpeningsPages <= 7) {
+                        pageNum = i + 1;
+                      } else if (currentOpeningsPage <= 4) {
+                        pageNum = i + 1;
+                      } else if (currentOpeningsPage >= totalOpeningsPages - 3) {
+                        pageNum = totalOpeningsPages - 6 + i;
+                      } else {
+                        pageNum = currentOpeningsPage - 3 + i;
+                      }
+
+                      return (
+                        <button
+                          key={pageNum}
+                          onClick={() => setCurrentOpeningsPage(pageNum)}
+                          className={`w-9 h-9 flex items-center justify-center rounded-lg text-xs font-bold transition-all ${
+                            currentOpeningsPage === pageNum
+                              ? 'bg-[#ff9900] text-white shadow-md shadow-orange-100'
+                              : 'text-gray-600 hover:bg-orange-50 hover:text-[#ff9900]'
+                          }`}
+                        >
+                          {pageNum}
+                        </button>
+                      );
+                    })}
+                  </div>
+
+                  <button
+                    onClick={() => setCurrentOpeningsPage((prev) => Math.min(prev + 1, totalOpeningsPages))}
+                    disabled={currentOpeningsPage === totalOpeningsPages}
+                    className="p-2 rounded-lg border border-gray-200 text-gray-600 hover:text-[#ff9900] hover:border-[#ff9900] disabled:opacity-40 disabled:cursor-not-allowed transition-all bg-white hover:bg-gray-50"
+                  >
+                    <ChevronRight size={18} />
+                  </button>
+                </div>
+              )}
             </div>
           )}
           {careers.length === 0 && (
             <div className="text-center py-16 bg-white rounded-2xl border border-gray-100 text-gray-500 shadow-sm">
-              <Briefcase className="w-12 h-12 text-gray-300 mx-auto mb-3" />
+              <Briefcase className="w-12 h-12 text-[#ff9900] opacity-30 mx-auto mb-3" />
               <h3 className="font-bold text-gray-800 text-lg mb-1">No vacancies listed</h3>
               <p className="text-sm text-gray-500 mb-4">Click "Add New Job" to post an opening.</p>
             </div>
@@ -321,37 +375,80 @@ export default function CareerPage() {
           ))}
 
           {/* Applications Pagination */}
-          {totalAppsPages > 1 && (
-            <div className="flex justify-center items-center gap-2 mt-8">
-              <button
-                onClick={() => setCurrentAppsPage(prev => Math.max(prev - 1, 1))}
-                disabled={currentAppsPage === 1}
-                className="p-2.5 rounded-xl border border-gray-200 text-gray-400 hover:text-[#ff9900] disabled:opacity-30 disabled:cursor-not-allowed transition-all hover:bg-white bg-gray-50"
-              >
-                <ChevronLeft size={20} />
-              </button>
-              <div className="flex items-center gap-1.5">
-                {Array.from({ length: totalAppsPages }).map((_, i) => (
-                  <button
-                    key={i}
-                    onClick={() => setCurrentAppsPage(i + 1)}
-                    className={`w-10 h-10 rounded-xl font-bold transition-all ${
-                      currentAppsPage === i + 1
-                        ? 'bg-[#ff9900] text-white shadow-lg shadow-orange-100'
-                        : 'text-gray-400 hover:text-black hover:bg-white bg-gray-50 border border-transparent'
-                    }`}
+          {applications.length > 0 && (
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-white p-4 rounded-xl border border-gray-100 shadow-sm mt-4">
+              <div className="flex items-center gap-4 text-sm text-gray-500 font-medium">
+                <p>
+                  Showing <span className="text-gray-900 font-bold">{indexOfFirstApp + 1}</span> to{' '}
+                  <span className="text-gray-900 font-bold">{Math.min(indexOfFirstApp + appsPerPage, applications.length)}</span> of{' '}
+                  <span className="text-gray-900 font-bold">{applications.length}</span> applications
+                </p>
+                <div className="flex items-center gap-1.5 text-xs">
+                  <span className="text-gray-400 font-normal">Per page:</span>
+                  <select
+                    value={appsPerPage}
+                    onChange={(e) => {
+                      setAppsPerPage(Number(e.target.value));
+                      setCurrentAppsPage(1);
+                    }}
+                    className="bg-gray-50 border border-gray-200 rounded-lg px-2 py-1 text-xs font-bold text-gray-700 outline-none focus:border-[#ff9900]"
                   >
-                    {i + 1}
-                  </button>
-                ))}
+                    <option value={5}>5</option>
+                    <option value={10}>10</option>
+                    <option value={20}>20</option>
+                    <option value={50}>50</option>
+                  </select>
+                </div>
               </div>
-              <button
-                onClick={() => setCurrentAppsPage(prev => Math.min(prev + 1, totalAppsPages))}
-                disabled={currentAppsPage === totalAppsPages}
-                className="p-2.5 rounded-xl border border-gray-200 text-gray-400 hover:text-[#ff9900] disabled:opacity-30 disabled:cursor-not-allowed transition-all hover:bg-white bg-gray-50"
-              >
-                <ChevronRight size={20} />
-              </button>
+
+              {totalAppsPages > 1 && (
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={() => setCurrentAppsPage((prev) => Math.max(prev - 1, 1))}
+                    disabled={currentAppsPage === 1}
+                    className="p-2 rounded-lg border border-gray-200 text-gray-600 hover:text-[#ff9900] hover:border-[#ff9900] disabled:opacity-40 disabled:cursor-not-allowed transition-all bg-white hover:bg-gray-50"
+                  >
+                    <ChevronLeft size={18} />
+                  </button>
+
+                  <div className="flex items-center gap-1">
+                    {Array.from({ length: Math.min(totalAppsPages, 7) }).map((_, i) => {
+                      let pageNum: number;
+                      if (totalAppsPages <= 7) {
+                        pageNum = i + 1;
+                      } else if (currentAppsPage <= 4) {
+                        pageNum = i + 1;
+                      } else if (currentAppsPage >= totalAppsPages - 3) {
+                        pageNum = totalAppsPages - 6 + i;
+                      } else {
+                        pageNum = currentAppsPage - 3 + i;
+                      }
+
+                      return (
+                        <button
+                          key={pageNum}
+                          onClick={() => setCurrentAppsPage(pageNum)}
+                          className={`w-9 h-9 flex items-center justify-center rounded-lg text-xs font-bold transition-all ${
+                            currentAppsPage === pageNum
+                              ? 'bg-[#ff9900] text-white shadow-md shadow-orange-100'
+                              : 'text-gray-600 hover:bg-orange-50 hover:text-[#ff9900]'
+                          }`}
+                        >
+                          {pageNum}
+                        </button>
+                      );
+                    })}
+                  </div>
+
+                  <button
+                    onClick={() => setCurrentAppsPage((prev) => Math.min(prev + 1, totalAppsPages))}
+                    disabled={currentAppsPage === totalAppsPages}
+                    className="p-2 rounded-lg border border-gray-200 text-gray-600 hover:text-[#ff9900] hover:border-[#ff9900] disabled:opacity-40 disabled:cursor-not-allowed transition-all bg-white hover:bg-gray-50"
+                  >
+                    <ChevronRight size={18} />
+                  </button>
+                </div>
+              )}
             </div>
           )}
 

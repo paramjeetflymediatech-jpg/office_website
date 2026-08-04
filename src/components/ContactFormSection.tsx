@@ -47,7 +47,7 @@ export default function ContactFormSection() {
     console.log(pathname, 'dfsdddddddsdffsd')
     setPage(pathname);
   }, [pathname]);
-  console.log(page, 'dfssdffsd')
+  // console.log(page, 'dfssdffsd')
   const getContactInfo = () => {
     if (page.includes("-vancouver")) {
       return data[1]; // Canada info

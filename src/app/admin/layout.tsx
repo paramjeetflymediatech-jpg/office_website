@@ -137,7 +137,7 @@ export default function AdminLayout({
 
       {/* Main Content Area */}
       <main className="flex-1 w-full lg:ml-72 p-4 sm:p-6 md:p-10 pt-24 lg:pt-10 transition-all duration-300 overflow-x-hidden">
-        <div className="max-w-6xl mx-auto w-full animate-in fade-in-50 duration-500">
+        <div className="max-w-7xl mx-auto w-full animate-in fade-in-50 duration-500">
           {children}
         </div>
       </main>

@@ -2,13 +2,15 @@
 
 import React, { useState, useEffect } from 'react';
 import { getContactQueries, updateQueryStatus, deleteQuery } from '@/app/actions/contact';
-import { Trash2, Eye, X, RefreshCw, GraduationCap } from 'lucide-react';
+import { Trash2, Eye, X, RefreshCw, GraduationCap, ChevronLeft, ChevronRight } from 'lucide-react';
 
 export default function SummerTrainingAdminPage() {
   const [queries, setQueries] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [selectedQuery, setSelectedQuery] = useState<any>(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(10);
 
   useEffect(() => {
     loadQueries();
@@ -27,6 +29,16 @@ export default function SummerTrainingAdminPage() {
     setLoading(false);
     setRefreshing(false);
   }
+
+  const totalPages = Math.ceil(queries.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const paginatedQueries = queries.slice(startIndex, startIndex + itemsPerPage);
+
+  useEffect(() => {
+    if (currentPage > totalPages && totalPages > 0) {
+      setCurrentPage(totalPages);
+    }
+  }, [queries.length, totalPages, currentPage]);
 
   const handleStatusChange = async (id: number, status: string) => {
     const result = await updateQueryStatus(id, status);
@@ -78,7 +90,7 @@ export default function SummerTrainingAdminPage() {
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-50">
-              {queries.map((query) => (
+              {paginatedQueries.map((query) => (
                 <tr key={query.id} className={`hover:bg-gray-50/50 transition-colors ${query.status === 'NEW' ? 'bg-orange-50/20' : ''}`}>
                   <td className="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
                     {new Date(query.createdAt).toLocaleDateString()}
@@ -129,7 +141,7 @@ export default function SummerTrainingAdminPage() {
 
         {/* Mobile Card View */}
         <div className="md:hidden divide-y divide-gray-100">
-          {queries.map((query) => (
+          {paginatedQueries.map((query) => (
             <div key={query.id} className={`p-4 space-y-3 ${query.status === 'NEW' ? 'bg-orange-50/20' : ''}`}>
               <div className="flex justify-between items-start">
                 <div>
@@ -182,6 +194,84 @@ export default function SummerTrainingAdminPage() {
           </div>
         )}
       </div>
+
+      {/* Pagination Controls */}
+      {queries.length > 0 && (
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-white p-4 rounded-xl border border-gray-100 shadow-sm">
+          <div className="flex items-center gap-4 text-sm text-gray-500 font-medium">
+            <p>
+              Showing <span className="text-gray-900 font-bold">{startIndex + 1}</span> to{' '}
+              <span className="text-gray-900 font-bold">{Math.min(startIndex + itemsPerPage, queries.length)}</span> of{' '}
+              <span className="text-gray-900 font-bold">{queries.length}</span> applications
+            </p>
+            <div className="flex items-center gap-1.5 text-xs">
+              <span className="text-gray-400 font-normal">Per page:</span>
+              <select
+                value={itemsPerPage}
+                onChange={(e) => {
+                  setItemsPerPage(Number(e.target.value));
+                  setCurrentPage(1);
+                }}
+                className="bg-gray-50 border border-gray-200 rounded-lg px-2 py-1 text-xs font-bold text-gray-700 outline-none focus:border-[#ff9900]"
+              >
+                <option value={5}>5</option>
+                <option value={10}>10</option>
+                <option value={20}>20</option>
+                <option value={50}>50</option>
+              </select>
+            </div>
+          </div>
+
+          {totalPages > 1 && (
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+                disabled={currentPage === 1}
+                className="p-2 rounded-lg border border-gray-200 text-gray-600 hover:text-[#ff9900] hover:border-[#ff9900] disabled:opacity-40 disabled:cursor-not-allowed transition-all bg-white hover:bg-gray-50"
+              >
+                <ChevronLeft size={18} />
+              </button>
+
+              <div className="flex items-center gap-1">
+                {Array.from({ length: Math.min(totalPages, 7) }).map((_, i) => {
+                  let pageNum: number;
+                  if (totalPages <= 7) {
+                    pageNum = i + 1;
+                  } else if (currentPage <= 4) {
+                    pageNum = i + 1;
+                  } else if (currentPage >= totalPages - 3) {
+                    pageNum = totalPages - 6 + i;
+                  } else {
+                    pageNum = currentPage - 3 + i;
+                  }
+
+                  return (
+                    <button
+                      key={pageNum}
+                      onClick={() => setCurrentPage(pageNum)}
+                      className={`w-9 h-9 flex items-center justify-center rounded-lg text-xs font-bold transition-all ${
+                        currentPage === pageNum
+                          ? 'bg-[#ff9900] text-white shadow-md shadow-orange-100'
+                          : 'text-gray-600 hover:bg-orange-50 hover:text-[#ff9900]'
+                      }`}
+                    >
+                      {pageNum}
+                    </button>
+                  );
+                })}
+              </div>
+
+              <button
+                onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+                disabled={currentPage === totalPages}
+                className="p-2 rounded-lg border border-gray-200 text-gray-600 hover:text-[#ff9900] hover:border-[#ff9900] disabled:opacity-40 disabled:cursor-not-allowed transition-all bg-white hover:bg-gray-50"
+              >
+                <ChevronRight size={18} />
+              </button>
+            </div>
+          )}
+        </div>
+      )}
 
       {/* Query Detail Modal */}
       {selectedQuery && (
@@ -248,3 +338,4 @@ export default function SummerTrainingAdminPage() {
     </div>
   );
 }
+
