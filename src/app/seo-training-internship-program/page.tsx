@@ -193,19 +193,15 @@ export default function SEOTrainingInternshipProgram() {
       ]
     },
     {
-      title: "Master In Meta Ads & SMO - 2 Months",
+      title: "Complete Digital Marketing Course - 6 Months",
       topics: [
+        "Search Engine Optimization",
         "Social Media Marketing",
-        "Facebook Ads or Meta Ads",
-        "How to setup a Facebook page, Ad Account, Business Manager",
-        "Audience in Meta Ads",
-        "How to write killer Ad Copies",
-        "Dynamic Creative",
-        "Fundamentals of Meta Ads",
-        "Formats and Ad Types",
-        "Campaign types and their uses",
-        "Conversion tracking and setup",
-        "Optimization"
+        "Facebook Meta Ads",
+        "Google Adwords",
+        "Website Design",
+        "Graphic Creation",
+        "Video Editing",
       ]
     }
   ];
@@ -226,7 +222,7 @@ export default function SEOTrainingInternshipProgram() {
               
               <div className="space-y-4">
                 <h3 className="text-lg sm:text-xl font-bold text-black font-sans">
-                  Digital Marketing & SEO Training Institute in Ludhiana,
+                  Digital Marketing & SEO Training Company in Ludhiana,
                 </h3>
                 <div className="space-y-4 text-gray-700 font-medium leading-relaxed text-sm sm:text-base">
                   <p>
