@@ -151,17 +151,17 @@ export default function AboutUs() {
           <div className="lg:col-span-5 order-1 lg:order-2">
             <div className="relative group max-w-sm mx-auto">
               <div className="absolute inset-0 scale-102 opacity-80 group-hover:rotate-6 transition-transform duration-300"></div>
-              <div className="relative p-3 rounded-2xl overflow-hidden shadow-lg bg-white border border-gray-100">
+              {/* <div className="relative p-3 rounded-2xl overflow-hidden shadow-lg bg-white border border-gray-100"> */}
                 <img
                   loading="lazy"
                   src="/uploads/2024/03/Anujgupta.png"
                   alt="Dr. Anuj Gupta - Director, Flymedia Technology"
-                  className="w-full h-auto rounded-xl object-cover hover:scale-102 transition-transform duration-500"
+                  className="w-full h-auto  object-cover hover:scale-102 transition-transform duration-500"
                 />
                 <div className="mt-4 text-center pb-2">
                   <h3 className="text-xl font-bold text-gray-900 font-serif">Dr. Anuj Gupta</h3>
                   <p className="text-[#ff9900] text-sm font-semibold tracking-wide uppercase">Director & Founder</p>
-                </div>
+                {/* </div> */}
               </div>
             </div>
           </div>
