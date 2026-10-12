@@ -128,14 +128,14 @@ export default function AboutUs() {
 
       {/* 2.5. Globally With Digital Marketing Company Tactics Section */}
       <section className="max-w-7xl mx-auto mb-20">
-        <div className="rounded-3xl p-8 md:p-12  grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div className="rounded-3xl p-8 md:p-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
 
           {/* Left Column: Vision & Directors Info */}
           <div className="lg:col-span-7 space-y-6 order-2 lg:order-1">
             <h2 className="text-3xl md:text-5xl font-serif font-extrabold text-black leading-tight">
               Globally With Digital Marketing Company Tactics
             </h2>
-            <div className="w-16 h-1"></div>
+            <div className="w-16 h-1 bg-[#ff9900]"></div>
 
             <div className="space-y-5 text-gray-600 text-base md:text-lg leading-relaxed font-medium">
               <p>
@@ -151,14 +151,76 @@ export default function AboutUs() {
           <div className="lg:col-span-5 order-1 lg:order-2">
             <div className="relative group max-w-sm mx-auto">
               <div className="absolute inset-0 scale-102 opacity-80 group-hover:rotate-6 transition-transform duration-300"></div>
-              <div className="relative  p-3 rounded-2xl   overflow-hidden">
+              <div className="relative p-3 rounded-2xl overflow-hidden shadow-lg bg-white border border-gray-100">
                 <img
                   loading="lazy"
                   src="/uploads/2024/03/Anujgupta.png"
-                  alt="Anuj Gupta - best digital marketer in India"
-                  className="w-full h-auto l object-cover hover:scale-102 transition-transform duration-500"
+                  alt="Dr. Anuj Gupta - Director, Flymedia Technology"
+                  className="w-full h-auto rounded-xl object-cover hover:scale-102 transition-transform duration-500"
                 />
+                <div className="mt-4 text-center pb-2">
+                  <h3 className="text-xl font-bold text-gray-900 font-serif">Dr. Anuj Gupta</h3>
+                  <p className="text-[#ff9900] text-sm font-semibold tracking-wide uppercase">Director & Founder</p>
+                </div>
               </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* Leadership Profile: Jainika Mittal */}
+      <section className="max-w-7xl mx-auto mb-20">
+        <div className="rounded-3xl p-8 md:p-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center bg-white border border-gray-100 shadow-sm">
+
+          {/* Left Column: Jainika Mittal's Image */}
+          <div className="lg:col-span-5 order-1">
+            <div className="relative group max-w-sm mx-auto">
+              <div className="absolute inset-0 scale-102 opacity-80 group-hover:-rotate-3 transition-transform duration-300"></div>
+              <div className="relative p-3 rounded-2xl overflow-hidden shadow-lg bg-gray-50 border border-gray-100">
+                <img
+                  loading="lazy"
+                  src="/jainika-mittal.jpg"
+                  alt="Jainika Mittal - Co-Founder, Fly Media Technology"
+                  className="w-full h-[460px] rounded-xl object-cover object-top hover:scale-102 transition-transform duration-500"
+                />
+                <div className="mt-4 text-center pb-2">
+                  <h3 className="text-xl font-bold text-gray-900 font-serif">Jainika Mittal</h3>
+                  <p className="text-[#ff9900] text-sm font-semibold tracking-wide uppercase">Co-Founder</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column: Jainika Mittal's Bio */}
+          <div className="lg:col-span-7 space-y-6 order-2">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-50 border border-orange-200 text-[#ff9900] text-xs font-bold tracking-wider uppercase">
+              Leadership & Technical Operations
+            </div>
+            <h2 className="text-3xl md:text-5xl font-serif font-extrabold text-black leading-tight">
+              Driving Technical Innovation & Growth Strategy
+            </h2>
+            <div className="w-16 h-1 bg-[#ff9900]"></div>
+
+            <div className="space-y-5 text-gray-600 text-base md:text-lg leading-relaxed font-medium">
+              <p>
+                <span className="text-black font-bold">Jainika Mittal</span> is the <span className="text-[#ff9900] font-bold">Co-Founder</span> of Fly Media Technology, where she leads technical operations and oversees SEO and social media strategy.
+              </p>
+              <p>
+                She plays a key role in project management, technology strategy, and product development, ensuring every client receives innovative, high-quality digital solutions that increase visibility, engagement, and growth.
+              </p>
+              <p>
+                With her strong technical foundation and forward-thinking leadership, she helps bridge creative digital marketing strategies with robust execution, empowering brands to establish an authoritative online presence.
+              </p>
+            </div>
+
+            <div className="pt-2">
+              <Link
+                href="/contact-us/"
+                className="inline-flex items-center gap-2 bg-[#ff9900] text-black font-extrabold px-8 py-3.5 rounded-xl hover:bg-black hover:text-white transition-colors duration-300 text-sm uppercase tracking-wider"
+              >
+                Connect With Our Team <ChevronRight size={16} />
+              </Link>
             </div>
           </div>
 
