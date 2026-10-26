@@ -38,8 +38,15 @@ const nextConfig: NextConfig = {
         destination: '/australia/:slug/',
         permanent: true,
       },
+      {
+        source: '/seo-training-internship-program/',
+        destination: 'https://course.flymediatech.com/packages/category/digital-marketing',
+        permanent: true,
+      },
     ];
+
   },
+
 };
 
 export default nextConfig;
