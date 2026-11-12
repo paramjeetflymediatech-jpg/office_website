@@ -97,15 +97,15 @@ SEOConfig.init(
       allowNull: true,
     },
     globalSchema: {
-      type: DataTypes.TEXT,
+      type: DataTypes.TEXT('long'),
       allowNull: true,
     },
     headerScripts: {
-      type: DataTypes.TEXT,
+      type: DataTypes.TEXT('long'),
       allowNull: true,
     },
     footerScripts: {
-      type: DataTypes.TEXT,
+      type: DataTypes.TEXT('long'),
       allowNull: true,
     },
   },

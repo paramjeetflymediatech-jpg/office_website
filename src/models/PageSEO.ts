@@ -43,7 +43,7 @@ PageSEO.init(
       allowNull: true,
     },
     customSchema: {
-      type: DataTypes.TEXT,
+      type: DataTypes.TEXT('long'),
       allowNull: true,
     },
     ogTitle: {

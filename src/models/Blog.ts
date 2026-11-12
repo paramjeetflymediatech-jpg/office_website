@@ -58,7 +58,7 @@ Blog.init(
       allowNull: false,
     },
     content: {
-      type: DataTypes.TEXT,
+      type: DataTypes.TEXT('long'),
       allowNull: false,
     },
     category: {
@@ -87,7 +87,7 @@ Blog.init(
       allowNull: true,
     },
     schema: {
-      type: DataTypes.TEXT,
+      type: DataTypes.TEXT('long'),
       allowNull: true,
     },
     ogTitle: {

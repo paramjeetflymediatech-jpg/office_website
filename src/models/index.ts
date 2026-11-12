@@ -17,6 +17,12 @@ const initModels = async () => {
     // Sync all models
     // In production, you might want to use migrations instead of sync()
     await sequelize.sync({ alter: true });
+    try {
+      await sequelize.query('ALTER TABLE `blogs` MODIFY `content` LONGTEXT;');
+      await sequelize.query('ALTER TABLE `blogs` MODIFY `schema` LONGTEXT;');
+    } catch (e) {
+      // Table may not exist yet or already altered
+    }
     console.log('All models synchronized.');
   } catch (error) {
     console.error('Unable to connect to the database:', error);

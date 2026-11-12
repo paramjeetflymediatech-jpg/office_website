@@ -1,13 +1,28 @@
 'use server';
 
-import { Blog } from '@/models';
+import { Blog, sequelize } from '@/models';
 import { revalidatePath } from 'next/cache';
 import fs from 'fs/promises';
 import path from 'path';
 
-export async function getBlogs(region?: string) {
+let isBlogSchemaUpdated = false;
+
+async function ensureBlogSchema() {
+  if (isBlogSchemaUpdated) return;
   try {
     await Blog.sync();
+    // Upgrade existing TEXT columns to LONGTEXT to prevent MySQL "Data too long" errors
+    await sequelize.query('ALTER TABLE `blogs` MODIFY `content` LONGTEXT;');
+    await sequelize.query('ALTER TABLE `blogs` MODIFY `schema` LONGTEXT;');
+    isBlogSchemaUpdated = true;
+  } catch (err: any) {
+    console.warn('[BlogAction] ensureBlogSchema notice:', err?.message || err);
+  }
+}
+
+export async function getBlogs(region?: string) {
+  try {
+    await ensureBlogSchema();
     console.log(`[BlogAction] Fetching fresh blog posts for region: ${region || 'global'}...`);
 
     const whereClause = region ? { region } : {};
@@ -26,7 +41,7 @@ export async function getBlogs(region?: string) {
 
 export async function getBlogBySlug(slug: string) {
   try {
-    await Blog.sync();
+    await ensureBlogSchema();
     const blog = await Blog.findOne({
       where: { slug },
       raw: true
@@ -71,7 +86,7 @@ export async function createBlog(formData: FormData) {
   const twitterCard = formData.get('twitterCard') as string || 'summary_large_image';
 
   try {
-    await Blog.sync();
+    await ensureBlogSchema();
     let finalImageUrl = imageUrlInput;
 
     // Handle image file upload if provided
@@ -146,7 +161,7 @@ export async function updateBlog(id: number, formData: FormData) {
   const twitterCard = formData.get('twitterCard') as string || 'summary_large_image';
 
   try {
-    await Blog.sync();
+    await ensureBlogSchema();
     const blog = await Blog.findByPk(id);
     if (!blog) {
       return { success: false, error: 'Blog post not found' };
@@ -257,7 +272,7 @@ export async function incrementBlogViews(id: number) {
 // Seed helper to populate with original 6 posts if database table is empty
 export async function seedOriginalBlogs() {
   try {
-    await Blog.sync();
+    await ensureBlogSchema();
     const count = await Blog.count();
     if (count > 0) {
       return { success: true, message: 'Already seeded' };
