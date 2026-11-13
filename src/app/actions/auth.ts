@@ -195,27 +195,35 @@ export async function adminLogin(formData: FormData) {
 
   console.log(`[Auth] Attempting login for username: "${username}"`);
 
-  // 1. Matches credentials defined in .env
-  const matchesEnv = username === envCreds.username && password === envCreds.password;
+  // .env is the master source of truth
+  const isEnvConfigured = Boolean(envCreds.username && envCreds.password);
 
-  // 2. Matches credentials in Database
-  const matchesDb = await checkDatabaseCredentials(username, password);
+  let isValid = false;
 
-  // 3. Fallback default
-  const matchesFallback = username === 'admin' && password === 'admin@123';
+  if (isEnvConfigured) {
+    // STRICT: Only the current .env credentials are valid. Old passwords will NOT work.
+    if (username === envCreds.username && password === envCreds.password) {
+      isValid = true;
+    }
+  } else {
+    // Fallback only if .env is completely empty/missing
+    const matchesDb = await checkDatabaseCredentials(username, password);
+    const matchesFallback = username === 'admin' && password === 'admin@123';
+    isValid = matchesDb || matchesFallback;
+  }
 
-  if (matchesEnv || matchesDb || matchesFallback) {
+  if (isValid) {
     console.log(`[Auth] Login successful for: "${username}"`);
 
-    // Automatically sync/update the database so it matches the current active credentials
-    const finalUser = matchesEnv ? envCreds.username : username;
-    const finalPass = matchesEnv ? envCreds.password : password;
+    // Automatically update the database to the new password, overwriting the old password in DB
+    const finalUser = envCreds.username || username;
+    const finalPass = envCreds.password || password;
     await syncAdminToDatabase(finalUser, finalPass);
 
     await startSession(username);
     redirect('/admin');
   } else {
-    console.warn(`[Auth] Failed login attempt for username: "${username}". Expected username from env: "${envCreds.username}"`);
+    console.warn(`[Auth] Failed login attempt for username: "${username}".`);
     return { error: 'Invalid credentials' };
   }
 }
