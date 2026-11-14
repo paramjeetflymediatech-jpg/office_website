@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { 
@@ -17,7 +17,7 @@ import {
   Sparkles,
   LogOut
 } from 'lucide-react';
-import { adminLogout } from '@/app/actions/auth';
+import { adminLogout, verifyAdminSession } from '@/app/actions/auth';
 
 export default function AdminLayout({
   children,
@@ -27,6 +27,29 @@ export default function AdminLayout({
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
   const isLoginPage = pathname === '/admin/login' || pathname === '/admin/login/';
+
+  useEffect(() => {
+    if (isLoginPage) return;
+
+    const checkSession = async () => {
+      try {
+        const isValid = await verifyAdminSession();
+        if (!isValid) {
+          window.location.href = '/admin/login/';
+        }
+      } catch (err) {
+        // network or temporary error
+      }
+    };
+
+    const interval = setInterval(checkSession, 15000);
+    window.addEventListener('focus', checkSession);
+
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener('focus', checkSession);
+    };
+  }, [isLoginPage]);
 
   if (isLoginPage) {
     return <>{children}</>;

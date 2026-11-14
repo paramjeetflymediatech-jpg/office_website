@@ -1,6 +1,6 @@
 'use server';
 
-import { login as startSession, logout as endSession } from '@/lib/auth';
+import { login as startSession, logout as endSession, getSession } from '@/lib/auth';
 import { User, sequelize } from '@/models';
 import { redirect } from 'next/navigation';
 import fs from 'fs';
@@ -231,4 +231,9 @@ export async function adminLogin(formData: FormData) {
 export async function adminLogout() {
   await endSession();
   redirect('/admin/login');
+}
+
+export async function verifyAdminSession(): Promise<boolean> {
+  const session = await getSession();
+  return Boolean(session);
 }
